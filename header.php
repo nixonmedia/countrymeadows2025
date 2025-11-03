@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="main">
-        <header>
+        <header class="site-header">
             <div class="container">
                 <div class="row py-2 py-lg-4">
                     <div class="col-6 col-lg-3 text-center">
