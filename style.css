@@ -1,0 +1,16 @@
+/*
+Theme Name: Country Meadows
+Description: Custom ACF compatible theme.
+Requires at least: 5.9
+Tested up to: 6.8
+Requires PHP: 5.6
+Version: 1.0
+Text Domain: country_meadows
+*/
+
+/*
+ * Font smoothing.
+ * This is a niche setting that will not be available via Global Styles.
+ * https://github.com/WordPress/gutenberg/issues/35934
+ */
+
