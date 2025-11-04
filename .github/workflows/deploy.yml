@@ -1,36 +1,37 @@
-name: 🚀 Deploy WordPress Theme
+name: Deploy to Kinsta
 
 on:
   push:
     branches:
-      - develop  # Change to main if needed
+      - develop # Trigger the workflow only when changes are pushed to the main branch
 
 jobs:
   deploy:
-    name: Deploy to Kinsta Server
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ Checkout code
-      - name: 📥 Checkout repository
-        uses: actions/checkout@v4
+      # Setup Node.js (only if needed for build tasks)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
 
-      # ✅ SSH to Kinsta and deploy via rsync
-      - name: 🔐 Deploy Theme via SSH
-        uses: appleboy/ssh-action@master
+      # Checkout the latest code from the GitHub repository
+      - name: Checkout code
+        uses: actions/checkout@v4.1.6
+
+      # Deploy to Kinsta via SSH
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.KINSTA_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 25344
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }} # Optional, default is 22
           script: |
-            set -e
+            # Navigate to the live site directory
+            cd /www/your-site/public
 
-            echo "📦 Deploying WordPress Theme..."
-            rsync -avzr --delete -e "ssh -p 25344" \
-              ./ ${{ secrets.KINSTA_USERNAME }}@${{ secrets.SERVER_IP }}:${{ secrets.THEME_PATH }}
-
-            echo "🔄 Reloading PHP-FPM"
-            sudo /etc/init.d/php8.2-fpm reload || true
-
-            echo "✅ Deployment completed!"
+            # Pull the latest changes from the GitHub repository
+            git fetch origin main
+            git reset --hard origin/main  
