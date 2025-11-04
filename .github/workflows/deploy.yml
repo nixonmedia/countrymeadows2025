@@ -22,11 +22,12 @@ jobs:
           host: ${{ secrets.KINSTA_SERVER_IP }}
           username: ${{ secrets.KINSTA_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 25344
           script: |
-            rsync -avzr --delete ./ ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }}:${{ secrets.THEME_PATH }}
+            rsync -avzr --delete -e "ssh -p 25344" ./ ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }}:${{ secrets.THEME_PATH }}
  
       # 3. Optional: Restart PHP or clear cache after deployment
       - name: Restart PHP or clear cache (optional)
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }} \
+          ssh -i ~/.ssh/id_rsa -p 25344 -o StrictHostKeyChecking=no ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }} \
           "sudo systemctl reload php8.2-fpm || true"
