@@ -19,8 +19,8 @@ jobs:
       - name: 🔐 Deploy Theme via SSH
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.KINSTA_SERVER_IP }}
-          username: ${{ secrets.KINSTA_USERNAME }}
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 25344
           script: |
@@ -28,7 +28,7 @@ jobs:
             echo "📦 Deploying WordPress Theme..."
 
             rsync -avzr --delete -e "ssh -p 25344 -o StrictHostKeyChecking=no" \
-              . ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }}:${{ secrets.THEME_PATH }}
+              . ${{ secrets.USERNAME }}@${{ secrets.SERVER_IP }}:${{ secrets.THEME_PATH }}
 
             echo "🔄 Reloading PHP-FPM"
             sudo /etc/init.d/php8.2-fpm reload || true
