@@ -17,7 +17,7 @@ jobs:
  
       # 2. Set up rsync deployment
       - name: Deploy using rsync
-        uses: burnett01/rsync-deployments@v7
+        uses: burnett01/rsync-deployments@v6.0
         with:
           switches: -avzr --delete
           path: ./  
