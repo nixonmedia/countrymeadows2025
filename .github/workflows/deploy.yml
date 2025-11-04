@@ -25,12 +25,13 @@ jobs:
           port: 25344
           script: |
             set -e
-
             echo "📦 Deploying WordPress Theme..."
-            rsync -avzr --delete -e "ssh -p 25344" \
-              ./ ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }}:${{ secrets.THEME_PATH }}
+
+            rsync -avzr --delete -e "ssh -p 25344 -o StrictHostKeyChecking=no" \
+              . ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }}:${{ secrets.THEME_PATH }}
 
             echo "🔄 Reloading PHP-FPM"
             sudo /etc/init.d/php8.2-fpm reload || true
 
             echo "✅ Deployment completed!"
+
