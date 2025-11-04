@@ -22,6 +22,7 @@ jobs:
           host: ${{ secrets.KINSTA_SERVER_IP }}
           username: ${{ secrets.KINSTA_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE}}
           port: 25344
           script: |
             rsync -avzr --delete -e "ssh -p 25344" ./ ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }}:${{ secrets.THEME_PATH }}
