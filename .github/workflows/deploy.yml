@@ -30,8 +30,8 @@ jobs:
           port: ${{ secrets.PORT }} # Optional, default is 22
           script: |
             # Navigate to the live site directory
-            cd /www/countrymeadows2025_651/public
+            cd /www/countrymeadows2025_651/public/wp-content/themes/countrymeadows2025
 
             # Pull the latest changes from the GitHub repository
-            git fetch origin main
-            git reset --hard origin/main  
+            git fetch origin develop
+            git reset --hard origin/develop  
