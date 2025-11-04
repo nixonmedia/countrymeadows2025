@@ -1,37 +1,58 @@
-name: Deploy to Kinsta
+name: 🚀 Deploy to Kinsta (Develop)
 
 on:
   push:
     branches:
-      - develop # Trigger the workflow only when changes are pushed to the main branch
+      - develop # Trigger only when changes are pushed to the develop branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Setup Node.js (only if needed for build tasks)
-      - name: Setup Node.js
+      # 🧩 Step 1: Setup Node.js (if needed for build steps)
+      - name: 🔧 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
 
-      # Checkout the latest code from the GitHub repository
-      - name: Checkout code
+      # 🧩 Step 2: Checkout the repository code
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4.1.6
 
-      # Deploy to Kinsta via SSH
-      - name: Deploy via SSH
+      # 🧩 Step 3: Deploy to Kinsta via SSH
+      - name: 🚀 Deploy via SSH to Kinsta
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }} # Optional, default is 22
+          port: ${{ secrets.PORT }} # Optional, defaults to 22
           script: |
-            # Navigate to the live site directory
-            cd /www/countrymeadows2025_651/public/wp-content/themes/countrymeadows2025
+            echo "-----------------------------------------"
+            echo "🔗 Starting deployment to Kinsta server..."
+            echo "-----------------------------------------"
 
-            # Pull the latest changes from the GitHub repository
+            # Navigate to the theme directory
+            cd /www/countrymeadows2025_651/public/wp-content/themes/countrymeadows2025 || exit 1
+            echo "📂 Current directory:"
+            pwd
+
+            # Check current Git status
+            echo "🧭 Checking current Git branch and status..."
+            git status
+
+            # Fetch latest changes from origin/develop
+            echo "⬇️ Fetching latest changes from origin/develop..."
             git fetch origin develop
-            git reset --hard origin/develop  
+
+            # Reset local code to match remote develop branch
+            echo "🔄 Resetting local files to match origin/develop..."
+            git reset --hard origin/develop
+
+            # Optional: clear cache or perform build steps
+            echo "🧹 Clearing cache (if applicable)..."
+            # Example: npm install && npm run build
+
+            echo "✅ Deployment to Kinsta completed successfully!"
+            echo "-----------------------------------------"
