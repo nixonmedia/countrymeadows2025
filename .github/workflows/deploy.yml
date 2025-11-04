@@ -22,12 +22,9 @@ jobs:
           host: ${{ secrets.KINSTA_SERVER_IP }}
           username: ${{ secrets.KINSTA_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE}}
           port: 25344
-          host_key: "ignore"
           script: |
-            ssh -p 25344 -o StrictHostKeyChecking=no ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }} "echo Connected"
-            rsync -avzr --delete -e "ssh -p 25344 -o StrictHostKeyChecking=no" ./ ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }}:${{ secrets.THEME_PATH }}
+            rsync -avzr --delete -e "ssh -p 25344" ./ ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }}:${{ secrets.THEME_PATH }}
  
       # 3. Optional: Restart PHP or clear cache after deployment
       - name: Restart PHP or clear cache (optional)
