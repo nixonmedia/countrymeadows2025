@@ -1,37 +1,30 @@
-name: 🚀 Deploy WordPress Theme
+name: 🚀 Deploy Theme to Kinsta
 
 on:
   push:
     branches:
-      - develop  # Change to main if needed
+      - main   # or develop, your choice
 
 jobs:
   deploy:
-    name: Deploy to Kinsta Server
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ Checkout code
-      - name: 📥 Checkout repository
-        uses: actions/checkout@v4
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
 
-      # ✅ SSH to Kinsta and deploy via rsync
-      - name: 🔐 Deploy Theme via SSH
-        uses: appleboy/ssh-action@master
+      - name: 🔐 Start SSH Agent
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 25344
-          script: |
-            set -e
-            echo "📦 Deploying WordPress Theme..."
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-            rsync -avzr --delete -e "ssh -p 25344 -o StrictHostKeyChecking=no" \
-              . ${{ secrets.USERNAME }}@${{ secrets.SERVER_IP }}:${{ secrets.THEME_PATH }}
+      - name: 🧩 Add Kinsta Host Key
+        run: |
+          ssh-keyscan -p ${{ secrets.KINSTA_PORT }} ${{ secrets.KINSTA_HOST }} >> ~/.ssh/known_hosts
 
-            echo "🔄 Reloading PHP-FPM"
-            sudo /etc/init.d/php8.2-fpm reload || true
-
-            echo "✅ Deployment completed!"
-
+      - name: 🚀 Deploy Theme to Kinsta via rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -p ${{ secrets.KINSTA_PORT }}" \
+            ./wp-content/themes/countrymeadows2025/ \
+            ${{ secrets.KINSTA_USER }}@${{ secrets.KINSTA_HOST }}:/www/countrymeadows2025_651/public/wp-content/themes/countrymeadows2025/
