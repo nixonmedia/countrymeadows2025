@@ -1,0 +1,33 @@
+name: Deploy WordPress Theme
+ 
+on:
+  push:
+    branches:
+      - develop  # or "main" if you want to deploy from main branch
+ 
+jobs:
+  deploy:
+    name: Deploy to WordPress Server
+    runs-on: ubuntu-latest
+ 
+    steps:
+      # 1. Checkout the repo code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
+      # 2. Set up rsync deployment
+      - name: Deploy using rsync
+        uses: burnett01/rsync-deployments@v7
+        with:
+          switches: -avzr --delete
+          path: ./  
+          remote_path: ${{ secrets.THEME_PATH }}
+          remote_host: ${{ secrets.KINSTA_SERVER_IP }}
+          remote_user: ${{ secrets.KINSTA_USERNAME }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+ 
+      # 3. Optional: Restart PHP or clear cache after deployment
+      - name: Restart PHP or clear cache (optional)
+        run: |
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+          "sudo systemctl reload php8.2-fpm || true"
