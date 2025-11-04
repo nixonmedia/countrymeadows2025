@@ -1,33 +1,36 @@
-name: Deploy WordPress Theme
- 
+name: 🚀 Deploy WordPress Theme
+
 on:
   push:
     branches:
-      - develop  # or "main" if you want to deploy from main branch
- 
+      - develop  # Change to main if needed
+
 jobs:
   deploy:
-    name: Deploy to WordPress Server
+    name: Deploy to Kinsta Server
     runs-on: ubuntu-latest
- 
+
     steps:
-      # 1. Checkout the repo code
-      - name: Checkout repository
+      # ✅ Checkout code
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
- 
-      # 2. Set up rsync deployment
-      - name: Deploy with rsync via SSH
-        uses: appleboy/ssh-action@v1.2.0
+
+      # ✅ SSH to Kinsta and deploy via rsync
+      - name: 🔐 Deploy Theme via SSH
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.KINSTA_SERVER_IP }}
           username: ${{ secrets.KINSTA_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 25344
           script: |
-            rsync -avzr --delete -e "ssh -p 25344" ./ ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }}:${{ secrets.THEME_PATH }}
- 
-      # 3. Optional: Restart PHP or clear cache after deployment
-      - name: Restart PHP or clear cache (optional)
-        run: |
-          ssh -i ~/.ssh/id_rsa -p 25344 -o StrictHostKeyChecking=no ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }} \
-          "sudo systemctl reload php8.2-fpm || true"
+            set -e
+
+            echo "📦 Deploying WordPress Theme..."
+            rsync -avzr --delete -e "ssh -p 25344" \
+              ./ ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }}:${{ secrets.THEME_PATH }}
+
+            echo "🔄 Reloading PHP-FPM"
+            sudo /etc/init.d/php8.2-fpm reload || true
+
+            echo "✅ Deployment completed!"
