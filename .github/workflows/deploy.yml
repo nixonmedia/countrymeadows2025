@@ -28,5 +28,5 @@ jobs:
       # 3. Optional: Restart PHP or clear cache after deployment
       - name: Restart PHP or clear cache (optional)
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.KINSTA_USERNAME }}@${{ secrets.KINSTA_SERVER_IP }} \
           "sudo systemctl reload php8.2-fpm || true"
