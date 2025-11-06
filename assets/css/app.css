@@ -24,6 +24,10 @@ a {
 a:hover {
   text-decoration: none;
 }
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Poppins", sans-serif;
+  color: var(--black);
+}
 /* colors */
 .bg-dark-sky-blue {
   background-color: var(--dark-sky-blue);
@@ -35,6 +39,14 @@ a:hover {
 /* Global fonts  */
 .font-lexend {
   font-family: "Lexend", sans-serif;
+}
+.font-medium {
+  font-size: 30px;
+  line-height: 45px;
+}
+.font-regular {
+  font-size: 20px;
+  line-height: 35px;
 }
 .font-normal {
   font-size: 17px;

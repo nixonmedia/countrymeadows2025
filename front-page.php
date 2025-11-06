@@ -1,9 +1,8 @@
-<?php get_header(); ?>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      Home Page Content
-    </div>
-  </div>
-</div>
+<?php get_header(); 
+
+/**************************************
+***** Stylized Heading Intro Zone *****
+****************************************/
+get_template_part('parts/layouts/stylized_heading_intro_zone'); ?>
+
 <?php get_footer(); ?>
