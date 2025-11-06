@@ -53,7 +53,9 @@
                         <nav class="main-menu navbar navbar-expand-lg">
                             <div class="d-none d-lg-block">
                                 <div class="collapse navbar-collapse">
-                                    <ul class="navbar-nav flex-wrap">
+                                    <?php if (function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled('primary')) : ?>
+                                        <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
+                                    <!-- <ul class="navbar-nav flex-wrap">
                                         <li class="mega-menu-item mega-current-menu-item"> <a href="#">Communities</a> </li>
                                         <li class="mega-menu-item"> <a href="#">Nursing & Rehab Center</a> </li>
                                         <li class="mega-menu-item"> <a href="#">About</a> </li>
@@ -63,7 +65,18 @@
                                         <li class="mega-menu-item"> <a href="#">News</a> </li>
                                         <li class="mega-menu-item"> <a href="#">Blog</a> </li>
                                         <li class="mega-menu-item"> <a href="#">Contact</a> </li>
-                                    </ul>
+                                    </ul> -->
+                                    <?php else : ?>
+                                        <?php
+                                            wp_nav_menu(array(
+                                                'theme_location' => 'primary',
+                                                'container'      => 'ul',
+                                                'menu_class'     => 'navbar-nav text-capitalize d-flex list-unstyled align-items-center mb-0 gap-4 fw-bold text-uppercase',
+                                                'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
+                                                'menu_id'        => 'primary-menu',
+                                            ));
+                                            ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="d-lg-none mobile-menu-navbar" id="navbarSupportedContent">
