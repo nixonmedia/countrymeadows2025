@@ -100,7 +100,7 @@
             },
             "taxonomy": "accordion_category",
             "add_term": 1,
-            "save_terms": 0,
+            "save_terms": 1,
             "load_terms": 0,
             "return_format": "id",
             "field_type": "multi_select",
@@ -130,5 +130,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1762245281
+    "modified": 1762422000
 }

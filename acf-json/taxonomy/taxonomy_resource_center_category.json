@@ -3,28 +3,33 @@
     "title": "Resource Center Categories",
     "menu_order": 0,
     "active": true,
-    "taxonomy": "resource_center_category",
+    "taxonomy": "resource-center-categories",
     "object_type": [
-        "resource"
+        "resource_center"
     ],
-    "advanced_configuration": false,
+    "advanced_configuration": 0,
     "import_source": "",
     "import_date": "",
     "labels": {
         "name": "Resource Center Categories",
         "singular_name": "Resource Center Category",
         "menu_name": "Resource Center Categories",
-        "search_items": "Search Resource Center Categories",
         "all_items": "All Resource Center Categories",
-        "parent_item": "Parent Resource Center Category",
-        "parent_item_colon": "Parent Resource Center Category:",
         "edit_item": "Edit Resource Center Category",
         "view_item": "View Resource Center Category",
         "update_item": "Update Resource Center Category",
         "add_new_item": "Add New Resource Center Category",
         "new_item_name": "New Resource Center Category Name",
+        "parent_item": "Parent Resource Center Category",
+        "parent_item_colon": "Parent Resource Center Category:",
+        "search_items": "Search Resource Center Categories",
+        "most_used": "",
         "not_found": "No resource center categories found",
         "no_terms": "No resource center categories",
+        "name_field_description": "",
+        "slug_field_description": "",
+        "parent_field_description": "",
+        "desc_field_description": "",
         "filter_by_item": "Filter by resource center category",
         "items_list_navigation": "Resource Center Categories list navigation",
         "items_list": "Resource Center Categories list",
@@ -33,37 +38,38 @@
         "item_link_description": "A link to a resource center category."
     },
     "description": "",
-    "public": true,
-    "publicly_queryable": true,
-    "hierarchical": true,
-    "show_ui": true,
-    "show_in_menu": true,
-    "show_in_nav_menus": true,
-    "show_in_rest": false,
+    "capabilities": {
+        "manage_terms": "switch_themes",
+        "edit_terms": "switch_themes",
+        "delete_terms": "switch_themes",
+        "assign_terms": "switch_themes"
+    },
+    "public": 1,
+    "publicly_queryable": 1,
+    "hierarchical": 1,
+    "show_ui": 1,
+    "show_in_menu": 1,
+    "show_in_nav_menus": 1,
+    "show_in_rest": 0,
     "rest_base": "",
     "rest_namespace": "wp\/v2",
     "rest_controller_class": "WP_REST_Terms_Controller",
-    "show_tagcloud": true,
-    "show_in_quick_edit": true,
-    "show_admin_column": true,
+    "show_tagcloud": 1,
+    "show_in_quick_edit": 1,
+    "show_admin_column": 1,
     "rewrite": {
-        "permalink_rewrite": "custom_slug",
+        "permalink_rewrite": "taxonomy_key",
         "with_front": "1",
-        "hierarchical": "0",
-        "slug": "resource-center-category"
+        "rewrite_hierarchical": "0"
     },
-    "query_var": true,
+    "query_var": "post_type_key",
     "query_var_name": "",
-    "sort": false,
+    "default_term": {
+        "default_term_enabled": "0"
+    },
+    "sort": 0,
     "meta_box": "default",
     "meta_box_cb": "",
     "meta_box_sanitize_cb": "",
-    "capabilities": {},
-    "default_term": {
-        "name": "",
-        "slug": "",
-        "description": ""
-    },
-    "modified": 1735689600
+    "modified": 1762426307
 }
-

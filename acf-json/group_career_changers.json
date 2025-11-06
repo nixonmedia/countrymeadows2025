@@ -42,13 +42,12 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": "",
+            "post_type": [
+                "career"
+            ],
             "post_status": "",
             "taxonomy": "",
-            "filters": [
-                "post_type",
-                "taxonomy"
-            ],
+            "filters": "",
             "return_format": "object",
             "min": "",
             "max": "",
@@ -77,5 +76,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1762246825
+    "modified": 1762427163
 }

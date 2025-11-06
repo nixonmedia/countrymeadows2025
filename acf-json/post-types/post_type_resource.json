@@ -1,9 +1,9 @@
 {
     "key": "post_type_resource",
     "title": "Resources",
-    "menu_order": 31,
+    "menu_order": 0,
     "active": true,
-    "post_type": "resource",
+    "post_type": "resource_center",
     "advanced_configuration": false,
     "import_source": "",
     "import_date": "",
@@ -67,25 +67,23 @@
     "supports": [
         "title",
         "editor",
-        "thumbnail",
-        "excerpt"
+        "excerpt",
+        "thumbnail"
     ],
     "taxonomies": "",
     "has_archive": true,
     "has_archive_slug": "",
     "rewrite": {
-        "permalink_rewrite": "custom_slug",
+        "permalink_rewrite": "post_type_key",
         "with_front": "1",
         "feeds": "0",
-        "pages": "1",
-        "slug": "resources"
+        "pages": "1"
     },
-    "query_var": true,
+    "query_var": "post_type_key",
     "query_var_name": "",
     "can_export": true,
     "delete_with_user": false,
     "register_meta_box_cb": "",
     "enter_title_here": "",
-    "modified": 1735689600
+    "modified": 1762426142
 }
-

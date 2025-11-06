@@ -70,6 +70,32 @@
             "bidirectional_target": []
         },
         {
+            "key": "field_690c7e75e7f18",
+            "label": "Resource Center Tags",
+            "name": "resource_center_tags",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "resource-center-tag",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "select",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
+        },
+        {
             "key": "field_resource_youtube_link",
             "label": "YouTube Link",
             "name": "resource_youtube_link",
@@ -92,7 +118,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "resource"
+                "value": "post"
             }
         ]
     ],
@@ -106,5 +132,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1762246733
+    "modified": 1762426529
 }
