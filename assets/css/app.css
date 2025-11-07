@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@font-face {
+    font-family: 'Gloss And Bloom';
+    src: url('../fonts/GlossAndBloom.woff2') format('woff2'),
+        url('../fonts/GlossAndBloom.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
   --black: #000000;
   --white: #fff;
@@ -27,6 +35,7 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
   color: var(--black);
+  font-weight: 700;
 }
 /* colors */
 .bg-dark-sky-blue {
@@ -35,8 +44,14 @@ h1, h2, h3, h4, h5, h6 {
 .text-dark-sky-blue {
   color: var(--dark-sky-blue);
 }
+.text-pink {
+  color: var(--pink);
+}
 
 /* Global fonts  */
+.font-gloss-bloom {
+  font-family: 'Gloss And Bloom';
+}
 .font-lexend {
   font-family: "Lexend", sans-serif;
 }
@@ -58,7 +73,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*Global*/
-
 .wysiwyg-content :last-child, .copyright-content :last-child {
   margin-bottom: 0;
 }
@@ -190,6 +204,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 .copyright-block {
   padding-top: 42px;
+}
+
+
+/*Stylized Heading and Intro Zone*/
+
+.stylized-heading {
+  font-size: 103px;
+  line-height: 103px;
+  transform: rotate(-3.008deg);
+}
+.stylized-heading-intro-zone .intro-content-col {
+  padding-top: 100px;
 }
 
 /* Media Queries  */
