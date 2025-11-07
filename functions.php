@@ -41,9 +41,10 @@ if (! function_exists('country_meadows_support')) :
 
 		register_nav_menus(
 			array(
-				'primary' => esc_html__('Primary Menu', 'country_meadows'),
-				'secondary' => esc_html__('Secondary Menu', 'country_meadows'),
-				'footer' => esc_html__('Footer Menu', 'country_meadows'),
+				'primary'            => esc_html__('Primary Menu', 'country_meadows'),
+				'secondary'          => esc_html__('Secondary Menu', 'country_meadows'),
+				'footer'             => esc_html__('Footer Menu', 'country_meadows'),
+				'footer_communities' => esc_html__('Footer Communities', 'country_meadows'),
 			)
 		);
 	}
