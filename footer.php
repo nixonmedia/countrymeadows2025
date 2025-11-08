@@ -5,25 +5,63 @@ $ecumenical_text = $footer['ecumenical_text'];
 $footer_logo = $footer['footer_logo'];
 $button_1 = $footer['button_1'];
 $button_2 = $footer['button_2'];
+$badges = $footer['badges'];
+$content_column_1 = $footer['content_column_1'];
+$column_1_image = $content_column_1['image'];
+$column_1_text = $content_column_1['text'];
+$column_1_link = $content_column_1['link'];
+$content_column_2 = $footer['content_column_2'];
+$column_2_image = $content_column_2['image'];
+$column_2_text = $content_column_2['text'];
+$column_2_link = $content_column_2['link'];
 
 ?>
 <footer class="site-footer bg-dark-sky-blue">
   <div class="container">
     <div class="row">
+      
+      <?php 
+      // Check if columns have actual content
+      $has_column_1 = !empty($column_1_image) || !empty($column_1_text) || !empty($column_1_link);
+      $has_column_2 = !empty($column_2_image) || !empty($column_2_text) || !empty($column_2_link);
+      
+      if ($has_column_1 || $has_column_2): ?>
       <div class="col-lg-4 d-none d-lg-block">
         <div class="row">
-          <div class="col-lg-6 footer-post-col">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/resource-img.jpg" class="img-fluid mb-3" alt="Resources Post Image">
-            <h3 class="font-lexend fw-bold font-normal mb-3 footer-post-title text-white">Check out helpful tips and information for supporting your aging loved one.</a></h3>
-            <a href="#" class="small-white-button">Resources</a>
-          </div>
-          <div class="col-lg-6 footer-post-col">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/careers-img.jpg" class="img-fluid mb-3" alt="Resources Post Image">
-            <h3 class="font-lexend fw-bold font-normal mb-3 footer-post-title text-white">Explore the many career opportunities with Country Meadows.</a></h3>
-            <a href="#" class="small-white-button">Careers</a>
-          </div>
+          <?php if ($has_column_1): ?>
+            <div class="col-lg-6 footer-post-col">
+              <?php if ($column_1_image): 
+                $image_url = isset($column_1_image['sizes']['footer-column']) ? $column_1_image['sizes']['footer-column'] : $column_1_image['url'];
+              ?>
+                <img src="<?php echo esc_url($image_url); ?>" class="img-fluid mb-3" alt="<?php echo esc_attr($column_1_image['alt']); ?>">
+              <?php endif; ?>
+              <?php if ($column_1_text): ?>
+                <h3 class="font-lexend fw-bold font-normal mb-3 footer-post-title text-white"><?php echo $column_1_text; ?></h3>
+              <?php endif; ?>
+              <?php if ($column_1_link): ?>
+                <a href="<?php echo esc_url($column_1_link['url']); ?>" class="small-white-button" <?php if (!empty($column_1_link['target'])) echo 'target="' . esc_attr($column_1_link['target']) . '"'; ?>><?php echo esc_html($column_1_link['title']); ?></a>
+              <?php endif; ?>
+            </div>
+          <?php endif; ?>
+          <?php if ($has_column_2): ?>
+            <div class="col-lg-6 footer-post-col">
+              <?php if ($column_2_image): 
+                $image_url = isset($column_2_image['sizes']['footer-column']) ? $column_2_image['sizes']['footer-column'] : $column_2_image['url'];
+              ?>
+                <img src="<?php echo esc_url($image_url); ?>" class="img-fluid mb-3" alt="<?php echo esc_attr($column_2_image['alt']); ?>">
+              <?php endif; ?>
+              <?php if ($column_2_text): ?>
+                <h3 class="fobnt-lexend fw-bold font-normal mb-3 footer-post-title text-white"><?php echo $column_2_text; ?></h3>
+              <?php endif; ?>
+              <?php if ($column_2_link): ?>
+                <a href="<?php echo esc_url($column_2_link['url']); ?>" class="small-white-button" <?php if (!empty($column_2_link['target'])) echo 'target="' . esc_attr($column_2_link['target']) . '"'; ?>><?php echo esc_html($column_2_link['title']); ?></a>
+              <?php endif; ?>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
+      <?php endif; ?>
+    
       <div class="col-lg-5 px-lg-3">
         <?php if ($footer_logo): ?>
           <div class="text-center footer-logo">
@@ -41,6 +79,7 @@ $button_2 = $footer['button_2'];
         ?>
 
       </div>
+      <?php if($button_1 || $button_2 || $badges): ?>
       <div class="col-lg-3 pt-4 pt-lg-0">
         <?php if ($button_1): ?>
           <p class="pb-1 text-center text-lg-end">
@@ -52,12 +91,18 @@ $button_2 = $footer['button_2'];
             <a href="<?php echo $button_2['url']; ?>" class="footer-white-button" <?php if (!empty($button_2['target'])) echo 'target="_blank"'; ?>><?php echo $button_2['title']; ?></a>
           </p>
         <?php endif; ?>
-        <div class="footer-images-block pt-4 pt-lg-0 d-flex gap-5 gap-lg-2 gap-xl-4 flex-wrap justify-content-center justify-content-lg-end">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/equal-housing-opportunity.svg" class="img-fluid">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/great-place-to-work.svg" class="img-fluid">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/best-place-to-work.svg" class="img-fluid">
-        </div>
+        <?php if ($badges): ?>
+          <div class="footer-images-block pt-4 pt-lg-0 d-flex gap-5 gap-lg-2 gap-xl-4 flex-wrap justify-content-center justify-content-lg-end">
+            <?php foreach ($badges as $badge_item):
+              $badge = $badge_item['badge'];
+              if ($badge): ?>
+                <img src="<?php echo esc_url($badge['url']); ?>" class="img-fluid" alt="<?php echo esc_attr($badge['alt']); ?>">
+            <?php endif;
+            endforeach; ?>
+          </div>
+        <?php endif; ?>
       </div>
+      <?php endif; ?>
     </div>
     <div class="copyright-block">
       <div class="row">

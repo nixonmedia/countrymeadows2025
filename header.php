@@ -13,9 +13,16 @@
             <div class="container">
                 <div class="primary-bar">
                     <div class="row align-items-end align-items-lg-center">
+                        <?php 
+                        $logo = get_field("header_logo", "option");
+                        ?>
+                        <?php if ($logo): ?>
                         <div class="col-9 col-lg-4 text-center">
-                            <a href="#" class="navbar-brand"><img src="<?php echo get_stylesheet_directory_uri();?>/images/header-logo.svg" alt="Country Meadows Logo" class="img-fluid w-100"></a>
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="navbar-brand">
+                                <img src="<?php echo esc_url($logo['url']); ?>" <?php if ($logo['alt']): ?>alt="<?php echo esc_attr($logo['alt']); ?>"<?php endif; ?> class="img-fluid w-100">
+                            </a>
                         </div>
+                        <?php endif; ?>
                         <div class="col-3 col-lg-6 offset-lg-2 text-end">
                             <button class="navbar-toggler d-lg-none" type="button" id="navbar-button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <img src="<?php echo get_stylesheet_directory_uri();?>/images/burger-icon.svg" class="open-btn img-fluid" alt="Menu Open Icon">
