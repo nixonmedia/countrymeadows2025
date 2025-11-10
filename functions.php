@@ -156,6 +156,13 @@ add_filter('acf/settings/load_json', function ($paths) {
 
 
 
+// Load Streamline Icon Picker (theme module)
+require_once get_template_directory() . '/inc/streamline-icon-picker/streamline-icon-picker.php';
+
+
+
+
+
 
 
 
