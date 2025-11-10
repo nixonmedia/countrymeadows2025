@@ -24,6 +24,7 @@ if (! function_exists('country_meadows_support')) :
 
 		// Add support for block styles.
 		add_theme_support('wp-block-styles');
+	
 
 		add_theme_support(
 			'custom-logo',
@@ -47,6 +48,9 @@ if (! function_exists('country_meadows_support')) :
 				'footer_communities' => esc_html__('Footer Communities', 'country_meadows'),
 			)
 		);
+
+		// Register custom thumbnail size
+		add_image_size('footer-column', 225, 125, true);
 	}
 
 endif;
@@ -154,3 +158,109 @@ add_filter('acf/settings/load_json', function ($paths) {
 
 	return $paths;
 });
+
+// Load Streamline Icon Picker for ACF
+require_once get_template_directory() . '/inc/streamline-icon-picker/streamline-icon-picker.php';
+
+/*
+   This function initializes and registers a TinyMCE button in the WordPress editor
+   for inserting shortcodes. It ensures the user has editing privileges and that
+   rich text editing is enabled in their profile before adding the necessary filters.
+*/
+function wysiwyg_shortcode_button() {
+    if ( !current_user_can('edit_posts') && !current_user_can('edit_pages') ) {
+        return;
+    }
+
+    if ( get_user_option('rich_editing') == 'true' ) {
+        add_filter( 'mce_external_plugins', 'add_wysiwyg_shortcode_plugin' );
+        add_filter( 'mce_buttons', 'register_wysiwyg_shortcode_button' );
+    }
+}
+add_action( 'admin_init', 'wysiwyg_shortcode_button' );
+
+/*
+   This function adds the custom TinyMCE button to the editor toolbar.
+   The button will be labeled and referenced by its custom handle name.
+*/
+function register_wysiwyg_shortcode_button( $buttons ) {
+    array_push( $buttons, 'wysiwyg_shortcode_btn' ); 
+    return $buttons;
+}
+
+/*
+   This function declares the JavaScript file that handles the TinyMCE button’s behavior.
+   The JavaScript file is located in the theme’s assets directory.
+*/
+function add_wysiwyg_shortcode_plugin( $plugin_array ) {
+    $plugin_array['wysiwyg_shortcode_btn'] = get_template_directory_uri() . '/assets/js/wysiwyg-shortcode-script.js';
+    return $plugin_array;
+}
+
+/*
+   This shortcode outputs content related to video posts.
+   It accepts an optional “id” attribute that can be used to identify specific content.
+*/
+function wysiwyg_video_shortcode( $atts ) {
+    $atts = shortcode_atts( array(
+        'id' => 'default_id_or_empty',
+    ), $atts );
+
+    return 'added Video Post data here';
+}
+add_shortcode( 'add_video', 'wysiwyg_video_shortcode' );
+
+/*
+   This shortcode outputs event-related content.
+   It can be customized using the “name” attribute for dynamic rendering.
+*/
+function wysiwyg_event_shortcode( $atts ) {
+    $atts = shortcode_atts( array(
+        'name' => 'default_event_or_empty',
+    ), $atts );
+
+    return 'Added Event Post data here';
+}
+add_shortcode( 'add_event_shortcode', 'wysiwyg_event_shortcode' );
+
+/*
+   This shortcode outputs an image gallery section.
+   It also accepts a “name” attribute for customization.
+*/
+function wysiwyg_image_gallery_shortcode( $atts ) {
+    $atts = shortcode_atts( array(
+        'name' => 'default_event_or_empty',
+    ), $atts );
+
+    return 'Added Image Gallery Post data here';
+}
+add_shortcode( 'image_gallery', 'wysiwyg_image_gallery_shortcode' );
+
+/*
+   This shortcode displays testimonials.
+   The “name” attribute can be used to specify the testimonial or source.
+*/
+function wysiwyg_testimonial_shortcode( $atts ) {
+    $atts = shortcode_atts( array(
+        'name' => 'default_event_or_empty',
+    ), $atts );
+
+    return 'Added Image testimonial Post data here';
+}
+add_shortcode( 'add_testimonial', 'wysiwyg_testimonial_shortcode' );
+
+/*
+   This shortcode modifies or displays text with a specific font size.
+   It uses a “name” attribute that can represent the chosen size or style.
+*/
+function wysiwyg_font_size_shortcode( $atts ) {
+    $atts = shortcode_atts( array(
+        'name' => 'default_event_or_empty',
+    ), $atts );
+
+    return 'Added font size Post data here';
+}
+add_shortcode( 'font_size', 'wysiwyg_font_size_shortcode' );
+
+
+?>
