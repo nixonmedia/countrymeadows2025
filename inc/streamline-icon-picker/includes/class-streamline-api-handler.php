@@ -6,7 +6,7 @@
 class Streamline_API_Handler {
 
     const OPTIONS_KEY = 'streamline_icon_data';
-    const PUBLIC_API_URL = 'https://public-api.streamlinehq.com/v1/search/global';
+    const PUBLIC_API_URL = 'https://public-api.streamlinehq.com/v1/search/family';
     const INCLUDED_FAMILIES = ['streamline-freehand', 'streamline-freehand-duotone'];
 
     /**
@@ -58,8 +58,8 @@ class Streamline_API_Handler {
         $existing_icons = get_option(self::OPTIONS_KEY, []);
         $all_icons = $existing_icons;
         $families = self::INCLUDED_FAMILIES;
-        $limit = 100;               // icons per request
-        $max_icons_per_run = 1000;  // safety batch limit to avoid timeout
+        $limit = 100;
+        $max_icons_per_run = 1000;
         $total_fetched = 0;
 
         foreach ($families as $family) {
@@ -68,7 +68,7 @@ class Streamline_API_Handler {
             while ($total_fetched < $max_icons_per_run) {
                 $url = add_query_arg([
                     'productType' => 'icons',
-                    'query'       => $family, // "freehand" and "freehand-duotone"
+                    'query'       => $family,
                     'page'        => $page,
                     'limit'       => $limit,
                 ], self::PUBLIC_API_URL);
@@ -83,7 +83,6 @@ class Streamline_API_Handler {
                 ];
 
                 $response = wp_remote_get($url, $args);
-
                 if (is_wp_error($response)) {
                     error_log("[StreamlineHQ] API error for $family page $page: " . $response->get_error_message());
                     break;
@@ -110,26 +109,15 @@ class Streamline_API_Handler {
                 $total_fetched += $fetched;
                 $all_icons = array_merge($all_icons, $icons);
 
-                error_log("[StreamlineHQ] ✅ Page $page: $fetched icons from $family (total $total_fetched).");
-
-                // stop if fewer than limit (last page) or reached run limit
-                if ($fetched < $limit || $total_fetched >= $max_icons_per_run) {
-                    break;
-                }
+                if ($fetched < $limit || $total_fetched >= $max_icons_per_run) break;
 
                 $page++;
             }
 
-            error_log("[StreamlineHQ] ✅ Total fetched for $family this run: $total_fetched icons.");
-
-            if ($total_fetched >= $max_icons_per_run) {
-                error_log('[StreamlineHQ] ⚠️ Stopping early — reached batch limit of ' . $max_icons_per_run);
-                break;
-            }
+            if ($total_fetched >= $max_icons_per_run) break;
         }
 
         if (!empty($all_icons)) {
-            // remove duplicates by icon id
             $unique_icons = [];
             foreach ($all_icons as $icon) {
                 $unique_icons[$icon['id']] = $icon;
@@ -137,11 +125,9 @@ class Streamline_API_Handler {
             $final_icons = array_values($unique_icons);
 
             update_option(self::OPTIONS_KEY, $final_icons, 'no');
-            error_log('[StreamlineHQ] ✅ Total saved icons: ' . count($final_icons));
             return count($final_icons);
         }
 
-        error_log('[StreamlineHQ] ❌ No icons saved.');
         return 0;
     }
 
@@ -149,10 +135,19 @@ class Streamline_API_Handler {
      * Fetch SVG for given icon ID
      */
     public static function get_icon_svg($icon_id) {
-        if (!$icon_id) return '';
+        // Handle array values safely
+        if (is_array($icon_id)) {
+            $icon_id = $icon_id['id'] ?? '';
+        }
+
+        if (empty($icon_id) || !is_string($icon_id)) {
+            return '';
+        }
 
         $cache_key = 'streamline_svg_' . sanitize_title($icon_id);
-        if ($cached = get_transient($cache_key)) return $cached;
+        if ($cached = get_transient($cache_key)) {
+            return $cached;
+        }
 
         $url = 'https://public-api.streamlinehq.com/v1/icons/' . $icon_id . '/svg';
         $args = [
@@ -165,7 +160,9 @@ class Streamline_API_Handler {
         ];
 
         $response = wp_remote_get($url, $args);
-        if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) return '';
+        if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) {
+            return '';
+        }
 
         $svg = wp_remote_retrieve_body($response);
         set_transient($cache_key, $svg, 12 * HOUR_IN_SECONDS);
@@ -177,7 +174,19 @@ class Streamline_API_Handler {
      */
     public static function format_icon_to_svg($value, $post_id, $field) {
         if (!$value) return '';
-        return self::get_icon_svg($value);
+
+        // Handle both string and array value formats
+        if (is_array($value)) {
+            $icon_id = $value['id'] ?? '';
+        } else {
+            $icon_id = $value;
+        }
+
+        if (empty($icon_id)) {
+            return '';
+        }
+
+        return self::get_icon_svg($icon_id);
     }
 
     /**
