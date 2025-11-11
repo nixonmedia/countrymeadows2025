@@ -217,6 +217,19 @@ h1, h2, h3, h4, h5, h6 {
 .stylized-heading-intro-zone .intro-content-col {
   padding-top: 100px;
 }
+.stylized-heading-intro-zone.image-with-embellishment .intro-img-col:before {
+  content: "";
+  background-image: url(../../images/flowers.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left center;
+  position: absolute;
+  top: 85px;
+  left: 4px;
+  width: 200px;
+  height: 400px;
+  z-index: 1;
+}
 
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
@@ -426,6 +439,14 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 32px;
     border-top: 2px solid var(--blue);
   }
+  
+  .stylized-heading-intro-zone.image-with-embellishment .intro-img-col {
+    padding-left: 60px;
+  }
+  .stylized-heading-intro-zone.image-with-embellishment .intro-img-col img {
+    position: relative;
+    right: -40px;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .top-menu {
@@ -523,5 +544,18 @@ h1, h2, h3, h4, h5, h6 {
   .site-header:before {
     right: 10%;
     top: -130%;
+  }
+  
+  .stylized-heading-intro-zone.image-with-embellishment .intro-img-col {
+    padding-left: 70px;
+  }
+  .stylized-heading-intro-zone.image-with-embellishment .intro-img-col img {
+    right: -80px;
+  }
+  .stylized-heading-intro-zone.image-with-embellishment .intro-img-col:before {
+    top: 182px;
+    left: 85px;
+    width: 170px;
+    height: 448px;
   }
 }
