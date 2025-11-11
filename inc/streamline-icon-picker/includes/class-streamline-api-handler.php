@@ -6,7 +6,7 @@
 class Streamline_API_Handler {
 
     const OPTIONS_KEY = 'streamline_icon_data';
-    const PUBLIC_API_URL = 'https://public-api.streamlinehq.com/v1/search/family';
+    const PUBLIC_API_URL = 'https://public-api.streamlinehq.com/v1/search/family/';
     const INCLUDED_FAMILIES = ['streamline-freehand', 'streamline-freehand-duotone'];
 
     /**
