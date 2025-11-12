@@ -160,7 +160,7 @@ add_filter('acf/settings/load_json', function ($paths) {
 });
 
 // Load Streamline Icon Picker for ACF
-require_once get_template_directory() . '/inc/streamline-icon-picker/streamline-icon-picker.php';
+// require_once get_template_directory() . '/inc/streamline-icon-picker/streamline-icon-picker.php';
 
 /*
    This function initializes and registers a TinyMCE button in the WordPress editor
@@ -174,41 +174,247 @@ function wysiwyg_shortcode_button() {
 
     if ( get_user_option('rich_editing') == 'true' ) {
         add_filter( 'mce_external_plugins', 'add_wysiwyg_shortcode_plugin' );
-        add_filter( 'mce_buttons', 'register_wysiwyg_shortcode_button' );
+        // Add all button IDs here
+        add_filter( 'mce_buttons', 'register_wysiwyg_shortcode_buttons' ); 
     }
 }
 add_action( 'admin_init', 'wysiwyg_shortcode_button' );
 
 /*
-   This function adds the custom TinyMCE button to the editor toolbar.
-   The button will be labeled and referenced by its custom handle name.
+   This function adds the custom TinyMCE buttons to the editor toolbar.
 */
-function register_wysiwyg_shortcode_button( $buttons ) {
-    array_push( $buttons, 'wysiwyg_shortcode_btn' ); 
+function register_wysiwyg_shortcode_buttons( $buttons ) { 
+    // List all unique button IDs you want to appear
+    array_push( $buttons, 'add_video_btn', 'add_event_btn', 'image_gallery_btn', 'add_testimonial_btn', 'font_size_btn' ); 
     return $buttons;
 }
 
 /*
-   This function declares the JavaScript file that handles the TinyMCE button’s behavior.
-   The JavaScript file is located in the theme’s assets directory.
+   This function declares the JavaScript file that handles the TinyMCE buttons’ behavior.
+   The key 'wysiwyg_shortcode_btn' is the plugin handle used in the JS file's definition.
 */
 function add_wysiwyg_shortcode_plugin( $plugin_array ) {
     $plugin_array['wysiwyg_shortcode_btn'] = get_template_directory_uri() . '/assets/js/wysiwyg-shortcode-script.js';
     return $plugin_array;
 }
 
-/*
-   This shortcode outputs content related to video posts.
-   It accepts an optional “id” attribute that can be used to identify specific content.
-*/
-function wysiwyg_video_shortcode( $atts ) {
-    $atts = shortcode_atts( array(
-        'id' => 'default_id_or_empty',
-    ), $atts );
 
-    return 'added Video Post data here';
+/*
+   UPDATED: This shortcode outputs content related to video posts.
+   It accepts 'id', 'align', and 'size' attributes passed from the modal.
+*/
+
+function wysiwyg_video_shortcode($atts)
+{
+    $atts = shortcode_atts(array(
+        'id'    => '',     // Can be full URL or just ID
+        'align' => 'none',
+        'size'  => 'md',   // default medium
+    ), $atts, 'add_video');
+
+    $video_url = trim($atts['id']);
+    $video_id = '';
+    $embed_url = '';
+    $thumb_image = '';
+
+    // --- Set width/height based on size ---
+    $size = strtolower($atts['size']);
+    switch ($size) {
+        case 'sm':
+        case 'small':
+            $width = 320;
+            $height = 240;
+            break;
+        case 'lg':
+        case 'large':
+            $width = 854;
+            $height = 480;
+            break;
+        default:
+            $width = 560;
+            $height = 315;
+            break;
+    }
+
+    // --- Set alignment ---
+    $align = 'none';
+    if ($atts['align'] == 'left')  $align = 'left';
+    if ($atts['align'] == 'right') $align = 'right';
+    if ($atts['align'] == 'center') $align = 'center';
+
+    // --- Detect YouTube ---
+    if (strpos($video_url, 'youtube.com') !== false || strpos($video_url, 'youtu.be') !== false) {
+        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video_url, $match);
+        if (!empty($match[1])) {
+            $video_id = $match[1];
+            $embed_url = 'https://www.youtube.com/embed/' . $video_id . '?rel=0&showinfo=0&controls=1';
+            $thumb_image = 'https://i3.ytimg.com/vi/' . $video_id . '/hqdefault.jpg';
+        }
+    }
+    // --- Detect Vimeo ---
+
+    // elseif (strpos($video_url, 'vimeo.com') !== false) {
+    //     preg_match('/vimeo\.com\/(?:video\/)?(\d+)/', $video_url, $match);
+    //     if (!empty($match[1])) {
+    //         $video_id = $match[1];
+    //          var_dump($video_id);
+    //         $embed_url = 'https://player.vimeo.com/video/' . $video_id . '?title=0&byline=0&portrait=0';
+    //         var_dump($embed_url);
+    //         $hash = @unserialize(@file_get_contents("http://vimeo.com/api/v2/video/$video_id.php"));
+    //         // if (!empty($hash[0]['thumbnail_large'])) {
+    //         var_dump($hash);
+    //             $thumb_image = $hash[0]['thumbnail_large'];
+    //             var_dump($thumb_image);
+    //             echo "testing";
+    //         // }
+    //     }
+    // }
+elseif (strpos($video_url, 'vimeo.com') !== false) {
+    preg_match('/vimeo\.com\/(?:video\/)?(\d+)/', $video_url, $match);
+    if (!empty($match[1])) {
+        $video_id = $match[1];
+        $embed_url = 'https://player.vimeo.com/video/' . $video_id . '?title=0&byline=0&portrait=0';
+
+        // Secure and compatible Vimeo oEmbed request
+        $context = stream_context_create([
+            'http' => [
+                'header' => "User-Agent: PHP/" . PHP_VERSION . "\r\n"
+            ],
+            'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+            ]
+        ]);
+
+        $response = @file_get_contents("https://vimeo.com/api/oembed.json?url=https://vimeo.com/$video_id", false, $context);
+        if ($response !== false) {
+            $data = json_decode($response, true);
+            if (!empty($data['thumbnail_url'])) {
+                $thumb_image = $data['thumbnail_url'];
+            }
+        }
+
+    }
 }
-add_shortcode( 'add_video', 'wysiwyg_video_shortcode' );
+
+
+    // --- Generate Output ---
+    if ($embed_url) {
+        $unique_key = uniqid('video_' . rand(1000, 9999) . '_');
+
+        ob_start(); ?>
+<div class="video-box align-<?php echo esc_attr($align); ?> video-size-<?php echo esc_attr($size); ?>"
+    style="max-width:<?php echo esc_attr($width); ?>px;">
+
+    <div class="video-wrapper position-relative"
+        style="width:<?php echo esc_attr($width); ?>px; height:<?php echo esc_attr($height); ?>px;">
+
+        <span class="play-icon" id="play-<?php echo esc_attr($unique_key); ?>">
+            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/images/play-icon.svg'); ?>"
+                alt="Play Icon">
+        </span>
+
+        <div class="video-image"
+            style="background-image:url('<?php echo esc_url($thumb_image); ?>'); 
+                            background-size:cover; background-position:center; width:100%; height:100%;">
+            <div class="video-player vp-<?php echo esc_attr($unique_key); ?>"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    jQuery(document).ready(function($) {
+        // Store each thumbnail image for later restore
+        $('.video-image').each(function() {
+            const bg = $(this).css('background-image');
+            if (bg) $(this).data('thumb', bg);
+        });
+
+        $('#play-<?php echo esc_attr($unique_key); ?>').on('click', function() {
+            const wrapper = $(this).closest('.video-box');
+            const player = wrapper.find('.vp-<?php echo esc_attr($unique_key); ?>');
+            const imageContainer = wrapper.find('.video-image');
+
+            // --- Stop other playing videos and restore thumbnails ---
+            $('.video-box').not(wrapper).each(function() {
+                const img = $(this).find('.video-image');
+                const thumb = img.data('thumb');
+                $(this).find('iframe').remove();
+                $(this).find('.play-icon').show();
+                if (thumb) {
+                    img.css({
+                        'background-image': thumb,
+                        'background-size': 'cover',
+                        'background-position': 'center'
+                    });
+                }
+            });
+
+            // --- Hide play icon and clear current thumbnail ---
+            $(this).hide();
+            imageContainer.css('background-image', 'none');
+
+            // --- Play selected video ---
+            player.html(
+                '<iframe width="<?php echo $width; ?>" height="<?php echo $height; ?>" src="<?php echo esc_url($embed_url); ?>&autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+            );
+        });
+    });
+</script>
+<style>
+    .video-box {
+        margin: 15px auto;
+        display: inline-block;
+        position: relative;
+    }
+
+    .video-box.align-left {
+        float: left;
+        margin-right: 15px;
+    }
+
+    .video-box.align-right {
+        float: right;
+        margin-left: 15px;
+    }
+
+    .video-box.align-center {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .play-icon {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .play-icon img {
+        width: 80px;
+        opacity: 0.9;
+        transition: transform 0.3s;
+    }
+
+    .play-icon:hover img {
+        transform: scale(1.1);
+    }
+</style>
+
+<?php
+        return ob_get_clean();
+    } else {
+        return '<p style="color:red;">Invalid video URL or ID.</p>';
+    }
+}
+add_shortcode('add_video', 'wysiwyg_video_shortcode');
+
 
 /*
    This shortcode outputs event-related content.
@@ -261,6 +467,5 @@ function wysiwyg_font_size_shortcode( $atts ) {
     return 'Added font size Post data here';
 }
 add_shortcode( 'font_size', 'wysiwyg_font_size_shortcode' );
-
 
 ?>

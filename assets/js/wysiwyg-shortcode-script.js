@@ -1,89 +1,98 @@
+
 (function () {
     tinymce.PluginManager.add('wysiwyg_shortcode_btn', function (editor, url) {
-        editor.addButton('wysiwyg_shortcode_btn', {
-            title: 'Insert Wysiwyg Shortcode Options',
-            text: 'Add Wysiwyg Shortcode',
-            classes: 'btn wysiwyg_shortcode_btn',
-            // icon: 'dashicons-admin-generic',
+
+        // --- Add Video Button (Uses a Modal Window) ---
+        editor.addButton('add_video_btn', {
+            // title: 'Add Video Shortcode',
+            icon: false,
+            text: 'Add Video',
+            image: '/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/js/yt-icon.svg',
             onclick: function () {
+                // Open the modal window definition
                 editor.windowManager.open({
-                    title: 'Insert Wysiwyg Shortcode Options',
+                    title: 'Video Embed Options',
                     body: [
                         {
-                            type: 'container',
-                            layout: 'flex',
-                            direction: 'column',
-                            spacing: 10,
-                            items: [
-
-                                // ---- ROW 1 ----
-                                {
-                                    type: 'container',
-                                    layout: 'flex',
-                                    direction: 'row',
-                                    align: 'center',
-                                    spacing: 10,
-                                    items: [
-                                        { type: 'checkbox', name: 'add_video' },
-                                        { type: 'label', text: 'Add Video Shortcode' },
-                                        { type: 'checkbox', name: 'add_event' },
-                                        { type: 'label', text: 'Add Event Shortcode' },
-                                        { type: 'checkbox', name: 'image_gallery' },
-                                        { type: 'label', text: 'Add Image Gallery Shortcode' }
-                                    ]
-                                },
-
-                                // ---- ROW 2 ----
-                                {
-                                    type: 'container',
-                                    layout: 'flex',
-                                    direction: 'row',
-                                    align: 'center',
-                                    spacing: 10,
-                                    items: [
-                                        { type: 'checkbox', name: 'add_testimonial' },
-                                        { type: 'label', text: 'Add Testimonial Shortcode' },
-                                        { type: 'checkbox', name: 'add_fontsize' },
-                                        { type: 'label', text: 'Add Font Size Shortcode' },
-
-                                    ]
-                                },
-                            ]
+                        type   : 'container',
+                        label  : 'HTML',
+                        html   : 'Paste the youtube ID from the Youtube URL'
+                    },
+                        {
+                            type: 'textbox',
+                            name: 'youtube_id',
+                            label: 'YouTube Video ID'
+                        },
+                        {
+                            type: 'listbox',
+                            name: 'video_alignment',
+                            label: 'Video Alignment',
+                            values: [
+                                { text: 'Left', value: 'left' },
+                                { text: 'Center', value: 'center' },
+                                { text: 'Right', value: 'right' }
+                            ],
+                            value: 'left' // Default selected value
+                        },
+                        {
+                            type: 'listbox',
+                            name: 'video_size',
+                            label: 'Video Size',
+                            values: [
+                                { text: 'Small', value: 'small' },
+                                { text: 'Medium', value: 'medium' },
+                                { text: 'Large', value: 'large' }
+                            ],
+                            value: 'small' // Default selected value
                         }
                     ],
-
                     onsubmit: function (e) {
-                        var output = '';
-                        if (e.data.add_video) output += '[add_video]<br>';
-                        if (e.data.add_event) output += '[add_event_shortcode]<br>';
-                        if (e.data.image_gallery) output += '[image_gallery]<br>';
-                        if (e.data.add_testimonial) output += '[add_testimonial]<br>';
-                        if (e.data.add_fontsize) output += '[font_size]<br>';
-                        editor.insertContent(output || "No shortcodes selected.");
+                        // When the user clicks OK, construct the shortcode with attributes
+                        var videoID = e.data.youtube_id;
+                        if (videoID) {
+                            var shortcode = '[add_video id="' + videoID + '" align="' + e.data.video_alignment + '" size="' + e.data.video_size + '"]';
+                            editor.insertContent(shortcode);
+                        } 
                     }
                 });
             }
         });
-        const style = document.createElement('style');
-        style.innerHTML = `
-            .mce-wysiwyg_shortcode_btn button  {
-                background: #f6f7f7;
-                border: 1px solid #ccc;
-                border-radius: 3px;
-                color: #23282d;
-                padding: 3px 8px !important;
-                height: 30px;
-                cursor: pointer;
-                display: inline-flex;
-                align-items: center;
-                gap: 5px;
+
+        // --- Add Event Button (Direct Insert) ---
+        editor.addButton('add_event_btn', {
+            title: 'Add Event Shortcode',
+            text: 'Add Event',
+            onclick: function () {
+                editor.insertContent('[add_event_shortcode]');
             }
-                
-            .mce-wysiwyg_shortcode_btn button:hover {
-                border: unset;
-                border-radius:unset;
+        });
+
+        // --- Add Image Gallery Button (Direct Insert) ---
+        editor.addButton('image_gallery_btn', {
+            title: 'Add Image Gallery Shortcode',
+            text: 'Add Gallery',
+            onclick: function () {
+                editor.insertContent('[image_gallery]');
             }
-        `;
-        document.head.appendChild(style);
+        });
+
+        // --- Add Testimonial Button (Direct Insert) ---
+        editor.addButton('add_testimonial_btn', {
+            title: 'Add Testimonial Shortcode',
+            text: 'Add Testimonial',
+            onclick: function () {
+                editor.insertContent('[add_testimonial]');
+            }
+        });
+
+        // --- Add Font Size Button (Direct Insert) ---
+        editor.addButton('font_size_btn', {
+            title: 'Add Font Size Shortcode',
+            text: 'Font Size',
+            onclick: function () {
+                editor.insertContent('[font_size]');
+            }
+        });
+
     });
 })();
