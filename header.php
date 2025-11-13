@@ -19,7 +19,7 @@
                         <div class="col-3 col-lg-6 offset-lg-2 text-end">
                             <button class="navbar-toggler d-lg-none" type="button" id="navbar-button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <img src="<?php echo get_stylesheet_directory_uri();?>/images/burger-icon.svg" class="open-btn img-fluid" alt="Menu Open Icon">
-                                <span class="menu-text fw-medium text-dark-sky-blue d-block text-center mt-2">Menu</span>
+                                <span class="menu-text fw-medium text-blue d-block text-center mt-2">Menu</span>
                             </button>
                             <ul class="top-menu list-unstyled d-none d-lg-flex justify-content-end fw-medium mb-3 pb-3 flex-wrap">
                                 <li class="menu-item"> <a href="#">Careers</a> </li>
@@ -87,7 +87,7 @@
                                     </div>
                                     <button class="navbar-toggler close-button d-lg-none" type="button" id="navbar-button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                         <img src="<?php echo get_stylesheet_directory_uri();?>/images/close-icon.svg" class="close-btn img-fluid" alt="Menu Open Icon">
-                                        <span class="menu-text fw-medium text-dark-sky-blue d-block text-center mt-2">Menu</span>
+                                        <span class="menu-text fw-medium text-blue d-block text-center mt-2">Menu</span>
                                     </button>
                                 </div>
                             

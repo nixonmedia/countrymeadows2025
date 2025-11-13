@@ -1,6 +1,6 @@
 
 </main>
-<footer class="site-footer bg-dark-sky-blue">
+<footer class="site-footer bg-blue">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 d-none d-lg-block">
