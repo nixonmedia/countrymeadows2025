@@ -16,8 +16,8 @@ $column_2_text = $content_column_2['text'];
 $column_2_link = $content_column_2['link'];
 
 ?>
-<footer class="site-footer bg-dark-sky-blue">
-  <div class="container">
+<footer class="site-footer bg-blue">
+  <div class="container-fluid">
     <div class="row">
       
       <?php 
@@ -73,7 +73,7 @@ $column_2_link = $content_column_2['link'];
           wp_nav_menu(array(
             'theme_location' => 'footer_communities',
             'menu_class'     => 'footer-menu list-unstyled mt-4',
-            'container'      => false,
+            'container-fluid'      => false,
           ));
         }
         ?>
@@ -119,7 +119,7 @@ $column_2_link = $content_column_2['link'];
             wp_nav_menu(array(
               'theme_location' => 'footer',
               'menu_class'     => 'footer-copyright-menu d-lg-flex flex-wrap column-gap-3 row-gap-1 list-unstyled mb-4 pb-2 mb-lg-3 pb-lg-0 justify-content-center',
-              'container'      => false, // removes the default <div> wrapper
+              'container-fluid'      => false, // removes the default <div> wrapper
             ));
           }
           ?>

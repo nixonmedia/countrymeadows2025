@@ -46,6 +46,7 @@ if (! function_exists('country_meadows_support')) :
 				'secondary'          => esc_html__('Secondary Menu', 'country_meadows'),
 				'footer'             => esc_html__('Footer Menu', 'country_meadows'),
 				'footer_communities' => esc_html__('Footer Communities', 'country_meadows'),
+				'mobile_menu' => esc_html__('Mobile Menu', 'country_meadows'),
 			)
 		);
 
@@ -158,9 +159,6 @@ add_filter('acf/settings/load_json', function ($paths) {
 
 	return $paths;
 });
-
-// Load Streamline Icon Picker for ACF
-require_once get_template_directory() . '/inc/streamline-icon-picker/streamline-icon-picker.php';
 
 /*
    This function initializes and registers a TinyMCE button in the WordPress editor
