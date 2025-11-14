@@ -10,15 +10,15 @@
 <body>
     <div id="main-content" class="position-relative overflow-hidden">
         <header class="site-header position-relative">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="primary-bar">
                     <div class="row align-items-end align-items-lg-center">
-                        <div class="col-9 col-lg-4 text-center">
-                            <a href="#" class="navbar-brand"><img src="<?php echo get_stylesheet_directory_uri();?>/images/header-logo.svg" alt="Country Meadows Logo" class="img-fluid w-100"></a>
+                        <div class="col-9 col-lg-4">
+                            <a href="#" class="navbar-brand"><img src="<?php echo get_stylesheet_directory_uri( );?>/assets/images/header-logo.svg" alt="Country Meadows Logo" class="img-fluid w-100"></a>
                         </div>
                         <div class="col-3 col-lg-6 offset-lg-2 text-end">
                             <button class="navbar-toggler d-lg-none" type="button" id="navbar-button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <img src="<?php echo get_stylesheet_directory_uri();?>/images/burger-icon.svg" class="open-btn img-fluid" alt="Menu Open Icon">
+                                <img src="<?php echo get_stylesheet_directory_uri( );?>/assets/images/burger-icon.svg" class="open-btn img-fluid" alt="Menu Open Icon">
                                 <span class="menu-text fw-medium text-blue d-block text-center mt-2">Menu</span>
                             </button>
                             <ul class="top-menu list-unstyled d-none d-lg-flex justify-content-end fw-medium mb-3 pb-3 flex-wrap">
@@ -86,7 +86,7 @@
                                         </svg></a>
                                     </div>
                                     <button class="navbar-toggler close-button d-lg-none" type="button" id="navbar-button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                        <img src="<?php echo get_stylesheet_directory_uri();?>/images/close-icon.svg" class="close-btn img-fluid" alt="Menu Open Icon">
+                                        <img src="<?php echo get_stylesheet_directory_uri( );?>/assets/images/close-icon.svg" class="close-btn img-fluid" alt="Menu Open Icon">
                                         <span class="menu-text fw-medium text-blue d-block text-center mt-2">Menu</span>
                                     </button>
                                 </div>

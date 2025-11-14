@@ -11,9 +11,6 @@
 
 get_header(); ?>
 
-<?php 
-echo "test page";
-?>
 <?php
 /*********  Flexible Content Start  ***********/
 $fields = get_fields( get_the_ID() );
@@ -24,17 +21,6 @@ if ( isset( $fields['flexible_content'] ) && is_array( $fields['flexible_content
 			include( $loc_template );
 		}
 	endforeach;
-else: 
-	/* Start the Loop */
-	while ( have_posts() ) :
-		the_post();
-		get_template_part( 'template-parts/content/content-page' );
-	
-		// If comments are open or there is at least one comment, load up the comment template.
-		if ( comments_open() || get_comments_number() ) {
-			comments_template();
-		}
-	endwhile; // End of the loop.
 endif;
 
 
