@@ -8,7 +8,7 @@ class Streamline_API_Handler {
     const OPTIONS_KEY       = 'streamline_icon_data';
     const QUEUE_KEY         = 'streamline_icon_queue';
     const PUBLIC_API_URL    = 'https://public-api.streamlinehq.com/v1/search/family/';
-    const INCLUDED_FAMILIES = ['streamline-freehand', 'streamline-freehand-duotone'];
+    const INCLUDED_FAMILIES = ['freehand-free', 'streamline-freehand', 'streamline-freehand-duotone'];
     const LIMIT             = 100; // icons per batch
 
     // ✅ Extended query set to cover all possible icon names
@@ -23,7 +23,7 @@ class Streamline_API_Handler {
         add_action('wp_ajax_streamline_start_sync', [__CLASS__, 'ajax_start_sync']);
         add_action('wp_ajax_streamline_sync_progress', [__CLASS__, 'ajax_get_sync_progress']);
         add_filter('acf/format_value/type=streamline_icon_picker', [__CLASS__, 'format_icon_to_svg'], 10, 3);
-        add_action('wp_ajax_streamline_fetch_svg', [__CLASS__, 'ajax_fetch_svg']);
+        // add_action('wp_ajax_streamline_fetch_svg', [__CLASS__, 'ajax_fetch_svg']);
         add_action('admin_notices', [__CLASS__, 'render_progress_bar']);
         add_action('admin_enqueue_scripts', [__CLASS__, 'enqueue_admin_scripts']);
     }
@@ -32,7 +32,7 @@ class Streamline_API_Handler {
     public static function maybe_sync_icons() {
         if (isset($_GET['streamline_sync']) && current_user_can('manage_options')) {
             self::reset_sync();
-            wp_die('✅ Streamline sync started. Processing in background...');
+            wp_die('Streamline sync started. Processing in background...');
         }
     }
 
@@ -55,7 +55,7 @@ class Streamline_API_Handler {
                 ];
             }
         }
-        set_transient(self::QUEUE_KEY, $queue, DAY_IN_SECONDS); // ✅ last longer
+        set_transient(self::QUEUE_KEY, $queue, DAY_IN_SECONDS); // last longer
     }
 
     /** Fetch and save icons batch-by-batch */
@@ -104,7 +104,7 @@ class Streamline_API_Handler {
                 $all_icons = array_merge($existing, $icons);
                 $unique = [];
                 foreach ($all_icons as $icon) {
-                    if (!empty($icon['id'])) { // ✅ skip invalid entries
+                    if (!empty($icon['id'])) { // skip invalid entries
                         $unique[$icon['id']] = $icon;
                     }
                 }
@@ -128,11 +128,11 @@ class Streamline_API_Handler {
 
         if (!empty($queue)) {
             set_transient(self::QUEUE_KEY, $queue, DAY_IN_SECONDS);
-            wp_schedule_single_event(time() + 5, 'streamline_process_batch'); // ✅ slower to prevent throttling
+            wp_schedule_single_event(time() + 5, 'streamline_process_batch'); // slower to prevent throttling
         } else {
             delete_transient(self::QUEUE_KEY);
             $count = count(get_option(self::OPTIONS_KEY, []));
-            error_log("[Streamline Sync] ✅ Completed full sync. Total icons saved: {$count}");
+            error_log("[Streamline Sync] Completed full sync. Total icons saved: {$count}");
         }
     }
 
@@ -141,32 +141,54 @@ class Streamline_API_Handler {
         if (is_array($icon_id)) $icon_id = $icon_id['id'] ?? '';
         if (empty($icon_id)) return '';
 
+        // var_dump('id here '.$icon_id);
         $cache_key = 'streamline_svg_' . sanitize_title($icon_id);
+        // var_dump("cache_key ". $cache_key);
         if ($cached = get_transient($cache_key)) return $cached;
 
-        $url = 'https://public-api.streamlinehq.com/v1/icons/' . $icon_id . '/svg';
+        $url = 'https://public-api.streamlinehq.com/v1/icons/'.$icon_id.'/download/svg?size=48&responsive=false';
+        // $url = 'https://public-api.streamlinehq.com/v1/icons/' . $icon_id . '/svg';
         $args = [
             'headers' => [
                 'x-api-key' => STREAMLINE_API_KEY,
-                'accept'    => 'application/json',
+                'accept'    => 'image/svg+xml',
             ],
             'timeout'   => 15,
             'sslverify' => false,
+            'decompress'  => true,
         ];
 
         $response = wp_remote_get($url, $args);
         if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) return '';
 
         $svg = wp_remote_retrieve_body($response);
+
+        // Fallback if empty
+        if (empty($svg) && isset($response['http_response'])) {
+            $svg_obj = $response['http_response']->get_response_object();
+            $svg = $svg_obj->body ?? '';
+        }
+
+        // Sanity check
+        if (strpos($svg, '<svg') === false) {
+            error_log('Invalid SVG response for icon ID: ' . $icon_id);
+            return '';
+        }
+
+        // var_dump($svg);
         set_transient($cache_key, $svg, 12 * HOUR_IN_SECONDS);
         return $svg;
     }
+
 
     /** ACF formatting */
     public static function format_icon_to_svg($value, $post_id, $field) {
         if (!$value) return '';
         $icon_id = is_array($value) ? ($value['id'] ?? '') : $value;
-        return $icon_id ? self::get_icon_svg($icon_id) : '';
+        // return $icon_id ? self::get_icon_svg($icon_id) : '';
+        $svg_icon = self::get_icon_svg($icon_id);
+        // var_dump("ssss ".$svg_icon);
+        return $svg_icon;
     }
 
     /** AJAX: Fetch SVG */
@@ -215,7 +237,7 @@ class Streamline_API_Handler {
                         if(percent < 100){
                             setTimeout(fetchStreamlineProgress, 3000);
                         } else {
-                            console.log('[Streamline Sync] ✅ Completed');
+                            console.log('[Streamline Sync] Completed');
                             jQuery('#streamline-sync-text').text('Sync complete!');
                         }
                     }
@@ -226,7 +248,7 @@ class Streamline_API_Handler {
                 e.preventDefault();
                 var btn = jQuery(this);
                 btn.prop('disabled', true).text('Starting...');
-                console.log('[Streamline Sync] ⏳ Starting sync...');
+                console.log('[Streamline Sync] Starting sync...');
                 jQuery.get(ajaxurl, { action: 'streamline_start_sync' }, function(response){
                     if(response.success){
                         btn.hide();

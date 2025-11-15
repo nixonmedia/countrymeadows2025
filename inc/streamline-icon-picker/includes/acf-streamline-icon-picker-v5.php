@@ -65,6 +65,19 @@ class ACF_Field_Streamline_Icon_Picker extends acf_field {
      * ✅ Save the value as plain meta
      */
     public function update_value( $value, $post_id, $field ) {
+        // var_dump($value);
+        // $icons = get_option('streamline_icon_data', []);
+    
+        // // If the value is not an actual ID (doesn't start with ico_), try to map it by name
+        // if (strpos($value, 'ico_') !== 0) {
+        //     foreach ($icons as $icon) {
+        //         if ($icon['name'] === $value) {
+        //             $value = $icon['id'];
+        //             break;
+        //         }
+        //     }
+        // }
+
         $value = sanitize_text_field( $value );
         update_post_meta( $post_id, $field['name'], $value );
         return $value;
@@ -86,35 +99,35 @@ class ACF_Field_Streamline_Icon_Picker extends acf_field {
     /**
      * ✅ Ensure formatted value returns the icon ID
      */
-    public function format_value( $value, $post_id, $field ) {
-        if ( empty( $value ) ) {
-            $value = get_post_meta( $post_id, $field['name'], true );
-        }
+    // public function format_value( $value, $post_id, $field ) {
+    //     if ( empty( $value ) ) {
+    //         $value = get_post_meta( $post_id, $field['name'], true );
+    //     }
 
-        $value = sanitize_text_field( $value );
-        if ( empty( $value ) ) {
-            return null;
-        }
+    //     $value = sanitize_text_field( $value );
+    //     if ( empty( $value ) ) {
+    //         return null;
+    //     }
 
-        // Fetch full icon info from stored data
-        $icons = get_option( 'streamline_icon_data', [] );
+    //     // Fetch full icon info from stored data
+    //     $icons = get_option( 'streamline_icon_data', [] );
 
-        if ( ! empty( $icons ) && is_array( $icons ) ) {
-            foreach ( $icons as $icon ) {
-                if ( isset( $icon['id'] ) && $icon['id'] === $value ) {
-                    return $icon;
-                }
-            }
-        }
+    //     if ( ! empty( $icons ) && is_array( $icons ) ) {
+    //         foreach ( $icons as $icon ) {
+    //             if ( isset( $icon['id'] ) && $icon['id'] === $value ) {
+    //                 return $icon;
+    //             }
+    //         }
+    //     }
 
-        // Fallback: just return ID if no match found
-        return [
-            'id'      => $value,
-            'name'    => '',
-            'family'  => '',
-            'preview' => '',
-        ];
-    }
+    //     // Fallback: just return ID if no match found
+    //     return [
+    //         'id'      => $value,
+    //         'name'    => '',
+    //         'family'  => '',
+    //         'preview' => '',
+    //     ];
+    // }
 
 }
 

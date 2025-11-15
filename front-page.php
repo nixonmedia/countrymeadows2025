@@ -5,10 +5,8 @@
       <h2>Home Page Content</h2>
     <?php 
     $icon = get_field('streamline_icon');
-
-if ( !empty($icon) && is_array($icon) ) {
-    echo '<img src="' . esc_url($icon['preview']) . '" alt="' . esc_attr($icon['name']) . '" />';
-}
+    // var_dump($icon);
+    echo "svg here ". $icon;
 ?>
 
 
