@@ -9,9 +9,7 @@
  * @since Twenty Twenty-One 1.0
  */
 
-get_header(); ?>
-
-<?php
+get_header(); 
 /*********  Flexible Content Start  ***********/
 $fields = get_fields( get_the_ID() );
 if ( isset( $fields['flexible_content'] ) && is_array( $fields['flexible_content'] ) ):
