@@ -190,7 +190,7 @@ add_action('admin_init', 'wysiwyg_shortcode_button');
 function register_wysiwyg_shortcode_buttons($buttons)
 {
     // List all unique button IDs you want to appear
-    array_push($buttons, 'add_video_btn', 'add_event_btn', 'image_gallery_btn', 'add_testimonial_btn', 'font_size_btn');
+    array_push($buttons, 'add_video_btn', 'add_event_btn', 'image_gallery_btn', 'add_testimonial_btn');
     return $buttons;
 }
 
@@ -407,14 +407,7 @@ add_shortcode('add_video', 'wysiwyg_video_shortcode');
    This shortcode outputs an image gallery section.
    It also accepts a “name” attribute for customization.
 */
-// function wysiwyg_image_gallery_shortcode($atts)
-// {
-//     $atts = shortcode_atts(array(
-//         'name' => 'default_event_or_empty',
-//     ), $atts);
 
-//     return 'Added Image Gallery Post data here';
-// }
 // add_shortcode('image_gallery', 'wysiwyg_image_gallery_shortcode');
 function get_gallery_posts_ajax_handler()
 {
@@ -446,48 +439,12 @@ function get_gallery_posts_ajax_handler()
 add_action('wp_ajax_get_gallery_posts', 'get_gallery_posts_ajax_handler');
 add_action('wp_ajax_nopriv_get_gallery_posts', 'get_gallery_posts_ajax_handler');
 
-// function wysiwyg_image_gallery_shortcode($atts)
-// {
-//     $atts = shortcode_atts(array(
-//         'id'  => '',
-//         'max' => 6,
-//     ), $atts, 'image_gallery');
-
-//     $post_id = intval($atts['id']);
-//     $max     = intval($atts['max']);
-
-//     if (!$post_id || get_post_status($post_id) !== 'publish') {
-//         return '<!-- Gallery not found -->';
-//     }
-
-//     // Load ACF gallery field
-//     $images = get_field('community_galleries', $post_id);
-
-//     if (empty($images)) {
-//         return '<!-- No gallery images -->';
-//     }
-
-//     // Limit to max thumbnails
-//     $images = array_slice($images, 0, $max);
-
-//     $output = '<div class="wysiwyg-gallery">';
-
-//     foreach ($images as $img) {
-//         $url = is_array($img) ? $img['url'] : $img;
-//         $alt = is_array($img) ? $img['alt'] : '';
-//         $output .= '<img class="gallery-thumb" src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '">';
-//     }
-
-//     $output .= '</div>';
-
-//     return $output;
-// }
 // add_shortcode('image_gallery', 'wysiwyg_image_gallery_shortcode');
 function wysiwyg_image_gallery_shortcode($atts)
 {
     $atts = shortcode_atts(array(
         'id'  => '',
-        'max' => 6,
+        'max' => 3,
     ), $atts, 'image_gallery');
 
     $post_id = intval($atts['id']);
@@ -577,9 +534,6 @@ function wysiwyg_image_gallery_shortcode($atts)
     return $output;
 }
 add_shortcode('image_gallery', 'wysiwyg_image_gallery_shortcode');
-
-
-
 
 
 
@@ -716,22 +670,6 @@ function wysiwyg_testimonial_shortcode($atts)
     }
 }
 add_shortcode('add_testimonial', 'wysiwyg_testimonial_shortcode');
-
-/*
-   This shortcode modifies or displays text with a specific font size.
-   It uses a “name” attribute that can represent the chosen size or style.
-*/
-
-function wysiwyg_font_size_shortcode($atts)
-{
-    $atts = shortcode_atts(array(
-        'name' => 'default_event_or_empty',
-    ), $atts);
-
-    return 'Added font size Post data here';
-}
-add_shortcode('font_size', 'wysiwyg_font_size_shortcode');
-
 
 /**
  * Handle AJAX request to fetch Event Category.
