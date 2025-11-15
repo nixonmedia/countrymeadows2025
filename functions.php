@@ -28,16 +28,15 @@ if (! function_exists('country_meadows_support')) :
 
 
 
-        add_theme_support(
-            'custom-logo',
-            array(
-                'height'               => "100px",
-                'width'                => "100px",
-                'flex-width'           => true,
-                'flex-height'          => true,
-                'unlink-homepage-logo' => false,
-            )
-        );
+		register_nav_menus(
+			array(
+				'primary'            => esc_html__('Primary Menu', 'country_meadows'),
+				'secondary'          => esc_html__('Secondary Menu', 'country_meadows'),
+				'footer'             => esc_html__('Footer Menu', 'country_meadows'),
+				'footer_communities' => esc_html__('Footer Communities', 'country_meadows'),
+				'mobile_menu' => esc_html__('Mobile Menu', 'country_meadows'),
+			)
+		);
 
         // Enqueue editor styles.
         add_editor_style('style.css');
@@ -164,7 +163,7 @@ add_filter('acf/settings/load_json', function ($paths) {
 });
 
 // Load Streamline Icon Picker for ACF
-// require_once get_template_directory() . '/inc/streamline-icon-picker/streamline-icon-picker.php';
+require_once get_template_directory() . '/inc/streamline-icon-picker/streamline-icon-picker.php';
 
 /*
    This function initializes and registers a TinyMCE button in the WordPress editor
