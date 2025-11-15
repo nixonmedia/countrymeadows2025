@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php get_header(); 
+
+/**************************************
+***** Stylized Heading Intro Zone *****
+****************************************/
+get_template_part('parts/layouts/stylized_heading_intro_zone'); ?>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12">
