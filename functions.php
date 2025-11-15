@@ -28,15 +28,15 @@ if (! function_exists('country_meadows_support')) :
 
 
 
-		register_nav_menus(
-			array(
-				'primary'            => esc_html__('Primary Menu', 'country_meadows'),
-				'secondary'          => esc_html__('Secondary Menu', 'country_meadows'),
-				'footer'             => esc_html__('Footer Menu', 'country_meadows'),
-				'footer_communities' => esc_html__('Footer Communities', 'country_meadows'),
-				'mobile_menu' => esc_html__('Mobile Menu', 'country_meadows'),
-			)
-		);
+        register_nav_menus(
+            array(
+                'primary'            => esc_html__('Primary Menu', 'country_meadows'),
+                'secondary'          => esc_html__('Secondary Menu', 'country_meadows'),
+                'footer'             => esc_html__('Footer Menu', 'country_meadows'),
+                'footer_communities' => esc_html__('Footer Communities', 'country_meadows'),
+                'mobile_menu' => esc_html__('Mobile Menu', 'country_meadows'),
+            )
+        );
 
         // Enqueue editor styles.
         add_editor_style('style.css');
@@ -463,14 +463,25 @@ function wysiwyg_image_gallery_shortcode($atts)
 
     $total_images = count($images);
 
-    // If total images <= max → show STATIC thumbs
-    if ($total_images <= $max) {
+    /**
+     * ----------------------------------------
+     * NEW RULE:
+     * If user enters a max greater than the
+     * number of available images → force 3
+     * ----------------------------------------
+     */
+    if ($max > $total_images) {
+        $max = 3; // default carousel size
+    }
+
+    /**
+     * Show STATIC GRID ONLY when total < max
+     */
+    if ($total_images < $max) {
 
         $output = '<div class="row wysiwyg-gallery-static">';
 
-        $thumbs = array_slice($images, 0, $max);
-
-        foreach ($thumbs as $img) {
+        foreach ($images as $img) {
             $url = $img['url'];
             $alt = $img['alt'];
 
@@ -485,13 +496,15 @@ function wysiwyg_image_gallery_shortcode($atts)
         return $output;
     }
 
-    // If total images > max → Bootstrap Carousel
+    /**
+     * Carousel Mode (default)
+     */
     $carousel_id = 'galleryCarousel_' . $post_id . '_' . rand(1000, 9999);
 
     $output  = '<div id="' . $carousel_id . '" class="carousel slide" data-bs-ride="carousel">';
     $output .= '<div class="carousel-inner">';
 
-    // Build each slide → each slide contains max thumbnails
+    // Chunk images into slides of SIZE = $max
     $chunks = array_chunk($images, $max);
     $active = ' active';
 
@@ -500,7 +513,6 @@ function wysiwyg_image_gallery_shortcode($atts)
         $output .= '<div class="row">';
 
         foreach ($group as $img) {
-            // $url = $img['url'];
             $url = isset($img['sizes']['wysiwyg-gallery-image'])
                 ? $img['sizes']['wysiwyg-gallery-image']
                 : $img['url'];
@@ -534,6 +546,8 @@ function wysiwyg_image_gallery_shortcode($atts)
     return $output;
 }
 add_shortcode('image_gallery', 'wysiwyg_image_gallery_shortcode');
+
+
 
 
 
