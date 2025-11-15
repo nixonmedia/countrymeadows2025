@@ -186,12 +186,12 @@ editor.addButton("image_gallery_btn", {
               type: "textbox",
               name: "max_thumbs",
               label: "Max Thumbnails",
-              value: "6",
+              value: "3",
             },
           ],
           onsubmit: function (e) {
             var galleryID = e.data.gallery_id;
-            var maxThumbs = e.data.max_thumbs || "6";
+            var maxThumbs = e.data.max_thumbs || "3";
 
             if (!galleryID) {
               alert("Please select a gallery.");

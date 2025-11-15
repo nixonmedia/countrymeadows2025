@@ -303,8 +303,7 @@ function wysiwyg_video_shortcode($atts)
                 </span>
 
                 <div class="video-image"
-                    style="background-image:url('<?php echo esc_url($thumb_image); ?>'); 
-                            background-size:cover; background-position:center; width:100%; height:100%;">
+                    style="background-image:url('<?php echo esc_url($thumb_image); ?>');">
                     <div class="video-player vp-<?php echo esc_attr($unique_key); ?>"></div>
                 </div>
             </div>
@@ -348,51 +347,6 @@ function wysiwyg_video_shortcode($atts)
                 });
             });
         </script>
-        <style>
-            .video-box {
-                margin: 15px auto;
-                display: inline-block;
-                position: relative;
-            }
-
-            .video-box.align-left {
-                float: left;
-                margin-right: 15px;
-            }
-
-            .video-box.align-right {
-                float: right;
-                margin-left: 15px;
-            }
-
-            .video-box.align-center {
-                display: block;
-                margin: 0 auto;
-            }
-
-            .play-icon {
-                position: absolute;
-                z-index: 1;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-            }
-
-            .play-icon img {
-                width: 80px;
-                opacity: 0.9;
-                transition: transform 0.3s;
-            }
-
-            .play-icon:hover img {
-                transform: scale(1.1);
-            }
-        </style>
 
     <?php
         return ob_get_clean();
@@ -487,33 +441,35 @@ function wysiwyg_image_gallery_shortcode($atts)
 {
     $atts = shortcode_atts(array(
         'id'  => '',
-        'max' => 6,
+        'max' => 3,
     ), $atts, 'image_gallery');
 
     $post_id = intval($atts['id']);
     $max     = intval($atts['max']);
 
     if (!$post_id || get_post_status($post_id) !== 'publish') {
-        return '<!-- Gallery not found -->';
+        return 'Gallery not found';
     }
 
     // Load images
     $images = get_field('community_galleries', $post_id);
 
     if (empty($images)) {
-        return '<!-- No gallery images -->';
+        return 'No gallery images';
     }
 
     $total_images = count($images);
-
+    if($max > $total_images) {
+        $max = 3;
+    }
     // If total images <= max → show STATIC thumbs
-    if ($total_images <= $max) {
+    if ($total_images < $max) {
 
         $output = '<div class="row wysiwyg-gallery-static">';
 
-        $thumbs = array_slice($images, 0, $max);
+        //$thumbs = array_slice($images, 0, $max);
 
-        foreach ($thumbs as $img) {
+        foreach ($images as $img) {
             $url = $img['url'];
             $alt = $img['alt'];
 
@@ -694,14 +650,14 @@ function wysiwyg_testimonial_shortcode($atts)
 
         // Only show if at least one field has a value
         if (!empty($testimonial_quote) || !empty($testimonial_name)) {
-            $output  = '<div class="wysiwyg-testimonial py-3">';
+            $output  = '<div class="wysiwyg-testimonial font-lexend py-3">';
 
             if (!empty($testimonial_quote)) {
-                $output .=  $testimonial_quote;
+                $output .=  '<div class="wysiwyg-testimonial-content font-xm fw-bold mb-4 pb-lg-2">'.$testimonial_quote.'</div>';
             }
 
             if (!empty($testimonial_name)) {
-                $output .= '<h5>' . esc_html($testimonial_name) . '</h5>';
+                $output .= '<p class="mb-0">' . esc_html($testimonial_name) . '</p>';
             }
 
             $output .= '</div>';
@@ -829,16 +785,16 @@ function wysiwyg_event_shortcode($atts)
             $latest_img = get_the_post_thumbnail(
                 $post_id,
                 'wysiwyg-event-image',
-                ['class' => 'img-fluid rounded']
+                ['class' => 'img-fluid']
             );
 
             $output .= '<div class="wysiwyg-event py-4">';
-            $output .= '  <div class="row align-items-center">';
+            $output .= '  <div class="row">';
 
             // ---- COL 3 (Image) ----
             if (!empty($latest_img)) {
 
-                $output .= '      <div class="col-md-3">';
+                $output .= '      <div class="col-md-4 mb-4 mb-md-0">';
                 $output .= '          <a href="' . $latest_link . '">';
                 $output .=                $latest_img;
                 $output .= '          </a>';
@@ -847,17 +803,17 @@ function wysiwyg_event_shortcode($atts)
 
 
             // ---- COL 9 (Content) ----
-            $output .= '      <div class="col-md-9">';
+            $output .= '      <div class="col-md-8 ps-lg-3 wysiwyg-event-content-col">';
 
             // Event title (as link)
-            $output .= '          <h4 class="mb-2"><a href="' . esc_url($latest_link) . '">' . esc_html($latest_title) . '</a></h4>';
+            $output .= '          <h4 class="font-lexend event-title mb-2"><a href="' . esc_url($latest_link) . '">' . esc_html($latest_title) . '</a></h4>';
 
             // Event date/time (Start and End)
-            $output .= '          <div class="text-muted mb-2">' . esc_html($latest_start_date) . ' - ' . esc_html($latest_start_time) . ' to ' . esc_html($latest_end_time) . '</div>';
+            $output .= '          <div class="event-metadata font-normal font-lexend mb-2">' . esc_html($latest_start_date) . ' - ' . esc_html($latest_start_time) . ' to ' . esc_html($latest_end_time) . '</div>';
 
             // Excerpt
             if (! empty($latest_excerpt)) {
-                $output .= '<p>' . wp_kses_post($latest_excerpt) . '</p>';
+                $output .= '<div class="wysiwyg-event-content font-lexend"><p>' . wp_kses_post($latest_excerpt) . '</p></div>';
             }
 
             $output .= '      </div>'; // end col-9
@@ -865,8 +821,8 @@ function wysiwyg_event_shortcode($atts)
             $latest_archive_url = get_post_type_archive_link('tribe_events');
 
             $output .= '  
-            <div class="col-lg-12 mt-4">
-                <a href="' . esc_url($latest_archive_url) . '" class="btn btn-primary btn-lg">
+            <div class="col-lg-12 mt-4 pt-lg-3">
+                <a href="' . esc_url($latest_archive_url) . '" class="event-button">
                     View Upcoming Events
                 </a>
             </div>
@@ -933,17 +889,17 @@ function wysiwyg_event_shortcode($atts)
             $event_img = get_the_post_thumbnail(
                 $post_id,
                 'wysiwyg-event-image',
-                ['class' => 'img-fluid rounded']
+                ['class' => 'img-fluid']
             );
 
             $output .= '<div class="wysiwyg-event py-3">';
-            $output .= '<div class="row align-items-center">';
+            $output .= '<div class="row">';
 
             // ---- COL 3 (Image) ----
             if (!empty($event_img)) {
 
                 // Example link URL (replace with your own variable)
-                $output .= '      <div class="col-md-3">';
+                $output .= '      <div class="col-md-4 mb-4 mb-md-0">';
                 $output .= '          <a href="' . $event_link . '">';
                 $output .=                $event_img;
                 $output .= '          </a>';
@@ -951,15 +907,15 @@ function wysiwyg_event_shortcode($atts)
             }
 
             // ---- COL 9 (Content) ----
-            $output .= '    <div class="col-md-9">';
+            $output .= '    <div class="col-md-8 ps-lg-3 wysiwyg-event-content-col">';
 
             // Event title (as link)
-            $output .= '          <h4 class="mb-2"><a href="' . esc_url($event_link) . '">' . esc_html($event_title) . '</a></h4>';
+            $output .= '          <h4 class="font-lexend event-title mb-2"><a href="' . esc_url($event_link) . '">' . esc_html($event_title) . '</a></h4>';
 
             // Event date/time (Start and End)
-            $output .= '        <div class="text-muted mb-2">' . esc_html($event_start_date) . ' - ' . esc_html($event_start_time) . ' to ' . esc_html($event_end_time) . '</div>';
+            $output .= '        <div class="event-metadata font-normal font-lexend mb-2">' . esc_html($event_start_date) . ' - ' . esc_html($event_start_time) . ' to ' . esc_html($event_end_time) . '</div>';
             if (! empty($event_excerpt)) {
-                $output .= '<p>' . wp_kses_post($event_excerpt) . '</p>';
+                $output .= '<div class="wysiwyg-content font-lexend font-normal"><p>' . wp_kses_post($event_excerpt) . '</p></div>';
             }
 
 
@@ -968,8 +924,8 @@ function wysiwyg_event_shortcode($atts)
             $events_archive_url = get_post_type_archive_link('tribe_events');
 
             $output .= '  
-            <div class="col-lg-12 mt-4">
-                <a href="' . esc_url($events_archive_url) . '" class="btn btn-primary btn-lg">
+            <div class="col-lg-12 mt-4 pt-lg-3">
+                <a href="' . esc_url($events_archive_url) . '" class="event-button">
                     View Upcoming Events
                 </a>
             </div>
