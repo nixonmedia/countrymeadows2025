@@ -24,6 +24,7 @@ if (! function_exists('country_meadows_support')) :
 
 		// Add support for block styles.
 		add_theme_support('wp-block-styles');
+	
 
 		add_theme_support(
 			'custom-logo',
@@ -41,11 +42,16 @@ if (! function_exists('country_meadows_support')) :
 
 		register_nav_menus(
 			array(
-				'primary' => esc_html__('Primary Menu', 'country_meadows'),
-				'secondary' => esc_html__('Secondary Menu', 'country_meadows'),
-				'footer' => esc_html__('Footer Menu', 'country_meadows'),
+				'primary'            => esc_html__('Primary Menu', 'country_meadows'),
+				'secondary'          => esc_html__('Secondary Menu', 'country_meadows'),
+				'footer'             => esc_html__('Footer Menu', 'country_meadows'),
+				'footer_communities' => esc_html__('Footer Communities', 'country_meadows'),
+				'mobile_menu' => esc_html__('Mobile Menu', 'country_meadows'),
 			)
 		);
+
+		// Register custom thumbnail size
+		add_image_size('footer-column', 225, 125, true);
 	}
 
 endif;
@@ -154,19 +160,5 @@ add_filter('acf/settings/load_json', function ($paths) {
 	return $paths;
 });
 
-
-
 // Load Streamline Icon Picker (theme module)
 require_once get_template_directory() . '/inc/streamline-icon-picker/streamline-icon-picker.php';
-
-
-
-
-
-
-
-
-
-
-
-
