@@ -4,7 +4,7 @@
     editor.addButton("add_video_btn", {
       // title: 'Add Video Shortcode',
       icon: false,
-      text: "Add Video",
+      text: " Add Video",
       image:
         "/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/js/yt-icon.svg",
       onclick: function () {
@@ -64,12 +64,71 @@
       },
     });
 
-    // --- Add Event Button (Direct Insert) ---
+    // --- Add Event Button ---
     editor.addButton("add_event_btn", {
       title: "Add Event Shortcode",
-      text: "Add Event",
+      text: " Add Event",
+      icon: false,
+      image:
+        "/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/js/event.svg",
+
       onclick: function () {
-        editor.insertContent("[add_event_shortcode]");
+        var editorInstance = editor;
+
+        // Load categories instead of posts
+        jQuery.ajax({
+          url: WysiwygShortcodeVars.ajax_url,
+          type: "POST",
+          data: {
+            action: "get_event_cats",
+            nonce: WysiwygShortcodeVars.nonce,
+          },
+
+          success: function (response) {
+            var items = [];
+
+            if (response.success && response.data.length > 0) {
+              items = response.data.map(function (cat) {
+                return { text: cat.title, value: cat.id };
+              });
+
+              items.unshift({ text: "— Select a Community —", value: "" });
+            } else {
+              items = [{ text: "No Community found", value: "" }];
+            }
+
+            // Open modal
+            editorInstance.windowManager.open({
+              title: "Select Event Community",
+              body: [
+                {
+                  type: "listbox",
+                  name: "event_cat",
+                  label: "Event Community",
+                  values: items,
+                },
+              ],
+              onsubmit: function (e) {
+                var catSlug = e.data.event_cat;
+
+                // If user selects community → insert with community
+                if (catSlug) {
+                  editorInstance.insertContent(
+                    '[add_event community="' + catSlug + '"]'
+                  );
+                }
+                // If user does NOT choose community → show latest upcoming event
+                else {
+                  editorInstance.insertContent("[add_event]");
+                }
+              },
+            });
+          },
+
+          error: function () {
+            alert("Error loading event Community.");
+          },
+        });
       },
     });
 

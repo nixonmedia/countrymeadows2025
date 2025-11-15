@@ -24,6 +24,8 @@ if (! function_exists('country_meadows_support')) :
 
         // Add support for block styles.
         add_theme_support('wp-block-styles');
+        add_theme_support('post-thumbnails');
+
 
 
         add_theme_support(
@@ -51,6 +53,7 @@ if (! function_exists('country_meadows_support')) :
 
         // Register custom thumbnail size
         add_image_size('footer-column', 225, 125, true);
+        add_image_size('wysiwyg-event-image', 396, 554, true);
     }
 
 endif;
@@ -401,21 +404,6 @@ add_shortcode('add_video', 'wysiwyg_video_shortcode');
 
 
 /*
-   This shortcode outputs event-related content.
-   It can be customized using the “name” attribute for dynamic rendering.
-*/
-function wysiwyg_event_shortcode($atts)
-{
-    $atts = shortcode_atts(array(
-        'name' => 'default_event_or_empty',
-    ), $atts);
-
-    return 'Added Event Post data here';
-}
-add_shortcode('add_event_shortcode', 'wysiwyg_event_shortcode');
-
-
-/*
    This shortcode outputs an image gallery section.
    It also accepts a “name” attribute for customization.
 */
@@ -467,7 +455,7 @@ function wysiwyg_shortcode_localized_vars_inline()
     <script type="text/javascript">
         window.WysiwygShortcodeVars = {
             ajax_url: "<?php echo admin_url('admin-ajax.php'); ?>",
-            nonce: "<?php echo wp_create_nonce('testimonial_nonce'); ?>"
+            nonce: "<?php echo wp_create_nonce('wysiwyg_button_nonce'); ?>"
         };
     </script>
 <?php
@@ -489,10 +477,10 @@ add_action('admin_footer', 'wysiwyg_shortcode_localized_vars_inline');
 function get_testimonial_posts_ajax_handler()
 {
     // Security check: Verify the nonce passed from JS
-    check_ajax_referer('testimonial_nonce', 'nonce');
+    check_ajax_referer('wysiwyg_button_nonce', 'nonce');
 
     $args = array(
-        'post_type'      => 'testimonials', 
+        'post_type'      => 'testimonials',
         'posts_per_page' => -1,
         'post_status'    => 'publish',
         'fields'         => 'ids', // Optimization
@@ -515,7 +503,7 @@ function get_testimonial_posts_ajax_handler()
     wp_die(); // Required for all WordPress AJAX handlers
 }
 add_action('wp_ajax_get_testimonial_posts', 'get_testimonial_posts_ajax_handler');
-add_action('wp_ajax_nopriv_get_testimonial_posts', 'get_testimonial_posts_ajax_handler'); 
+add_action('wp_ajax_nopriv_get_testimonial_posts', 'get_testimonial_posts_ajax_handler');
 
 
 /**
@@ -581,6 +569,289 @@ function wysiwyg_font_size_shortcode($atts)
 add_shortcode('font_size', 'wysiwyg_font_size_shortcode');
 
 
+/**
+ * Handle AJAX request to fetch Event Category.
+ *
+ * This function is triggered via AJAX from the WYSIWYG script.
+ * It:
+ * - Verifies the security nonce
+ * - Returns a list of Event Category IDs and titles in JSON format
+ *
+ * Works for both logged-in and non-logged-in users (for flexibility).
+ */
+
+function get_event_categories_ajax_handler()
+{
+
+    check_ajax_referer('wysiwyg_button_nonce', 'nonce');
+
+    $terms = get_terms(array(
+        'taxonomy'   => 'tribe_events_cat',
+        'hide_empty' => false,
+    ));
+
+    $cats = array();
+
+    if (!is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            $cats[] = array(
+                'id'    => $term->slug,
+                'title' => $term->name,
+            );
+        }
+    }
+
+    wp_send_json_success($cats);
+}
+add_action('wp_ajax_get_event_cats', 'get_event_categories_ajax_handler');
+add_action('wp_ajax_nopriv_get_event_cats', 'get_event_categories_ajax_handler');
+
+
+
+/**
+ * Shortcode handler for displaying a Event.
+ *
+ * Usage: [add_event category="bethlehem"] and [add_event]
+ *
+ * The shortcode retrieves Event  data
+ * and outputs it inside a formatted HTML container. If the ID is invalid
+ * or there’s no content, it returns an HTML comment to keep the layout clean.
+ */
+function wysiwyg_event_shortcode($atts)
+{
+    $atts = shortcode_atts(array(
+        'id'       => '',
+        'community' => '',
+    ), $atts, 'add_event');
+
+
+    /* ------------------------------------------
+       1If NO Community provided show latest upcoming event
+    ------------------------------------------*/
+    if (empty($atts['community']) && empty($atts['id'])) {
+
+        $args = array(
+            'post_type'      => 'tribe_events',
+            'posts_per_page' => 1,
+            'post_status'    => 'publish',
+            'orderby'        => 'event_date',
+            'order'          => 'ASC',
+        );
+
+        $latest = new WP_Query($args);
+
+        if (!$latest->have_posts()) {
+            return "<!-- No upcoming events found -->";
+        }
+
+        $output = '<div class="wysiwyg-event-list">';
+
+        while ($latest->have_posts()) {
+            $latest->the_post();
+            $post_id = get_the_ID();
+
+            // Event data
+            $latest_link  = get_permalink($post_id);
+            $latest_title = get_the_title($post_id);
+
+            // Get start date and end date (with custom formatting)
+            $latest_start_date = tribe_get_start_date($post_id, false, 'F j, Y'); // Get the full start date
+            $latest_start_time = tribe_get_start_date($post_id, false, 'g:i A'); // Get the start time only
+            $latest_end_time = tribe_get_end_date($post_id, false, 'g:i A'); // Get the end time only
+
+            $latest_excerpt = get_the_excerpt($post_id);
+
+            // Featured image
+            $latest_img = get_the_post_thumbnail(
+                $post_id,
+                'wysiwyg-event-image',
+                ['class' => 'img-fluid rounded']
+            );
+
+            $output .= '<div class="wysiwyg-event py-4">';
+            $output .= '  <div class="row align-items-center">';
+
+            // ---- COL 3 (Image) ----
+            if (!empty($latest_img)) {
+
+                $output .= '      <div class="col-md-3">';
+                $output .= '          <a href="' . $latest_link . '">';
+                $output .=                $latest_img;
+                $output .= '          </a>';
+                $output .= '      </div>';
+            }
+
+
+            // ---- COL 9 (Content) ----
+            $output .= '      <div class="col-md-9">';
+
+            // Event title (as link)
+            $output .= '          <h4 class="mb-2"><a href="' . esc_url($latest_link) . '">' . esc_html($latest_title) . '</a></h4>';
+
+            // Event date/time (Start and End)
+            $output .= '          <div class="text-muted mb-2">' . esc_html($latest_start_date) . ' - ' . esc_html($latest_start_time) . ' to ' . esc_html($latest_end_time) . '</div>';
+
+            // Excerpt
+            if (! empty($latest_excerpt)) {
+                $output .= '<p>' . wp_kses_post($latest_excerpt) . '</p>';
+            }
+
+            $output .= '      </div>'; // end col-9
+            $output .= '  </div>';     // end row
+            $latest_archive_url = get_post_type_archive_link('tribe_events');
+
+            $output .= '  
+            <div class="col-lg-12 mt-4">
+                <a href="' . esc_url($latest_archive_url) . '" class="btn btn-primary btn-lg">
+                    View Upcoming Events
+                </a>
+            </div>
+        ';
+            $output .= '</div>';       // end event wrapper
+        }
+
+        $output .= '</div>';
+
+
+
+
+        wp_reset_postdata();
+
+        return $output;
+    }
+
+
+    /* ------------------------------------------
+       Community PROVIDED  show Community events
+    ------------------------------------------*/
+    if (!empty($atts['community'])) {
+        $args = array(
+            'post_type'      => 'tribe_events',
+            'posts_per_page' => 1,
+            'post_status'    => 'publish',
+            'orderby'        => 'event_date',
+            'order'          => 'ASC',
+            'tax_query'      => array(
+                array(
+                    'taxonomy' => 'tribe_events_cat',
+                    'field'    => 'slug',
+                    'terms'    => $atts['community'],
+                )
+            ),
+        );
+
+        $events = new WP_Query($args);
+
+        if (!$events->have_posts()) {
+            return "<!-- No events found in this community -->";
+        }
+
+        $output = '<div class="wysiwyg-event-list">';
+
+        while ($events->have_posts()) {
+            $events->the_post();
+            $post_id = get_the_ID();
+
+
+            // Retrieve the event data
+            $event_link  = get_permalink($post_id);
+
+            $event_title = get_the_title($post_id);
+
+            // Get start and end date/times with custom formatting
+            $event_start_date = tribe_get_start_date($post_id, false, 'F j, Y'); // Start date
+            $event_start_time = tribe_get_start_date($post_id, false, 'g:i A'); // Start time only
+            $event_end_time = tribe_get_end_date($post_id, false, 'g:i A'); // End time only
+            $event_excerpt = get_the_excerpt($post_id);
+
+
+            // Get the featured image (if available)
+            $event_img = get_the_post_thumbnail(
+                $post_id,
+                'wysiwyg-event-image',
+                ['class' => 'img-fluid rounded']
+            );
+
+            $output .= '<div class="wysiwyg-event py-3">';
+            $output .= '<div class="row align-items-center">';
+
+            // ---- COL 3 (Image) ----
+            if (!empty($event_img)) {
+
+                // Example link URL (replace with your own variable)
+                $output .= '      <div class="col-md-3">';
+                $output .= '          <a href="' . $event_link . '">';
+                $output .=                $event_img;
+                $output .= '          </a>';
+                $output .= '      </div>';
+            }
+
+            // ---- COL 9 (Content) ----
+            $output .= '    <div class="col-md-9">';
+
+            // Event title (as link)
+            $output .= '          <h4 class="mb-2"><a href="' . esc_url($event_link) . '">' . esc_html($event_title) . '</a></h4>';
+
+            // Event date/time (Start and End)
+            $output .= '        <div class="text-muted mb-2">' . esc_html($event_start_date) . ' - ' . esc_html($event_start_time) . ' to ' . esc_html($event_end_time) . '</div>';
+            if (! empty($event_excerpt)) {
+                $output .= '<p>' . wp_kses_post($event_excerpt) . '</p>';
+            }
+
+
+            $output .= '    </div>'; // end col-9
+            $output .= '</div>';     // end row
+            $events_archive_url = get_post_type_archive_link('tribe_events');
+
+            $output .= '  
+            <div class="col-lg-12 mt-4">
+                <a href="' . esc_url($events_archive_url) . '" class="btn btn-primary btn-lg">
+                    View Upcoming Events
+                </a>
+            </div>
+        ';
+            $output .= '</div>';     // end event wrapper
+        }
+        // Dynamic button linking to the tribe_events archive page
+
+
+        $output .= '</div>';
+
+
+
+        wp_reset_postdata();
+
+        return $output;
+    }
+
+
+    /* ------------------------------------------
+        ID PROVIDED → output single event
+    ------------------------------------------*/
+    // $post_id = intval($atts['id']);
+
+    // if (!$post_id) {
+    //     return '<!-- Event not found -->';
+    // }
+
+    // $output = '<div class="wysiwyg-event py-3">';
+    // $output .= '<h4>' . get_the_title($post_id) . '</h4>';
+
+    // $date = get_field('event_date', $post_id);
+    // if ($date) {
+    //     $output .= '<p><strong>Date:</strong> ' . esc_html($date) . '</p>';
+    // }
+
+    // $details = get_field('event_details', $post_id);
+    // if ($details) {
+    //     $output .= '<p>' . $details . '</p>';
+    // }
+
+    // $output .= '</div>';
+
+    // return $output;
+}
+add_shortcode('add_event', 'wysiwyg_event_shortcode');
 
 
 
