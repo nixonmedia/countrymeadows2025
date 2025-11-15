@@ -133,13 +133,90 @@
     });
 
     // --- Add Image Gallery Button (Direct Insert) ---
-    editor.addButton("image_gallery_btn", {
-      title: "Add Image Gallery Shortcode",
-      text: "Add Gallery",
-      onclick: function () {
-        editor.insertContent("[image_gallery]");
+    // editor.addButton("image_gallery_btn", {
+    //   title: "Add Image Gallery Shortcode",
+    //   text: "Add Gallery",
+    //   onclick: function () {
+    //     editor.insertContent("[image_gallery]");
+    //   },
+    // });
+    // --- Add Image Gallery Button (Popup With Post Selection) ---
+editor.addButton("image_gallery_btn", {
+  title: "Add Image Gallery Shortcode",
+  text: " Add Gallery",
+  icon: false,
+  image: "/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/js/gallery.svg",
+
+  onclick: function () {
+    var editorInstance = editor;
+
+    // Load gallery posts
+    jQuery.ajax({
+      url: WysiwygShortcodeVars.ajax_url,
+      type: "POST",
+      data: {
+        action: "get_gallery_posts",
+        nonce: WysiwygShortcodeVars.nonce,
+      },
+
+      success: function (response) {
+        var items = [];
+
+        if (response.success && response.data.length > 0) {
+          items = response.data.map(function (post) {
+            return { text: post.title, value: post.id };
+          });
+
+          items.unshift({ text: "— Select a Gallery —", value: "" });
+        } else {
+          items = [{ text: "No galleries found", value: "" }];
+        }
+
+        // Open modal
+        editorInstance.windowManager.open({
+          title: "Insert Image Gallery",
+          body: [
+            {
+              type: "listbox",
+              name: "gallery_id",
+              label: "Gallery",
+              values: items,
+            },
+            {
+              type: "textbox",
+              name: "max_thumbs",
+              label: "Max Thumbnails",
+              value: "6",
+            },
+          ],
+          onsubmit: function (e) {
+            var galleryID = e.data.gallery_id;
+            var maxThumbs = e.data.max_thumbs || "6";
+
+            if (!galleryID) {
+              alert("Please select a gallery.");
+              return false;
+            }
+
+            var shortcode =
+              '[image_gallery id="' +
+              galleryID +
+              '" max="' +
+              maxThumbs +
+              '"]';
+
+            editorInstance.insertContent(shortcode);
+          },
+        });
+      },
+
+      error: function () {
+        alert("Error loading gallery posts.");
       },
     });
+  },
+});
+
 
     // --- Add Testimonial Button (Direct Insert) ---
     editor.addButton("add_testimonial_btn", {
@@ -201,15 +278,6 @@
             alert("Error loading testimonials. Please try again.");
           },
         });
-      },
-    });
-
-    // --- Add Font Size Button (Direct Insert) ---
-    editor.addButton("font_size_btn", {
-      title: "Add Font Size Shortcode",
-      text: "Font Size",
-      onclick: function () {
-        editor.insertContent("[font_size]");
       },
     });
   });

@@ -54,6 +54,7 @@ if (! function_exists('country_meadows_support')) :
         // Register custom thumbnail size
         add_image_size('footer-column', 225, 125, true);
         add_image_size('wysiwyg-event-image', 396, 554, true);
+        add_image_size('wysiwyg-gallery-image', 300, 300, true);
     }
 
 endif;
@@ -407,15 +408,179 @@ add_shortcode('add_video', 'wysiwyg_video_shortcode');
    This shortcode outputs an image gallery section.
    It also accepts a “name” attribute for customization.
 */
+// function wysiwyg_image_gallery_shortcode($atts)
+// {
+//     $atts = shortcode_atts(array(
+//         'name' => 'default_event_or_empty',
+//     ), $atts);
+
+//     return 'Added Image Gallery Post data here';
+// }
+// add_shortcode('image_gallery', 'wysiwyg_image_gallery_shortcode');
+function get_gallery_posts_ajax_handler()
+{
+
+    check_ajax_referer('wysiwyg_button_nonce', 'nonce');
+
+    $args = array(
+        'post_type'      => 'galleries',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+        'fields'         => 'ids',
+    );
+
+    $gallery_posts = new WP_Query($args);
+    $posts_data = array();
+
+    if ($gallery_posts->have_posts()) {
+        foreach ($gallery_posts->posts as $post_id) {
+            $posts_data[] = array(
+                'id'    => (string) $post_id,
+                'title' => get_the_title($post_id),
+            );
+        }
+    }
+
+    wp_send_json_success($posts_data);
+    wp_die();
+}
+add_action('wp_ajax_get_gallery_posts', 'get_gallery_posts_ajax_handler');
+add_action('wp_ajax_nopriv_get_gallery_posts', 'get_gallery_posts_ajax_handler');
+
+// function wysiwyg_image_gallery_shortcode($atts)
+// {
+//     $atts = shortcode_atts(array(
+//         'id'  => '',
+//         'max' => 6,
+//     ), $atts, 'image_gallery');
+
+//     $post_id = intval($atts['id']);
+//     $max     = intval($atts['max']);
+
+//     if (!$post_id || get_post_status($post_id) !== 'publish') {
+//         return '<!-- Gallery not found -->';
+//     }
+
+//     // Load ACF gallery field
+//     $images = get_field('community_galleries', $post_id);
+
+//     if (empty($images)) {
+//         return '<!-- No gallery images -->';
+//     }
+
+//     // Limit to max thumbnails
+//     $images = array_slice($images, 0, $max);
+
+//     $output = '<div class="wysiwyg-gallery">';
+
+//     foreach ($images as $img) {
+//         $url = is_array($img) ? $img['url'] : $img;
+//         $alt = is_array($img) ? $img['alt'] : '';
+//         $output .= '<img class="gallery-thumb" src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '">';
+//     }
+
+//     $output .= '</div>';
+
+//     return $output;
+// }
+// add_shortcode('image_gallery', 'wysiwyg_image_gallery_shortcode');
 function wysiwyg_image_gallery_shortcode($atts)
 {
     $atts = shortcode_atts(array(
-        'name' => 'default_event_or_empty',
-    ), $atts);
+        'id'  => '',
+        'max' => 6,
+    ), $atts, 'image_gallery');
 
-    return 'Added Image Gallery Post data here';
+    $post_id = intval($atts['id']);
+    $max     = intval($atts['max']);
+
+    if (!$post_id || get_post_status($post_id) !== 'publish') {
+        return '<!-- Gallery not found -->';
+    }
+
+    // Load images
+    $images = get_field('community_galleries', $post_id);
+
+    if (empty($images)) {
+        return '<!-- No gallery images -->';
+    }
+
+    $total_images = count($images);
+
+    // If total images <= max → show STATIC thumbs
+    if ($total_images <= $max) {
+
+        $output = '<div class="row wysiwyg-gallery-static">';
+
+        $thumbs = array_slice($images, 0, $max);
+
+        foreach ($thumbs as $img) {
+            $url = $img['url'];
+            $alt = $img['alt'];
+
+            $output .= '
+                <div class="col-4 col-md-3 col-lg-2 mb-3">
+                    <img src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '" class="img-fluid rounded">
+                </div>';
+        }
+
+        $output .= '</div>';
+
+        return $output;
+    }
+
+    // If total images > max → Bootstrap Carousel
+    $carousel_id = 'galleryCarousel_' . $post_id . '_' . rand(1000, 9999);
+
+    $output  = '<div id="' . $carousel_id . '" class="carousel slide" data-bs-ride="carousel">';
+    $output .= '<div class="carousel-inner">';
+
+    // Build each slide → each slide contains max thumbnails
+    $chunks = array_chunk($images, $max);
+    $active = ' active';
+
+    foreach ($chunks as $group) {
+        $output .= '<div class="carousel-item' . $active . '">';
+        $output .= '<div class="row">';
+
+        foreach ($group as $img) {
+            // $url = $img['url'];
+            $url = isset($img['sizes']['wysiwyg-gallery-image'])
+                ? $img['sizes']['wysiwyg-gallery-image']
+                : $img['url'];
+
+            $alt = $img['alt'];
+
+            $output .= '
+                <div class="col-4 col-md-3 col-lg-2 mb-3">
+                    <img src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '" class="img-fluid">
+                </div>';
+        }
+
+        $output .= '</div></div>';
+        $active = ''; // only first slide is active
+    }
+
+    $output .= '</div>'; // .carousel-inner
+
+    // Carousel controls
+    $output .= '
+        <button class="carousel-control-prev" type="button" data-bs-target="#' . $carousel_id . '" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#' . $carousel_id . '" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    ';
+
+    $output .= '</div>'; // .carousel
+
+    return $output;
 }
 add_shortcode('image_gallery', 'wysiwyg_image_gallery_shortcode');
+
+
+
 
 
 
