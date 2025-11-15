@@ -1,0 +1,64 @@
+name: Deploy to Kinsta (Develop)
+
+on:
+  push:
+    branches:
+      - develop  # Trigger deployment only when pushing to develop branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Setup Node.js (optional — only needed if you build assets)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      # Step 2: Checkout the latest code
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.6
+
+      # Step 3: Deploy via SSH to Kinsta
+      - name: Deploy via SSH to Kinsta
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.KINSTA_SERVER_IP }}
+          username: ${{ secrets.KINSTA_USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}  # Optional, default is 22
+          script: |
+            echo "-----------------------------------------"
+            echo "Starting deployment to Kinsta server..."
+            echo "-----------------------------------------"
+
+            # Navigate to the theme directory on the Kinsta server
+            cd /www/countrymeadows2025_651/public/wp-content/themes/countrymeadows2025 || exit 1
+            echo "Current directory:"
+            pwd
+
+            echo "Checking current Git branch and status..."
+            git status
+
+            # Ensure we're on the develop branch (create if missing)
+            echo "Switching to develop branch..."
+            git checkout develop || git checkout -b develop
+
+            # Fetch and reset to the latest remote develop branch
+            echo "Fetching latest changes from origin/develop..."
+            git fetch origin develop
+
+            echo "Resetting local files to match origin/develop..."
+            git reset --hard origin/develop
+
+            # Optional: Rebuild assets if your theme requires it
+            # echo "Running build process (if applicable)..."
+            # npm install && npm run build
+
+            # Optional: Clear cache or restart services
+            echo "Clearing cache (if applicable)..."
+            wp cache flush
+
+            echo "Deployment to Kinsta completed successfully!"
+            echo "-----------------------------------------"

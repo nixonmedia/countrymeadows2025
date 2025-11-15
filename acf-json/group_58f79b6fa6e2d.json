@@ -1,0 +1,97 @@
+    {
+        "key": "group_58f79b6fa6e2d",
+        "title": "Gallery",
+        "fields": [
+            {
+                "key": "field_58f79b874d4c8",
+                "label": "Community Galleriess",
+                "name": "community_galleries",
+                "aria-label": "",
+                "type": "gallery",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "min": "",
+                "max": "",
+                "insert": "append",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": "",
+                "return_format": "array",
+                "preview_size": "medium"
+            },
+            {
+                "key": "field_595040cfbc669",
+                "label": "Community Videos",
+                "name": "community_videos",
+                "aria-label": "",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "Add Row",
+                "sub_fields": [
+                    {
+                        "key": "field_595040dfbc66a",
+                        "label": "Web Address",
+                        "name": "external_video",
+                        "aria-label": "",
+                        "type": "oembed",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "width": "",
+                        "height": "",
+                        "parent_repeater": "field_595040cfbc669"
+                    }
+                ],
+                "rows_per_page": 20
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "galleries"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "seamless",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "the_content"
+        ],
+        "active": true,
+        "description": "",
+        "show_in_rest": false,
+        "display_title": ""
+    }
+
