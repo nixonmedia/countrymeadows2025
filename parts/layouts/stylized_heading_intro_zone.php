@@ -18,7 +18,7 @@
 <!-- End Here Intro Zone With Layered Image Zone -->
  
 <!-- Intro Zone No Media Column With Sidebar -->
- <section class="stylized-heading-intro-zone no-media-column with-sidebar-submenu">
+ <section class="stylized-heading-intro-zone no-media-column with-sidebar-submenu bg-water-color bg-pink-water-color">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-8 intro-content-col with-background-pattern dots-background-pattern position-relative">

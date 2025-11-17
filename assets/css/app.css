@@ -112,7 +112,6 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 5px;
 }
 img.alignright {
-    padding-top: 10px;
     margin-left: 10px;
 }
 img.alignleft {
@@ -426,6 +425,28 @@ img.alignleft {
   border-radius: 20px 0;
 }
 
+.bg-water-color {
+  position: relative;
+}
+.bg-water-color:after {
+  content: "";
+  height: 257px;
+  width: 427px;
+  position: absolute;
+  right: 0;
+  bottom: -65px;
+  z-index: -1;
+}
+.bg-water-color.bg-pink-water-color:after {
+  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.60) 0%, rgba(250, 216, 225, 0.65) 0.01%, #FEFEFE 71.63%);
+}
+.bg-water-color.bg-yellow-water-color:after {
+  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.36) 0%, rgba(255, 202, 74, 0.30) 0.01%, rgba(254, 254, 254, 0.60) 71.63%);
+}
+.bg-water-color.bg-blue-water-color:after {
+  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(43, 161, 198, 0.40) 0%, rgba(43, 161, 198, 0.45) 0.01%, rgba(254, 254, 254, 0.70) 71.63%);
+}
+
 /**********************
 ****** Video Box ******
 **********************/
@@ -583,7 +604,7 @@ img.alignleft {
   .navbar-nav > .menu-item {
     position: relative;
     border-bottom: 1px solid #F1F1F1;
-    padding: 20px 0 10px;
+    padding: 20px 45px 10px 0;
   }
   .navbar-nav > .menu-item.menu-open {
     border: none;
@@ -637,13 +658,14 @@ img.alignleft {
   }
   .stylized-heading-intro-zone.layered-image-zone .intro-img-col:before {
     top: 70px;
-    left: -52px;
+    left: -22px;
     height: 290px;
   }
   .stylized-heading-intro-zone.layered-image-zone .intro-img-col {
     text-align: center;
     max-width: max-content;
     margin: 0 auto;
+    padding: 0 28px 0 40px;
   }
   .stylized-heading-intro-zone.layered-image-zone .intro-img-col img {
     max-width: 362px;
@@ -780,6 +802,11 @@ img.alignleft {
     position: relative;
     right: -40px;
   }
+  
+  .bg-water-color:after {
+    height: 442px;
+    width: 1035px;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .top-menu {
@@ -875,7 +902,7 @@ img.alignleft {
     max-width: 328px;
   }
   .stylized-heading {
-    font-size: 103px;
+    font-size: 85px;
   }
   .stylized-heading-intro-zone.layered-image-zone .intro-img-col:before {
     top: 45px;
@@ -923,6 +950,10 @@ img.alignleft {
   .footer-menu {
     padding: 0 80px;
   }
+  
+  .stylized-heading {
+    font-size: 103px;
+  }
 }
 @media only screen and (min-width: 1900px) {
   .site-footer .container-fluid {
@@ -936,7 +967,7 @@ img.alignleft {
     gap: 70px;
   }
   #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item:not(:last-child) {
-    margin-right: 70px
+    margin-right: 80px
   } 
   .footer-bottom-mid-col {
     padding-left: 50px;
