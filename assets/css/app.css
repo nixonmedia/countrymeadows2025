@@ -491,19 +491,6 @@ border-radius: 10px;
 .review-slider .icon-next.slick-arrow {
     right: -20px;
 }
-
-/* .reviews-zone:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    background-image: url(/countrymeadows/wp-content/uploads/2025/11/review-bar.svg);
-    background-size: cover;
-    width: 100%;
-    height: 91px;
-    top: -15px;
-    background-repeat: no-repeat;
-    z-index: 16;
-} */
 .review-slider .slick-track {
     display: flex;
 }
