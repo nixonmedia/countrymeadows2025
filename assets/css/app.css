@@ -93,10 +93,10 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 26px;
 }
 .font-normal {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 24px;
 }
-.font-xsm {
+.font-xsm, .disclaimer-fonts {
   font-size: 14px;
   line-height: 24px;
 }
@@ -576,21 +576,39 @@ img.alignleft {
 **********************/
 
 .wysiwyg-gallery {
-  padding: 0 40px;
+  padding: 0 37px;
 }
-.wysiwyg-gallery .carousel-control-next,  .wysiwyg-gallery .carousel-control-prev {
+.wysiwyg-gallery .slick-arrow {
   width: 20px;
+  height: 36px;
   opacity: 1;
+  font-size: 0;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  outline: 0;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: center;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
 }
-.wysiwyg-gallery .carousel-control-next-icon, .wysiwyg-gallery .carousel-control-prev-icon {
-  width: 20px;
-  height: 32px;
-}
-.wysiwyg-gallery .carousel-control-prev-icon {
+.wysiwyg-gallery .slick-prev {
   background-image: url("data:image/svg+xml,%3Csvg width='17' height='29' viewBox='0 0 17 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.8125 12.8125L12.8125 0.8125C13.5625 0 14.875 0 15.625 0.8125C16.4375 1.5625 16.4375 2.875 15.625 3.625L5.0625 14.1875L15.625 24.8125C16.4375 25.5625 16.4375 26.875 15.625 27.625C14.875 28.4375 13.5625 28.4375 12.8125 27.625L0.8125 15.625C0 14.875 0 13.5625 0.8125 12.8125Z' fill='%23193154'/%3E%3C/svg%3E");
+  left: 0;
 }
-.wysiwyg-gallery .carousel-control-next-icon {
+.wysiwyg-gallery .slick-next {
   background-image: url("data:image/svg+xml,%3Csvg width='17' height='29' viewBox='0 0 17 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.625 12.8125C16.4375 13.5625 16.4375 14.875 15.625 15.625L3.625 27.625C2.875 28.4375 1.5625 28.4375 0.8125 27.625C0 26.875 0 25.5625 0.8125 24.8125L11.375 14.1875L0.8125 3.625C0 2.875 0 1.5625 0.8125 0.8125C1.5625 0 2.875 0 3.625 0.8125L15.625 12.8125Z' fill='%23193154'/%3E%3C/svg%3E");
+  right: 0;
+}
+.wysiwyg-gallery .slick-slide {
+  margin-right: 16px;
+}
+.wysiwyg-gallery .slick-list {
+  margin-right: -16px; 
 }
 
 
@@ -747,7 +765,7 @@ img.alignleft {
     font-size: 18px;
     line-height: 35px;
   }
-  .font-normal {
+  .footer-post-col .font-normal {
     font-size: 14px;
     line-height: 22px;
   }
@@ -904,6 +922,13 @@ img.alignleft {
     font-size: 30px;
     line-height: 35px;
   }
+  
+  .wysiwyg-gallery .slick-slide {
+    margin-right: 43px;
+  }
+  .wysiwyg-gallery .slick-list {
+    margin-right: -43px; 
+  }
 }
 @media only screen and (min-width: 1620px) {
   .site-footer .container-fluid {
@@ -925,7 +950,7 @@ img.alignleft {
   .site-footer .container-fluid {
     max-width: 1590px;
   }
-  .font-normal {
+  .footer-post-col .font-normal {
     font-size: 16px;
     line-height: 24px;
   }

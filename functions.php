@@ -97,7 +97,7 @@ if (! function_exists('country_meadows_styles')) :
 
 
         // Enqueue slick css
-        wp_enqueue_style('country_meadows-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array(), $theme_version);
+        wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array(), $theme_version);
 
 
         // Enqueue Custom JS
@@ -105,7 +105,7 @@ if (! function_exists('country_meadows_styles')) :
 
         // Enqueue slick JS
 
-        wp_enqueue_script('country_meadows-slick-js', 'https://cdn.jhttps://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), $theme_version, true);
+        wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), $theme_version, true);
 
 
         // Localize script for AJAX
@@ -451,7 +451,6 @@ function wysiwyg_image_gallery_shortcode($atts)
         return 'Gallery not found';
     }
 
-    // Load images
     $images = get_field('community_galleries', $post_id);
 
     if (empty($images)) {
@@ -459,80 +458,70 @@ function wysiwyg_image_gallery_shortcode($atts)
     }
 
     $total_images = count($images);
-    if($max > $total_images) {
-        $max = 3;
-    }
-    // If total images <= max → show STATIC thumbs
-    if ($total_images < $max) {
-
-        $output = '<div class="row wysiwyg-gallery-static">';
-
-        //$thumbs = array_slice($images, 0, $max);
-
-        foreach ($images as $img) {
-            $url = $img['url'];
-            $alt = $img['alt'];
-
-            $output .= '
-                <div class="col-4 col-md-3 col-lg-2 mb-3">
-                    <img src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '" class="img-fluid rounded">
-                </div>';
-        }
-
-        $output .= '</div>';
-
-        return $output;
+    if ($total_images <= $max) {
+        $slidesToShow    = 3;
+        $slidesToScroll  = 3;
+    } else {
+        $slidesToShow    = $max;
+        $slidesToScroll  = $max;
     }
 
-    // If total images > max → Bootstrap Carousel
-    $carousel_id = 'galleryCarousel_' . $post_id . '_' . rand(1000, 9999);
+    /* Slick Slider always used */
+    $slider_id = 'slickGallery_' . $post_id . '_' . rand(1000, 9999);
 
-    $output  = '<div id="' . $carousel_id . '" class="carousel wysiwyg-gallery slide" data-bs-ride="carousel">';
-    $output .= '<div class="carousel-inner">';
+    $output = '<div id="' . $slider_id . '" class="wysiwyg-gallery">';
 
-    // Build each slide → each slide contains max thumbnails
-    $chunks = array_chunk($images, $max);
-    $active = ' active';
+    foreach ($images as $img) {
+        $url = isset($img['sizes']['wysiwyg-gallery-image'])
+            ? esc_url($img['sizes']['wysiwyg-gallery-image'])
+            : esc_url($img['url']);
 
-    foreach ($chunks as $group) {
-        $output .= '<div class="carousel-item' . $active . '">';
-        $output .= '<div class="row gx-3 gx-xl-5">';
+        $alt = esc_attr($img['alt']);
 
-        foreach ($group as $img) {
-            // $url = $img['url'];
-            $url = isset($img['sizes']['wysiwyg-gallery-image'])
-                ? $img['sizes']['wysiwyg-gallery-image']
-                : $img['url'];
-
-            $alt = $img['alt'];
-
-            $output .= '
-                <div class="col-6 col-md-4 mb-3">
-                    <img src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '" class="img-fluid">
-                </div>';
-        }
-
-        $output .= '</div></div>';
-        $active = ''; // only first slide is active
+        $output .= '
+            <div class="gallery-slide">
+                <img src="' . $url . '" alt="' . $alt . '" class="img-fluid">
+            </div>';
     }
 
-    $output .= '</div>'; // .carousel-inner
+    $output .= '</div>';
 
-    // Carousel controls
-    $output .= '
-        <button class="carousel-control-prev" type="button" data-bs-target="#' . $carousel_id . '" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#' . $carousel_id . '" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    ';
-
-    $output .= '</div>'; // .carousel
+    /* Slick init script */
+    $output .= "
+    <script>
+    jQuery(document).ready(function($) {
+        $('#{$slider_id}').slick({
+            slidesToShow: {$slidesToShow},
+            slidesToScroll: {$slidesToScroll},
+            infinite: true,
+            arrows: true,
+            dots: false,
+            speed: 700,
+            responsive: [
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 0,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }
+            ]
+        });
+    });
+    </script>";
 
     return $output;
 }
 add_shortcode('image_gallery', 'wysiwyg_image_gallery_shortcode');
+
+
 
 
 
@@ -809,7 +798,7 @@ function wysiwyg_event_shortcode($atts)
             $output .= '          <h4 class="font-lexend event-title mb-2"><a href="' . esc_url($latest_link) . '">' . esc_html($latest_title) . '</a></h4>';
 
             // Event date/time (Start and End)
-            $output .= '          <div class="event-metadata font-normal font-lexend mb-2">' . esc_html($latest_start_date) . ' - ' . esc_html($latest_start_time) . ' to ' . esc_html($latest_end_time) . '</div>';
+            $output .= '          <div class="event-metadata font-normal font-lexend mb-3 mb-lg-4">' . esc_html($latest_start_date) . ' - ' . esc_html($latest_start_time) . ' to ' . esc_html($latest_end_time) . '</div>';
 
             // Excerpt
             if (! empty($latest_excerpt)) {
@@ -913,7 +902,7 @@ function wysiwyg_event_shortcode($atts)
             $output .= '          <h4 class="font-lexend event-title mb-2"><a href="' . esc_url($event_link) . '">' . esc_html($event_title) . '</a></h4>';
 
             // Event date/time (Start and End)
-            $output .= '        <div class="event-metadata font-normal font-lexend mb-2">' . esc_html($event_start_date) . ' - ' . esc_html($event_start_time) . ' to ' . esc_html($event_end_time) . '</div>';
+            $output .= '        <div class="event-metadata font-normal font-lexend mb-3 mb-lg-4">' . esc_html($event_start_date) . ' - ' . esc_html($event_start_time) . ' to ' . esc_html($event_end_time) . '</div>';
             if (! empty($event_excerpt)) {
                 $output .= '<div class="wysiwyg-content font-lexend font-normal"><p>' . wp_kses_post($event_excerpt) . '</p></div>';
             }
