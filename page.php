@@ -10,6 +10,8 @@
  */
 
 get_header(); 
+get_template_part('parts/layouts/stylized_heading_intro_zone');
+
 /*********  Flexible Content Start  ***********/
 $fields = get_fields( get_the_ID() );
 if ( isset( $fields['flexible_content'] ) && is_array( $fields['flexible_content'] ) ):

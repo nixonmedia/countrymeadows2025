@@ -52,6 +52,8 @@ if (! function_exists('country_meadows_support')) :
 
 		// Register custom thumbnail size
 		add_image_size('footer-column', 225, 125, true);
+		add_image_size('allentown', 551, 367, true);
+		add_image_size('cm-couple', 661, 728, true);
 	}
 
 endif;
