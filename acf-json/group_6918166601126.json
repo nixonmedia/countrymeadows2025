@@ -21,7 +21,7 @@
                 {
                     "key": "field_691816ffb2ca7",
                     "label": "Heading Style",
-                    "name": "",
+                    "name": "heading_style",
                     "aria-label": "",
                     "type": "select",
                     "instructions": "",
@@ -92,5 +92,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763186629
+    "modified": 1763357075
 }
