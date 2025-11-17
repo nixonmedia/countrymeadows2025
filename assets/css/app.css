@@ -81,12 +81,16 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 45px;
 }
 .font-xm {
-  font-size: 24px;
-  line-height: 35px;
+  font-size: 20px;
+  line-height: 25px;
 }
 .font-regular {
   font-size: 20px;
   line-height: 35px;
+}
+.font-xs-medium {
+  font-size: 16px;
+  line-height: 26px;
 }
 .font-normal {
   font-size: 17px;
@@ -534,7 +538,59 @@ img.alignleft {
   color: var(--light-yellow);
 }
 .bg-teal .wysiwyg-testimonial * {
-  color: var(--pink);
+  color: var(--white);
+}
+.wysiwyg-testimonial-content {
+  position: relative;
+}
+.wysiwyg-testimonial-content, .wysiwyg-testimonial-content * {
+  display: inline;
+}
+.wysiwyg-testimonial-content:before, .wysiwyg-testimonial-content:after {
+    font-family: "Lexend", sans-serif;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    display: block;
+    font-size:50px;
+    line-height: 35px;
+    font-weight: 700;
+}
+.wysiwyg-testimonial-content:after {
+    content: "”";
+    right: -40px;
+    bottom: 0;
+}
+.wysiwyg-testimonial-content:before {
+    content: "“";
+    left: -40px;
+    top: 3px;
+}
+.wysiwyg-testimonial-block {
+  padding: 0 35px;
+}
+
+
+/***********************
+*** Wysiwyg Gallery ***
+**********************/
+
+.wysiwyg-gallery {
+  padding: 0 40px;
+}
+.wysiwyg-gallery .carousel-control-next,  .wysiwyg-gallery .carousel-control-prev {
+  width: 20px;
+  opacity: 1;
+}
+.wysiwyg-gallery .carousel-control-next-icon, .wysiwyg-gallery .carousel-control-prev-icon {
+  width: 20px;
+  height: 32px;
+}
+.wysiwyg-gallery .carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml,%3Csvg width='17' height='29' viewBox='0 0 17 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.8125 12.8125L12.8125 0.8125C13.5625 0 14.875 0 15.625 0.8125C16.4375 1.5625 16.4375 2.875 15.625 3.625L5.0625 14.1875L15.625 24.8125C16.4375 25.5625 16.4375 26.875 15.625 27.625C14.875 28.4375 13.5625 28.4375 12.8125 27.625L0.8125 15.625C0 14.875 0 13.5625 0.8125 12.8125Z' fill='%23193154'/%3E%3C/svg%3E");
+}
+.wysiwyg-gallery .carousel-control-next-icon {
+  background-image: url("data:image/svg+xml,%3Csvg width='17' height='29' viewBox='0 0 17 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.625 12.8125C16.4375 13.5625 16.4375 14.875 15.625 15.625L3.625 27.625C2.875 28.4375 1.5625 28.4375 0.8125 27.625C0 26.875 0 25.5625 0.8125 24.8125L11.375 14.1875L0.8125 3.625C0 2.875 0 1.5625 0.8125 0.8125C1.5625 0 2.875 0 3.625 0.8125L15.625 12.8125Z' fill='%23193154'/%3E%3C/svg%3E");
 }
 
 
@@ -682,6 +738,14 @@ img.alignleft {
   .container-fluid {
     padding-right: 30px;
     padding-left: 30px;
+  }
+  .font-xm {
+    font-size: 24px;
+    line-height: 35px;
+  }
+  .font-xs-medium {
+    font-size: 18px;
+    line-height: 35px;
   }
   .font-normal {
     font-size: 14px;

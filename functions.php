@@ -487,7 +487,7 @@ function wysiwyg_image_gallery_shortcode($atts)
     // If total images > max → Bootstrap Carousel
     $carousel_id = 'galleryCarousel_' . $post_id . '_' . rand(1000, 9999);
 
-    $output  = '<div id="' . $carousel_id . '" class="carousel slide" data-bs-ride="carousel">';
+    $output  = '<div id="' . $carousel_id . '" class="carousel wysiwyg-gallery slide" data-bs-ride="carousel">';
     $output .= '<div class="carousel-inner">';
 
     // Build each slide → each slide contains max thumbnails
@@ -496,7 +496,7 @@ function wysiwyg_image_gallery_shortcode($atts)
 
     foreach ($chunks as $group) {
         $output .= '<div class="carousel-item' . $active . '">';
-        $output .= '<div class="row">';
+        $output .= '<div class="row gx-3 gx-xl-5">';
 
         foreach ($group as $img) {
             // $url = $img['url'];
@@ -507,7 +507,7 @@ function wysiwyg_image_gallery_shortcode($atts)
             $alt = $img['alt'];
 
             $output .= '
-                <div class="col-4 col-md-3 col-lg-2 mb-3">
+                <div class="col-6 col-md-4 mb-3">
                     <img src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '" class="img-fluid">
                 </div>';
         }
@@ -653,11 +653,11 @@ function wysiwyg_testimonial_shortcode($atts)
             $output  = '<div class="wysiwyg-testimonial font-lexend py-3">';
 
             if (!empty($testimonial_quote)) {
-                $output .=  '<div class="wysiwyg-testimonial-content font-xm fw-bold mb-4 pb-lg-2">'.$testimonial_quote.'</div>';
+                $output .=  '<div class="wysiwyg-testimonial-block"><div class="wysiwyg-testimonial-content font-xm fw-bold mb-4 pb-lg-2">'.$testimonial_quote.'</div></div>';
             }
 
             if (!empty($testimonial_name)) {
-                $output .= '<p class="mb-0">' . esc_html($testimonial_name) . '</p>';
+                $output .= '<p class="mb-0 pt-lg-2 mt-4 font-xs-medium">' . esc_html($testimonial_name) . '</p>';
             }
 
             $output .= '</div>';
