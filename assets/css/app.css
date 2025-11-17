@@ -468,7 +468,48 @@ img.alignleft {
 .sidebar-submenu-block li {
   line-height: 45px;
 }
+.reviews-zone{
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+}
+.review-slider .slick-slide{
+border-radius: 10px;
+}
+.review-slider .slick-slide {
+    margin: 0px 14px;
+    left: -13px;
+    position: relative;
+}
+.review-slider .slick-arrow {
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+}
+.review-slider .icon-prev.slick-arrow {
+    left: -23px;
+}
+.review-slider .icon-next.slick-arrow {
+    right: -20px;
+}
 
+/* .reviews-zone:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    background-image: url(/countrymeadows/wp-content/uploads/2025/11/review-bar.svg);
+    background-size: cover;
+    width: 100%;
+    height: 91px;
+    top: -15px;
+    background-repeat: no-repeat;
+    z-index: 16;
+} */
+.review-slider .slick-track {
+    display: flex;
+}
+.review-slider .slick-slide {
+    height: unset;
+}
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   .alignright {
