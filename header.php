@@ -12,9 +12,7 @@
             <div class="container-fluid">
                 <div class="primary-bar">
                     <div class="row align-items-end align-items-lg-center">
-                        <?php 
-                            $logo = get_field("header_logo", "option");
-                        ?>
+                        <?php $logo = get_field("header_logo", "option"); ?>
                         <?php if ($logo): ?>
                         <div class="col-9 col-lg-4">
                             <a href="<?php echo esc_url(home_url('/')); ?>" class="navbar-brand">
@@ -24,7 +22,7 @@
                         <?php endif; ?>
                         <div class="col-3 col-lg-6 offset-lg-2 text-end">
                             <button class="navbar-toggler d-lg-none" type="button" id="navbar-button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <img src="<?php echo get_stylesheet_directory_uri();?>/images/burger-icon.svg" class="open-btn img-fluid" alt="Menu Open Icon">
+                                <img src="<?php echo get_stylesheet_directory_uri( );?>/assets/images/burger-icon.svg" class="open-btn img-fluid" alt="Menu Open Icon">
                                 <span class="menu-text fw-medium text-blue d-block text-center mt-2">Menu</span>
                             </button>
                             <?php
@@ -102,7 +100,7 @@
                                         </svg></a>
                                     </div>
                                     <button class="navbar-toggler close-button d-lg-none" type="button" id="navbar-button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                        <img src="<?php echo get_stylesheet_directory_uri();?>/images/close-icon.svg" class="close-btn img-fluid" alt="Menu Open Icon">
+                                        <img src="<?php echo get_stylesheet_directory_uri( );?>/assets/images/close-icon.svg" class="close-btn img-fluid" alt="Menu Open Icon">
                                         <span class="menu-text fw-medium text-blue d-block text-center mt-2">Menu</span>
                                     </button>
                                 </div>
