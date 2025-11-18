@@ -929,7 +929,7 @@ img.alignleft {
     height: 52px;
     width: 62px;
   }
-  .main-menu .navbar-nav a {
+  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
     font-size: 16px;
     line-height: 24px;
   }
@@ -1066,7 +1066,7 @@ img.alignleft {
     height: 62px;
     width: 72px;
   }
-  .main-menu .navbar-nav a {
+  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
     font-size: 20px;
     line-height: 30px;
   }
@@ -1174,7 +1174,7 @@ img.alignleft {
   .site-footer .container-fluid {
     max-width: 1400px;
   }
-  .main-menu .navbar-nav a {
+  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
     font-size: 24px;
     line-height: 36px;
   }
