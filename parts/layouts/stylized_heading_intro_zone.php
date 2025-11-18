@@ -4,6 +4,7 @@ $intro = get_field("intro");
 $headline = $intro['headline'] ?? "";
 $content = $intro['content'] ?? "";
 $background_pattern = $intro['background_pattern'] ?? " ";
+$background_watercolor = $intro['background_watercolor'] ?? " ";
 $media_column = $intro['media_column'] ?? " ";
 $media_type = $intro['media_type'] ?? " ";
 $image_type = $intro['image_type'] ?? " ";
@@ -29,17 +30,32 @@ if ($background_pattern == 'Dots') {
   $background_pattern_class = 'dots-background-pattern';
 }
 
+$color = $intro['background_watercolor'] ?? '';
+
+$background_watercolor = "bg-water-color"; // common class
+
+if ($color === "Blue") {
+    $background_watercolor .= " bg-blue-water-color";
+} elseif ($color === "Pink") {
+    $background_watercolor .= " bg-pink-water-color";
+} elseif ($color === "Yellow") {
+    $background_watercolor .= " bg-yellow-water-color";
+}
+
+
+
 $section_class = '';
 
 if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embellishment') {
   $section_class .= ' layered-image-zone';
 }
+
 ?>
 
 
 <!-- Intro Zone With Layered Image Zone -->
 <?php if ($stylized_heading || $headline || $content): ?>
-  <section class="stylized-heading-intro-zone <?php echo $section_class; ?>">
+  <section class="stylized-heading-intro-zone <?php echo $section_class . ' ' . $background_watercolor; ?>" >
     <div class="container-fluid">
       <div class="row flex-column-reverse flex-lg-row">
         <!-- show if image type Image with Embellishment home page  -->
@@ -434,11 +450,5 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
         <?php endif; ?>
       </div>
     </div>
-<<<<<<< HEAD
   </section>
 <?php endif; ?>
-=======
-  </div>
-</section>
-<!-- End here Intro Zone Video Media Column With Sidebar -->
->>>>>>> develop
