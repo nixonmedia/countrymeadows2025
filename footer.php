@@ -92,7 +92,7 @@ $column_2_link = $content_column_2['link'];
           </p>
         <?php endif; ?>
         <?php if ($badges): ?>
-          <div class="footer-images-block pt-4 pt-lg-0 d-flex gap-5 gap-lg-2 gap-xl-4 flex-wrap justify-content-center justify-content-lg-end">
+          <div class="footer-images-block pt-4 pt-lg-0 d-flex align-items-center gap-5 gap-lg-2 gap-xl-4 flex-wrap justify-content-center justify-content-lg-end">
             <?php foreach ($badges as $badge_item):
               $badge = $badge_item['badge'];
               if ($badge): ?>
