@@ -21,9 +21,7 @@
   --pink: #D62F74;
   --golden-yellow: #C68E00;
   --royal-blue: #4C57E6; 
-  --indigo-blue: #4D57E6;
   --gray: #444444;
-  --cyan-blue: #00B2D0;
 }
 body {
   font-size: 18px;
@@ -717,7 +715,7 @@ img.alignleft {
     height: 52px;
     width: 62px;
   }
-  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
+  .main-menu .navbar-nav a {
     font-size: 16px;
     line-height: 24px;
   }
@@ -825,7 +823,7 @@ img.alignleft {
     height: 62px;
     width: 72px;
   }
-  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
+  .main-menu .navbar-nav a {
     font-size: 20px;
     line-height: 30px;
   }
@@ -887,9 +885,6 @@ img.alignleft {
   .main-menu .navbar-nav {
     gap: 42px;
   }
-  #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item:not(:last-child) {
-    margin-right: 42px
-  }
   .site-footer {
     padding: 32px 0 170px;
   }
@@ -929,7 +924,7 @@ img.alignleft {
   .site-footer .container-fluid {
     max-width: 1400px;
   }
-  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
+  .main-menu .navbar-nav a {
     font-size: 24px;
     line-height: 36px;
   }
@@ -1014,11 +1009,13 @@ img.alignleft {
     font-size: 20px;
     line-height: 45px;
   }
-  .mega-submenu-cta a {
-    font-size: 18px;
-    line-height: 18px;
+  .stylized-heading-intro-zone.image-with-embellishment .intro-img-col img {
+    right: -80px;
   }
-  .mega-submenu-cta {
-    padding: 28px 28px 40px;
+  .stylized-heading-intro-zone.image-with-embellishment .intro-img-col:before {
+    top: 182px;
+    left: 85px;
+    width: 170px;
+    height: 448px;
   }
 }
