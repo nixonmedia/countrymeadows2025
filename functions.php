@@ -26,7 +26,8 @@ if (! function_exists('country_meadows_support')) :
         add_theme_support('wp-block-styles');
         add_theme_support('post-thumbnails');
 
-
+        // Enqueue editor styles.
+        add_editor_style('style.css');
 
         register_nav_menus(
             array(
@@ -38,24 +39,14 @@ if (! function_exists('country_meadows_support')) :
             )
         );
 
-        // Enqueue editor styles.
-        add_editor_style('style.css');
-
-        register_nav_menus(
-            array(
-                'primary'            => esc_html__('Primary Menu', 'country_meadows'),
-                'secondary'          => esc_html__('Secondary Menu', 'country_meadows'),
-                'footer'             => esc_html__('Footer Menu', 'country_meadows'),
-                'footer_communities' => esc_html__('Footer Communities', 'country_meadows'),
-            )
-        );
-
-        // Register custom thumbnail size
-        add_image_size('footer-column', 225, 125, true);
+		// Register custom thumbnail size
+		add_image_size('footer-column', 225, 125, true);
         add_image_size('wysiwyg-event-image', 396, 554, true);
         add_image_size('wysiwyg-gallery-image', 300, 300, true);
-    }
-
+        add_image_size('allentown', 551, 367, true);
+		add_image_size('cm-couple', 661, 728, true);
+		
+	}
 endif;
 
 add_action('after_setup_theme', 'country_meadows_support');
@@ -459,12 +450,12 @@ function wysiwyg_image_gallery_shortcode($atts)
                 {
                     breakpoint: 992,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 3,
                         slidesToScroll: 1
                     }
                 },
                 {
-                    breakpoint: 0,
+                    breakpoint: 768,
                     settings: {
                         slidesToShow: 2,
                         slidesToScroll: 1
