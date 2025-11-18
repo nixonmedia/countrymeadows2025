@@ -745,13 +745,6 @@ function wysiwyg_event_shortcode($atts)
             $output .= '  </div>';     // end row
             $latest_archive_url = get_post_type_archive_link('tribe_events');
 
-            $output .= '  
-            <div class="col-lg-12 mt-4 pt-lg-3">
-                <a href="' . esc_url($latest_archive_url) . '" class="event-button">
-                    View Upcoming Events
-                </a>
-            </div>
-        ';
             $output .= '</div>';       // end event wrapper
         }
 
@@ -848,13 +841,7 @@ function wysiwyg_event_shortcode($atts)
             $output .= '</div>';     // end row
             $events_archive_url = get_post_type_archive_link('tribe_events');
 
-            $output .= '  
-            <div class="col-lg-12 mt-4 pt-lg-3">
-                <a href="' . esc_url($events_archive_url) . '" class="event-button">
-                    View Upcoming Events
-                </a>
-            </div>
-        ';
+            
             $output .= '</div>';     // end event wrapper
         }
         // Dynamic button linking to the tribe_events archive page
