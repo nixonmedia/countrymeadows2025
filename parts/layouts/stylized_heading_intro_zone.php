@@ -434,5 +434,11 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
         <?php endif; ?>
       </div>
     </div>
+<<<<<<< HEAD
   </section>
 <?php endif; ?>
+=======
+  </div>
+</section>
+<!-- End here Intro Zone Video Media Column With Sidebar -->
+>>>>>>> develop
