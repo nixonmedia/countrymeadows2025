@@ -40,6 +40,8 @@ jQuery(document).ready(function($){
         arrows: true,
         slidesToShow: 3,
         slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
          prevArrow:
       '<img src="/countrymeadows/wp-content/uploads/2025/11/slide-arrow-left.svg" alt="icon" class="icon-prev">',
     nextArrow:
@@ -57,8 +59,7 @@ jQuery(document).ready(function($){
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false,
-          centerMode: false,
+          centerMode: false
         },
       },
     ],

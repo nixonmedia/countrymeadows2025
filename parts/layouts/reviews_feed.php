@@ -1,9 +1,9 @@
-<section class="reviews-zone position-relative pt-5">
-  <div class="container-fluid bg-purple  py-5 ">
+<section class="reviews-zone position-relative pt-5 bg-purple">
+  <div class="container-fluid pt-lg-4 pb-lg-5 pt-0 pb-5">
     <div class="row pb-5">
-        <div class="offset-lg-1 col-lg-10">
+        <div class="offset-lg-1 col-lg-10 pb-4">
             <h2 class="font-medium fw-bold mb-2 pb-1 text-center text-white">Google Reviews about Country Meadows of Allentown</h2>
-            <div class="review-slider ps-4">
+            <div class="review-slider ps-lg-4">
                 <div class="bg-white p-4">
                    <div class="text-center d-flex justify-content-center pb-2">
                      <img src="<?php echo get_template_directory_uri();?>/assets/images/star.svg" alt="" class="img-fluid" alt="Star Icon">
