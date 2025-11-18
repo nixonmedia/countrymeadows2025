@@ -6,6 +6,7 @@ $footer_logo = $footer['footer_logo'];
 $button_1 = $footer['button_1'];
 $button_2 = $footer['button_2'];
 $badges = $footer['badges'];
+$social_media = $footer['social_media'];
 $content_column_1 = $footer['content_column_1'];
 $column_1_image = $content_column_1['image'];
 $column_1_text = $content_column_1['text'];
@@ -19,49 +20,49 @@ $column_2_link = $content_column_2['link'];
 <footer class="site-footer bg-blue">
   <div class="container-fluid">
     <div class="row">
-      
-      <?php 
+
+      <?php
       // Check if columns have actual content
       $has_column_1 = !empty($column_1_image) || !empty($column_1_text) || !empty($column_1_link);
       $has_column_2 = !empty($column_2_image) || !empty($column_2_text) || !empty($column_2_link);
-      
+
       if ($has_column_1 || $has_column_2): ?>
-      <div class="col-lg-4 d-none d-lg-block">
-        <div class="row">
-          <?php if ($has_column_1): ?>
-            <div class="col-lg-6 footer-post-col">
-              <?php if ($column_1_image): 
-                $image_url = isset($column_1_image['sizes']['footer-column']) ? $column_1_image['sizes']['footer-column'] : $column_1_image['url'];
-              ?>
-                <img src="<?php echo esc_url($image_url); ?>" class="img-fluid mb-3" alt="<?php echo esc_attr($column_1_image['alt']); ?>">
-              <?php endif; ?>
-              <?php if ($column_1_text): ?>
-                <h3 class="font-lexend fw-bold font-normal mb-3 footer-post-title text-white"><?php echo $column_1_text; ?></h3>
-              <?php endif; ?>
-              <?php if ($column_1_link): ?>
-                <a href="<?php echo esc_url($column_1_link['url']); ?>" class="small-white-button" <?php if (!empty($column_1_link['target'])) echo 'target="' . esc_attr($column_1_link['target']) . '"'; ?>><?php echo esc_html($column_1_link['title']); ?></a>
-              <?php endif; ?>
-            </div>
-          <?php endif; ?>
-          <?php if ($has_column_2): ?>
-            <div class="col-lg-6 footer-post-col">
-              <?php if ($column_2_image): 
-                $image_url = isset($column_2_image['sizes']['footer-column']) ? $column_2_image['sizes']['footer-column'] : $column_2_image['url'];
-              ?>
-                <img src="<?php echo esc_url($image_url); ?>" class="img-fluid mb-3" alt="<?php echo esc_attr($column_2_image['alt']); ?>">
-              <?php endif; ?>
-              <?php if ($column_2_text): ?>
-                <h3 class="fobnt-lexend fw-bold font-normal mb-3 footer-post-title text-white"><?php echo $column_2_text; ?></h3>
-              <?php endif; ?>
-              <?php if ($column_2_link): ?>
-                <a href="<?php echo esc_url($column_2_link['url']); ?>" class="small-white-button" <?php if (!empty($column_2_link['target'])) echo 'target="' . esc_attr($column_2_link['target']) . '"'; ?>><?php echo esc_html($column_2_link['title']); ?></a>
-              <?php endif; ?>
-            </div>
-          <?php endif; ?>
+        <div class="col-lg-4 d-none d-lg-block">
+          <div class="row">
+            <?php if ($has_column_1): ?>
+              <div class="col-lg-6 footer-post-col">
+                <?php if ($column_1_image):
+                  $image_url = isset($column_1_image['sizes']['footer-column']) ? $column_1_image['sizes']['footer-column'] : $column_1_image['url'];
+                ?>
+                  <img src="<?php echo esc_url($image_url); ?>" class="img-fluid mb-3" alt="<?php echo esc_attr($column_1_image['alt']); ?>">
+                <?php endif; ?>
+                <?php if ($column_1_text): ?>
+                  <h3 class="font-lexend fw-bold font-normal mb-3 footer-post-title text-white"><?php echo $column_1_text; ?></h3>
+                <?php endif; ?>
+                <?php if ($column_1_link): ?>
+                  <a href="<?php echo esc_url($column_1_link['url']); ?>" class="small-white-button" <?php if (!empty($column_1_link['target'])) echo 'target="' . esc_attr($column_1_link['target']) . '"'; ?>><?php echo esc_html($column_1_link['title']); ?></a>
+                <?php endif; ?>
+              </div>
+            <?php endif; ?>
+            <?php if ($has_column_2): ?>
+              <div class="col-lg-6 footer-post-col">
+                <?php if ($column_2_image):
+                  $image_url = isset($column_2_image['sizes']['footer-column']) ? $column_2_image['sizes']['footer-column'] : $column_2_image['url'];
+                ?>
+                  <img src="<?php echo esc_url($image_url); ?>" class="img-fluid mb-3" alt="<?php echo esc_attr($column_2_image['alt']); ?>">
+                <?php endif; ?>
+                <?php if ($column_2_text): ?>
+                  <h3 class="fobnt-lexend fw-bold font-normal mb-3 footer-post-title text-white"><?php echo $column_2_text; ?></h3>
+                <?php endif; ?>
+                <?php if ($column_2_link): ?>
+                  <a href="<?php echo esc_url($column_2_link['url']); ?>" class="small-white-button" <?php if (!empty($column_2_link['target'])) echo 'target="' . esc_attr($column_2_link['target']) . '"'; ?>><?php echo esc_html($column_2_link['title']); ?></a>
+                <?php endif; ?>
+              </div>
+            <?php endif; ?>
+          </div>
         </div>
-      </div>
       <?php endif; ?>
-    
+
       <div class="col-lg-5 px-lg-3">
         <?php if ($footer_logo): ?>
           <div class="text-center footer-logo">
@@ -79,29 +80,29 @@ $column_2_link = $content_column_2['link'];
         ?>
 
       </div>
-      <?php if($button_1 || $button_2 || $badges): ?>
-      <div class="col-lg-3 pt-4 pt-lg-0">
-        <?php if ($button_1): ?>
-          <p class="pb-1 text-center text-lg-end">
-            <a href="<?php echo $button_1['url']; ?>" class="footer-white-button" <?php if (!empty($button_1['target'])) echo 'target="_blank"'; ?>><?php echo $button_1['title']; ?></a>
-          </p>
-        <?php endif;
-        if ($button_2): ?>
-          <p class="mb-3 pb-3 text-center text-lg-end">
-            <a href="<?php echo $button_2['url']; ?>" class="footer-white-button" <?php if (!empty($button_2['target'])) echo 'target="_blank"'; ?>><?php echo $button_2['title']; ?></a>
-          </p>
-        <?php endif; ?>
-        <?php if ($badges): ?>
-          <div class="footer-images-block pt-4 pt-lg-0 d-flex align-items-center gap-5 gap-lg-2 gap-xl-4 flex-wrap justify-content-center justify-content-lg-end">
-            <?php foreach ($badges as $badge_item):
-              $badge = $badge_item['badge'];
-              if ($badge): ?>
-                <img src="<?php echo esc_url($badge['url']); ?>" class="img-fluid" alt="<?php echo esc_attr($badge['alt']); ?>">
-            <?php endif;
-            endforeach; ?>
-          </div>
-        <?php endif; ?>
-      </div>
+      <?php if ($button_1 || $button_2 || $badges): ?>
+        <div class="col-lg-3 pt-4 pt-lg-0">
+          <?php if ($button_1): ?>
+            <p class="pb-1 text-center text-lg-end">
+              <a href="<?php echo $button_1['url']; ?>" class="footer-white-button" <?php if (!empty($button_1['target'])) echo 'target="_blank"'; ?>><?php echo $button_1['title']; ?></a>
+            </p>
+          <?php endif;
+          if ($button_2): ?>
+            <p class="mb-3 pb-3 text-center text-lg-end">
+              <a href="<?php echo $button_2['url']; ?>" class="footer-white-button" <?php if (!empty($button_2['target'])) echo 'target="_blank"'; ?>><?php echo $button_2['title']; ?></a>
+            </p>
+          <?php endif; ?>
+          <?php if ($badges): ?>
+            <div class="footer-images-block pt-4 pt-lg-0 d-flex align-items-center gap-5 gap-lg-2 gap-xl-4 flex-wrap justify-content-center justify-content-lg-end">
+              <?php foreach ($badges as $badge_item):
+                $badge = $badge_item['badge'];
+                if ($badge): ?>
+                  <img src="<?php echo esc_url($badge['url']); ?>" class="img-fluid" alt="<?php echo esc_attr($badge['alt']); ?>">
+              <?php endif;
+              endforeach; ?>
+            </div>
+          <?php endif; ?>
+        </div>
       <?php endif; ?>
     </div>
     <div class="copyright-block">
@@ -130,10 +131,24 @@ $column_2_link = $content_column_2['link'];
         </div>
         <div class="col-lg-3">
           <ul class="footer-social-icons d-flex align-items-center justify-content-center flex-wrap gap-3 list-unstyled mb-0">
-            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/facebook-icon.png" class="img-fluid" alt="Facebook Icon"></a></li>
-            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/youtube-icon.png" class="img-fluid" alt="Youtube Icon"></a></li>
-            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/linkedin-icon.png" class="img-fluid" alt="Linkedin Icon"></a></li>
-            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/instagram-icon.png" class="img-fluid" alt="Instagram Icon"></a></li>
+
+            <?php if (!empty($social_media)) : ?>
+              <?php foreach ($social_media as $item) :
+                $icon = $item['icon'];   // fontawesome class
+                $link = $item['link'];   // url
+              ?>
+                <?php if (!empty($link) && !empty($icon)) : ?>
+                  <li>
+
+                    <a href="<?php echo esc_url($link); ?>" target="_blank" rel="noopener">
+                      <i class="<?php echo esc_attr($icon); ?>"></i>
+                    </a>
+
+                  </li>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            <?php endif; ?>
+
           </ul>
         </div>
       </div>
