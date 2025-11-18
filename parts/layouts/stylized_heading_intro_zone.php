@@ -206,34 +206,7 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
                     });
                   </script>
 
-                  <style>
-                    .video-image {
-                      padding-bottom: 56%;
-                      height: 0;
-                      background-repeat: no-repeat;
-                      background-color: rgba(0, 0, 0, 0.15);
-                      background-blend-mode: overlay;
-                      background-size: cover;
-                      position: relative;
-                    }
 
-                    .play-icon {
-                      position: absolute;
-                      z-index: 1;
-                      top: 0;
-                      bottom: 0;
-                      left: 0;
-                      right: 0;
-                      cursor: pointer;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                    }
-
-                    .play-icon img {
-                      width: 100px;
-                    }
-                  </style>
                 </div>
 
               <?php endif; ?>
@@ -367,34 +340,7 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
                         });
                       </script>
 
-                      <style>
-                        .video-image {
-                          padding-bottom: 56%;
-                          height: 0;
-                          background-repeat: no-repeat;
-                          background-color: rgba(0, 0, 0, 0.15);
-                          background-blend-mode: overlay;
-                          background-size: cover;
-                          position: relative;
-                        }
 
-                        .play-icon {
-                          position: absolute;
-                          z-index: 1;
-                          top: 0;
-                          bottom: 0;
-                          left: 0;
-                          right: 0;
-                          cursor: pointer;
-                          display: flex;
-                          align-items: center;
-                          justify-content: center;
-                        }
-
-                        .play-icon img {
-                          width: 100px;
-                        }
-                      </style>
                     </div>
 
                   <?php endif; ?>
