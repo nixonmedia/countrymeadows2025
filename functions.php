@@ -449,24 +449,25 @@ function wysiwyg_image_gallery_shortcode($atts)
     jQuery(document).ready(function($) {
         $('#{$slider_id}').slick({
             slidesToShow: {$slidesToShow},
-            slidesToScroll: {$slidesToScroll},
+            slidesToScroll: 1,
             infinite: true,
             arrows: true,
             dots: false,
             speed: 700,
+            autoplay: false,
             responsive: [
                 {
                     breakpoint: 992,
                     settings: {
                         slidesToShow: 2,
-                        slidesToScroll: 2
+                        slidesToScroll: 1
                     }
                 },
                 {
                     breakpoint: 0,
                     settings: {
                         slidesToShow: 2,
-                        slidesToScroll: 2
+                        slidesToScroll: 1
                     }
                 }
             ]
