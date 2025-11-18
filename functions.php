@@ -97,7 +97,7 @@ if (! function_exists('country_meadows_styles')) :
 
 
         // Enqueue slick css
-        wp_enqueue_style('country_meadows-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array(), $theme_version);
+        wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array(), $theme_version);
 
 
         // Enqueue Custom JS
@@ -105,7 +105,7 @@ if (! function_exists('country_meadows_styles')) :
 
         // Enqueue slick JS
 
-        wp_enqueue_script('country_meadows-slick-js', 'https://cdn.jhttps://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), $theme_version, true);
+        wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), $theme_version, true);
 
 
         // Localize script for AJAX
@@ -303,8 +303,7 @@ function wysiwyg_video_shortcode($atts)
                 </span>
 
                 <div class="video-image"
-                    style="background-image:url('<?php echo esc_url($thumb_image); ?>'); 
-                            background-size:cover; background-position:center; width:100%; height:100%;">
+                    style="background-image:url('<?php echo esc_url($thumb_image); ?>');">
                     <div class="video-player vp-<?php echo esc_attr($unique_key); ?>"></div>
                 </div>
             </div>
@@ -348,51 +347,6 @@ function wysiwyg_video_shortcode($atts)
                 });
             });
         </script>
-        <style>
-            .video-box {
-                margin: 15px auto;
-                display: inline-block;
-                position: relative;
-            }
-
-            .video-box.align-left {
-                float: left;
-                margin-right: 15px;
-            }
-
-            .video-box.align-right {
-                float: right;
-                margin-left: 15px;
-            }
-
-            .video-box.align-center {
-                display: block;
-                margin: 0 auto;
-            }
-
-            .play-icon {
-                position: absolute;
-                z-index: 1;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-            }
-
-            .play-icon img {
-                width: 80px;
-                opacity: 0.9;
-                transition: transform 0.3s;
-            }
-
-            .play-icon:hover img {
-                transform: scale(1.1);
-            }
-        </style>
 
     <?php
         return ob_get_clean();
@@ -451,104 +405,79 @@ function wysiwyg_image_gallery_shortcode($atts)
     $max     = intval($atts['max']);
 
     if (!$post_id || get_post_status($post_id) !== 'publish') {
-        return '<!-- Gallery not found -->';
+        return 'Gallery not found';
     }
 
-    // Load images
     $images = get_field('community_galleries', $post_id);
 
     if (empty($images)) {
-        return '<!-- No gallery images -->';
+        return 'No gallery images';
     }
 
     $total_images = count($images);
-
-    /**
-     * ----------------------------------------
-     * NEW RULE:
-     * If user enters a max greater than the
-     * number of available images → force 3
-     * ----------------------------------------
-     */
-    if ($max > $total_images) {
-        $max = 3; // default carousel size
+    if ($total_images <= $max) {
+        $slidesToShow    = 3;
+        $slidesToScroll  = 3;
+    } else {
+        $slidesToShow    = $max;
+        $slidesToScroll  = $max;
     }
 
-    /**
-     * Show STATIC GRID ONLY when total < max
-     */
-    if ($total_images < $max) {
+    /* Slick Slider always used */
+    $slider_id = 'slickGallery_' . $post_id . '_' . rand(1000, 9999);
 
-        $output = '<div class="row wysiwyg-gallery-static">';
+    $output = '<div id="' . $slider_id . '" class="wysiwyg-gallery">';
 
-        foreach ($images as $img) {
-            $url = $img['url'];
-            $alt = $img['alt'];
+    foreach ($images as $img) {
+        $url = isset($img['sizes']['wysiwyg-gallery-image'])
+            ? esc_url($img['sizes']['wysiwyg-gallery-image'])
+            : esc_url($img['url']);
 
-            $output .= '
-                <div class="col-4 col-md-3 col-lg-2 mb-3">
-                    <img src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '" class="img-fluid rounded">
-                </div>';
-        }
+        $alt = esc_attr($img['alt']);
 
-        $output .= '</div>';
-
-        return $output;
+        $output .= '
+            <div class="gallery-slide">
+                <img src="' . $url . '" alt="' . $alt . '" class="img-fluid">
+            </div>';
     }
 
-    /**
-     * Carousel Mode (default)
-     */
-    $carousel_id = 'galleryCarousel_' . $post_id . '_' . rand(1000, 9999);
+    $output .= '</div>';
 
-    $output  = '<div id="' . $carousel_id . '" class="carousel slide" data-bs-ride="carousel">';
-    $output .= '<div class="carousel-inner">';
-
-    // Chunk images into slides of SIZE = $max
-    $chunks = array_chunk($images, $max);
-    $active = ' active';
-
-    foreach ($chunks as $group) {
-        $output .= '<div class="carousel-item' . $active . '">';
-        $output .= '<div class="row">';
-
-        foreach ($group as $img) {
-            $url = isset($img['sizes']['wysiwyg-gallery-image'])
-                ? $img['sizes']['wysiwyg-gallery-image']
-                : $img['url'];
-
-            $alt = $img['alt'];
-
-            $output .= '
-                <div class="col-4 col-md-3 col-lg-2 mb-3">
-                    <img src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '" class="img-fluid">
-                </div>';
-        }
-
-        $output .= '</div></div>';
-        $active = ''; // only first slide is active
-    }
-
-    $output .= '</div>'; // .carousel-inner
-
-    // Carousel controls
-    $output .= '
-        <button class="carousel-control-prev" type="button" data-bs-target="#' . $carousel_id . '" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#' . $carousel_id . '" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    ';
-
-    $output .= '</div>'; // .carousel
+    /* Slick init script */
+    $output .= "
+    <script>
+    jQuery(document).ready(function($) {
+        $('#{$slider_id}').slick({
+            slidesToShow: {$slidesToShow},
+            slidesToScroll: 1,
+            infinite: true,
+            arrows: true,
+            dots: false,
+            speed: 700,
+            autoplay: false,
+            responsive: [
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 0,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    });
+    </script>";
 
     return $output;
 }
 add_shortcode('image_gallery', 'wysiwyg_image_gallery_shortcode');
-
-
-
 
 
 /**
@@ -662,14 +591,14 @@ function wysiwyg_testimonial_shortcode($atts)
 
         // Only show if at least one field has a value
         if (!empty($testimonial_quote) || !empty($testimonial_name)) {
-            $output  = '<div class="wysiwyg-testimonial py-3">';
+            $output  = '<div class="wysiwyg-testimonial font-lexend py-3">';
 
             if (!empty($testimonial_quote)) {
-                $output .=  $testimonial_quote;
+                $output .=  '<div class="wysiwyg-testimonial-block"><div class="wysiwyg-testimonial-content font-xm fw-bold mb-4 pb-lg-2">'.$testimonial_quote.'</div></div>';
             }
 
             if (!empty($testimonial_name)) {
-                $output .= '<h5>' . esc_html($testimonial_name) . '</h5>';
+                $output .= '<p class="mb-0 pt-lg-2 mt-4 font-xs-medium">' . esc_html($testimonial_name) . '</p>';
             }
 
             $output .= '</div>';
@@ -781,16 +710,16 @@ function wysiwyg_event_shortcode($atts)
             $latest_img = get_the_post_thumbnail(
                 $post_id,
                 'wysiwyg-event-image',
-                ['class' => 'img-fluid rounded']
+                ['class' => 'img-fluid']
             );
 
             $output .= '<div class="wysiwyg-event py-4">';
-            $output .= '  <div class="row align-items-center">';
+            $output .= '  <div class="row">';
 
             // ---- COL 3 (Image) ----
             if (!empty($latest_img)) {
 
-                $output .= '      <div class="col-md-3">';
+                $output .= '      <div class="col-md-4 mb-4 mb-md-0">';
                 $output .= '          <a href="' . $latest_link . '">';
                 $output .=                $latest_img;
                 $output .= '          </a>';
@@ -799,30 +728,23 @@ function wysiwyg_event_shortcode($atts)
 
 
             // ---- COL 9 (Content) ----
-            $output .= '      <div class="col-md-9">';
+            $output .= '      <div class="col-md-8 ps-lg-3 wysiwyg-event-content-col">';
 
             // Event title (as link)
-            $output .= '          <h4 class="mb-2"><a href="' . esc_url($latest_link) . '">' . esc_html($latest_title) . '</a></h4>';
+            $output .= '          <h4 class="font-lexend event-title mb-2"><a href="' . esc_url($latest_link) . '">' . esc_html($latest_title) . '</a></h4>';
 
             // Event date/time (Start and End)
-            $output .= '          <div class="text-muted mb-2">' . esc_html($latest_start_date) . ' - ' . esc_html($latest_start_time) . ' to ' . esc_html($latest_end_time) . '</div>';
+            $output .= '          <div class="event-metadata font-normal font-lexend mb-3 mb-lg-4">' . esc_html($latest_start_date) . ' - ' . esc_html($latest_start_time) . ' to ' . esc_html($latest_end_time) . '</div>';
 
             // Excerpt
             if (! empty($latest_excerpt)) {
-                $output .= '<p>' . wp_kses_post($latest_excerpt) . '</p>';
+                $output .= '<div class="wysiwyg-event-content font-lexend"><p>' . wp_kses_post($latest_excerpt) . '</p></div>';
             }
 
             $output .= '      </div>'; // end col-9
             $output .= '  </div>';     // end row
             $latest_archive_url = get_post_type_archive_link('tribe_events');
 
-            $output .= '  
-            <div class="col-lg-12 mt-4">
-                <a href="' . esc_url($latest_archive_url) . '" class="btn btn-primary btn-lg">
-                    View Upcoming Events
-                </a>
-            </div>
-        ';
             $output .= '</div>';       // end event wrapper
         }
 
@@ -885,17 +807,17 @@ function wysiwyg_event_shortcode($atts)
             $event_img = get_the_post_thumbnail(
                 $post_id,
                 'wysiwyg-event-image',
-                ['class' => 'img-fluid rounded']
+                ['class' => 'img-fluid']
             );
 
             $output .= '<div class="wysiwyg-event py-3">';
-            $output .= '<div class="row align-items-center">';
+            $output .= '<div class="row">';
 
             // ---- COL 3 (Image) ----
             if (!empty($event_img)) {
 
                 // Example link URL (replace with your own variable)
-                $output .= '      <div class="col-md-3">';
+                $output .= '      <div class="col-md-4 mb-4 mb-md-0">';
                 $output .= '          <a href="' . $event_link . '">';
                 $output .=                $event_img;
                 $output .= '          </a>';
@@ -903,15 +825,15 @@ function wysiwyg_event_shortcode($atts)
             }
 
             // ---- COL 9 (Content) ----
-            $output .= '    <div class="col-md-9">';
+            $output .= '    <div class="col-md-8 ps-lg-3 wysiwyg-event-content-col">';
 
             // Event title (as link)
-            $output .= '          <h4 class="mb-2"><a href="' . esc_url($event_link) . '">' . esc_html($event_title) . '</a></h4>';
+            $output .= '          <h4 class="font-lexend event-title mb-2"><a href="' . esc_url($event_link) . '">' . esc_html($event_title) . '</a></h4>';
 
             // Event date/time (Start and End)
-            $output .= '        <div class="text-muted mb-2">' . esc_html($event_start_date) . ' - ' . esc_html($event_start_time) . ' to ' . esc_html($event_end_time) . '</div>';
+            $output .= '        <div class="event-metadata font-normal font-lexend mb-3 mb-lg-4">' . esc_html($event_start_date) . ' - ' . esc_html($event_start_time) . ' to ' . esc_html($event_end_time) . '</div>';
             if (! empty($event_excerpt)) {
-                $output .= '<p>' . wp_kses_post($event_excerpt) . '</p>';
+                $output .= '<div class="wysiwyg-content font-lexend font-normal"><p>' . wp_kses_post($event_excerpt) . '</p></div>';
             }
 
 
@@ -919,13 +841,7 @@ function wysiwyg_event_shortcode($atts)
             $output .= '</div>';     // end row
             $events_archive_url = get_post_type_archive_link('tribe_events');
 
-            $output .= '  
-            <div class="col-lg-12 mt-4">
-                <a href="' . esc_url($events_archive_url) . '" class="btn btn-primary btn-lg">
-                    View Upcoming Events
-                </a>
-            </div>
-        ';
+            
             $output .= '</div>';     // end event wrapper
         }
         // Dynamic button linking to the tribe_events archive page
