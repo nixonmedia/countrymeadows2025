@@ -450,12 +450,12 @@ function wysiwyg_image_gallery_shortcode($atts)
                 {
                     breakpoint: 992,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 3,
                         slidesToScroll: 1
                     }
                 },
                 {
-                    breakpoint: 0,
+                    breakpoint: 768,
                     settings: {
                         slidesToShow: 2,
                         slidesToScroll: 1
