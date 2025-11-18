@@ -6,7 +6,7 @@
       icon: false,
       text: " Add Video",
       image:
-        "/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/js/yt-icon.svg",
+        "../wp-content/themes/countrymeadows2025/assets/js/yt-icon.svg",
       onclick: function () {
         // Open the modal window definition
         editor.windowManager.open({
@@ -70,7 +70,7 @@
       text: " Add Event",
       icon: false,
       image:
-        "/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/js/event.svg",
+        "../wp-content/themes/countrymeadows2025/assets/js/event.svg",
 
       onclick: function () {
         var editorInstance = editor;
@@ -145,7 +145,7 @@ editor.addButton("image_gallery_btn", {
   title: "Add Image Gallery Shortcode",
   text: " Add Gallery",
   icon: false,
-  image: "/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/js/gallery.svg",
+  image: "../wp-content/themes/countrymeadows2025/assets/js/gallery.svg",
 
   onclick: function () {
     var editorInstance = editor;
@@ -224,7 +224,7 @@ editor.addButton("image_gallery_btn", {
       text: "Add Testimonial",
       icon: false,
       image:
-        "/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/js/testimonial.svg",
+        "../wp-content/themes/countrymeadows2025/assets/js/testimonial.svg",
       onclick: function () {
         var editorInstance = editor;
 
