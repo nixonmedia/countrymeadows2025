@@ -8,7 +8,7 @@ $layered_image = $layered_image_zone['image'] ?? null;
 ?>
 
 <section class="stylized-heading-intro-zone image-with-embellishment">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-7 intro-content-col py-5">
         <?php if($stylized_heading): ?>
