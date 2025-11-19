@@ -33,7 +33,6 @@
                         "id": ""
                     },
                     "choices": {
-                        "H1": "H1",
                         "H2": "H2",
                         "H3": "H3",
                         "H4": "H4"
@@ -79,6 +78,11 @@
                 "param": "post_type",
                 "operator": "!=",
                 "value": "post"
+            },
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "page"
             }
         ]
     ],
@@ -92,5 +96,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763357075
+    "modified": 1763533123
 }

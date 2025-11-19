@@ -63,6 +63,10 @@ h1, h2, h3, h4, h5, h6 {
 .bg-light-yellow {
   background-color: var(--light-yellow);
 }
+
+.text-white {
+  color: var(--white);
+}
 .text-blue {
   color: var(--blue);
 }
@@ -122,6 +126,7 @@ img.alignleft {
 .wysiwyg-content :last-child, .copyright-content :last-child {
   margin-bottom: 0;
 }
+
 
 /* Wysiwyg Button */
 
@@ -469,6 +474,19 @@ img.alignleft {
   line-height: 45px;
 }
 
+/****************************
+****** Content and button card ******
+****************************/
+
+  .content-and-button-card  .single-button{
+    padding: 35px 84px !important
+}
+  .content-and-button-card  .wyswing-content.top-content{
+width:100%;
+
+  }
+ 
+
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   .alignright {
@@ -811,6 +829,15 @@ img.alignleft {
   .footer-menu {
     padding: 0 30px;
   }
+    .content-and-button-card  .single-button{
+    padding: 25px 40px !important
+}
+ .content-and-button-card  .wyswing-content.top-content {
+    width:90%;
+  }
+  .content-and-button-card  .bottom-content {
+    width:70%;
+  }
 }
 @media only screen and (min-width: 1250px) {
   .site-footer .container-fluid {
@@ -922,6 +949,15 @@ img.alignleft {
   }
   .footer-menu {
     padding: 0 80px;
+  }
+  .content-and-button-card  .wyswing-content.top-content{
+width:80%;
+}
+  .content-and-button-card  .single-button{
+    padding: 35px 84px !important
+}
+  .content-and-button-card  .bottom-content {
+    width:50%;
   }
 }
 @media only screen and (min-width: 1900px) {
