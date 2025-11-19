@@ -341,7 +341,7 @@
                             "label": "Review Feed",
                             "name": "review_feed",
                             "aria-label": "",
-                            "type": "select",
+                            "type": "taxonomy",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -350,19 +350,17 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": {
-                                "Allentown": "Allentown"
-                            },
-                            "default_value": false,
-                            "return_format": "value",
-                            "multiple": 0,
+                            "taxonomy": "location",
+                            "add_term": 0,
+                            "save_terms": 1,
+                            "load_terms": 0,
+                            "return_format": "object",
+                            "field_type": "select",
                             "allow_null": 0,
                             "allow_in_bindings": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
+                            "bidirectional": 0,
+                            "multiple": 0,
+                            "bidirectional_target": []
                         },
                         {
                             "key": "field_691c0d50c5c26",
@@ -447,5 +445,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763467626
+    "modified": 1763549433
 }

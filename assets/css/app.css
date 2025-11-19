@@ -69,7 +69,9 @@ h1, h2, h3, h4, h5, h6 {
 .text-pink {
   color: var(--pink);
 }
-
+.text-black-100{
+  color: var(--black-100);
+}
 /* Global fonts  */
 .font-gloss-bloom {
   font-family: 'Gloss And Bloom';
@@ -119,13 +121,13 @@ img.alignleft {
     padding-top: 10px;
     margin-right: 10px;
 }
-.wysiwyg-content :last-child, .copyright-content :last-child {
+.wysiwyg-content :last-child, .copyright-content :last-child{
   margin-bottom: 0;
 }
 
 /* Wysiwyg Button */
 
-.wysiwyg-button {
+.wysiwyg-button, .site-button {
   font-size: 18px;
   line-height: 45px;
   font-weight: 700;
@@ -137,32 +139,32 @@ img.alignleft {
   color: var(--white);
   margin-top: 10px;
 }
-.wysiwyg-button:hover {
+.wysiwyg-button:hover,.site-button:hover {
   background-color: var(--gray);
 }
-.bg-blue .wysiwyg-button, .bg-teal .wysiwyg-button, .bg-purple .wysiwyg-button {
+.bg-blue .wysiwyg-button, .bg-teal .wysiwyg-button, .bg-purple .wysiwyg-button,.bg-blue .site-button, .bg-teal .site-button, .bg-purple .site-button {
   background-color: var(--yellow);
   color: var(--black-100);
 }
-.bg-blue .wysiwyg-button:hover, .bg-purple .wysiwyg-button:hover {
+.bg-blue .wysiwyg-button:hover, .bg-purple .wysiwyg-button:hover , .bg-blue .site-button:hover, .bg-purple .site-button:hover{
   background-color: var(--white);
   color: var(--black-100);
 }
-.bg-light-blue .wysiwyg-button, .bg-gradient-yellow .wysiwyg-button {
+.bg-light-blue .wysiwyg-button, .bg-gradient-yellow .wysiwyg-button , .bg-light-blue .site-button, .bg-gradient-yellow .site-button {
   background-color: var(--purple);
   color: var(--white);
   border: 1px solid #B6B6B6;
 }
-.bg-light-blue .wysiwyg-button:hover, .bg-teal .wysiwyg-button:hover, .bg-gradient-yellow .wysiwyg-button:hover {
+.bg-light-blue .wysiwyg-button:hover, .bg-teal .wysiwyg-button:hover, .bg-gradient-yellow .wysiwyg-button:hover ,.bg-light-blue .site-button:hover, .bg-teal .site-button:hover, .bg-gradient-yellow .site-button:hover {
   background-color: var(--black-100);
   color: var(--white);
   border-color: var(--black-100);
 }
-.bg-light-yellow .wysiwyg-button {
+.bg-light-yellow .wysiwyg-button, .bg-light-yellow .site-button  {
   background-color: var(--gray);
   color: var(--white);
 }
-.bg-light-yellow .wysiwyg-button:hover {
+.bg-light-yellow .wysiwyg-button:hover,  .bg-light-yellow .site-button:hover {
   background-color: var(--black-100);
   color: var(--white);
 }
@@ -468,9 +470,24 @@ img.alignleft {
 .sidebar-submenu-block li {
   line-height: 45px;
 }
-.reviews-zone{
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+.angle_down_left{
+  clip-path: polygon(0 -50%, 100% -50%, 100% 90%, 0% 100%);
 }
+.angle_down_right{
+    clip-path: polygon(0 -50%, 100% -50%, 100% 100%, 0% 90%);
+}
+.reviews-zone.border-angle.angle_down_right {
+    padding-top: 20px;
+}
+.reviews-zone{
+    padding-top: 50px;
+}
+
+
+.reviews-zone.angle_down_right:before{
+  transform: scaleX(-1);
+}
+
 .review-slider .slick-slide{
 border-radius: 10px;
 }
@@ -500,6 +517,37 @@ border-radius: 10px;
 .review-slider .icon-prev.slick-arrow , .review-slider .icon-next.slick-arrow {
     width: 20px;
 }
+.reviews-zone.border-angle:before{
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: -51px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 52px;
+  background-position: right;
+}
+.reviews-zone.bg-blue:before{
+  background-image: url(../images/edge_blue.svg);
+}
+.reviews-zone.bg-light-blue:before{
+  background-image: url(../images/edge_light_blue.svg);
+}
+.reviews-zone.bg-purple:before{
+  background-image: url(../images/edge_purple.svg);
+}
+.reviews-zone.bg-teal:before{
+  background-image: url(../images/edge_teal.svg);
+}
+.reviews-zone.bg-yellow:before{
+  background-image: url(../images/edge_yellow.svg);
+}
+.post-date{
+color: #787878;
+}
+
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   .alignright {
@@ -658,7 +706,7 @@ border-radius: 10px;
     padding-right: 8px;
     padding-left: 8px;
   }
-  .wysiwyg-button {
+  .wysiwyg-button,.site-button {
     font-size: 17px;
     line-height: 44px;
     padding: 7px 35px;
@@ -968,6 +1016,10 @@ border-radius: 10px;
   .footer-menu {
     padding: 0 80px;
   }
+  .reviews-zone:before{
+  top: -92px;
+  height: 95px;
+}
 }
 @media only screen and (min-width: 1900px) {
   .site-footer .container-fluid {
