@@ -877,5 +877,9 @@ function wysiwyg_event_shortcode($atts)
 add_shortcode('add_event', 'wysiwyg_event_shortcode');
 
 
-
-?>
+// Allow Upload SVG File Tyoe
+function cc_mime_types($mimes) {
+ $mimes['svg'] = 'image/svg+xml';
+ return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
