@@ -92,7 +92,7 @@ $column_2_link = $content_column_2['link'];
           </p>
         <?php endif; ?>
         <?php if ($badges): ?>
-          <div class="footer-images-block pt-4 pt-lg-0 d-flex gap-5 gap-lg-2 gap-xl-4 flex-wrap justify-content-center justify-content-lg-end">
+          <div class="footer-images-block pt-4 pt-lg-0 d-flex align-items-center gap-5 gap-lg-2 gap-xl-4 flex-wrap justify-content-center justify-content-lg-end">
             <?php foreach ($badges as $badge_item):
               $badge = $badge_item['badge'];
               if ($badge): ?>
@@ -130,10 +130,10 @@ $column_2_link = $content_column_2['link'];
         </div>
         <div class="col-lg-3">
           <ul class="footer-social-icons d-flex align-items-center justify-content-center flex-wrap gap-3 list-unstyled mb-0">
-            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/facebook-icon.png" class="img-fluid" alt="Facebook Icon"></a></li>
-            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/youtube-icon.png" class="img-fluid" alt="Youtube Icon"></a></li>
-            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/linkedin-icon.png" class="img-fluid" alt="Linkedin Icon"></a></li>
-            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/instagram-icon.png" class="img-fluid" alt="Instagram Icon"></a></li>
+            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/facebook-icon.png" class="img-fluid" alt="Facebook Icon"></a></li>
+            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/youtube-icon.png" class="img-fluid" alt="Youtube Icon"></a></li>
+            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/linkedin-icon.png" class="img-fluid" alt="Linkedin Icon"></a></li>
+            <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/instagram-icon.png" class="img-fluid" alt="Instagram Icon"></a></li>
           </ul>
         </div>
       </div>
