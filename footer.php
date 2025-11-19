@@ -113,7 +113,7 @@ $column_2_link = $content_column_2['link'];
             </div>
           </div>
         <?php endif; ?>
-        <div class="col-lg-6 text-center footer-bottom-mid-col">
+        <div class="col-lg-6 col-xl-7 text-center footer-bottom-mid-col">
           <?php
           if (has_nav_menu('footer')) {
             wp_nav_menu(array(
@@ -128,7 +128,7 @@ $column_2_link = $content_column_2['link'];
             <p>© <?php echo date('Y'); ?> Country Meadows Retirement Communities</p>
           </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-xl-2">
           <ul class="footer-social-icons d-flex align-items-center justify-content-center flex-wrap gap-3 list-unstyled mb-0">
             <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/facebook-icon.png" class="img-fluid" alt="Facebook Icon"></a></li>
             <li><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/youtube-icon.png" class="img-fluid" alt="Youtube Icon"></a></li>
