@@ -212,36 +212,6 @@
                             "delay": 0
                         },
                         {
-                            "key": "field_691abcbc3f472",
-                            "label": "Border",
-                            "name": "border",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "none": "None",
-                                "angle": "Angle",
-                                "straight": "Straight"
-                            },
-                            "default_value": "None",
-                            "return_format": "array",
-                            "multiple": 0,
-                            "allow_null": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
-                        },
-                        {
                             "key": "field_691abd3bf8834",
                             "label": "Background Embellishment",
                             "name": "background_embellishment",
@@ -266,6 +236,28 @@
                             "placeholder": "",
                             "create_options": 0,
                             "save_options": 0
+                        },
+                        {
+                            "key": "field_691da30e62048",
+                            "label": "Border",
+                            "name": "border",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_691c1dce430b7"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -296,5 +288,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763515840
+    "modified": 1763603139
 }

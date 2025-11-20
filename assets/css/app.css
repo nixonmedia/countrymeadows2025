@@ -1103,7 +1103,7 @@ width:100%;
  .content-and-button-card  .wyswing-content.top-content {
     width:90%;
   }
-  .content-and-button-card  .bottom-content {
+  .content-and-button-cards  .bottom-content {
     width:70%;
   }
 }
@@ -1226,13 +1226,13 @@ width:100%;
     font-size: 103px;
 
   }
- .content-and-button-card  .wyswing-content.top-content{
+ .content-and-button-cards  .wyswing-content.top-content{
 width:80%;
 }
-  .content-and-button-card  .single-button{
+  .content-and-button-cards  .single-button{
     padding: 35px 84px !important
 }
-  .content-and-button-card  .bottom-content {
+  .content-and-button-cards  .bottom-content {
     width:50%;
 
   }

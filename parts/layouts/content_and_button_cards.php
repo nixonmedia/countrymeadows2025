@@ -8,6 +8,9 @@ $content = $section['content'] ?? "";
 $bottom_zone_content = $section['bottom_zone_content'] ?? "";
 $border = $section['border'] ?? "";
 $background_embellishment = $section['background_embellishment'] ?? "";
+$border = $border_angle["border"] ?? "";
+$angle = $border_angle["angle"] ?? "";
+
 
 $background_color_classes = [
     'White' => 'bg-white',
@@ -34,10 +37,13 @@ $heading_class = isset($heading_classes[$background_color]) ? $heading_classes[$
 $valid_buttons = [];
 
 if (!empty($button_cards)) {
+
     foreach ($button_cards as $button) {
+        var_dump($button);
         $text = trim($button['text'] ?? '');
-        $link = trim($button['link'] ?? '');
-        $icon = trim($button['icon'] ?? '');
+        $link_title = $button['link']['title'] ?? '';
+        $link_url = $button['link']['url'] ?? '';
+        $button_icon = trim($button['icon'] ?? '');
 
         if ($text !== '' || $link !== '' || $icon !== '') {
             $valid_buttons[] = $button;
@@ -48,7 +54,7 @@ if (!empty($button_cards)) {
 if ($heading || $content || !empty($valid_buttons) || $bottom_zone_content):
 ?>
 
-    <section class="content-and-button-card py-5 <?php echo esc_attr($bg_class); ?>">
+    <section class="content-and-button-cards py-5 <?php echo esc_attr($bg_class); ?>">
         <div class="container-fluid text-center text-white">
             <div class="row justify-content-center">
                 <div class="col-lg-10 d-flex flex-column justify-content-center align-items-center">
