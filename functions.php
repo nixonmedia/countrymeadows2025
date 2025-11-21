@@ -46,7 +46,7 @@ if (! function_exists('country_meadows_support')) :
         add_image_size('allentown', 551, 367, true);
 		add_image_size('cm-couple', 661, 728, true);
         add_image_size('two_col_wide_image', 575, 345, true);
-        add_image_size('two_col_wide_image', 440, 525, true);
+        add_image_size('two_col_tall_image', 440, 525, true);
         add_image_size('two_col_top', 444, 263, true);
 	}
 endif;
@@ -92,17 +92,17 @@ if (! function_exists('country_meadows_styles')) :
         // Enqueue slick css
         wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array(), $theme_version);
 
+        // Enqueue slick JS
+        wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), $theme_version, true);
 
         // Enqueue Custom JS
         wp_enqueue_script('country_meadows-custom-js', get_template_directory_uri() . '/assets/js/app.js', array('jquery'), '8.7', true);
 
-        // Enqueue slick JS
-
-        wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), $theme_version, true);
-
-
         // Localize script for AJAX
         wp_localize_script('country_meadows-custom-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+        
+        // Enqueue Font Awesome
+        wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/151a7a2238.js', array(), null, true);
     }
 
 endif;
@@ -439,33 +439,33 @@ function wysiwyg_image_gallery_shortcode($atts)
     /* Slick init script */
     $output .= "
     <script>
-    jQuery(document).ready(function($) {
-        $('#{$slider_id}').slick({
-            slidesToShow: {$slidesToShow},
-            slidesToScroll: 1,
-            infinite: true,
-            arrows: true,
-            dots: false,
-            speed: 700,
-            autoplay: false,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1
+        jQuery(document).ready(function($) {
+            $('#{$slider_id}').slick({
+                slidesToShow: {$slidesToShow},
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true,
+                dots: false,
+                speed: 700,
+                autoplay: false,
+                responsive: [
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
                     }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
+                ]
+            });
         });
-    });
     </script>";
 
     return $output;

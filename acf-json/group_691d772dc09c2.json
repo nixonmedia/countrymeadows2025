@@ -1,11 +1,11 @@
 {
     "key": "group_691d772dc09c2",
-    "title": "Background Embellishment Component",
+    "title": "Background Pattern Component",
     "fields": [
         {
             "key": "field_691d772ed3d86",
-            "label": "Background Embellishment",
-            "name": "background_embellishment",
+            "label": "Background Pattern",
+            "name": "background_pattern",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -18,11 +18,9 @@
             },
             "choices": {
                 "Circles": "Circles",
-                "Seeds": "Seeds",
-                "Seeds Open": "Seeds Open",
-                "Seeds Open Large": "Seeds Open Large",
-                "Squiggles": "Squiggles",
-                "X’s": "X’s"
+                "Sprinkles": "Sprinkles",
+                "Honeycomb": "Honeycomb",
+                "Dots": "Dots"
             },
             "default_value": false,
             "return_format": "value",
@@ -40,8 +38,13 @@
         [
             {
                 "param": "post_type",
-                "operator": "==",
+                "operator": "!=",
                 "value": "post"
+            },
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "page"
             }
         ]
     ],
@@ -55,5 +58,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763542236
+    "modified": 1763705369
 }
