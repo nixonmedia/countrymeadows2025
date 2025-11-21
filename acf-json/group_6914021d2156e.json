@@ -361,12 +361,12 @@
                                 "id": ""
                             },
                             "choices": {
-                                "Circles": "Circles",
-                                "Seeds": "Seeds",
-                                "Seeds Open": "Seeds Open",
-                                "Seeds Open Large": "Seeds Open Large",
-                                "Squiggles": "Squiggles",
-                                "X’s": "X’s"
+                                "929": "Circles",
+                                "936": "Seeds",
+                                "937": "Seeds Open",
+                                "938": "Seeds Open Large",
+                                "939": "Squiggles",
+                                "940": "X’s"
                             },
                             "default_value": false,
                             "return_format": "value",
@@ -549,5 +549,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763454525
+    "modified": 1763547786
 }
