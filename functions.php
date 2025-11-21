@@ -879,9 +879,19 @@ function wysiwyg_event_shortcode($atts)
 add_shortcode('add_event', 'wysiwyg_event_shortcode');
 
 
-// Allow Upload SVG File Tyoe
+// Allow Upload SVG File Type
 function cc_mime_types($mimes) {
  $mimes['svg'] = 'image/svg+xml';
  return $mimes;
 }
 add_filter('upload_mimes', 'cc_mime_types');
+
+
+// Load ACF options preview (use filesystem path, not URI)
+$acf_preview_file = get_template_directory() . '/inc/streamline-icon-picker/acf-select-options-preview.php';
+if ( file_exists( $acf_preview_file ) ) {
+    require_once $acf_preview_file;
+} else {
+    error_log( "ACF preview file not found: " . $acf_preview_file );
+}
+
