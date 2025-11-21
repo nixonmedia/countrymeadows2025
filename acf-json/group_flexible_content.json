@@ -537,8 +537,7 @@
                                             "taxonomy": "",
                                             "filters": [
                                                 "search",
-                                                "post_type",
-                                                "taxonomy"
+                                                "post_type"
                                             ],
                                             "return_format": "object",
                                             "min": "",
@@ -799,9 +798,25 @@
                                             "display": "seamless",
                                             "layout": "block",
                                             "prefix_label": 0,
-                                            "prefix_name": 0
+                                            "prefix_name": 0,
+                                            "choices": {
+                                                "circles": "Circles",
+                                                "seeds": "Seeds",
+                                                "seeds-open": "Seeds Open",
+                                                "seeds-open-large": "Seeds Open Large",
+                                                "squiggles": "Squiggles",
+                                                "Xs": "Xs"
+                                            }
                                         }
-                                    ]
+                                    ],
+                                    "choices": {
+                                        "circles": "Circles",
+                                        "seeds": "Seeds",
+                                        "seeds-open": "Seeds Open",
+                                        "seeds-open-large": "Seeds Open Large",
+                                        "squiggles": "Squiggles",
+                                        "Xs": "Xs"
+                                    }
                                 }
                             ]
                         },
@@ -4007,5 +4022,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763707634
+    "modified": 1763726887
 }

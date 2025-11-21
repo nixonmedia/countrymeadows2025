@@ -43,7 +43,7 @@ $column_1 = $section['column_1'] ?? '';
 $column_position = $column_1['column_position'] ?? '';
 $column_1_image_header = $column_1['image_header'] ?? '';
 $column_1_heading = $column_1['heading'] ?? '';
-$heading_icon = $column_1['heading_icon'] ?? '';
+$heading_icon = $column_1['heading_icon'] ?? ''; 
 $heading_icon_position = $column_1['heading_icon_position'] ?? '';
 $column_1_content = $column_1['content'] ?? '';
 $column_1_gallery = $column_1['gallery'] ?? false;
@@ -120,8 +120,6 @@ if($num_columns == '1') {
   $section_class = '';
 }
 
-
-
 if($num_columns == '2' && $include_special_content == false || $num_columns == '2' && $include_special_content == false && $include_image_headers_on_custom_content == true) {
   $heading_column_class = 'col-lg-8';
   $left_column_class = 'col-lg-4';
@@ -139,6 +137,10 @@ if($num_columns == '2' && $include_special_content == false || $num_columns == '
     $right_column_class = 'col-lg-5 pe-lg-5';
   } else {
     $right_column_class = 'col-lg-5 ps-lg-5';
+  }
+  if($choose_special_content == 'Meet Our Team') {
+    $right_column_class = 'col-lg-7 meet-team-info-col';
+    $left_column_class = 'col-lg-5 events-info-col';
   }
 } else {
   $heading_column_class = '';
@@ -160,25 +162,31 @@ if($num_columns == '2' && $include_special_content == true && $special_content_p
   $special_content_row_class = '';
 }
 if($embellishment_position == 'Left') {
-  $embellishment_position_class = ' left-align-embellishment';
+  $embellishment_position_class = 'left-align-embellishment';
+} elseif($embellishment_position == 'Right') {
+  $embellishment_position_class = 'right-align-embellishment';
 } else {
   $embellishment_position_class = '';
 } 
 
-if($embellishment == 'Circles' ) {
+if($embellishment == 'circles' ) {
   $embellishment_class = 'with-embellishment circles-embellishment';
-} elseif($embellishment == 'Seeds' ) {
+} elseif($embellishment == 'seeds' ) {
   $embellishment_class = 'with-embellishment seeds-embellishment';
-} elseif($embellishment == 'Seeds Open' ) {
+} elseif($embellishment == 'seeds-open' ) {
   $embellishment_class = 'with-embellishment seeds-open-embellishment';
-} elseif($embellishment == 'Seeds Open Large' ) {
+} elseif($embellishment == 'seeds-open-large' ) {
   $embellishment_class = 'with-embellishment seeds-open-large-embellishment';
-} elseif($embellishment == 'Squiggles' ) {
+} elseif($embellishment == 'squiggles' ) {
   $embellishment_class = 'with-embellishment squiggles-embellishment';
-} elseif($embellishment == 'X’s' ) {
+} elseif($embellishment == 'Xs' ) {
   $embellishment_class = 'with-embellishment xs-embellishment';
 } else {
   $embellishment_class = '';
+}
+
+if($meet_background_color == 'Blue') {
+  $meet_bg_color = 'bg-blue';
 }
 
 ?>
@@ -274,8 +282,13 @@ if($embellishment == 'Circles' ) {
                 <img src="<?php echo esc_url($column_1_image_header['sizes']['two_col_top']); ?>" alt="<?php echo esc_attr($column_1_image_header['alt']); ?>" class="img-fluid">
               </div>
             <?php endif;
-            if($column_1_heading['headline']): ?>
-              <<?php echo $column_1_heading['heading_type']; ?> class="font-medium <?php echo $heading_fonts; ?> mb-3 <?php echo $heading_color; ?> <?php if($heading_icon): ?>heading-with-icon<?php endif; ?>"><?php echo $column_1_heading['headline']; ?> <?php echo $heading_icon; ?></<?php echo $column_1_heading['heading_type']; ?>>
+            if($column_1_heading['headline']): 
+            if($heading_icon && $heading_icon_position == 'Above Heading'): ?>
+              <div class="mb-2 text-center heading-with-icon">
+                <?php echo $heading_icon; ?>
+              </div>
+            <?php endif; ?>
+              <<?php echo $column_1_heading['heading_type']; ?> class="font-medium <?php echo $heading_fonts; ?> mb-3 <?php echo $heading_color; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading'): ?>heading-with-icon<?php endif; ?>"><?php echo $column_1_heading['headline']; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading'): echo $heading_icon; endif;?></<?php echo $column_1_heading['heading_type']; ?>>
             <?php endif; 
             if($column_1_content): ?>
               <div class="wysiwyg-content <?php echo $content_fonts; ?> mb-3 <?php echo $text_color; ?>">
@@ -307,8 +320,8 @@ if($embellishment == 'Circles' ) {
             <?php endif; ?>
           <?php endif; ?>
           
-          <!------- Video Special Content ------>
-          <?php if($include_special_content == true && $media_type == 'Video' && $video_url): ?>
+          <?php if($include_special_content == true && $choose_special_content == 'Media' && $media_type == 'Video' && $video_url): ?>
+            <!------- Video Special Content ------>
             <?php $thumb_image = "";
                   $video_id = "";
                   $embed_src = "";
@@ -342,7 +355,7 @@ if($embellishment == 'Circles' ) {
                   }
                   $unique_key = uniqid();
                 ?>
-                <div class="video-box <?php echo $embellishment_class; ?><?php echo $embellishment_position_class; ?>">
+                <div class="video-box <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?>">
                   <div class="embed-responsive embed-responsive-16by9 video-wrapper position-relative">
                     <span class="play-icon" id="play-<?php echo $unique_key; ?>">
                       <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-icon.svg" alt="Play Video">
@@ -376,20 +389,59 @@ if($embellishment == 'Circles' ) {
                     });
                   });
                 </script>
+            <!------- End Here Video Special Content ------>
           <?php endif; ?>
-          <!------- End Here Video Special Content ------>
           
-          <!------- Image Special Content ------>
-          <?php if($include_special_content == true && $media_type == 'Image'): ?>
-            <div class="image-box <?php echo $embellishment_class; ?><?php echo $embellishment_position_class; ?>">
+          <?php if($include_special_content == true && $choose_special_content == 'Media' && $media_type == 'Image'): ?>
+            <!------- Image Special Content ------>
+            <div class="image-box <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?>">
               <?php if($image_type == 'Landscape' && $landscape_image): ?>
                 <img src="<?php echo esc_url($landscape_image['sizes']['two_col_wide_image']); ?>" alt="<?php echo esc_attr($landscape_image['alt']); ?>" class="img-fluid">
               <?php elseif($image_type == 'Portrait' && $portrait_image): ?>
                 <img src="<?php echo esc_url($portrait_image['sizes']['two_col_tall_image']); ?>" alt="<?php echo esc_attr($portrait_image['alt']); ?>" class="img-fluid">
               <?php endif; ?>
             </div>
+            <!------- End Here Image Special Content ------>
           <?php endif; ?>
-          <!------- End Here Image Special Content ------>
+          
+          
+          <?php if($include_special_content == true && $choose_special_content == 'Meet Our Team' ): ?>
+            <!------- Meet Our Team Special Content ------>
+            <div class="meet-team-block <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?> <?php echo $meet_bg_color; ?> bg-pink">
+              <?php if($meet_heading['headline']): ?>
+                <<?php echo $meet_heading['heading_type']; ?> class="font-medium mb-lg-4"><?php echo $meet_heading['headline']; ?></<?php echo $meet_heading['heading_type']; ?>>
+              <?php endif; ?>
+              <?php if (!empty($meet_our_team) && is_array($meet_our_team)): ?>
+                <div class="meet-team-slider">
+                  <?php foreach($meet_our_team as $post_meet_our_team):
+                    $team_name = get_field('team_member_name', $post_meet_our_team->ID);
+                    $team_image = get_field('team_member_photo', $post_meet_our_team->ID);
+                    $team_content = get_field('team_member_content', $post_meet_our_team ->ID); ?>
+                    <div>
+                      <div class="row">
+                        <div class="col-lg-4 team-img-col">
+                          <img src="<?php echo $team_image['url']; ?>" alt="<?php echo $team_image['alt']; ?>" class="img-fluid">
+                          <?php if($meet_button): ?>
+                            <a href="<?php echo $meet_button['url']; ?>" class="meet-team-button" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
+                          <?php endif; ?>
+                        </div>
+                        <div class="col-lg-8 team-content-col">
+                          <h3 class="text-pink font-xm"><?php echo $team_name; ?></h3>
+                          <?php if($team_content): ?>
+                            <div class="wysiwyg-content">
+                              <?php echo $team_content; ?>
+                            </div>
+                          <?php endif; ?>
+                        </div>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+              <?php endif; ?>
+            </div>
+            <!------- End Here Meet Our Team Special Content ------>
+          <?php endif; ?>
+          
         </div>
       </div>
     <?php endif; ?>
