@@ -13,10 +13,8 @@ function acf_load_embellishment( $field ) {
     if ( is_dir( $images_dir ) ) {
         // Only SVG files expected in this folder
         $files = glob( $images_dir . '/*.svg' );
-    var_dump($files);
     }
 
-    var_dump( $images_dir );
     // Build an array of choices keyed by filename, with human-friendly labels
     $choices = array();
     foreach ( $files as $file ) {
