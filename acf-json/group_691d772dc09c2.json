@@ -40,7 +40,9 @@
                 "param": "post_type",
                 "operator": "!=",
                 "value": "post"
-            },
+            }
+        ],
+        [
             {
                 "param": "post_type",
                 "operator": "!=",
@@ -58,5 +60,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763705369
+    "modified": 1763812306
 }

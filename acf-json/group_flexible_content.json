@@ -242,7 +242,7 @@
                                     ],
                                     "return_format": "object",
                                     "min": "",
-                                    "max": "",
+                                    "max": 1,
                                     "allow_in_bindings": 0,
                                     "elements": "",
                                     "bidirectional": 0,
@@ -1029,11 +1029,6 @@
                                                 "field": "field_custom_columns_num_columns",
                                                 "operator": "==",
                                                 "value": "1"
-                                            },
-                                            {
-                                                "field": "field_691d3804892bb",
-                                                "operator": "==",
-                                                "value": "1"
                                             }
                                         ],
                                         [
@@ -1068,11 +1063,6 @@
                                         [
                                             {
                                                 "field": "field_custom_columns_num_columns",
-                                                "operator": "==",
-                                                "value": "1"
-                                            },
-                                            {
-                                                "field": "field_691d3804892bb",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
@@ -4022,5 +4012,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763726887
+    "modified": 1763805233
 }

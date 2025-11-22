@@ -1,7 +1,9 @@
 <?php $video_url = $section['video'] ?? '';  
 $background_color = $section['background_color'] ?? '';
 $background_water_color = $section['background_watercolor']['background_watercolor'] ?? '';
-$border = $section['border'] ?? '';
+$section_border = $section['border'] ?? []; 
+$border = $section_border['border'] ?? '';
+$angle = $section_border['angle'] ?? '';
 $background_pattern = $section['background_pattern'] ?? '';
 
 $num_columns = $section['num_columns'] ?? '';
@@ -108,16 +110,29 @@ if($background_water_color == 'Blue' && $background_color == 'White') {
 if($num_columns == '1') {
   $section_class = 'custom-column-one';
 } elseif($num_columns == '2') {
-  if($media_type == 'Image' && $include_special_content == true) {
+  if($choose_special_content == 'Media' && $media_type == 'Image' && $include_special_content == true) {
     $section_class = 'custom-column-two with-media with-image-media';
-  } elseif($media_type == 'Video' && $include_special_content == true) {
+  } elseif($choose_special_content == 'Media' && $media_type == 'Video' && $include_special_content == true) {
     $section_class = 'custom-column-two with-media with-video-media';
-  } else {
+  } elseif($choose_special_content == 'Meet Our Team' && $include_special_content == true) {
+    $section_class = 'custom-column-two with-meet-our-team';
+  } elseif($choose_special_content == 'Accordions' && $include_special_content == true) {
+    $section_class = 'custom-column-two with-accordions';
+  } elseif($choose_special_content == 'Call-to-Action' && $include_special_content == true) {
+    $section_class = 'custom-column-two with-cta';
+  }  else {
     $section_class = 'custom-column-two';
   }
-  $section_class = 'custom-column-two with-media with-video-media';
 } else {
   $section_class = '';
+}
+
+if($special_content_position == 'Left' && $include_special_content == true) {
+  $special_content_alignment = 'special-content-left-align';
+} elseif($special_content_position == 'Right' && $include_special_content == true) {
+  $special_content_alignment = 'special-content-right-align';
+} else {
+  $special_content_alignment = '';
 }
 
 if($num_columns == '2' && $include_special_content == false || $num_columns == '2' && $include_special_content == false && $include_image_headers_on_custom_content == true) {
@@ -142,6 +157,18 @@ if($num_columns == '2' && $include_special_content == false || $num_columns == '
     $right_column_class = 'col-lg-7 meet-team-info-col';
     $left_column_class = 'col-lg-5 events-info-col';
   }
+  if($choose_special_content == 'Accordions') {
+    $right_column_class = 'col-lg-6 accordions-info-col';
+    $left_column_class = 'col-lg-6 accordion-content-col';
+  }
+  if($choose_special_content == 'Push') {
+    $right_column_class = 'col-lg-4 push-info-col';
+    $left_column_class = 'col-lg-7 push-content-col';
+  }
+  if($choose_special_content == 'Media' && $media_type == 'Image' && $image_type == 'Portrait') {
+    $right_column_class = 'col-lg-4';
+    $left_column_class = 'col-lg-7 pt-4 custom-columns-content-col';
+  }
 } else {
   $heading_column_class = '';
   $left_column_class = '';
@@ -157,7 +184,7 @@ if($num_columns == '2' && $include_special_content == false && $include_image_he
 }
 
 if($num_columns == '2' && $include_special_content == true && $special_content_position == 'Left') {
-  $special_content_row_class = 'flex-lg-row-reverse';
+  $special_content_row_class = 'flex-lg-row-reverse justify-content-lg-center';
 } else {
   $special_content_row_class = '';
 }
@@ -185,27 +212,46 @@ if($embellishment == 'circles' ) {
   $embellishment_class = '';
 }
 
+if($border == 'angle' && $angle == 'down_left') {
+  $border_class = 'border-angle';
+  $angle_class = 'angle_down_left';
+  $margin_class = 'my-7 position-relative';
+} elseif($border == 'angle' && $angle == 'down_right') {
+  $border_class = 'border-angle';
+  $angle_class = 'angle_down_right';
+  $margin_class = 'my-7 position-relative';
+} else {
+  $border_class = '';
+  $angle_class = '';
+  $margin_class = '';
+}
+
 if($meet_background_color == 'Blue') {
   $meet_bg_color = 'bg-blue';
 }
-
 ?>
 
-<section class="custom-columns-zone <?php echo $section_class; ?> <?php echo $bg_color; ?> <?php echo $bg_water_color; ?> <?php if($num_columns == '1' && $alignment == 'Centered'): ?>text-center<?php endif; ?>">
+<section id="custom-columns-zone-<?php echo get_the_ID().'-'.$key; ?>" class="custom-columns-zone <?php echo $section_class; ?> <?php echo $bg_color; ?> <?php echo $bg_water_color; ?> <?php echo $border_class ?> <?php echo $angle_class ?> <?php echo $margin_class; ?> <?php if($num_columns == '1' && $alignment == 'Centered'): ?>text-center<?php endif; ?> <?php echo $special_content_alignment; ?>">
   <div class="container-fluid">
     <?php if($num_columns == '1'): ?>
+      <!--- Custom Column 1 Layout --->
       <div class="row justify-content-center">
         <div class="col-lg-9">
           <?php if($custom_heading['headline']): ?>
             <<?php echo $custom_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_color; ?>"><?php echo $custom_heading['headline']; ?></<?php echo $custom_heading['heading_type']; ?>>
           <?php endif; ?>
-          <?php if($column_1_heading['headline']): ?>
-            <<?php echo $column_1_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_color; ?>"><?php echo $column_1_heading['headline']; ?></<?php echo $column_1_heading['heading_type']; ?>>
+          <?php if($column_1_heading['headline']): 
+            if($heading_icon && $heading_icon_position == 'Above Heading'): ?>
+              <div class="mb-2 text-center heading-with-icon">
+                <?php echo $heading_icon; ?>
+              </div>
+            <?php endif; ?>
+            <<?php echo $column_1_heading['heading_type']; ?> class="font-medium <?php echo $heading_fonts; ?> mb-3 <?php echo $heading_color; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading'): ?>heading-with-icon<?php endif; ?>"><?php echo $column_1_heading['headline']; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading'): echo $heading_icon; endif;?></<?php echo $column_1_heading['heading_type']; ?>>
           <?php endif; 
           if($column_1_content): ?>
             <div class="wysiwyg-content fw-semibold mb-4 pb-4 <?php echo $text_color; ?>">
               <?php echo $column_1_content; ?>
-            </div>
+            </div> 
           <?php endif;
           if($column_1_gallery == true && $icons_or_image == 'Icons' ): ?>
               <?php if($icons_group_heading['headline']): ?>
@@ -264,9 +310,11 @@ if($meet_background_color == 'Blue') {
           <?php endif; ?>
         </div>
       </div>
+      <!--- End Here Custom Column 1 Layout --->
     <?php endif; ?>
     
     <?php if($num_columns == '2'): ?>
+      <!--- Custom Column 2 Layout --->
       <?php if($custom_heading['headline']): ?>
         <div class="row <?php echo $row_class; ?> pb-3">
           <div class="<?php echo $heading_column_class; ?>">
@@ -277,18 +325,20 @@ if($meet_background_color == 'Blue') {
       <div class="row <?php echo $row_class; ?> <?php echo $row_img_class; ?> <?php echo $special_content_row_class; ?>"> 
         <?php if( $column_1_heading['headline'] || $column_1_content || $column_1_button): ?>
           <div class="<?php echo $left_column_class; ?>">
-            <?php if($include_image_headers_on_custom_content == true && $column_1_image_header): ?>
+            <?php if($include_image_headers_on_custom_content == true && $column_1_image_header && $include_special_content === false): ?>
               <div class="mb-3">
                 <img src="<?php echo esc_url($column_1_image_header['sizes']['two_col_top']); ?>" alt="<?php echo esc_attr($column_1_image_header['alt']); ?>" class="img-fluid">
               </div>
             <?php endif;
             if($column_1_heading['headline']): 
-            if($heading_icon && $heading_icon_position == 'Above Heading'): ?>
-              <div class="mb-2 text-center heading-with-icon">
-                <?php echo $heading_icon; ?>
-              </div>
+            if($num_columns == 2 && $include_special_content == true):
+              if($heading_icon && $heading_icon_position == 'Above Heading'): ?>
+                <div class="mb-2 text-center heading-with-icon">
+                  <?php echo $heading_icon; ?>
+                </div>
+              <?php endif; ?>
             <?php endif; ?>
-              <<?php echo $column_1_heading['heading_type']; ?> class="font-medium <?php echo $heading_fonts; ?> mb-3 <?php echo $heading_color; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading'): ?>heading-with-icon<?php endif; ?>"><?php echo $column_1_heading['headline']; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading'): echo $heading_icon; endif;?></<?php echo $column_1_heading['heading_type']; ?>>
+              <<?php echo $column_1_heading['heading_type']; ?> class="font-medium <?php echo $heading_fonts; ?> mb-3 <?php echo $heading_color; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading' && $num_columns == 2 && $include_special_content == true): ?>heading-with-icon<?php endif; ?>"><?php echo $column_1_heading['headline']; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading' && $num_columns == 2 && $include_special_content == true): echo $heading_icon; endif;?></<?php echo $column_1_heading['heading_type']; ?>>
             <?php endif; 
             if($column_1_content): ?>
               <div class="wysiwyg-content <?php echo $content_fonts; ?> mb-3 <?php echo $text_color; ?>">
@@ -301,23 +351,124 @@ if($meet_background_color == 'Blue') {
           </div>
         <?php endif; ?>
         <div class="<?php echo $right_column_class; ?>">
-          <?php if( $column_2_heading['headline'] || $column_2_content || $column_2_button): ?>
-            <?php if($include_image_headers_on_custom_content == true && $column_2_image_header): ?>
-              <div class="mb-3">
-                <img src="<?php echo esc_url($column_2_image_header['sizes']['two_col_top']); ?>" alt="<?php echo esc_attr($column_2_image_header['alt']); ?>" class="img-fluid">
-              </div>
-            <?php endif;
-            if($column_2_heading['headline']): ?>
-                <<?php echo $column_2_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_fonts; ?> <?php echo $heading_color; ?>"><?php echo $column_2_heading['headline']; ?></<?php echo $column_2_heading['heading_type']; ?>>
-            <?php endif; 
-            if($column_2_content): ?>
-              <div class="wysiwyg-content <?php echo $content_fonts; ?> mb-3 <?php echo $text_color; ?>">
-                <?php echo $column_2_content; ?>
-              </div>
-            <?php endif; 
-            if($column_2_button): ?>
-              <a href="<?php echo $column_2_button['url']; ?>" class="site-button" <?php if($column_2_button['target']): ?>target="<?php echo $column_2_button['target']; ?>" <?php endif; ?>><?php echo $column_2_button['title']; ?></a>
+          <?php if($include_special_content == false): ?>
+            <?php if( $column_2_heading['headline'] || $column_2_content || $column_2_button): ?>
+              <?php if($include_image_headers_on_custom_content == true && $column_2_image_header && $include_special_content === false): ?>
+                <div class="mb-3">
+                  <img src="<?php echo esc_url($column_2_image_header['sizes']['two_col_top']); ?>" alt="<?php echo esc_attr($column_2_image_header['alt']); ?>" class="img-fluid">
+                </div>
+              <?php endif;
+              if($column_2_heading['headline']): ?>
+                  <<?php echo $column_2_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_fonts; ?> <?php echo $heading_color; ?>"><?php echo $column_2_heading['headline']; ?></<?php echo $column_2_heading['heading_type']; ?>>
+              <?php endif; 
+              if($column_2_content): ?>
+                <div class="wysiwyg-content <?php echo $content_fonts; ?> mb-3 <?php echo $text_color; ?>">
+                  <?php echo $column_2_content; ?>
+                </div>
+              <?php endif; 
+              if($column_2_button): ?>
+                <a href="<?php echo $column_2_button['url']; ?>" class="site-button" <?php if($column_2_button['target']): ?>target="<?php echo $column_2_button['target']; ?>" <?php endif; ?>><?php echo $column_2_button['title']; ?></a>
+              <?php endif; ?>
             <?php endif; ?>
+          <?php endif; ?>
+          
+          <?php if($include_special_content == true && $choose_special_content == 'Push' ): ?>
+            <!------- Push Special Content ------>
+            <div class="push-block">
+              <?php foreach($push as $post_push): 
+                $push_image = get_field('push_image', $post_push->ID);
+                $push_video = get_field('push_video', $post_push->ID);
+                $push_heading = get_field('push_headline', $post_push->ID); 
+                $push_subheading = get_field('push_subhead', $post_push->ID);
+                $push_link = get_field('push_link', $post_push->ID); ?>
+                <div class="push-info text-center">
+                  <?php if($push_image): ?>
+                    <img src="<?php echo $push_image['url']; ?>" alt="<?php echo $push_image['alt']; ?>" class="img-fluid">
+                  <?php endif; ?>
+                  <?php if($push_video): ?>
+                    <?php $thumb_image = "";
+                      $video_id = "";
+                      $embed_src = "";
+                      $src = "";
+                      // If iframe embed
+                      if (strpos($push_video, '<iframe') !== false) {
+                        preg_match('/src="([^"]+)"/', $push_video, $matches);
+                        $src = $matches[1] ?? '';
+                      } else {
+                        // Direct video URL
+                        $src = trim($push_video);
+                      } 
+                      // YouTube
+                      if (strpos($src, 'youtu') !== false) {
+                        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $src, $match);
+                        if (!empty($match[1])) {
+                          $video_id = $match[1];
+                          $thumb_image = "https://i3.ytimg.com/vi/{$video_id}/maxresdefault.jpg";
+                          $embed_src = "https://www.youtube.com/embed/{$video_id}?autoplay=1";
+                        }
+                      }
+                      // Vimeo
+                      elseif (strpos($src, 'vimeo') !== false) {
+                        preg_match('/vimeo\.com\/(?:video\/)?(\d+)/', $src, $vimeo_match);
+                        if (!empty($vimeo_match[1])) {
+                          $vid = $vimeo_match[1];
+                          $hash = @unserialize(file_get_contents("http://vimeo.com/api/v2/video/$vid.php"));
+                          $thumb_image = $hash[0]['thumbnail_large'] ?? '';
+                          $embed_src = "https://player.vimeo.com/video/$vid?autoplay=1";
+                        }
+                      }
+                      $unique_key = uniqid();
+                    ?>
+                    <div class="video-box <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?>">
+                      <div class="embed-responsive embed-responsive-16by9 video-wrapper position-relative">
+                        <span class="play-icon" id="play-<?php echo $unique_key; ?>">
+                          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-icon.svg" alt="Play Video">
+                        </span>
+                        <div class="video-image" style="background-image: url('<?php echo esc_url($thumb_image); ?>');">
+                          <div class="video-player vp-<?php echo $unique_key; ?>"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <script>
+                      jQuery(document).ready(function() {
+                        jQuery('#play-<?php echo $unique_key; ?>').on('click', function() {
+                          jQuery(this).hide(); // Hide play icon
+                          // Remove background
+                          jQuery('.vp-<?php echo $unique_key; ?>')
+                            .closest('.video-image')
+                            .css('background-image', 'none');
+                          // Add video iframe
+                          jQuery('.vp-<?php echo $unique_key; ?>').html(`
+                          <iframe title="Video" width="100%" height="360"
+                            src="<?php echo esc_url($embed_src); ?>"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy"
+                            allow="autoplay"></iframe>
+                        `);
+                          // Adjust height
+                          let videoHeight = jQuery('.push-info .video-image').outerHeight();
+                          jQuery('.push-info .video-player iframe').css('height', videoHeight);
+                        });
+                      });
+                    </script>
+                  <?php endif; ?>
+                  <div class="push-content p-4">
+                    <?php if($push_heading): ?>
+                      <h3 class="push-heading text-blue"><?php echo $push_heading; ?></h3>
+                    <?php endif; 
+                    if($push_subheading): ?>
+                      <p class="font-normal"><?php echo $push_subheading; ?></p>
+                    <?php endif; 
+                    if($push_link): ?>
+                      <a href="<?php echo $push_link['url']; ?>" class="push-button" <?php if($push_link['target']): ?>target="<?php echo $push_link['target']; ?>"<?php endif; ?>><?php echo $push_link['title']; ?></a>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <!------- End here Push Special Content ------>
           <?php endif; ?>
           
           <?php if($include_special_content == true && $choose_special_content == 'Media' && $media_type == 'Video' && $video_url): ?>
@@ -442,8 +593,53 @@ if($meet_background_color == 'Blue') {
             <!------- End Here Meet Our Team Special Content ------>
           <?php endif; ?>
           
+          <?php if($include_special_content == true && $choose_special_content == 'Accordions' ): ?>
+            <!------- Accordions Special Content ------>
+            <?php if (!empty($accordions) && is_array($accordions)): ?>
+              <div class="accordion accordion-block" id="accordionExample-<?php echo $key; ?>">
+                <?php $i = 1;
+                foreach($accordions as $accordion): 
+                $accordion_title = get_field('accordion_header', $accordion->ID); 
+                $accordion_content = get_field('accordion_content', $accordion->ID);
+                $accordion_image = get_field('accordion_image', $accordion->ID);
+                $accordion_button = get_field('accordion_button', $accordion->ID); ?>
+                  <div class="accordion-item">
+                    <h3 class="accordion-header" id="heading-<?php echo $key.'-'.$i; ?>">
+                      <button class="accordion-button font-lexend font-xs-medium fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-<?php echo $key.'-'.$i; ?>" aria-expanded="true" aria-controls="collapse-<?php echo $key.'-'.$i; ?>">
+                        <?php echo $accordion_title; ?>
+                      </button>
+                    </h3>
+                    <div id="collapse-<?php echo $key.'-'.$i; ?>" class="accordion-collapse collapse" aria-labelledby="heading-<?php echo $key.'-'.$i; ?>" data-bs-parent="#accordionExample-<?php echo $key; ?>">
+                      <div class="accordion-body">
+                        <div class="row">
+                          <?php if($accordion_image): ?>
+                            <div class="col-lg-4">
+                              <img src="<?php echo $accordion_image['url']; ?>" alt="<?php echo $accordion_image['alt']; ?>" class="img-fluid">
+                            </div>
+                          <?php endif; ?>
+                          <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-lg-12 pe-lg-5<?php endif; ?>">
+                            <?php if($accordion_content): ?>
+                              <div class="wysiwyg-content accordion-content pb-2">
+                                <?php echo wp_trim_words( $accordion_content, 42, '...' ); ?>
+                              </div>
+                            <?php endif; ?>
+                            <?php if($accordion_button): ?>
+                              <a href="<?php echo $accordion_button['url']; ?>" class="site-button" <?php if($accordion_button['target']): ?>target="<?php echo $accordion_button['target']; ?>"<?php endif; ?>><?php echo $accordion_button['title']; ?></a>
+                            <?php endif; ?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <?php $i++; endforeach; ?>
+              </div>
+            <?php endif; ?>
+            <!------- End Here Accordions Special Content ------>
+          <?php endif; ?>
+          
         </div>
       </div>
+      <!--- End here Custom Column 2 Layout --->
     <?php endif; ?>
   </div>
 </section>

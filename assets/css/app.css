@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 .font-lexend {
   font-family: "Lexend", sans-serif;
 }
-h1, .font-large {
+h1, .font-xl {
   font-size: 30px;
   line-height: 45px;
 }
@@ -753,7 +753,129 @@ img.alignleft {
 .bg-blue .heading-with-icon svg, .bg-blue .heading-with-icon svg path {
   fill: var(--white);
 }
+.custom-columns-zone .wysiwyg-content img:not(.img-fluid) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px 0;
+}
+.special-content-right-align .accordion-content-col, .special-content-right-align .push-content-col {
+  padding-right: 60px;
+}
+.special-content-left-align .accordion-content-col, .special-content-left-align .push-content-col {
+  padding-left: 60px;
+}
+.accordion-content {
+  line-height: 30px;
+}
+.bg-teal .accordion-block .site-button {
+  background-color: var(--black-100);
+  color: var(--white);
+}
+.bg-teal .accordion-block .site-button:hover {
+  background-color: var(--pink);
+  color: var(--white);
+}
+.accordion-block .accordion-header .accordion-button {
+  background-color: var(--yellow);
+  box-shadow: none;
+  border: 0;
+  border-radius: 10px;
+  color: var(--black);
+}
+.accordion-block .accordion-item {
+  background-color: transparent;
+  border: 0;
+  margin-bottom: 10px;
+}
+.accordion-block .accordion-item:last-of-type>.accordion-header .accordion-button.collapsed, 
+.accordion-block .accordion-item:first-of-type>.accordion-header .accordion-button {
+  border-radius: 10px;
+}
+.accordion-block .accordion-body {
+  padding: 26px 0 16px;
+}
+.accordion-block .accordion-button:after {
+  content: "\f0ab";
+  background-image: none;
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--black-100);
+  font-size: 27px;
+  width: 27px;
+  height: 27px;
+}
+.accordion-button:not(.collapsed)::after {
+  content: "\f0aa";
+  transform: none;
+}
+.push-heading {
+  font-size: 22px;
+  line-height: 22px;
+}
+.push-info {
+  background-color: var(--white);
+  filter: drop-shadow(10px 10px 0 var(--yellow));
+}
+.push-button {
+  background-color: #E73E50;
+  color: var(--white);
+  font-size: 16px;
+  line-height: 33px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 5px 36px;
+  display: inline-block;
+  text-decoration: none;
+}
+.push-button:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+.push-info .video-wrapper {
+  height: 230px;
+}
 
+.my-7 {
+  margin-top: 7rem;
+  margin-bottom: 7rem;
+}
+.angle_down_left{
+  clip-path: polygon(0 -50%, 100% -50%, 100% 90%, 0% 100%);
+}
+.angle_down_right{
+    clip-path: polygon(0 -50%, 100% -50%, 100% 100%, 0% 90%);
+}
+.angle_down_right:before{
+  transform: scaleX(-1);
+}
+.border-angle:before{
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: -51px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 52px;
+  background-position: right;
+}
+.border-angle.bg-blue:before{
+  background-image: url(../images/edge_blue.svg);
+}
+.border-angle.bg-light-blue:before{
+  background-image: url(../images/edge_light_blue.svg);
+}
+.border-angle.bg-purple:before{
+  background-image: url(../images/edge_purple.svg);
+}
+.border-angle.bg-teal:before{
+  background-image: url(../images/edge_teal.svg);
+}
+.border-angle.bg-yellow:before{
+  background-image: url(../images/edge_yellow.svg);
+}
 
 
 /* Media Queries  */
@@ -1200,7 +1322,7 @@ img.alignleft {
     padding-right: 60px;
     padding-left: 60px;
   }
-  h1, .font-large {
+  h1, .font-xl {
     font-size: 40px;
     line-height: 45px;
   }
@@ -1259,6 +1381,10 @@ img.alignleft {
   .with-embellishment:after {
     width: 150px;
     height: 172px;
+  }
+  .push-heading {
+    font-size: 28px;
+    line-height: 28px;
   }
 }
 @media only screen and (min-width: 1400px) {
