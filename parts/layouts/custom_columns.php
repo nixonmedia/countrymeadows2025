@@ -165,6 +165,10 @@ if($num_columns == '2' && $include_special_content == false || $num_columns == '
     $right_column_class = 'col-lg-4 push-info-col';
     $left_column_class = 'col-lg-7 push-content-col';
   }
+  if($choose_special_content == 'Call-to-Action') {
+    $right_column_class = 'col-lg-6';
+    $left_column_class = 'col-lg-6 pe-lg-5';
+  }
   if($choose_special_content == 'Media' && $media_type == 'Image' && $image_type == 'Portrait') {
     $right_column_class = 'col-lg-4';
     $left_column_class = 'col-lg-7 pt-4 custom-columns-content-col';
@@ -313,7 +317,7 @@ if($meet_background_color == 'Blue') {
       <!--- End Here Custom Column 1 Layout --->
     <?php endif; ?>
     
-    <?php if($num_columns == '2'): ?>
+    <?php if($num_columns == '2' || $num_columns == '3'): ?>
       <!--- Custom Column 2 Layout --->
       <?php if($custom_heading['headline']): ?>
         <div class="row <?php echo $row_class; ?> pb-3">
@@ -637,10 +641,35 @@ if($meet_background_color == 'Blue') {
             <!------- End Here Accordions Special Content ------>
           <?php endif; ?>
           
+          <?php if($include_special_content == true && $choose_special_content == 'Call-to-Action' ): ?>
+            <!------- CTA Special Content ------>
+            <div class="cta-block"> 
+              <?php foreach($call_to_action as $post_cta):
+                $cta_heading = get_field('cta_headline', $post_cta->ID); 
+                $cta_content = get_field('cta_content', $post_cta->ID);
+                $cta_link = get_field('cta_link', $post_cta->ID); ?>
+                <div class="cta-info text-center">
+                  <div class="cta-content">
+                    <?php if($cta_heading): ?>
+                      <h3 class="font-medium"><?php echo $cta_heading; ?></h3>
+                    <?php endif; 
+                    if($cta_content): ?>
+                      <div class="wysiwyg-content mb-3 text-start"><?php echo $cta_content; ?></div>
+                    <?php endif; 
+                    if($cta_link): ?>
+                      <a href="<?php echo $cta_link['url']; ?>" class="site-button" <?php if($cta_link['target']): ?>target="<?php echo $cta_link['target']; ?>"<?php endif; ?>><?php echo $cta_link['title']; ?></a>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <!------- End here CTA Special Content ------>
+          <?php endif; ?>
         </div>
       </div>
       <!--- End here Custom Column 2 Layout --->
     <?php endif; ?>
+    
   </div>
 </section>
 

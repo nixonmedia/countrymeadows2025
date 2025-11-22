@@ -835,6 +835,14 @@ img.alignleft {
 .push-info .video-wrapper {
   height: 230px;
 }
+.cta-info {
+  border-radius: 20px;
+  background: rgba(76, 87, 230, 0.05);
+  padding: 45px 60px 100px;
+}
+.cta-info .site-button {
+  border: 1px solid #B6B6B6;
+}
 
 .my-7 {
   margin-top: 7rem;
