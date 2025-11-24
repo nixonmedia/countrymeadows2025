@@ -140,7 +140,7 @@ $column_2_link = $content_column_2['link'];
                 <?php if (!empty($link) && !empty($icon)) : ?>
                   <li>
 
-                    <a href="<?php echo esc_url($link); ?>" target="_blank" rel="noopener">
+                    <a href="<?php echo esc_url($link); ?>" target="_blank" rel="noopener" class="text-white">
                       <i class="<?php echo esc_attr($icon); ?>"></i>
                     </a>
 
