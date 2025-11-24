@@ -72,7 +72,7 @@ function acf_embellishment_admin_preview_script() {
 
         function setPreview(previewEl, url){
             if(url){
-                previewEl.innerHTML = '<img src="'+url+'" style="width:60px;height:auto;border:1px solid #ddd;padding:4px;background:#fff;border-radius:3px"/>';
+                previewEl.innerHTML = '<img src="'+url+'" style="width:115px;height:115px;border:1px solid #ddd;padding:4px;background:#fff;border-radius:3px"/>';
             } else {
                 previewEl.innerHTML = '';
             }
