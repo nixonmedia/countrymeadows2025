@@ -127,312 +127,9 @@
                             "ui": 1
                         },
                         {
-                            "key": "field_691d384e892bd",
-                            "label": "Special Content Position",
-                            "name": "special_content_position",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "Left": "Left",
-                                "Right": "Right"
-                            },
-                            "default_value": false,
-                            "return_format": "value",
-                            "multiple": 0,
-                            "allow_null": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
-                        },
-                        {
-                            "key": "field_691d38f4892be",
-                            "label": "Choose Special Content",
-                            "name": "choose_special_content",
-                            "aria-label": "",
-                            "type": "radio",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "Push": "Push",
-                                "Media": "Media",
-                                "Meet Our Team": "Meet Our Team",
-                                "Accordions": "Accordions",
-                                "Call-to-Action": "Call-to-Action"
-                            },
-                            "default_value": "",
-                            "return_format": "value",
-                            "allow_null": 0,
-                            "other_choice": 0,
-                            "allow_in_bindings": 0,
-                            "layout": "vertical",
-                            "save_other_choice": 0
-                        },
-                        {
-                            "key": "field_691d393a892bf",
-                            "label": "Push",
-                            "name": "push",
-                            "aria-label": "",
-                            "type": "relationship",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Push"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "post_type": [
-                                "push"
-                            ],
-                            "post_status": "",
-                            "taxonomy": "",
-                            "filters": [
-                                "search",
-                                "post_type",
-                                "taxonomy"
-                            ],
-                            "return_format": "object",
-                            "min": "",
-                            "max": "",
-                            "allow_in_bindings": 0,
-                            "elements": "",
-                            "bidirectional": 0,
-                            "bidirectional_target": []
-                        },
-                        {
-                            "key": "field_691d39e8892c1",
-                            "label": "Media",
-                            "name": "media",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Media"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "Image": "Image",
-                                "Video": "Video"
-                            },
-                            "default_value": false,
-                            "return_format": "value",
-                            "multiple": 0,
-                            "allow_null": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
-                        },
-                        {
-                            "key": "field_691d3a10892c2",
-                            "label": "Image Type",
-                            "name": "image_type",
-                            "aria-label": "",
-                            "type": "radio",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Media"
-                                    },
-                                    {
-                                        "field": "field_691d39e8892c1",
-                                        "operator": "==",
-                                        "value": "Image"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "Landscape": "Landscape",
-                                "Portrait": "Portrait"
-                            },
-                            "default_value": "",
-                            "return_format": "value",
-                            "allow_null": 0,
-                            "other_choice": 0,
-                            "allow_in_bindings": 0,
-                            "layout": "vertical",
-                            "save_other_choice": 0
-                        },
-                        {
-                            "key": "field_691d3abf892c9",
-                            "label": "Landscape Image",
-                            "name": "landscape_image",
-                            "aria-label": "",
-                            "type": "image",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Media"
-                                    },
-                                    {
-                                        "field": "field_691d39e8892c1",
-                                        "operator": "==",
-                                        "value": "Image"
-                                    },
-                                    {
-                                        "field": "field_691d3a10892c2",
-                                        "operator": "==",
-                                        "value": "Landscape"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "array",
-                            "library": "all",
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": "",
-                            "allow_in_bindings": 0,
-                            "preview_size": "medium"
-                        },
-                        {
-                            "key": "field_691d3af3892cd",
-                            "label": "Portrait Image",
-                            "name": "portrait_image",
-                            "aria-label": "",
-                            "type": "image",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Media"
-                                    },
-                                    {
-                                        "field": "field_691d39e8892c1",
-                                        "operator": "==",
-                                        "value": "Image"
-                                    },
-                                    {
-                                        "field": "field_691d3a10892c2",
-                                        "operator": "==",
-                                        "value": "Portrait"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "array",
-                            "library": "all",
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": "",
-                            "allow_in_bindings": 0,
-                            "preview_size": "medium"
-                        },
-                        {
-                            "key": "field_691d3b2d892d1",
-                            "label": "Image Embellishment",
-                            "name": "image_embellishment",
+                            "key": "field_691ec877e7b2c",
+                            "label": "Special Content",
+                            "name": "special_content",
                             "aria-label": "",
                             "type": "group",
                             "instructions": "",
@@ -443,16 +140,6 @@
                                         "field": "field_691d3804892bb",
                                         "operator": "==",
                                         "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Media"
-                                    },
-                                    {
-                                        "field": "field_691d39e8892c1",
-                                        "operator": "==",
-                                        "value": "Image"
                                     }
                                 ]
                             ],
@@ -464,11 +151,11 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_691d88bdbd280",
-                                    "label": "Embellishment",
-                                    "name": "embellishment",
+                                    "key": "field_691d384e892bd",
+                                    "label": "Special Content Position",
+                                    "name": "special_content_position",
                                     "aria-label": "",
-                                    "type": "clone",
+                                    "type": "select",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -477,95 +164,27 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "clone": [
-                                        "group_691d8414e22c9"
-                                    ],
-                                    "display": "seamless",
-                                    "layout": "block",
-                                    "prefix_label": 0,
-                                    "prefix_name": 0
-                                }
-                            ]
-                        },
-                        {
-                            "key": "field_691d3a46892c6",
-                            "label": "Video",
-                            "name": "video",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
+                                    "choices": {
+                                        "Left": "Left",
+                                        "Right": "Right"
                                     },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Media"
-                                    },
-                                    {
-                                        "field": "field_691d39e8892c1",
-                                        "operator": "==",
-                                        "value": "Video"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_691d3d0c892d7",
-                            "label": "Video Embellishment",
-                            "name": "video_embellishment",
-                            "aria-label": "",
-                            "type": "group",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Media"
-                                    },
-                                    {
-                                        "field": "field_691d39e8892c1",
-                                        "operator": "==",
-                                        "value": "Video"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "layout": "block",
-                            "sub_fields": [
+                                    "default_value": false,
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "create_options": 0,
+                                    "save_options": 0
+                                },
                                 {
-                                    "key": "field_691d890ebd281",
-                                    "label": "Embellishment",
-                                    "name": "embellishment",
+                                    "key": "field_691d38f4892be",
+                                    "label": "Choose Special Content",
+                                    "name": "choose_special_content",
                                     "aria-label": "",
-                                    "type": "clone",
+                                    "type": "radio",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -574,38 +193,642 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "clone": [
-                                        "group_691d8414e22c9"
+                                    "choices": {
+                                        "Push": "Push",
+                                        "Media": "Media",
+                                        "Meet Our Team": "Meet Our Team",
+                                        "Accordions": "Accordions",
+                                        "Call-to-Action": "Call-to-Action"
+                                    },
+                                    "default_value": "",
+                                    "return_format": "value",
+                                    "allow_null": 0,
+                                    "other_choice": 0,
+                                    "allow_in_bindings": 0,
+                                    "layout": "vertical",
+                                    "save_other_choice": 0
+                                },
+                                {
+                                    "key": "field_691d393a892bf",
+                                    "label": "Push",
+                                    "name": "push",
+                                    "aria-label": "",
+                                    "type": "relationship",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_691d38f4892be",
+                                                "operator": "==",
+                                                "value": "Push"
+                                            }
+                                        ]
                                     ],
-                                    "display": "seamless",
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "push"
+                                    ],
+                                    "post_status": "",
+                                    "taxonomy": "",
+                                    "filters": [
+                                        "search",
+                                        "post_type",
+                                        "taxonomy"
+                                    ],
+                                    "return_format": "object",
+                                    "min": "",
+                                    "max": 1,
+                                    "allow_in_bindings": 0,
+                                    "elements": "",
+                                    "bidirectional": 0,
+                                    "bidirectional_target": []
+                                },
+                                {
+                                    "key": "field_691ec959e7b2e",
+                                    "label": "Media",
+                                    "name": "media",
+                                    "aria-label": "",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_691d38f4892be",
+                                                "operator": "==",
+                                                "value": "Media"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
                                     "layout": "block",
-                                    "prefix_label": 0,
-                                    "prefix_name": 0
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_691d39e8892c1",
+                                            "label": "Media Type",
+                                            "name": "media_type",
+                                            "aria-label": "",
+                                            "type": "select",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "Image": "Image",
+                                                "Video": "Video"
+                                            },
+                                            "default_value": false,
+                                            "return_format": "value",
+                                            "multiple": 0,
+                                            "allow_null": 0,
+                                            "allow_in_bindings": 0,
+                                            "ui": 0,
+                                            "ajax": 0,
+                                            "placeholder": "",
+                                            "create_options": 0,
+                                            "save_options": 0
+                                        },
+                                        {
+                                            "key": "field_691ece1ee7b36",
+                                            "label": "Landscape\/Portrait Image",
+                                            "name": "landscapeportrait_image",
+                                            "aria-label": "",
+                                            "type": "group",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_691d39e8892c1",
+                                                        "operator": "==",
+                                                        "value": "Image"
+                                                    }
+                                                ]
+                                            ],
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "layout": "block",
+                                            "sub_fields": [
+                                                {
+                                                    "key": "field_691d3a10892c2",
+                                                    "label": "Image Type",
+                                                    "name": "image_type",
+                                                    "aria-label": "",
+                                                    "type": "radio",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": 0,
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "choices": {
+                                                        "Landscape": "Landscape",
+                                                        "Portrait": "Portrait"
+                                                    },
+                                                    "default_value": "",
+                                                    "return_format": "value",
+                                                    "allow_null": 0,
+                                                    "other_choice": 0,
+                                                    "allow_in_bindings": 0,
+                                                    "layout": "vertical",
+                                                    "save_other_choice": 0
+                                                },
+                                                {
+                                                    "key": "field_691d3abf892c9",
+                                                    "label": "Landscape Image",
+                                                    "name": "landscape_image",
+                                                    "aria-label": "",
+                                                    "type": "image",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": [
+                                                        [
+                                                            {
+                                                                "field": "field_691d3a10892c2",
+                                                                "operator": "==",
+                                                                "value": "Landscape"
+                                                            }
+                                                        ]
+                                                    ],
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "return_format": "array",
+                                                    "library": "all",
+                                                    "min_width": "",
+                                                    "min_height": "",
+                                                    "min_size": "",
+                                                    "max_width": "",
+                                                    "max_height": "",
+                                                    "max_size": "",
+                                                    "mime_types": "",
+                                                    "allow_in_bindings": 0,
+                                                    "preview_size": "medium"
+                                                },
+                                                {
+                                                    "key": "field_691d3af3892cd",
+                                                    "label": "Portrait Image",
+                                                    "name": "portrait_image",
+                                                    "aria-label": "",
+                                                    "type": "image",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": [
+                                                        [
+                                                            {
+                                                                "field": "field_691d3a10892c2",
+                                                                "operator": "==",
+                                                                "value": "Portrait"
+                                                            }
+                                                        ]
+                                                    ],
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "return_format": "array",
+                                                    "library": "all",
+                                                    "min_width": "",
+                                                    "min_height": "",
+                                                    "min_size": "",
+                                                    "max_width": "",
+                                                    "max_height": "",
+                                                    "max_size": "",
+                                                    "mime_types": "",
+                                                    "allow_in_bindings": 0,
+                                                    "preview_size": "medium"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "key": "field_691ecb66e7b31",
+                                            "label": "Video",
+                                            "name": "video",
+                                            "aria-label": "",
+                                            "type": "group",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_691d39e8892c1",
+                                                        "operator": "==",
+                                                        "value": "Video"
+                                                    }
+                                                ]
+                                            ],
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "layout": "block",
+                                            "sub_fields": [
+                                                {
+                                                    "key": "field_691d3a46892c6",
+                                                    "label": "Video",
+                                                    "name": "video",
+                                                    "aria-label": "",
+                                                    "type": "text",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": 0,
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "default_value": "",
+                                                    "maxlength": "",
+                                                    "allow_in_bindings": 0,
+                                                    "placeholder": "",
+                                                    "prepend": "",
+                                                    "append": ""
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "key": "field_691d8a9181539",
+                                    "label": "Meet Our Teams",
+                                    "name": "meet_our_teams",
+                                    "aria-label": "",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_691d38f4892be",
+                                                "operator": "==",
+                                                "value": "Meet Our Team"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_691d9ae1ee8ca",
+                                            "label": "Heading",
+                                            "name": "heading",
+                                            "aria-label": "",
+                                            "type": "clone",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "clone": [
+                                                "group_691d7eaf7eef3"
+                                            ],
+                                            "display": "seamless",
+                                            "layout": "block",
+                                            "prefix_label": 0,
+                                            "prefix_name": 0
+                                        },
+                                        {
+                                            "key": "field_691d3e1a892e2",
+                                            "label": "Meet Our Team",
+                                            "name": "meet_our_team",
+                                            "aria-label": "",
+                                            "type": "relationship",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": [
+                                                "team_member"
+                                            ],
+                                            "post_status": "",
+                                            "taxonomy": "",
+                                            "filters": [
+                                                "search",
+                                                "post_type"
+                                            ],
+                                            "return_format": "object",
+                                            "min": "",
+                                            "max": "",
+                                            "allow_in_bindings": 0,
+                                            "elements": "",
+                                            "bidirectional": 0,
+                                            "bidirectional_target": []
+                                        },
+                                        {
+                                            "key": "field_691d3e41892e3",
+                                            "label": "Button",
+                                            "name": "button",
+                                            "aria-label": "",
+                                            "type": "link",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "return_format": "array",
+                                            "allow_in_bindings": 0
+                                        },
+                                        {
+                                            "key": "field_691d3e5f892e5",
+                                            "label": "Background Color",
+                                            "name": "background_color",
+                                            "aria-label": "",
+                                            "type": "clone",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "clone": [
+                                                "group_691d6ed5d9932"
+                                            ],
+                                            "display": "seamless",
+                                            "layout": "block",
+                                            "prefix_label": 0,
+                                            "prefix_name": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "key": "field_691d8c088153b",
+                                    "label": "Accordions",
+                                    "name": "accordions",
+                                    "aria-label": "",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_691d38f4892be",
+                                                "operator": "==",
+                                                "value": "Accordions"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_691d3fc9892eb",
+                                            "label": "Heading",
+                                            "name": "accordions_heading",
+                                            "aria-label": "",
+                                            "type": "clone",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "clone": [
+                                                "group_691d7eaf7eef3"
+                                            ],
+                                            "display": "seamless",
+                                            "layout": "block",
+                                            "prefix_label": 0,
+                                            "prefix_name": 0
+                                        },
+                                        {
+                                            "key": "field_691d4026892ee",
+                                            "label": "Accordions",
+                                            "name": "accordions",
+                                            "aria-label": "",
+                                            "type": "relationship",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": [
+                                                "accordion"
+                                            ],
+                                            "post_status": "",
+                                            "taxonomy": "",
+                                            "filters": [
+                                                "search",
+                                                "post_type",
+                                                "taxonomy"
+                                            ],
+                                            "return_format": "object",
+                                            "min": "",
+                                            "max": "",
+                                            "allow_in_bindings": 0,
+                                            "elements": "",
+                                            "bidirectional": 0,
+                                            "bidirectional_target": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "key": "field_691ecd66e7b34",
+                                    "label": "CTA",
+                                    "name": "cta",
+                                    "aria-label": "",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_691d38f4892be",
+                                                "operator": "==",
+                                                "value": "Call-to-Action"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_691d4062892ef",
+                                            "label": "Call to Action",
+                                            "name": "call_to_action",
+                                            "aria-label": "",
+                                            "type": "relationship",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": [
+                                                "call_to_action"
+                                            ],
+                                            "post_status": "",
+                                            "taxonomy": "",
+                                            "filters": [
+                                                "search",
+                                                "post_type",
+                                                "taxonomy"
+                                            ],
+                                            "return_format": "object",
+                                            "min": "",
+                                            "max": "",
+                                            "allow_in_bindings": 0,
+                                            "elements": "",
+                                            "bidirectional": 0,
+                                            "bidirectional_target": []
+                                        },
+                                        {
+                                            "key": "field_691d4092892f1",
+                                            "label": "Bottom Overlap",
+                                            "name": "bottom_overlap",
+                                            "aria-label": "",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "allow_in_bindings": 0,
+                                            "ui_on_text": "",
+                                            "ui_off_text": "",
+                                            "ui": 1
+                                        }
+                                    ]
+                                },
+                                {
+                                    "key": "field_691d3b2d892d1",
+                                    "label": "Embellishment",
+                                    "name": "embellishment",
+                                    "aria-label": "",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_691d38f4892be",
+                                                "operator": "==",
+                                                "value": "Media"
+                                            }
+                                        ],
+                                        [
+                                            {
+                                                "field": "field_691d38f4892be",
+                                                "operator": "==",
+                                                "value": "Meet Our Team"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_691d88bdbd280",
+                                            "label": "Embellishment",
+                                            "name": "embellishment",
+                                            "aria-label": "",
+                                            "type": "clone",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "clone": [
+                                                "group_691d8414e22c9"
+                                            ],
+                                            "display": "seamless",
+                                            "layout": "block",
+                                            "prefix_label": 0,
+                                            "prefix_name": 0,
+                                            "choices": {
+                                                "circles": "Circles",
+                                                "seeds": "Seeds",
+                                                "seeds-open": "Seeds Open",
+                                                "seeds-open-large": "Seeds Open Large",
+                                                "squiggles": "Squiggles",
+                                                "Xs": "Xs"
+                                            }
+                                        }
+                                    ],
+                                    "choices": {
+                                        "circles": "Circles",
+                                        "seeds": "Seeds",
+                                        "seeds-open": "Seeds Open",
+                                        "seeds-open-large": "Seeds Open Large",
+                                        "squiggles": "Squiggles",
+                                        "Xs": "Xs"
+                                    }
                                 }
                             ]
                         },
                         {
-                            "key": "field_691d8a9181539",
-                            "label": "Meet Our Teams",
-                            "name": "meet_our_teams",
+                            "key": "field_691d40f5fef0a",
+                            "label": "Custom Columns Zone Heading",
+                            "name": "custom_columns_zone_heading",
                             "aria-label": "",
                             "type": "group",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Meet Our Team"
-                                    }
-                                ]
-                            ],
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -614,7 +837,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_691d9ae1ee8ca",
+                                    "key": "field_691ed016e7b38",
                                     "label": "Heading",
                                     "name": "heading",
                                     "aria-label": "",
@@ -634,355 +857,8 @@
                                     "layout": "block",
                                     "prefix_label": 0,
                                     "prefix_name": 0
-                                },
-                                {
-                                    "key": "field_691d3e1a892e2",
-                                    "label": "Meet Our Team",
-                                    "name": "meet_our_team",
-                                    "aria-label": "",
-                                    "type": "relationship",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": [
-                                        [
-                                            {
-                                                "field": "field_691d3804892bb",
-                                                "operator": "==",
-                                                "value": "1"
-                                            },
-                                            {
-                                                "field": "field_691d38f4892be",
-                                                "operator": "==",
-                                                "value": "Meet Our Team"
-                                            }
-                                        ]
-                                    ],
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "post_type": [
-                                        "team_member"
-                                    ],
-                                    "post_status": "",
-                                    "taxonomy": "",
-                                    "filters": [
-                                        "search",
-                                        "post_type",
-                                        "taxonomy"
-                                    ],
-                                    "return_format": "object",
-                                    "min": "",
-                                    "max": "",
-                                    "allow_in_bindings": 0,
-                                    "elements": "",
-                                    "bidirectional": 0,
-                                    "bidirectional_target": []
-                                },
-                                {
-                                    "key": "field_691d3e41892e3",
-                                    "label": "Button",
-                                    "name": "button",
-                                    "aria-label": "",
-                                    "type": "link",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": [
-                                        [
-                                            {
-                                                "field": "field_691d3804892bb",
-                                                "operator": "==",
-                                                "value": "1"
-                                            },
-                                            {
-                                                "field": "field_691d38f4892be",
-                                                "operator": "==",
-                                                "value": "Meet Our Team"
-                                            }
-                                        ]
-                                    ],
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "array",
-                                    "allow_in_bindings": 0
-                                },
-                                {
-                                    "key": "field_691d3e5f892e5",
-                                    "label": "Background Color",
-                                    "name": "background_color",
-                                    "aria-label": "",
-                                    "type": "clone",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "clone": [
-                                        "group_691d6ed5d9932"
-                                    ],
-                                    "display": "seamless",
-                                    "layout": "block",
-                                    "prefix_label": 0,
-                                    "prefix_name": 0
-                                },
-                                {
-                                    "key": "field_691d3f0d892e6",
-                                    "label": "Embellishment",
-                                    "name": "meet_our_team_embellishment",
-                                    "aria-label": "",
-                                    "type": "clone",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": [
-                                        [
-                                            {
-                                                "field": "field_691d3804892bb",
-                                                "operator": "==",
-                                                "value": "1"
-                                            },
-                                            {
-                                                "field": "field_691d38f4892be",
-                                                "operator": "==",
-                                                "value": "Meet Our Team"
-                                            }
-                                        ]
-                                    ],
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "clone": [
-                                        "group_691d8414e22c9"
-                                    ],
-                                    "display": "seamless",
-                                    "layout": "block",
-                                    "prefix_label": 0,
-                                    "prefix_name": 0
                                 }
                             ]
-                        },
-                        {
-                            "key": "field_691d8c088153b",
-                            "label": "Accordions",
-                            "name": "accordions",
-                            "aria-label": "",
-                            "type": "group",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Accordions"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "layout": "block",
-                            "sub_fields": [
-                                {
-                                    "key": "field_691d3fc9892eb",
-                                    "label": "Heading",
-                                    "name": "accordions_heading",
-                                    "aria-label": "",
-                                    "type": "clone",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "clone": [
-                                        "group_691d7eaf7eef3"
-                                    ],
-                                    "display": "seamless",
-                                    "layout": "block",
-                                    "prefix_label": 0,
-                                    "prefix_name": 0
-                                },
-                                {
-                                    "key": "field_691d4026892ee",
-                                    "label": "Accordions",
-                                    "name": "accordions",
-                                    "aria-label": "",
-                                    "type": "relationship",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "post_type": [
-                                        "accordion"
-                                    ],
-                                    "post_status": "",
-                                    "taxonomy": "",
-                                    "filters": [
-                                        "search",
-                                        "post_type",
-                                        "taxonomy"
-                                    ],
-                                    "return_format": "object",
-                                    "min": "",
-                                    "max": "",
-                                    "allow_in_bindings": 0,
-                                    "elements": "",
-                                    "bidirectional": 0,
-                                    "bidirectional_target": []
-                                }
-                            ]
-                        },
-                        {
-                            "key": "field_691d4062892ef",
-                            "label": "Call to Action",
-                            "name": "call_to_action",
-                            "aria-label": "",
-                            "type": "relationship",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Call-to-Action"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "post_type": [
-                                "call_to_action"
-                            ],
-                            "post_status": "",
-                            "taxonomy": "",
-                            "filters": [
-                                "search",
-                                "post_type",
-                                "taxonomy"
-                            ],
-                            "return_format": "object",
-                            "min": "",
-                            "max": "",
-                            "allow_in_bindings": 0,
-                            "elements": "",
-                            "bidirectional": 0,
-                            "bidirectional_target": []
-                        },
-                        {
-                            "key": "field_691d4092892f1",
-                            "label": "Bottom Overlap",
-                            "name": "bottom_overlap",
-                            "aria-label": "",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "==",
-                                        "value": "1"
-                                    },
-                                    {
-                                        "field": "field_691d38f4892be",
-                                        "operator": "==",
-                                        "value": "Call-to-Action"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 0,
-                            "allow_in_bindings": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
-                            "ui": 1
-                        },
-                        {
-                            "key": "field_691d40f5fef0a",
-                            "label": "Custom Columns Zone Heading",
-                            "name": "custom_columns_zone_heading",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_691d413bfef0b",
-                            "label": "Custom Columns Zone Heading Type",
-                            "name": "custom_columns_zone_heading_type_",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "H2": "H2",
-                                "H3": "H3",
-                                "H4": "H4"
-                            },
-                            "default_value": false,
-                            "return_format": "value",
-                            "multiple": 0,
-                            "allow_null": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
                         },
                         {
                             "key": "field_691d415efef0c",
@@ -998,6 +874,11 @@
                                         "field": "field_custom_columns_num_columns",
                                         "operator": "==",
                                         "value": "2"
+                                    },
+                                    {
+                                        "field": "field_691d3804892bb",
+                                        "operator": "!=",
+                                        "value": "1"
                                     }
                                 ],
                                 [
@@ -1033,39 +914,7 @@
                             "type": "group",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_custom_columns_num_columns",
-                                        "operator": "==",
-                                        "value": "1"
-                                    }
-                                ],
-                                [
-                                    {
-                                        "field": "field_custom_columns_num_columns",
-                                        "operator": "==",
-                                        "value": "2"
-                                    },
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "!=",
-                                        "value": "1"
-                                    }
-                                ],
-                                [
-                                    {
-                                        "field": "field_custom_columns_num_columns",
-                                        "operator": "==",
-                                        "value": "3"
-                                    },
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "!=",
-                                        "value": "1"
-                                    }
-                                ]
-                            ],
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -1081,7 +930,15 @@
                                     "type": "select",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_custom_columns_num_columns",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1166,7 +1023,27 @@
                                     "type": "streamline_icon_picker",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_custom_columns_num_columns",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ],
+                                        [
+                                            {
+                                                "field": "field_custom_columns_num_columns",
+                                                "operator": "==",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "field": "field_691d3804892bb",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1182,7 +1059,27 @@
                                     "type": "select",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_custom_columns_num_columns",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ],
+                                        [
+                                            {
+                                                "field": "field_custom_columns_num_columns",
+                                                "operator": "==",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "field": "field_691d3804892bb",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1232,7 +1129,15 @@
                                     "type": "true_false",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_custom_columns_num_columns",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1438,7 +1343,7 @@
                                         {
                                             "key": "field_691d4d4eaf3b3",
                                             "label": "Heading",
-                                            "name": "image_heading",
+                                            "name": "heading",
                                             "aria-label": "",
                                             "type": "clone",
                                             "instructions": "",
@@ -1486,7 +1391,6 @@
                                             "taxonomy": "",
                                             "filters": [
                                                 "search",
-                                                "post_type",
                                                 "taxonomy"
                                             ],
                                             "return_format": "object",
@@ -1544,11 +1448,6 @@
                                         "field": "field_custom_columns_num_columns",
                                         "operator": "==",
                                         "value": "3"
-                                    },
-                                    {
-                                        "field": "field_691d3804892bb",
-                                        "operator": "!=",
-                                        "value": "1"
                                     }
                                 ]
                             ],
@@ -1803,11 +1702,11 @@
                             "prefix_name": 0
                         },
                         {
-                            "key": "field_691d920f0e610",
+                            "key": "field_691fe6f12c1e7",
                             "label": "Background Watercolor",
                             "name": "background_watercolor",
                             "aria-label": "",
-                            "type": "clone",
+                            "type": "group",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1816,13 +1715,31 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "clone": [
-                                "group_691d919a2b6c1"
-                            ],
-                            "display": "seamless",
                             "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
+                            "sub_fields": [
+                                {
+                                    "key": "field_691d920f0e610",
+                                    "label": "Background Watercolor",
+                                    "name": "background_watercolor",
+                                    "aria-label": "",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "clone": [
+                                        "group_691d919a2b6c1"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0
+                                }
+                            ]
                         },
                         {
                             "key": "field_691d54c1af3c8",
@@ -1847,9 +1764,9 @@
                             "prefix_name": 0
                         },
                         {
-                            "key": "field_691d7a0be1222",
-                            "label": "Background Embellishment",
-                            "name": "background_embellishment",
+                            "key": "field_692001e07dce2",
+                            "label": "Background Pattern",
+                            "name": "background_pattern",
                             "aria-label": "",
                             "type": "clone",
                             "instructions": "",
@@ -4095,5 +4012,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763605489
+    "modified": 1763805233
 }

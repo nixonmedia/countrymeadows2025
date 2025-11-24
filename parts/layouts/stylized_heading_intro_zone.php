@@ -28,7 +28,16 @@ $show_layered_image = $media_column && $media_type == 'Image' && $image_type == 
 $background_pattern_class = '';
 if ($background_pattern == 'Dots') {
   $background_pattern_class = 'dots-background-pattern';
+} if ($background_pattern == 'Circles') {
+  $background_pattern_class = 'circles-background-pattern';
+} if ($background_pattern == 'Honeycomb') {
+  $background_pattern_class = 'honeycomb-background-pattern';
+} if ($background_pattern == 'Sprinkles') {
+  $background_pattern_class = 'sprinkles-background-pattern';
+} else {
+  $background_pattern_class = '';
 }
+
 
 $color = $intro['background_watercolor'] ?? '';
 
@@ -48,6 +57,16 @@ $section_class = '';
 
 if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embellishment') {
   $section_class .= ' layered-image-zone';
+} elseif($media_column && $media_type === 'Image' && $image_type === 'Standard' ) {
+  $section_class .= ' image-media-column';
+  if(!$disable_sidebar_submenu) {
+    $section_class .= ' image-media-column with-sidebar-submenu';
+  }
+} elseif($media_column && $media_type === 'Video' ) {
+  $section_class .= ' video-media-column with-sidebar-submenu';
+  if(!$disable_sidebar_submenu) {
+    $section_class .= ' video-media-column with-sidebar-submenu';
+  }
 }
 
 ?>
