@@ -669,6 +669,9 @@ if($meet_background_color == 'Blue') {
             
             <?php if($include_special_content == true && $choose_special_content == 'Accordions' ): ?>
               <!------- Accordions Special Content ------>
+              <?php if($accordions_heading['headline']): ?>
+                <<?php echo $accordions_heading['heading_type']; ?> class="font-medium mb-4 <?php echo $heading_color; ?>"><?php echo $accordions_heading['headline']; ?></<?php echo $accordions_heading['heading_type']; ?>>
+              <?php endif; ?>
               <?php if (!empty($accordions) && is_array($accordions)): ?>
                 <div class="accordion accordion-block" id="accordionExample-<?php echo $key; ?>">
                   <?php $i = 1;
