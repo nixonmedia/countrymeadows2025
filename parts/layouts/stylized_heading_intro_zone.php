@@ -26,13 +26,13 @@ $show_layered_image = $media_column && $media_type == 'Image' && $image_type == 
 
 // Set background pattern class
 $background_pattern_class = '';
-if ($background_pattern == 'dots') {
+if ($background_pattern == 'Dots') {
   $background_pattern_class = 'dots-background-pattern';
-} if ($background_pattern == 'circles') {
+} if ($background_pattern == 'Circles') {
   $background_pattern_class = 'circles-background-pattern';
-} if ($background_pattern == 'honeycomb') {
+} if ($background_pattern == 'Honeycomb') {
   $background_pattern_class = 'honeycomb-background-pattern';
-} if ($background_pattern == 'sprinkles') {
+} if ($background_pattern == 'Sprinkles') {
   $background_pattern_class = 'sprinkles-background-pattern';
 } else {
   $background_pattern_class = '';

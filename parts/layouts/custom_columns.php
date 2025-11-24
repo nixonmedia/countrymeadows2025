@@ -100,7 +100,7 @@ $column_3_button = $column_3['button'] ?? '';
   $bg_color = 'bg-white';
   $text_color = 'text-black';
   $heading_color = 'text-black';
-  $svg_fill = '';
+  $svg_fill = '#F1F1F1';
 }
 
 if($background_water_color == 'Blue' && $background_color == 'White') {
@@ -257,16 +257,16 @@ if($border == 'angle' && $angle == 'down_left') {
   $margin_class = '';
 }
 
-if($background_pattern == 'circles') {
+if($background_pattern == 'Circles') {
   $bg_pattern_class = 'bg-pattern bg-circles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/circles.svg');
-} elseif($background_pattern == 'dots') {
+} elseif($background_pattern == 'Dots') {
   $bg_pattern_class = 'bg-pattern bg-dots-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/dots.svg');
-} elseif($background_pattern == 'honeycomb') {
+} elseif($background_pattern == 'Honeycomb') {
   $bg_pattern_class = 'bg-pattern bg-honeycomb-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/honeycomb.svg');
-} elseif($background_pattern == 'sprinkles') {
+} elseif($background_pattern == 'Sprinkles') {
   $bg_pattern_class = 'bg-pattern bg-sprinkles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/sprinkles.svg');
 } else {

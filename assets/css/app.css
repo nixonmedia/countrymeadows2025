@@ -487,6 +487,7 @@ img.alignleft {
 .bg-water-color {
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 .bg-water-color:after {
   content: "";
@@ -883,19 +884,10 @@ img.alignleft {
 .bg-pattern {
   position: relative;
   z-index: 1;
-}
-.bg-pattern:after {
-  content: "";
-  position: absolute;
   background-image: var(--svg-bg);
-  background-size: contain;
-  background-position: bottom right;
+  background-size: 350px;
+  background-position: 100% 70%;
   background-repeat: no-repeat;
-  width: 440px;
-  height: 340px;
-  bottom: 100px;
-  right: 0;
-  z-index: -1;
 }
 
 /* Media Queries  */
@@ -1261,7 +1253,7 @@ img.alignleft {
   }
   
   .bg-water-color:after {
-    height: 442px;
+    height: 100%;
     width: 1035px;
   }
   .wysiwyg-testimonial-content {

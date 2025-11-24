@@ -1,20 +1,20 @@
 </main>
 <?php
 $footer = get_field("footer", "option");
-$ecumenical_text = $footer['ecumenical_text'];
-$footer_logo = $footer['footer_logo'];
-$button_1 = $footer['button_1'];
-$button_2 = $footer['button_2'];
-$badges = $footer['badges'];
-$social_media = $footer['social_media'];
-$content_column_1 = $footer['content_column_1'];
-$column_1_image = $content_column_1['image'];
-$column_1_text = $content_column_1['text'];
-$column_1_link = $content_column_1['link'];
-$content_column_2 = $footer['content_column_2'];
-$column_2_image = $content_column_2['image'];
-$column_2_text = $content_column_2['text'];
-$column_2_link = $content_column_2['link'];
+$ecumenical_text = $footer['ecumenical_text'] ?? '';
+$footer_logo = $footer['footer_logo'] ?? '';
+$button_1 = $footer['button_1'] ?? '';
+$button_2 = $footer['button_2'] ?? '';
+$badges = $footer['badges'] ?? '';
+$social_media = $footer['social_media'] ?? '';
+$content_column_1 = $footer['content_column_1'] ?? '';
+$column_1_image = $content_column_1['image'] ?? '';
+$column_1_text = $content_column_1['text'] ?? '';
+$column_1_link = $content_column_1['link'] ?? '';
+$content_column_2 = $footer['content_column_2'] ?? '';
+$column_2_image = $content_column_2['image'] ?? '';
+$column_2_text = $content_column_2['text'] ?? '';
+$column_2_link = $content_column_2['link'] ?? '';
 
 ?>
 <footer class="site-footer bg-blue">
