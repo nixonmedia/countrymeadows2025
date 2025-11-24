@@ -3,11 +3,11 @@
     "title": "Border Component",
     "fields": [
         {
-            "key": "field_691d7a69318ee",
+            "key": "field_69219fef56693",
             "label": "Border",
             "name": "border",
             "aria-label": "",
-            "type": "select",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,66 +16,98 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "none": "None",
-                "angle": "Angle",
-                "straight": "Straight"
-            },
-            "default_value": "none: None",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
-            "key": "field_691d7acf318ef",
-            "label": "Angle",
-            "name": "angle",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_691d7a69318ee",
-                        "operator": "==",
-                        "value": "angle"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "down to the right": "Down to the right",
-                "down to the  left": "Down to the  left"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_691d7a69318ee",
+                    "label": "Border",
+                    "name": "border",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "none": "None",
+                        "angle": "Angle",
+                        "straight": "Straight"
+                    },
+                    "default_value": "none: None",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
+                },
+                {
+                    "key": "field_691d7acf318ef",
+                    "label": "Angle",
+                    "name": "angle",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_691d7a69318ee",
+                                "operator": "==",
+                                "value": "angle"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "down_right": "Down to the right",
+                        "down_left": "Down to the  left"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
+                }
+            ]
         }
     ],
     "location": [
         [
             {
                 "param": "post_type",
-                "operator": "==",
+                "operator": "!=",
                 "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "call_to_action"
             }
         ]
     ],
@@ -89,5 +121,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763539836
+    "modified": 1763812385
 }
