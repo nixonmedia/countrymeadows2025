@@ -886,7 +886,7 @@ add_filter('upload_mimes', 'cc_mime_types');
 
 
 // Load ACF options preview (use filesystem path, not URI)
-$acf_preview_file = get_template_directory() . '/inc/streamline-icon-picker/acf-select-options-preview.php';
+$acf_preview_file = get_template_directory() . '/inc/acf-select-options-preview.php';
 if ( file_exists( $acf_preview_file ) ) {
     require_once $acf_preview_file;
 } else {
