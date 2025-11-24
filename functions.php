@@ -25,6 +25,8 @@ if (! function_exists('country_meadows_support')) :
         // Add support for block styles.
         add_theme_support('wp-block-styles');
         add_theme_support('post-thumbnails');
+        add_theme_support('title-tag');
+
 
         // Enqueue editor styles.
         add_editor_style('style.css');
@@ -43,8 +45,8 @@ if (! function_exists('country_meadows_support')) :
 		add_image_size('footer-column', 225, 125, true);
         add_image_size('wysiwyg-event-image', 396, 554, true);
         add_image_size('wysiwyg-gallery-image', 300, 300, true);
-        add_image_size('allentown', 551, 367, true);
-		add_image_size('cm-couple', 661, 728, true);
+        add_image_size( 'intro_photo', 550, 365, true );
+        add_image_size( 'layered_photo', 760, 9999, false );
 		
 	}
 endif;
@@ -76,6 +78,7 @@ if (! function_exists('country_meadows_styles')) :
         // Enqueue theme stylesheet.
         wp_enqueue_style('country_meadows-style');
 
+        
 
         // Enqueue Bootstrap CSS
         wp_enqueue_style('country_meadows-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array(), $theme_version);
@@ -101,6 +104,9 @@ if (! function_exists('country_meadows_styles')) :
 
         // Localize script for AJAX
         wp_localize_script('country_meadows-custom-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+        
+        // Enqueue Font Awesome
+        wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/151a7a2238.js', array(), null, true);
     }
 
 endif;
@@ -886,7 +892,7 @@ add_filter('upload_mimes', 'cc_mime_types');
 
 
 // Load ACF options preview (use filesystem path, not URI)
-$acf_preview_file = get_template_directory() . '/inc/streamline-icon-picker/acf-select-options-preview.php';
+$acf_preview_file = get_template_directory() . '/inc/acf-select-options-preview.php';
 if ( file_exists( $acf_preview_file ) ) {
     require_once $acf_preview_file;
 } else {
