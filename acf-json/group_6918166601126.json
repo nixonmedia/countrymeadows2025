@@ -33,9 +33,9 @@
                         "id": ""
                     },
                     "choices": {
-                        "H2": "H2",
-                        "H3": "H3",
-                        "H4": "H4"
+                        "h2": "H2",
+                        "h3": "H3",
+                        "h4": "H4"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -96,5 +96,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763533123
+    "modified": 1763635438
 }

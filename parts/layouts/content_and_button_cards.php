@@ -11,6 +11,7 @@ $background_embellishment = $section['background_embellishment'] ?? "";
 $border = $border_angle["border"] ?? "";
 $angle = $border_angle["angle"] ?? "";
 
+// var_dump($background_color);
 
 $background_color_classes = [
     'White' => 'bg-white',
@@ -39,11 +40,11 @@ $valid_buttons = [];
 if (!empty($button_cards)) {
 
     foreach ($button_cards as $button) {
-        var_dump($button);
+        // var_dump($button);
         $text = trim($button['text'] ?? '');
         $link_title = $button['link']['title'] ?? '';
         $link_url = $button['link']['url'] ?? '';
-        $button_icon = trim($button['icon'] ?? '');
+        $button_icon = $button['icon'] ?? '';
 
         if ($text !== '' || $link !== '' || $icon !== '') {
             $valid_buttons[] = $button;
