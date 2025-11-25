@@ -25,6 +25,8 @@ if (! function_exists('country_meadows_support')) :
         // Add support for block styles.
         add_theme_support('wp-block-styles');
         add_theme_support('post-thumbnails');
+        add_theme_support('title-tag');
+
 
         // Enqueue editor styles.
         add_editor_style('style.css');
@@ -43,9 +45,13 @@ if (! function_exists('country_meadows_support')) :
 		add_image_size('footer-column', 225, 125, true);
         add_image_size('wysiwyg-event-image', 396, 554, true);
         add_image_size('wysiwyg-gallery-image', 300, 300, true);
+        add_image_size( 'intro_photo', 550, 365, true );
+        add_image_size( 'layered_photo', 760, 9999, false );
         add_image_size('allentown', 551, 367, true);
 		add_image_size('cm-couple', 661, 728, true);
-		
+        add_image_size('two_col_wide_image', 575, 345, true);
+        add_image_size('two_col_tall_image', 440, 525, true);
+        add_image_size('two_col_top', 444, 263, true);
 	}
 endif;
 
@@ -76,6 +82,7 @@ if (! function_exists('country_meadows_styles')) :
         // Enqueue theme stylesheet.
         wp_enqueue_style('country_meadows-style');
 
+        
 
         // Enqueue Bootstrap CSS
         wp_enqueue_style('country_meadows-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array(), $theme_version);
@@ -90,17 +97,17 @@ if (! function_exists('country_meadows_styles')) :
         // Enqueue slick css
         wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array(), $theme_version);
 
+        // Enqueue slick JS
+        wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), $theme_version, true);
 
         // Enqueue Custom JS
         wp_enqueue_script('country_meadows-custom-js', get_template_directory_uri() . '/assets/js/app.js', array('jquery'), '8.7', true);
 
-        // Enqueue slick JS
-
-        wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), $theme_version, true);
-
-
         // Localize script for AJAX
         wp_localize_script('country_meadows-custom-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+        
+        // Enqueue Font Awesome
+        wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/151a7a2238.js', array(), null, true);
     }
 
 endif;
@@ -437,33 +444,33 @@ function wysiwyg_image_gallery_shortcode($atts)
     /* Slick init script */
     $output .= "
     <script>
-    jQuery(document).ready(function($) {
-        $('#{$slider_id}').slick({
-            slidesToShow: {$slidesToShow},
-            slidesToScroll: 1,
-            infinite: true,
-            arrows: true,
-            dots: false,
-            speed: 700,
-            autoplay: false,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1
+        jQuery(document).ready(function($) {
+            $('#{$slider_id}').slick({
+                slidesToShow: {$slidesToShow},
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true,
+                dots: false,
+                speed: 700,
+                autoplay: false,
+                responsive: [
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
                     }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
+                ]
+            });
         });
-    });
     </script>";
 
     return $output;
@@ -877,9 +884,19 @@ function wysiwyg_event_shortcode($atts)
 add_shortcode('add_event', 'wysiwyg_event_shortcode');
 
 
-// Allow Upload SVG File Tyoe
+// Allow Upload SVG File Type
 function cc_mime_types($mimes) {
  $mimes['svg'] = 'image/svg+xml';
  return $mimes;
 }
 add_filter('upload_mimes', 'cc_mime_types');
+
+
+// Load ACF options preview (use filesystem path, not URI)
+$acf_preview_file = get_template_directory() . '/inc/acf-select-options-preview.php';
+if ( file_exists( $acf_preview_file ) ) {
+    require_once $acf_preview_file;
+} else {
+    error_log( "ACF preview file not found: " . $acf_preview_file );
+}
+

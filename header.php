@@ -36,8 +36,8 @@
                             ?>
                             <div class="d-none d-lg-flex gap-3 flex-wrap justify-content-end">
                                 <?php $header_button = get_field("header_button", "option"); 
-                                $button = $header_button['button']; 
-                                $button_icon = $header_button['button_icon']; 
+                                $button = $header_button['button'] ?? ''; 
+                                $button_icon = $header_button['button_icon'] ?? ''; 
                                 if($button): ?>
                                     <a href="<?php echo $button['url']; ?>" class="top-header-button" target="<?php echo $button['target']; ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
