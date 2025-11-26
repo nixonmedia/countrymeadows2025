@@ -620,7 +620,7 @@ if($meet_background_color == 'Blue') {
             
             <?php if($include_special_content == true && $choose_special_content == 'Media' && $media_type == 'Image'): ?>
               <!------- Image Special Content ------>
-              <div class="image-box <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?>">
+              <div class="image-box text-xs-center text-start <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?>">
                 <?php if($image_type == 'Landscape' && $landscape_image): ?>
                   <img src="<?php echo esc_url($landscape_image['sizes']['two_col_wide_image']); ?>" alt="<?php echo esc_attr($landscape_image['alt']); ?>" class="img-fluid">
                 <?php elseif($image_type == 'Portrait' && $portrait_image): ?>
@@ -634,7 +634,7 @@ if($meet_background_color == 'Blue') {
               <!------- Meet Our Team Special Content ------>
               <div class="meet-team-block <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?> <?php echo $meet_bg_color; ?> bg-pink">
                 <?php if($meet_heading['headline']): ?>
-                  <<?php echo $meet_heading['heading_type']; ?> class="font-medium mb-lg-4"><?php echo $meet_heading['headline']; ?></<?php echo $meet_heading['heading_type']; ?>>
+                  <<?php echo $meet_heading['heading_type']; ?> class="font-medium mb-4"><?php echo $meet_heading['headline']; ?></<?php echo $meet_heading['heading_type']; ?>>
                 <?php endif; ?>
                 <?php if (!empty($meet_our_team) && is_array($meet_our_team)): ?>
                   <div class="meet-team-slider">
@@ -647,7 +647,7 @@ if($meet_background_color == 'Blue') {
                           <div class="col-lg-4 team-img-col">
                             <img src="<?php echo $team_image['url']; ?>" alt="<?php echo $team_image['alt']; ?>" class="img-fluid">
                             <?php if($meet_button): ?>
-                              <a href="<?php echo $meet_button['url']; ?>" class="meet-team-button" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
+                              <a href="<?php echo $meet_button['url']; ?>" class="meet-team-button mb-4 mb-log-0" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
                             <?php endif; ?>
                           </div>
                           <div class="col-lg-8 team-content-col">
@@ -673,7 +673,7 @@ if($meet_background_color == 'Blue') {
                 <<?php echo $accordions_heading['heading_type']; ?> class="font-medium mb-4 <?php echo $heading_color; ?>"><?php echo $accordions_heading['headline']; ?></<?php echo $accordions_heading['heading_type']; ?>>
               <?php endif; ?>
               <?php if (!empty($accordions) && is_array($accordions)): ?>
-                <div class="accordion accordion-block" id="accordionExample-<?php echo $key; ?>">
+                <div class="accordion accordion-block mt-3 mt-lg-0" id="accordionExample-<?php echo $key; ?>">
                   <?php $i = 1;
                   foreach($accordions as $accordion): 
                   $accordion_title = get_field('accordion_header', $accordion->ID); 
