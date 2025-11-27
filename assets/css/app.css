@@ -648,11 +648,12 @@ img.alignleft {
 }
 .meet-team-block {
   border-radius: 20px;
-  background: rgba(248, 230, 235, 0.50);
+  /* background: rgba(248, 230, 235, 0.50); */
   padding: 55px 30px;
 }
 .meet-team-slider .slick-arrow {
-  color: var(--pink);
+  /* color: var(--pink); */
+  color: inherit;
   top: -75px;
   bottom: unset;
   z-index: 1;
@@ -676,21 +677,21 @@ img.alignleft {
   border-radius: 0 20px;
 }
 .meet-team-button {
-  text-decoration: none;
-  display: inline-block;
+  /* text-decoration: none;
+  display: inline-block; */
   font-size: 14px;
   line-height: 18px;
-  font-weight: 700;
+  /* font-weight: 700;
   color: var(--white);
   background-color: var(--pink);
+  border-radius: 10px; */
   padding: 10px 18px;
-  border-radius: 10px;
   margin-top: 20px;
 }
-.meet-team-button:hover {
+/* .meet-team-button:hover {
   background-color: var(--black-100);
   color: var(--white);
-}
+} */
 
 .with-embellishment {
   position: relative;
@@ -1336,7 +1337,7 @@ img.alignleft {
     padding: 45px 60px 100px;
   }
   .push-info .video-wrapper {
-    height: 230px;
+    height: 362px;
   }
   .bg-pattern {
     background-image: var(--svg-bg);
@@ -1350,6 +1351,10 @@ img.alignleft {
   .custom-columns-zone {
     padding-top: 50px;
     padding-bottom: 50px;
+  }
+  .meet-team-button {
+    font-size: 14px;
+    line-height: 18px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -1394,8 +1399,7 @@ img.alignleft {
     padding-bottom: 80px;
   }
   .custom-columns-zone.border-angle {
-    padding-top: 140px;
-    padding-bottom: 160px;
+    padding-bottom: 100px;
   }
   .angle_down_left{
     clip-path: polygon(0 -50%, 100% -50%, 100% 95%, 0% 100%);
@@ -1517,6 +1521,10 @@ img.alignleft {
 @media only screen and (min-width: 1400px) {
   .meet-team-button {
     font-size: 16px;
+  }
+  .border-angle:before {
+    top: -58px;
+    height: 60px;
   }
 }
 @media only screen and (min-width: 1620px) {
