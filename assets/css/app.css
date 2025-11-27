@@ -886,12 +886,20 @@ img.alignleft {
 .custom-column-two.with-media.with-video-media .video-wrapper, .custom-column-two.with-media.with-video-media .video-wrapper iframe {
   height: 345px !important;
 }
-.custom-columns-zone .image-box {
+.image-box {
   width: max-content;
   max-width: 100%;
 }
 .custom-columns-zone .image-box img {
   border-radius: 0 20px;
+}
+
+
+/*********************
+*** Split Columns ***
+*********************/
+.split-column-zone .image-box img {
+  border-radius: 20px 0;
 }
 
 /* Media Queries  */
