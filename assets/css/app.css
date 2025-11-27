@@ -893,6 +893,67 @@ img.alignleft {
   height: 345px !important;
 }
 
+/* Resources */
+.underline {
+    width: 100px;
+    height: 5px;
+    background: var(--pink);
+    border-radius: 6px;
+}
+
+/* Resource card box */
+.resource-card {
+    background: #ffffff;
+    min-height: 160px;
+    position: relative;
+    box-shadow: 0px 4px 60px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Blue top-right corner triangle with icon */
+.corner-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+       width: 80px;
+    height: 80px;
+
+    background: var(--blue); 
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.corner-badge img {
+    position: absolute;
+top: 15px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.categories-box li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.categories-box li:last-child {
+    border-bottom: none;
+}
+
+.categories-box a {
+    color: var(--blue);
+
+}
+.resources-category-list li{
+  line-height:45px;
+}
+
+/* Resources ends */
+
+
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   body {
@@ -1159,7 +1220,7 @@ img.alignleft {
     height: 52px;
     width: 62px;
   }
-  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
+  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link , .resource-card p {
     font-size: 16px;
     line-height: 24px;
   }
@@ -1305,6 +1366,9 @@ img.alignleft {
   .cta-info {
     padding: 45px 60px 100px;
   }
+   .categories-box {
+        margin-top: 30px;
+    }
 }
 @media only screen and (min-width: 1200px) {
   #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu {
@@ -1455,7 +1519,7 @@ img.alignleft {
   }
 }
 @media only screen and (min-width: 1620px) {
-  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
+  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link , .resource-card p{
     font-size: 24px;
     line-height: 36px;
   }
