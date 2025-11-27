@@ -24,6 +24,8 @@
   --indigo-blue: #4D57E6;
   --gray: #444444;
   --cyan-blue: #00B2D0;
+  --light-blue: #D6F0FF;
+
 }
 body {
   font-size: 18px;
@@ -63,6 +65,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .bg-light-yellow {
   background-color: var(--light-yellow);
+}
+.bg-light-blue {
+  background-color: var(--light-blue);
 }
 .text-blue {
   color: var(--blue);
@@ -957,6 +962,24 @@ top: 15px;
 
 /* Resources ends */
 
+/* topics starts */
+.topic-card{
+  box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.25);
+}
+.topic-card .below-content{
+  display: grid;
+  grid-template-columns: 35% 55%;
+  
+}
+.below-content img{
+  width:65px;
+  height:56px;
+}
+.below-content p{
+  font-size:13px;
+  line-height:18px;
+}
+
 
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
@@ -1178,8 +1201,7 @@ top: 15px;
     line-height: 25px;
   }
 
-
-  .stylized-heading-intro-zone.layered-image-zone .intro-img-col:before {
+.stylized-heading-intro-zone.layered-image-zone .intro-img-col:before {
     top: 40px;
     left: -20px;
     height: 260px;
@@ -1436,6 +1458,9 @@ top: 15px;
   min-height: 160px;
    
 }
+.topic-card .below-content {
+    grid-template-columns: 30% 70%;
+}
 }
 @media only screen and (min-width: 1250px) {
   .main-menu {
@@ -1575,6 +1600,10 @@ top: 15px;
   .meet-team-slider .team-content-col {
     padding-right: 50px;
   }
+  .topic-card .below-content{
+  grid-template-columns: 20% 80%;
+  
+}
 }
 @media only screen and (min-width: 1900px) {
   .footer-post-col .font-normal {

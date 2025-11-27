@@ -42,8 +42,6 @@ Template Name: Resources
                         <div class="my-auto me-5">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
                         </div>
-
-
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
@@ -59,8 +57,6 @@ Template Name: Resources
                         <div class="my-auto me-5">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
                         </div>
-
-
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
@@ -76,9 +72,7 @@ Template Name: Resources
                         <div class="my-auto me-5">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
                         </div>
-
-
-                        <div class="corner-badge">
+                    <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
 </div>
@@ -94,8 +88,6 @@ Template Name: Resources
                         <div class="my-auto me-5">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
                         </div>
-
-
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
@@ -111,8 +103,6 @@ Template Name: Resources
                         <div class="my-auto me-5">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
                         </div>
-
-
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
@@ -125,9 +115,6 @@ Template Name: Resources
 
             <!-- RIGHT COLUMN -->
             <div class="col-lg-3 mt-5 mt-lg-5">
-
-                <!-- <div class="row">
-                    <div class="col-12"> -->
                 <h3 class="fw-bold mb-2 font-medium">Resource Categories</h3>
                 <ul class="list-unstyled categories-box m-0 resources-category-list">
                     <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Assisted Living</a></li>
@@ -140,15 +127,83 @@ Template Name: Resources
                     <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Memory Care</a></li>
                     <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Planning</a></li>
                 </ul>
-
-                <!-- </div> -->
-                <!-- </div> -->
-
             </div>
         </div>
 
     </div>
     </div>
+</section>
+
+<section class="py-5">
+  <div class="container-fluid">
+        <div class="row justify-content-center mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="fw-bold font-xl">Helpful Topics</h2>
+                        <div class="underline mx-auto"></div>
+                    </div>
+                </div>
+        <div class="row justify-content-center">
+             <div class="col-10">
+         <div class="row">
+            <div class="col-4 has-arrow">
+                <div class="topic-card">
+                <div class="upper-content p-5 d-flex flex-column justify-content-center align-items-center">
+                     <a href=""><h5 class="text-blue fw-bold text-capitalize">Finances</h5></a>
+                     <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="">
+
+                </div>
+                 <div class="below-content bg-light-blue p-3">
+                    <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="">
+                <div>
+                    <p class="text-blue mb-0">Latest Resource</p>
+                    <p class="mb-0">Is Personal Care or Assisted Living right for me or my loved one?</p>
+                </div>
+
+                </div>
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="topic-card">
+                <div class="upper-content p-5 d-flex flex-column justify-content-center align-items-center">
+                     <a href=""><h5 class="text-blue fw-bold text-capitalize has-arrow">Finances</h5></a>
+                     <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="">
+
+                </div>
+                 <div class="below-content bg-light-blue p-3">
+                    <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="">
+                <div>
+                    <p class="text-blue mb-0">Latest Resource</p>
+                    <p class="mb-0">Is Personal Care or Assisted Living right for me or my loved one?</p>
+                </div>
+
+                </div>
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="topic-card">
+                <div class="upper-content p-5 d-flex flex-column justify-content-center align-items-center">
+                     <a href=""><h5 class="text-blue fw-bold text-capitalize">Finances</h5></a>
+                     <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="">
+
+                </div>
+                 <div class="below-content bg-light-blue p-3">
+                    <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="">
+                <div>
+                    <p class="text-blue mb-0">Latest Resource</p>
+                    <p class="mb-0">Is Personal Care or Assisted Living right for me or my loved one?</p>
+                </div>
+
+                </div>
+
+                </div>
+            </div>
+            
+<div>
+        </div>
+  </div>
+</div>
 </section>
 
 
