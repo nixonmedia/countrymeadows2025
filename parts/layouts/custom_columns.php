@@ -39,7 +39,7 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
 $custom_columns_zone_heading = $section['custom_columns_zone_heading'] ?? '';
 $custom_heading = $custom_columns_zone_heading['heading'] ?? '';
-$include_image_headers_on_custom_content = $section['include_image_headers_on_custom_content'] ?? false;
+$include_image_headers_on_custom_content = $section['include_image_headers_on_custom_content'] ?? false; 
 
 $column_1 = $section['column_1'] ?? '';
 $column_position = $column_1['column_position'] ?? '';
