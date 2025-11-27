@@ -257,16 +257,16 @@ if($border == 'angle' && $angle == 'down_left') {
   $margin_class = '';
 }
 
-if($background_pattern == 'Circles') {
+if($background_pattern == 'circles') {
   $bg_pattern_class = 'bg-pattern bg-circles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/circles.svg');
-} elseif($background_pattern == 'Dots') {
+} elseif($background_pattern == 'dots') {
   $bg_pattern_class = 'bg-pattern bg-dots-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/dots.svg');
-} elseif($background_pattern == 'Honeycomb') {
+} elseif($background_pattern == 'honeycomb') {
   $bg_pattern_class = 'bg-pattern bg-honeycomb-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/honeycomb.svg');
-} elseif($background_pattern == 'Sprinkles') {
+} elseif($background_pattern == 'sprinkles') {
   $bg_pattern_class = 'bg-pattern bg-sprinkles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/sprinkles.svg');
 } else {
