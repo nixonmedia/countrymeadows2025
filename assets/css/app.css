@@ -879,7 +879,6 @@ img.alignleft {
 .border-angle.bg-yellow:before{
   background-image: url(../images/edge_yellow.svg);
 }
-
 .bg-pattern {
   position: relative;
   z-index: 1;
@@ -912,8 +911,6 @@ form .gfield_html {
 .bg-white  .gform_title{
 color: var(--pink);
 }
-
-/* form button start */
 form input:not(input[type="submit"]),form select, form textarea {
     border-color: #D8D8D8 !important;
     box-shadow: none !important;
@@ -962,14 +959,13 @@ form input:not(input[type="submit"]),form select, form textarea {
   background-color: var(--black-100) !important;
   color: var(--white) !important;
 }
-form .gform-footer {
+.submit-button form .gform-footer {
     display: block !important;
     text-align: center;
 }
-
-
-/* form button end */
-
+.form_zone.bg-pattern {
+    background-position: 100% 100%;
+}
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   body {
