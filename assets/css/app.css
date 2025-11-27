@@ -646,6 +646,9 @@ img.alignleft {
   padding-top: 30px;
   padding-bottom: 30px;
 }
+.custom-columns-zone.bg-water-color {
+  overflow: hidden;
+}
 .meet-team-block {
   border-radius: 20px;
   /* background: rgba(248, 230, 235, 0.50); */
@@ -1131,6 +1134,9 @@ img.alignleft {
   .stylized-heading-intro-zone:not(.layered-image-zone) .stylized-heading {
     font-size: 35px;
   }
+  .icon-slide-box {
+    line-height: 24px;
+  }
 
 }
 @media only screen and (min-width: 992px) {
@@ -1286,8 +1292,7 @@ img.alignleft {
   }
   
   .bg-water-color:after {
-    /* height: 442px; */
-    height: 100%;
+    height: 442px;
     width: 100%;
   }
   .wysiwyg-testimonial-content {
@@ -1337,7 +1342,7 @@ img.alignleft {
     padding: 45px 60px 100px;
   }
   .push-info .video-wrapper {
-    height: 362px;
+    height: 230px;
   }
   .bg-pattern {
     background-image: var(--svg-bg);
@@ -1400,12 +1405,19 @@ img.alignleft {
   }
   .custom-columns-zone.border-angle {
     padding-bottom: 100px;
+    padding-top: 60px;
   }
   .angle_down_left{
     clip-path: polygon(0 -50%, 100% -50%, 100% 95%, 0% 100%);
   }
   .angle_down_right{
     clip-path: polygon(0 -50%, 100% -50%, 100% 100%, 0% 95%);
+  }
+  .border-angle:before {
+    top: -60px;
+    height: 8vw;
+    min-height: 40px;
+    max-height: 62px;
   }
   .with-embellishment.left-align-embellishment:after {
     left: -40px;
@@ -1415,6 +1427,9 @@ img.alignleft {
   }
   .with-embellishment.right-align-embellishment:after {
     right: -50px;
+  }
+  .meet-team-block.with-embellishment.left-align-embellishment:after {
+    left: -16px;
   }
 }
 @media only screen and (min-width: 1250px) {
@@ -1522,9 +1537,8 @@ img.alignleft {
   .meet-team-button {
     font-size: 16px;
   }
-  .border-angle:before {
-    top: -58px;
-    height: 60px;
+  .push-info .video-wrapper {
+    height: 362px;
   }
 }
 @media only screen and (min-width: 1620px) {
@@ -1630,6 +1644,10 @@ img.alignleft {
   .container-fluid {
     max-width: 1800px;
     margin: 0 auto;
+  }
+  .border-angle:before {
+    top: -90px;
+    max-height: 120px;
   }
 }
 @media only screen and (min-width: 2200px) {
