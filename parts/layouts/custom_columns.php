@@ -39,7 +39,7 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
 $custom_columns_zone_heading = $section['custom_columns_zone_heading'] ?? '';
 $custom_heading = $custom_columns_zone_heading['heading'] ?? '';
-$include_image_headers_on_custom_content = $section['include_image_headers_on_custom_content'] ?? false;
+$include_image_headers_on_custom_content = $section['include_image_headers_on_custom_content'] ?? false; 
 
 $column_1 = $section['column_1'] ?? '';
 $column_position = $column_1['column_position'] ?? '';
@@ -309,7 +309,7 @@ if($meet_background_color == 'Blue') {
     <?php if($num_columns == '1'): ?>
       <!--- Custom Column 1 Layout --->
       <div class="row justify-content-center">
-        <div class="col-lg-9">
+        <div class="col-lg-9"> 
           <?php if($custom_heading['headline']): ?>
             <<?php echo $custom_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_color; ?>"><?php echo $custom_heading['headline']; ?></<?php echo $custom_heading['heading_type']; ?>>
           <?php endif; ?>
