@@ -2,18 +2,14 @@
 $heading        = $section['heading'];
 $heading_style  = $section['heading']['heading_style']  ?? "";
 $background_color  = $section['background_color'];
-// var_dump($background_color);
 $content        = $section['content']                   ?? "";
 $form_position = $section['form_position'];
 $form = $section['form'];
 $icon = $section['icon'];
-// $background_color 
-$embellishment = $media_embellishment['embellishment'] ?? '';
-var_dump(($embellishment))
+
 
 
 $background_embellishment = $section['background_embellishment'] ?? '';
-// var_dump($background_embellishment);
 
 if ($background_embellishment == 'circles') {
     $bg_pattern_class = 'bg-pattern bg-circles-pattern';
@@ -31,9 +27,6 @@ if ($background_embellishment == 'circles') {
     $bg_pattern_class = '';
     $bg_svg_pattern = '';
 }
-
-// bg colors 
-
 if ($background_color == 'blue') {
     $bg_color = 'bg-blue';
     $text_color = 'text-white';
@@ -70,31 +63,32 @@ else {
     $heading_color = 'text-black';
     $svg_fill = '#F1F1F1';
 }
-
-
-
 if (!empty($bg_svg_pattern)) {
-
-    // replace any fill value in the SVG to your dynamic color
     $bg_svg_pattern = preg_replace(
         '/fill="[^"]*"/',
         'fill="' . $svg_fill . '"',
         $bg_svg_pattern
     );
-
     $svg_encoded = rawurlencode($bg_svg_pattern);
 } else {
     $svg_encoded = '';
 }
-
-
 ?>
-<section class="form_zone py-5 <?php echo $bg_pattern_class; ?> <?php echo $bg_color; ?> " >
+<?php if (!empty($svg_encoded)): ?>
+  <style>
+    #custom-columns-zone-<?php echo get_the_ID().'-'.$key; ?>.bg-pattern {
+      --svg-bg: url('data:image/svg+xml,<?php echo $svg_encoded; ?>');
+    }
+  </style>
+<?php endif; ?>
+<section id="custom-columns-zone-<?php echo get_the_ID().'-'.$key; ?>" class="form_zone py-5 <?php echo $bg_pattern_class; ?> <?php echo $bg_color; ?>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div>
-                    <?php $icon; ?>
+                    <?php 
+                    // $icon; 
+                    ?>
                 </div>
                 <img src="<?php echo 'get_template_directory_uri()'; ?>/assets/images/notepad-icon.svg" alt="">
                 <h2 class="font-medium text-center <?php echo $text_color; ?>"><?php echo $heading; ?></h2>
@@ -111,8 +105,7 @@ if (!empty($bg_svg_pattern)) {
                 <?php } ?>
                 <!-- if form is center and form has value  -->
                 <?php if ($form_position == "center" && $form) { ?>
-
-                    <div class="form-container <?php echo $text_color; ?>">
+                    <div class="form-container submit-button <?php echo $text_color; ?>">
                         <?php echo do_shortcode('[gravityform id="' . $form . '" title="false"]'); ?>
                     </div>
                 <?php } ?>
