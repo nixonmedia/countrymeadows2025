@@ -18,67 +18,91 @@ Template Name: Resources
 
                 <div class="row justify-content-evenly">
                     <!-- Card 1 -->
-                    <div class="col-md-5 resource-card  p-4 position-relative d-flex gap-3 mb-4">
-                        <div class="pe-5">
-                            <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
-                            <p>Care for the caregiver</p>
-                        </div>
-                        <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
-                        <div class="corner-badge">
-                            <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
+                    <div class="col-md-5">
+                        <div class="resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
+                            <div class="my-auto">
+                                <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
+                                <p>Care for the caregiver</p>
+                            </div>
+                            <div class="my-auto me-5">
+                                <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                            </div>
+                            <div class="corner-badge">
+                                <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
+                            </div>
                         </div>
                     </div>
                     <!-- Card 2 -->
-                    <div class="col-md-5 resource-card  p-4 position-relative d-flex gap-3 mb-4">
-                        <div class="pe-5">
-                            <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
-                            <p>Care for the caregiver</p>
+                    <div class="col-md-5 resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
+                        <div class="my-auto">
+                            <h5 class="text-blue fw-bold text-capitalize">Planning</h5>
+                            <p>Tips for talking with aging parents</p>
                         </div>
-                        <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                        <div class="my-auto me-5">
+                            <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                        </div>
+
+
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
                     </div>
                     <!-- Card 3 -->
-                    <div class="col-md-5 resource-card  p-4 position-relative d-flex gap-3 mb-4">
-                        <div class="pe-5">
-                            <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
-                            <p>Care for the caregiver</p>
+                    <div class="col-md-5 resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
+                        <div class="my-auto">
+                            <h5 class="text-blue fw-bold text-capitalize">Finances</h5>
+                            <p>Thinking about the cost of senior living communities</p>
                         </div>
-                        <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                        <div class="my-auto me-5">
+                            <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                        </div>
+
+
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
                     </div>
                     <!-- Card 4 -->
-                    <div class="col-md-5 resource-card  p-4 position-relative d-flex gap-3 mb-4">
-                        <div class="pe-5">
+                    <div class="col-md-5 resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
+                        <div class="my-auto">
                             <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
                             <p>Care for the caregiver</p>
                         </div>
-                        <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                        <div class="my-auto me-5">
+                            <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                        </div>
+
+
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
                     </div>
                     <!-- Card 5 -->
-                    <div class="col-md-5 resource-card  p-4 position-relative d-flex gap-3 mb-4">
-                        <div class="pe-5">
+                    <div class="col-md-5 resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4 ">
+                        <div class="my-auto">
                             <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
-                            <p>Care for the caregiver</p>
+                            <p>Tips for successful visits with a loved one with Dementia</p>
                         </div>
-                        <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                        <div class="my-auto me-5">
+                            <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                        </div>
+
+
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
                     </div>
                     <!-- Card 6 -->
-                    <div class="col-md-5 resource-card  p-4 position-relative d-flex gap-3 mb-4">
-                        <div class="pe-5">
+                    <div class="col-md-5 resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
+                        <div class="my-auto">
                             <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
-                            <p>Care for the caregiver</p>
+                            <p>Caring for your pet safely as you age</p>
                         </div>
-                        <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                        <div class="my-auto me-5">
+                            <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Group-2.png" class="float-end rounded" alt="">
+                        </div>
+
+
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
@@ -88,25 +112,25 @@ Template Name: Resources
 
 
             <!-- RIGHT COLUMN -->
-            <div class="col-lg-3 mt-5 mt-lg-0">
-            
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="fw-bold mb-2">Resource Categories</h3>
-                        <ul class="list-unstyled categories-box m-0 resources-category-list">
-                            <li><a href="#"><i class="fas fa-home me-2"></i>Assisted Living</a></li>
-                            <li><a href="#"><i class="fas fa-users me-2"></i>Family & Caregivers</a></li>
-                            <li><a href="#"><i class="fas fa-dollar-sign me-2"></i>Finances</a></li>
-                            <li><a href="#"><i class="fas fa-heartbeat me-2"></i>Health & Wellness</a></li>
-                            <li><a href="#"><i class="fas fa-building me-2"></i>Independent Living</a></li>
-                            <li><a href="#"><i class="fas fa-play me-2"></i>Let’s Get Started</a></li>
-                            <li><a href="#"><i class="fas fa-paw me-2"></i>Lifestyle</a></li>
-                            <li><a href="#"><i class="fas fa-brain me-2"></i>Memory Care</a></li>
-                            <li><a href="#"><i class="fas fa-calendar-alt me-2"></i>Planning</a></li>
-                        </ul>
+            <div class="col-lg-3 mt-5 mt-lg-4 px-0 px-lg-3">
 
-                    </div>
-                </div>
+                <!-- <div class="row">
+                    <div class="col-12"> -->
+                <h3 class="fw-bold mb-2">Resource Categories</h3>
+                <ul class="list-unstyled categories-box m-0 resources-category-list">
+                    <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Assisted Living</a></li>
+                    <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Family & Caregivers</a></li>
+                    <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Finances</a></li>
+                    <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Health & Wellness</a></li>
+                    <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Independent Living</a></li>
+                    <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Let’s Get Started</a></li>
+                    <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Lifestyle</a></li>
+                    <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Memory Care</a></li>
+                    <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Planning</a></li>
+                </ul>
+
+                <!-- </div> -->
+                <!-- </div> -->
 
             </div>
         </div>
