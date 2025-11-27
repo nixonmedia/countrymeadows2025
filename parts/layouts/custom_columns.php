@@ -4,7 +4,7 @@ $background_water_color = $section['background_watercolor']['background_watercol
 $section_border = $section['border'] ?? []; 
 $border = $section_border['border'] ?? '';
 $angle = $section_border['angle'] ?? '';
-$background_pattern = $section['background_pattern'] ?? '';
+$background_pattern = $section['background_embellishment'] ?? '';
 
 $num_columns = $section['num_columns'] ?? '';
 $alignment = $section['alignment'] ?? '';
