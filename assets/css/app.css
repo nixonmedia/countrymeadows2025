@@ -893,16 +893,32 @@ img.alignleft {
 .custom-column-two.with-media.with-video-media .video-wrapper, .custom-column-two.with-media.with-video-media .video-wrapper iframe {
   height: 345px !important;
 }
-.form_zone .wysiwyg-content form input, .form_zone .wysiwyg-content form select, .form_zone .wysiwyg-content form textarea {
+.form_zone .form-container form input, .form_zone .form-container form select, .form_zone .form-container form textarea {
     border-color: #D8D8D8;
     box-shadow: none;
     outline-color: #d8d8d8;
 }
-
-.wysiwyg-content form .gfield_html {
+.form-container form .gfield_html {
     font-size: 13px;
     line-height: 16px;
 }
+.bg-blue form .gfield legend,.bg-blue form .gfield label.gfield_label,.bg-blue .gform_title, .bg-blue .gform_description,.bg-purple form .gfield legend,.bg-purple form .gfield label.gfield_label,.bg-purple .gform_title, .bg-purple .gform_description{
+    color: var(--white);
+}
+.bg-light-blue form .gfield legend,.bg-light-blue form .gfield label.gfield_label,.bg-light-blue .gform_title, .bg-light-blue .gform_description{
+    color: var(--black-100);
+}
+.bg-white form .gfield legend,.bg-white form .gfield label.gfield_label, .bg-white .gform_description,.bg-gradient-yellow form .gfield legend, .bg-gradient-yellow form .gfield label.gfield_label, .bg-gradient-yellow  .gform_title, .bg-gradient-yellow .gform_description, .bg-teal form .gfield legend, .bg-teal form .gfield label.gfield_label, .bg-teal  .gform_title, .bg-teal .gform_description{
+    color: var(--black);
+}
+.gform-theme--foundation .gfield--width-full{
+   font-size: 13px;
+   line-height: 17px;
+}
+.bg-white  .gform_title{
+color: var(--pink);
+}
+
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   body {

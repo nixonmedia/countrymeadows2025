@@ -777,6 +777,14 @@
                                         "id": ""
                                     },
                                     "layout": "block",
+                                    "choices": {
+                                        "circles": "Circles",
+                                        "seeds": "Seeds",
+                                        "seeds-open": "Seeds Open",
+                                        "seeds-open-large": "Seeds Open Large",
+                                        "squiggles": "Squiggles",
+                                        "Xs": "Xs"
+                                    },
                                     "sub_fields": [
                                         {
                                             "key": "field_691d88bdbd280",
@@ -808,15 +816,7 @@
                                                 "Xs": "Xs"
                                             }
                                         }
-                                    ],
-                                    "choices": {
-                                        "circles": "Circles",
-                                        "seeds": "Seeds",
-                                        "seeds-open": "Seeds Open",
-                                        "seeds-open-large": "Seeds Open Large",
-                                        "squiggles": "Squiggles",
-                                        "Xs": "Xs"
-                                    }
+                                    ]
                                 }
                             ]
                         },
@@ -2213,7 +2213,12 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": [],
+                            "choices": {
+                                "circles": "Circles",
+                                "dots": "Dots",
+                                "honeycomb": "Honeycomb",
+                                "sprinkles": "Sprinkles"
+                            },
                             "default_value": false,
                             "allow_null": 1,
                             "multiple": 0,
@@ -2463,7 +2468,12 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": [],
+                            "choices": {
+                                "circles": "Circles",
+                                "dots": "Dots",
+                                "honeycomb": "Honeycomb",
+                                "sprinkles": "Sprinkles"
+                            },
                             "default_value": false,
                             "allow_null": 1,
                             "multiple": 0,
@@ -2936,14 +2946,17 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": [],
+                            "choices": {
+                                "icon_1": "icon 1"
+                            },
                             "default_value": false,
-                            "allow_null": 1,
+                            "return_format": "value",
                             "multiple": 0,
+                            "allow_null": 1,
+                            "allow_in_bindings": 1,
                             "ui": 1,
                             "ajax": 1,
-                            "return_format": "value",
-                            "placeholder": "Search icons...",
+                            "placeholder": "",
                             "create_options": 0,
                             "save_options": 0
                         },
@@ -3008,13 +3021,21 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": [],
+                            "choices": {
+                                "white": "White",
+                                "blue": "Blue",
+                                "light_blue": "Light Blue",
+                                "teal": "Teal",
+                                "purple": "Purple",
+                                "gradient_yellow": "Gradient Yellow"
+                            },
                             "default_value": false,
-                            "allow_null": 0,
+                            "return_format": "value",
                             "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 1,
                             "ui": 0,
                             "ajax": 0,
-                            "return_format": "value",
                             "placeholder": "",
                             "create_options": 0,
                             "save_options": 0
@@ -3033,7 +3054,12 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": [],
+                            "choices": {
+                                "circles": "Circles",
+                                "dots": "Dots",
+                                "honeycomb": "Honeycomb",
+                                "sprinkles": "Sprinkles"
+                            },
                             "default_value": false,
                             "allow_null": 1,
                             "multiple": 0,
@@ -3366,7 +3392,12 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": [],
+                            "choices": {
+                                "circles": "Circles",
+                                "dots": "Dots",
+                                "honeycomb": "Honeycomb",
+                                "sprinkles": "Sprinkles"
+                            },
                             "default_value": false,
                             "allow_null": 1,
                             "multiple": 0,
@@ -3667,7 +3698,12 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": [],
+                            "choices": {
+                                "circles": "Circles",
+                                "dots": "Dots",
+                                "honeycomb": "Honeycomb",
+                                "sprinkles": "Sprinkles"
+                            },
                             "default_value": false,
                             "allow_null": 1,
                             "multiple": 0,
@@ -4012,5 +4048,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763805233
+    "modified": 1764235645
 }
