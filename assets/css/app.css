@@ -1110,14 +1110,18 @@ top: 15px;
   .footer-menu li:not(:last-child), .footer-copyright-menu li:not(:last-child) {
     margin-bottom: 10px;
   }
-  main section {
+  main section , .resources-section {
     padding-right: 8px;
     padding-left: 8px;
   }
-  .resources-section{
+.resource-card .content-col{
+  width:70%;
+}
+
+  /* .resources-section{
  padding-right: 20px;
     padding-left: 20px;
-  }
+  } */
   .wysiwyg-button {
     font-size: 17px;
     line-height: 44px;

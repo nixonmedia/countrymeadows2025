@@ -11,16 +11,16 @@ Template Name: Resources
             <div class="col-lg-9">
                 <div class="row justify-content-center mb-5">
                     <div class="col-12 text-center">
-                        <h2 class="fw-bold">Start Your Journey Here</h2>
+                        <h2 class="fw-bold font-xl">Start Your Journey Here</h2>
                         <div class="underline mx-auto"></div>
                     </div>
                 </div>
 
-                <div class="row justify-content-evenly">
+                <div class="row gap-4 justify-content-center">
                     <!-- Card 1 -->
-                    <div class="col-md-5">
-                        <div class="resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
-                            <div class="my-auto">
+                    <div class="col-lg-5">
+                        <div class="resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5">
+                            <div class="my-auto content-col">
                                 <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
                                 <p>Care for the caregiver</p>
                             </div>
@@ -33,8 +33,9 @@ Template Name: Resources
                         </div>
                     </div>
                     <!-- Card 2 -->
-                    <div class="col-md-5 resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
-                        <div class="my-auto">
+                    <div class="col-lg-5">
+                        <div class="resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5">
+                        <div class="my-auto content-col">
                             <h5 class="text-blue fw-bold text-capitalize">Planning</h5>
                             <p>Tips for talking with aging parents</p>
                         </div>
@@ -46,10 +47,12 @@ Template Name: Resources
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
+                        </div>
                     </div>
                     <!-- Card 3 -->
-                    <div class="col-md-5 resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
-                        <div class="my-auto">
+                    <div class="col-lg-5">
+                        <div class="resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5">
+                        <div class="my-auto content-col">
                             <h5 class="text-blue fw-bold text-capitalize">Finances</h5>
                             <p>Thinking about the cost of senior living communities</p>
                         </div>
@@ -61,10 +64,12 @@ Template Name: Resources
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
+                        </div>
                     </div>
                     <!-- Card 4 -->
-                    <div class="col-md-5 resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
-                        <div class="my-auto">
+                    <div class="col-lg-5">
+                        <div class="resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5">
+                        <div class="my-auto content-col">
                             <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
                             <p>Care for the caregiver</p>
                         </div>
@@ -76,10 +81,13 @@ Template Name: Resources
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
+</div>
+
                     </div>
                     <!-- Card 5 -->
-                    <div class="col-md-5 resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4 ">
-                        <div class="my-auto">
+                    <div class="col-lg-5 ">
+                        <div class="resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5">
+                        <div class="my-auto content-col">
                             <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
                             <p>Tips for successful visits with a loved one with Dementia</p>
                         </div>
@@ -91,10 +99,12 @@ Template Name: Resources
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
+</div>
                     </div>
                     <!-- Card 6 -->
-                    <div class="col-md-5 resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
-                        <div class="my-auto">
+                    <div class="col-lg-5">
+<div class="resource-card  py-3 px-3 py-lg-4 px-lg-4 position-relative d-flex gap-2 gap-lg-5 mb-4">
+                        <div class="my-auto content-col">
                             <h5 class="text-blue fw-bold text-capitalize">Family & Caregivers</h5>
                             <p>Caring for your pet safely as you age</p>
                         </div>
@@ -106,17 +116,19 @@ Template Name: Resources
                         <div class="corner-badge">
                             <img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Monitor-Heart-Beat-1-Streamline-Freehand.png" alt="">
                         </div>
+</div>
+
                     </div>
                 </div>
             </div>
 
 
             <!-- RIGHT COLUMN -->
-            <div class="col-lg-3 mt-5 mt-lg-4 px-0 px-lg-3">
+            <div class="col-lg-3 mt-5 mt-lg-5">
 
                 <!-- <div class="row">
                     <div class="col-12"> -->
-                <h3 class="fw-bold mb-2">Resource Categories</h3>
+                <h3 class="fw-bold mb-2 font-medium">Resource Categories</h3>
                 <ul class="list-unstyled categories-box m-0 resources-category-list">
                     <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Assisted Living</a></li>
                     <li><a href="#"><img src="http://localhost/countrymeadows/wp-content/uploads/2025/11/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="pe-2">Family & Caregivers</a></li>
