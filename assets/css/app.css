@@ -937,7 +937,7 @@ img.alignleft {
 
 .corner-badge img {
     position: absolute;
-top: 15px;
+    top: 15px;
     right: 15px;
     width: 25px;
     height: 25px;
@@ -968,8 +968,17 @@ top: 15px;
 }
 .topic-card .below-content{
   display: grid;
-  grid-template-columns: 35% 55%;
+  grid-template-columns: 30% 70%;
+ /* align-items: center; */
   
+}
+.upper-content{
+    padding: 70px 10px;
+
+}
+.upper-content  img{
+  width:53px;
+  height:59px;
 }
 .below-content img{
   width:65px;
@@ -979,6 +988,38 @@ top: 15px;
   font-size:13px;
   line-height:18px;
 }
+.topic-card .has-arrow:after{
+  content:"";
+  position:absolute;
+  background-image: url("http://localhost/countrymeadows/wp-content/uploads/2025/11/Primary.png");
+  background-size:contain;
+  background-repeat: no-repeat;
+ width: 10px;
+    height: 16px;
+    top: 10px;
+    right: -18px;
+}
+
+.topic-card {
+    display: flex;
+    flex-direction: column;   /* Stack top + bottom */
+    height: 100%;             /* Fill equal height from JS */
+}
+
+/* This makes the upper content stretch to fill extra space */
+.topic-card .upper-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* center items vertically */
+    align-items: center;
+}
+
+/* Push the blue panel to the bottom */
+.topic-card .below-content {
+    margin-top: auto;
+}
+
 
 
 /* Media Queries  */
@@ -1133,7 +1174,7 @@ top: 15px;
   .footer-menu li:not(:last-child), .footer-copyright-menu li:not(:last-child) {
     margin-bottom: 10px;
   }
-  main section , .resources-section {
+  main section , .resources-section , .helpful-topics{
     padding-right: 8px;
     padding-left: 8px;
   }
@@ -1212,6 +1253,12 @@ top: 15px;
   .stylized-heading-intro-zone:not(.layered-image-zone) .stylized-heading {
     font-size: 35px;
   }
+}
+@media only screen and (min-width: 768px) {
+.topic-card .below-content{
+  min-height: 100px;
+}
+
 }
 @media only screen and (min-width: 992px) {
   .container-fluid, .custom-columns-zone {
@@ -1412,6 +1459,11 @@ top: 15px;
    .categories-box {
         margin-top: 30px;
     }
+    .topic-card .below-content {
+      min-height: 120px;
+    grid-template-columns: 35% 55%;
+
+}
 }
 @media only screen and (min-width: 1200px) {
   #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu {
@@ -1460,6 +1512,9 @@ top: 15px;
 }
 .topic-card .below-content {
     grid-template-columns: 30% 70%;
+}
+.resources-category-col{
+  padding-left: 30px;
 }
 }
 @media only screen and (min-width: 1250px) {
@@ -1603,6 +1658,12 @@ top: 15px;
   .topic-card .below-content{
   grid-template-columns: 20% 80%;
   
+}
+.resources-category-col{
+  padding-left: 60px;
+}
+.topic-card .below-content {
+    min-height: 80px;
 }
 }
 @media only screen and (min-width: 1900px) {

@@ -83,7 +83,8 @@ jQuery(document).ready(function($){
                 $(this).height(maxHeight);
             }); 
         };                             
-        $('.resources-section .resource-card ').equalHeights();
+        $('.resources-section .resource-card').equalHeights();
+        // $('.helpful-topics .topic-card').equalHeights();
     }
 });
  
