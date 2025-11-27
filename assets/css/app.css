@@ -889,6 +889,9 @@ img.alignleft {
   width: max-content;
   max-width: 100%;
 }
+.custom-columns-zone .image-box img {
+  border-radius: 0 20px;
+}
 
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
@@ -1386,9 +1389,13 @@ img.alignleft {
   .meet-team-info-col {
     padding-right: 40px;
   }
-  .custom-columns-zone {
-    padding-top: 100px;
-    padding-bottom: 100px;
+  .custom-columns-zone{
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .custom-columns-zone.border-angle {
+    padding-top: 140px;
+    padding-bottom: 160px;
   }
   .angle_down_left{
     clip-path: polygon(0 -50%, 100% -50%, 100% 95%, 0% 100%);
