@@ -309,7 +309,7 @@ if($meet_background_color == 'Blue') {
     <?php if($num_columns == '1'): ?>
       <!--- Custom Column 1 Layout --->
       <div class="row justify-content-center">
-        <div class="col-lg-9">
+        <div class="col-lg-9"> 
           <?php if($custom_heading['headline']): ?>
             <<?php echo $custom_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_color; ?>"><?php echo $custom_heading['headline']; ?></<?php echo $custom_heading['heading_type']; ?>>
           <?php endif; ?>
