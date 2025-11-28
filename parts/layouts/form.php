@@ -1,8 +1,9 @@
 <?php
 $heading        = $section['heading'];
-$heading_style  = $section['heading']['heading_style']  ?? "";
+$headline = $heading['headline'];
+$heading_type = $heading['heading_type'];
 $background_color  = $section['background_color'];
-$content        = $section['content']                   ?? "";
+$content        = $section['content'] ?? "";
 $form_position = $section['form_position'];
 $form = $section['form'];
 $icon = $section['icon'] ?? '';
@@ -23,37 +24,32 @@ if ($background_embellishment == 'circles') {
     $bg_pattern_class = '';
     $bg_svg_pattern = '';
 }
-if ($background_color == 'blue') {
+if ($background_color == 'Blue') {
     $bg_color = 'bg-blue';
     $text_color = 'text-white';
     $heading_color = 'text-white';
     $svg_fill = 'rgba(0, 0, 0, 0.10)';
-} 
-elseif ($background_color == 'light_blue') {
+} elseif ($background_color == 'Light Blue') {
     $bg_color = 'bg-light-blue';
     $text_color = 'text-black-100';
     $heading_color = 'text-black-100';
     $svg_fill = 'rgba(43, 161, 198, 0.10)';
-} 
-elseif ($background_color == 'teal') {
+} elseif ($background_color == 'Teal') {
     $bg_color = 'bg-teal';
     $text_color = 'text-black';
     $heading_color = 'text-black';
     $svg_fill = 'rgba(0, 0, 0, 0.05)';
-} 
-elseif ($background_color == 'purple') {
+} elseif ($background_color == 'Purple') {
     $bg_color = 'bg-purple';
     $text_color = 'text-white';
     $heading_color = 'text-white';
     $svg_fill = 'rgba(0, 0, 0, 0.05)';
-} 
-elseif ($background_color == 'gradient_yellow') {
+} elseif ($background_color == 'Gradient Yellow') {
     $bg_color = 'bg-gradient-yellow';
     $text_color = 'text-black';
     $heading_color = 'text-black';
     $svg_fill = '#F1F1F1';
-} 
-else {
+} else {
     $bg_color = 'bg-white';
     $text_color = 'text-black';
     $heading_color = 'text-black';
@@ -71,28 +67,30 @@ if (!empty($bg_svg_pattern)) {
 }
 ?>
 <?php if (!empty($svg_encoded)): ?>
-  <style>
-    #custom-columns-zone-<?php echo get_the_ID().'-'.$key; ?>.bg-pattern {
-      --svg-bg: url('data:image/svg+xml,<?php echo $svg_encoded; ?>');
-    }
-  </style>
+    <style>
+        #custom-columns-zone-<?php echo get_the_ID() . '-' . $key; ?>.bg-pattern {
+            --svg-bg: url('data:image/svg+xml,<?php echo $svg_encoded; ?>');
+        }
+    </style>
 <?php endif; ?>
 
 
-<section id="custom-columns-zone-<?php echo get_the_ID().'-'.$key; ?>" class="form_zone py-5 <?php echo $bg_pattern_class; ?> <?php echo $bg_color; ?>">
+<section id="custom-columns-zone-<?php echo get_the_ID() . '-' . $key; ?>" class="form_zone py-5 <?php echo $bg_pattern_class; ?> <?php echo $bg_color; ?>">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div>
-                   <?php if (!empty($icon)): ?>
-                       <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/' . esc_attr($icon) . '.svg'; ?>" alt="<?php echo esc_attr($icon); ?>" class="section-icon">
+        <?php if ($headline || $icon): ?>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        <?php if (!empty($icon)): ?>
+                            <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/' . esc_attr($icon) . '.svg'; ?>" alt="<?php echo esc_attr($icon); ?>" class="section-icon">
+                        <?php endif; ?>
+                    </div>
+                    <?php if ($headline): ?>
+                        <<?php echo $heading_type; ?> class="font-medium text-center <?php echo $text_color; ?>"><?php echo $headline; ?></<?php echo $heading_type; ?>>
                     <?php endif; ?>
                 </div>
-
-                <h2 class="font-medium text-center <?php echo $text_color; ?>"><?php echo $heading; ?></h2>
-
             </div>
-        </div>
+        <?php endif; ?>
         <!-- move form to left as its on right by default and add class to the row with name flex-row-reverse -->
         <div class="row <?php echo $form_position == "left" ? "flex-row-reverse" : ""; ?>">
             <div class="<?php echo $form_position == "center" ? "offset-lg-1 col-lg-10" : "col-lg-6"; ?>">
@@ -104,7 +102,7 @@ if (!empty($bg_svg_pattern)) {
                 <!-- if form is center and form has value  -->
                 <?php if ($form_position == "center" && $form) { ?>
                     <div class="form-container submit-button <?php echo $text_color; ?>">
-                        <?php echo do_shortcode('[gravityform id="' . $form . '" title="false"]'); ?>
+                        <?php echo do_shortcode('[gravityform id="' . $form . '" title="false" description="false"] '); ?>
                     </div>
                 <?php } ?>
             </div>
@@ -113,7 +111,7 @@ if (!empty($bg_svg_pattern)) {
                 <div class="col-lg-6 ">
                     <?php if ($form) { ?>
                         <div class="form-container <?php echo $text_color; ?>">
-                            <?php echo  do_shortcode('[gravityform id="' . $form . '" title="true"]'); ?>
+                            <?php echo  do_shortcode('[gravityform id="' . $form . '" title="true" description="false"]'); ?>
                         </div>
                     <?php } ?>
                 </div>
