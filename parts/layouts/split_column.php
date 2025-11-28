@@ -35,7 +35,7 @@ $bottom_accordions_heading = $bottom_accordions['heading'] ?? '';
 $bottom_accordion = $bottom_accordions['accordion'] ?? '';
 
 $bottom_gallery = $bottom_content['gallery'] ?? '';
-$bottom_gallery_type = $bottom_gallery['gallery_type'] ?? '';
+$bottom_gallery_type = $bottom_gallery['gallery_type'] ?? '';  
 $bottom_icon_gallery = $bottom_gallery['icons'] ?? '';
 $bottom_icon_heading = $bottom_icon_gallery['heading'] ?? '';
 $bottom_add_icons = $bottom_icon_gallery['add_icons'] ?? '';
@@ -117,34 +117,60 @@ $section_has_data = array_filter([
           </div>
         <?php endif; ?>
         <div class="col-lg-6 offset-lg-1">
-          <?php if($top_content_type == 'Standard Content'): ?>
-            <div class="top-content-block">
-              <!-- Top Standard Content -->
-              <?php if($top_standard_copy_content || $top_standard_heading['headline'] || $top_standard_button): ?>
-                <div class="top-standard-content text-center mb-4 pb-lg-4">
-                  <?php if($top_standard_icon): ?>
-                    <div class="heading-with-above-icon mb-2">
-                      <?php echo $top_standard_icon; ?>
+          <?php if($top_content_type == 'Standard Content' || $top_content_type == 'Call-to-Action'): ?>
+            <div class="top-content-block mb-4 pb-lg-4">
+              <?php if($top_content_type == 'Standard Content'): ?>
+                <!-- Top Standard Content -->
+                <?php if($top_standard_copy_content || $top_standard_heading['headline'] || $top_standard_button): ?>
+                  <div class="top-standard-content text-center">
+                    <?php if($top_standard_icon): ?>
+                      <div class="heading-with-above-icon mb-2">
+                        <?php echo $top_standard_icon; ?>
+                      </div>
+                    <?php endif;
+                    if($top_standard_heading['headline']): ?>
+                      <<?php echo $top_standard_heading['heading_type']; ?> class="font-medium font-lexend text-black-100 mb-3 mb-lg-4"><?php echo $top_standard_heading['headline']; ?></<?php echo $top_standard_heading['heading_type']; ?>>
+                    <?php endif; 
+                    if($top_standard_copy_content): ?>
+                      <div class="wysiwyg-content text-black-100 font-lexend mb-4">
+                        <?php echo $top_standard_copy_content; ?>
+                      </div>
+                    <?php endif; 
+                    if($top_standard_button): ?>
+                      <a href="<?php echo $top_standard_button['url']; ?>" class="site-button" <?php if($top_standard_button['target']): ?>target="<?php echo $top_standard_button['target']; ?>"<?php endif; ?>><?php echo $top_standard_button['title']; ?></a>
+                    <?php endif; ?>
+                  </div>
+                <?php endif; ?>
+                <!-- End Here Top Standard Content -->
+              <?php endif;
+              if($top_content_type == 'Call-to-Action'): ?>
+                <!-- Top CTA -->
+                <div class="cta-block"> 
+                  <?php foreach($top_cta as $post_cta):
+                    $cta_heading = get_field('cta_headline', $post_cta->ID); 
+                    $cta_content = get_field('cta_content', $post_cta->ID);
+                    $cta_link = get_field('cta_link', $post_cta->ID); ?>
+                    <div class="cta-info text-center">
+                      <div class="cta-content">
+                        <?php if($cta_heading): ?>
+                          <h3 class="font-medium"><?php echo $cta_heading; ?></h3>
+                        <?php endif; 
+                        if($cta_content): ?>
+                          <div class="wysiwyg-content <?php if($cta_link):?>mb-3<?php endif; ?> text-start"><?php echo $cta_content; ?></div>
+                        <?php endif; 
+                        if($cta_link): ?>
+                          <a href="<?php echo $cta_link['url']; ?>" class="site-button" <?php if($cta_link['target']): ?>target="<?php echo $cta_link['target']; ?>"<?php endif; ?>><?php echo $cta_link['title']; ?></a>
+                        <?php endif; ?>
+                      </div>
                     </div>
-                  <?php endif;
-                  if($top_standard_heading['headline']): ?>
-                    <<?php echo $top_standard_heading['heading_type']; ?> class="font-medium font-lexend text-black-100 mb-3 mb-lg-4"><?php echo $top_standard_heading['headline']; ?></<?php echo $top_standard_heading['heading_type']; ?>>
-                  <?php endif; 
-                  if($top_standard_copy_content): ?>
-                    <div class="wysiwyg-content text-black-100 font-lexend mb-4">
-                      <?php echo $top_standard_copy_content; ?>
-                    </div>
-                  <?php endif; 
-                  if($top_standard_button): ?>
-                    <a href="<?php echo $top_standard_button['url']; ?>" class="site-button" <?php if($top_standard_button['target']): ?>target="<?php echo $top_standard_button['target']; ?>"<?php endif; ?>><?php echo $top_standard_button['title']; ?></a>
-                  <?php endif; ?>
+                  <?php endforeach; ?>
                 </div>
+                <!-- End Here Top CTA -->
               <?php endif; ?>
-              <!-- End Here Top Standard Content -->
             </div>
           <?php endif; ?>
           
-          <?php if($bottom_content_type == 'Standard Content' || $bottom_content_type == 'Accordions'): ?>
+          <?php if($bottom_content_type == 'Standard Content' || $bottom_content_type == 'Accordions' || $bottom_content_type == 'Gallery'): ?>
             <div class="bottom-content-block">
               <?php if($bottom_content_type == 'Standard Content'): ?>
                 <!-- Bottom Standard Content -->
@@ -217,21 +243,21 @@ $section_has_data = array_filter([
                 <!-- End Here Bottom Accordions Content -->
               <?php endif; 
               if($bottom_content_type == 'Gallery'): ?>
-                <div class="bottom-gallery-slider">
+                <div class="bottom-gallery-slider text-center">
                   <?php if($bottom_gallery_type == 'Icons' ): ?>
                       <?php if($bottom_icon_heading['headline']): ?>
-                        <<?php echo $bottom_icon_heading['heading_type']; ?> class="font-medium mb-lg-4 pb-lg-3"><?php echo $bottom_icon_heading['headline']; ?></<?php echo $bottom_icon_heading['heading_type']; ?>>
+                        <<?php echo $bottom_icon_heading['heading_type']; ?> class="font-medium mb-lg-4"><?php echo $bottom_icon_heading['headline']; ?></<?php echo $bottom_icon_heading['heading_type']; ?>>
                       <?php endif; ?>
-                      <?php if (!empty($bottom_icon) && is_array($bottom_icon)): ?>
+                      <?php if (!empty($bottom_add_icons) && is_array($bottom_add_icons)): ?>
                         <div class="icons-slider mb-3 pb-4 pt-3">
-                          <?php foreach($bottom_icon as $icons_group_icon): 
+                          <?php foreach($bottom_add_icons as $icons_group_icon): 
                             $icon = $icons_group_icon['icon'] ?? ' ';
                             $text = $icons_group_icon['text'] ?? ' ';
                             $link = $icons_group_icon['link'] ?? ' ';
                             if($icon || $text ):
                           ?>
                             <div>
-                              <div class="icon-slide-box px-2 px-md-3">
+                              <div class="icon-slide-box px-2 px-md-3 text-center">
                                 <?php if($link): ?>
                                   <a href="<?php echo $link['url']; ?>" class="d-block text-decoration-none" <?php if($link['target']): ?> target="<?php echo $link['target']; ?>" <?php endif; ?>>
                                 <?php endif; ?>
@@ -239,7 +265,7 @@ $section_has_data = array_filter([
                                       <?php echo $icon; ?>
                                   <?php endif; 
                                   if($text): ?>
-                                      <p class="mt-3 mb-0 fw-semibold <?php echo $text_color; ?>"><?php echo $text; ?></p>
+                                      <p class="mt-3 mb-0 fw-semibold"><?php echo $text; ?></p>
                                   <?php endif; ?>
                                 <?php if($link): ?></a><?php endif; ?>
                               </div>
@@ -250,7 +276,7 @@ $section_has_data = array_filter([
                   <?php endif; 
                   if($bottom_gallery_type == 'Image Gallery' ): ?>
                     <?php if($bottom_image_heading['headline']): ?>
-                        <<?php echo $bottom_image_heading['heading_type']; ?> class="font-medium mb-4 pb-lg-3"><?php echo $bottom_image_heading['headline']; ?></<?php echo $bottom_image_heading['heading_type']; ?>>
+                        <<?php echo $bottom_image_heading['heading_type']; ?> class="font-medium mb-4"><?php echo $bottom_image_heading['headline']; ?></<?php echo $bottom_image_heading['heading_type']; ?>>
                       <?php endif; ?>
                     <?php if (!empty($bottom_images) && is_array($bottom_images)): ?>
                       <div class="image-gallery-slider mb-3 pb-4 pt-3">
@@ -274,28 +300,6 @@ $section_has_data = array_filter([
               <?php endif; ?>
             </div>
           <?php endif; ?>
-          
-          <div class="cta-block d-none"> 
-            <?php foreach($top_cta as $post_cta):
-              $cta_heading = get_field('cta_headline', $post_cta->ID); 
-              $cta_content = get_field('cta_content', $post_cta->ID);
-              $cta_link = get_field('cta_link', $post_cta->ID); ?>
-              <div class="cta-info text-center">
-                <div class="cta-content">
-                  <?php if($cta_heading): ?>
-                    <h3 class="font-medium"><?php echo $cta_heading; ?></h3>
-                  <?php endif; 
-                  if($cta_content): ?>
-                    <div class="wysiwyg-content <?php if($cta_link):?>mb-3<?php endif; ?> text-start"><?php echo $cta_content; ?></div>
-                  <?php endif; 
-                  if($cta_link): ?>
-                    <a href="<?php echo $cta_link['url']; ?>" class="site-button" <?php if($cta_link['target']): ?>target="<?php echo $cta_link['target']; ?>"<?php endif; ?>><?php echo $cta_link['title']; ?></a>
-                  <?php endif; ?>
-                </div>
-              </div>
-            <?php endforeach; ?>
-          </div>
-          
         </div>
       </div>
     </div>
