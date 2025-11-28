@@ -4,7 +4,7 @@ $background_water_color = $section['background_watercolor']['background_watercol
 $section_border = $section['border'] ?? []; 
 $border = $section_border['border'] ?? '';
 $angle = $section_border['angle'] ?? '';
-$background_pattern = $section['background_embellishment'] ?? '';
+$background_pattern = $section['background_pattern'] ?? '';
 
 $num_columns = $section['num_columns'] ?? '';
 $alignment = $section['alignment'] ?? '';
@@ -39,7 +39,7 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
 $custom_columns_zone_heading = $section['custom_columns_zone_heading'] ?? '';
 $custom_heading = $custom_columns_zone_heading['heading'] ?? '';
-$include_image_headers_on_custom_content = $section['include_image_headers_on_custom_content'] ?? false; 
+$include_image_headers_on_custom_content = $section['include_image_headers_on_custom_content'] ?? false;
 
 $column_1 = $section['column_1'] ?? '';
 $column_position = $column_1['column_position'] ?? '';
@@ -157,8 +157,8 @@ if($special_content_position == 'Left' && $include_special_content == true) {
 
 if($num_columns == '2' && $include_special_content == false || $num_columns == '2' && $include_special_content == false && $include_image_headers_on_custom_content == true) {
   $heading_column_class = 'col-lg-8';
-  $left_column_class = 'col-lg-4 mb-4 mb-lg-0';
-  $right_column_class = 'col-lg-4';
+  $left_column_class = 'col-lg-5 col-xl-4 mb-4 mb-lg-0';
+  $right_column_class = 'col-lg-5 col-xl-4';
   $row_class = 'justify-content-center';
   $heading_fonts = 'font-lexend';
   $content_fonts = 'font-lexend';
@@ -257,16 +257,16 @@ if($border == 'angle' && $angle == 'down_left') {
   $margin_class = '';
 }
 
-if($background_pattern == 'circles') {
+if($background_pattern == 'Circles') {
   $bg_pattern_class = 'bg-pattern bg-circles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/circles.svg');
-} elseif($background_pattern == 'dots') {
+} elseif($background_pattern == 'Dots') {
   $bg_pattern_class = 'bg-pattern bg-dots-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/dots.svg');
-} elseif($background_pattern == 'honeycomb') {
+} elseif($background_pattern == 'Honeycomb') {
   $bg_pattern_class = 'bg-pattern bg-honeycomb-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/honeycomb.svg');
-} elseif($background_pattern == 'sprinkles') {
+} elseif($background_pattern == 'Sprinkles') {
   $bg_pattern_class = 'bg-pattern bg-sprinkles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/sprinkles.svg');
 } else {
@@ -288,9 +288,30 @@ if (!empty($bg_svg_pattern)) {
 } else {
     $svg_encoded = '';
 }
-
-if($meet_background_color == 'Blue') {
+if ($meet_background_color == 'Blue') {
   $meet_bg_color = 'bg-blue';
+  $meet_text_color = 'text-white';
+  $meet_heading_color = 'text-white';
+} elseif($meet_background_color == 'Light Blue') {
+  $meet_bg_color = 'bg-light-blue';
+  $meet_text_color = 'text-black-100';
+  $meet_heading_color = 'text-black-100';
+} elseif($meet_background_color == 'Teal') {
+  $meet_bg_color = 'bg-teal';
+  $meet_text_color = 'text-black';
+  $meet_heading_color = 'text-black';
+} elseif($meet_background_color == 'Purple') {
+  $meet_bg_color = 'bg-purple';
+  $meet_text_color = 'text-white';
+  $meet_heading_color = 'text-white';
+} elseif($meet_background_color == 'Gradient Yellow') {
+  $meet_bg_color = 'bg-gradient-yellow';
+  $meet_text_color = 'text-black';
+  $meet_heading_color = 'text-black';
+} else {
+  $meet_bg_color = 'bg-white';
+  $meet_text_color = 'text-black';
+  $meet_heading_color = 'text-black';
 }
 ?>
 
@@ -309,7 +330,7 @@ if($meet_background_color == 'Blue') {
     <?php if($num_columns == '1'): ?>
       <!--- Custom Column 1 Layout --->
       <div class="row justify-content-center">
-        <div class="col-lg-9"> 
+        <div class="col-lg-11 col-xl-9">
           <?php if($custom_heading['headline']): ?>
             <<?php echo $custom_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_color; ?>"><?php echo $custom_heading['headline']; ?></<?php echo $custom_heading['heading_type']; ?>>
           <?php endif; ?>
@@ -322,13 +343,13 @@ if($meet_background_color == 'Blue') {
             <<?php echo $column_1_heading['heading_type']; ?> class="font-medium <?php echo $heading_fonts; ?> mb-3 <?php echo $heading_color; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading'): ?>heading-with-icon<?php endif; ?>"><?php echo $column_1_heading['headline']; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading'): echo $heading_icon; endif;?></<?php echo $column_1_heading['heading_type']; ?>>
           <?php endif; 
           if($column_1_content): ?>
-            <div class="wysiwyg-content fw-semibold mb-4 pb-4 <?php echo $text_color; ?>">
+            <div class="wysiwyg-content fw-semibold mb-4 pb-lg-4 <?php echo $text_color; ?>">
               <?php echo $column_1_content; ?>
             </div> 
           <?php endif;
           if($column_1_gallery == true && $icons_or_image == 'Icons' ): ?>
               <?php if($icons_group_heading['headline']): ?>
-                <<?php echo $icons_group_heading['heading_type']; ?> class="font-medium mb-4 pb-lg-3 <?php echo $heading_color; ?>"><?php echo $icons_group_heading['headline']; ?></<?php echo $icons_group_heading['heading_type']; ?>>
+                <<?php echo $icons_group_heading['heading_type']; ?> class="font-medium mb-lg-4 pb-lg-3 <?php echo $heading_color; ?>"><?php echo $icons_group_heading['headline']; ?></<?php echo $icons_group_heading['heading_type']; ?>>
               <?php endif; ?>
               <?php if (!empty($icons_group_icons) && is_array($icons_group_icons)): ?>
                 <div class="icons-slider mb-3 pb-4 pt-3">
@@ -414,7 +435,7 @@ if($meet_background_color == 'Blue') {
               <<?php echo $column_1_heading['heading_type']; ?> class="font-medium <?php echo $heading_fonts; ?> mb-3 <?php echo $heading_color; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading' && $num_columns == 2 && $include_special_content == true): ?>heading-with-icon<?php endif; ?>"><?php echo $column_1_heading['headline']; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading' && $num_columns == 2 && $include_special_content == true): echo $heading_icon; endif;?></<?php echo $column_1_heading['heading_type']; ?>>
             <?php endif; 
             if($column_1_content): ?>
-              <div class="wysiwyg-content <?php echo $content_fonts; ?> mb-3 <?php echo $text_color; ?>">
+              <div class="wysiwyg-content <?php echo $content_fonts; ?> <?php if($column_1_button): ?>mb-3<?php endif; ?> <?php echo $text_color; ?>">
                 <?php echo $column_1_content; ?>
               </div>
             <?php endif; 
@@ -435,7 +456,7 @@ if($meet_background_color == 'Blue') {
                   <<?php echo $column_2_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_fonts; ?> <?php echo $heading_color; ?>"><?php echo $column_2_heading['headline']; ?></<?php echo $column_2_heading['heading_type']; ?>>
               <?php endif; 
               if($column_2_content): ?>
-                <div class="wysiwyg-content <?php echo $content_fonts; ?> mb-3 <?php echo $text_color; ?>">
+                <div class="wysiwyg-content <?php echo $content_fonts; ?> <?php if($column_2_button): ?>mb-3<?php endif; ?> <?php echo $text_color; ?>">
                   <?php echo $column_2_content; ?>
                 </div>
               <?php endif; 
@@ -620,7 +641,7 @@ if($meet_background_color == 'Blue') {
             
             <?php if($include_special_content == true && $choose_special_content == 'Media' && $media_type == 'Image'): ?>
               <!------- Image Special Content ------>
-              <div class="image-box <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?>">
+              <div class="image-box text-xs-center text-start <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?>">
                 <?php if($image_type == 'Landscape' && $landscape_image): ?>
                   <img src="<?php echo esc_url($landscape_image['sizes']['two_col_wide_image']); ?>" alt="<?php echo esc_attr($landscape_image['alt']); ?>" class="img-fluid">
                 <?php elseif($image_type == 'Portrait' && $portrait_image): ?>
@@ -632,12 +653,12 @@ if($meet_background_color == 'Blue') {
             
             <?php if($include_special_content == true && $choose_special_content == 'Meet Our Team' ): ?>
               <!------- Meet Our Team Special Content ------>
-              <div class="meet-team-block <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?> <?php echo $meet_bg_color; ?> bg-pink">
+              <div class="meet-team-block <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?> <?php echo $meet_bg_color; ?>">
                 <?php if($meet_heading['headline']): ?>
-                  <<?php echo $meet_heading['heading_type']; ?> class="font-medium mb-lg-4"><?php echo $meet_heading['headline']; ?></<?php echo $meet_heading['heading_type']; ?>>
+                  <<?php echo $meet_heading['heading_type']; ?> class="font-medium mb-4 <?php echo $meet_heading_color; ?>"><?php echo $meet_heading['headline']; ?></<?php echo $meet_heading['heading_type']; ?>>
                 <?php endif; ?>
                 <?php if (!empty($meet_our_team) && is_array($meet_our_team)): ?>
-                  <div class="meet-team-slider">
+                  <div class="meet-team-slider <?php echo $meet_text_color; ?>">
                     <?php foreach($meet_our_team as $post_meet_our_team):
                       $team_name = get_field('team_member_name', $post_meet_our_team->ID);
                       $team_image = get_field('team_member_photo', $post_meet_our_team->ID);
@@ -647,15 +668,18 @@ if($meet_background_color == 'Blue') {
                           <div class="col-lg-4 team-img-col">
                             <img src="<?php echo $team_image['url']; ?>" alt="<?php echo $team_image['alt']; ?>" class="img-fluid">
                             <?php if($meet_button): ?>
-                              <a href="<?php echo $meet_button['url']; ?>" class="meet-team-button" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
+                              <a href="<?php echo $meet_button['url']; ?>" class="site-button meet-team-button mb-4 mb-lg-0 d-none d-lg-inline-block" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
                             <?php endif; ?>
                           </div>
-                          <div class="col-lg-8 team-content-col">
-                            <h3 class="text-pink font-xm"><?php echo $team_name; ?></h3>
+                          <div class="col-lg-8 team-content-col mt-4 mt-lg-0">
+                            <h3 class="text-pink font-xm <?php echo $meet_heading_color; ?>"><?php echo $team_name; ?></h3>
                             <?php if($team_content): ?>
-                              <div class="wysiwyg-content">
+                              <div class="wysiwyg-content <?php echo $meet_text_color; ?>">
                                 <?php echo $team_content; ?>
                               </div>
+                            <?php endif; ?>
+                            <?php if($meet_button): ?>
+                              <a href="<?php echo $meet_button['url']; ?>" class="site-button meet-team-button mb-4 mb-lg-0 d-lg-none" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
                             <?php endif; ?>
                           </div>
                         </div>
@@ -673,7 +697,7 @@ if($meet_background_color == 'Blue') {
                 <<?php echo $accordions_heading['heading_type']; ?> class="font-medium mb-4 <?php echo $heading_color; ?>"><?php echo $accordions_heading['headline']; ?></<?php echo $accordions_heading['heading_type']; ?>>
               <?php endif; ?>
               <?php if (!empty($accordions) && is_array($accordions)): ?>
-                <div class="accordion accordion-block" id="accordionExample-<?php echo $key; ?>">
+                <div class="accordion accordion-block mt-3 mt-lg-0" id="accordionExample-<?php echo $key; ?>">
                   <?php $i = 1;
                   foreach($accordions as $accordion): 
                   $accordion_title = get_field('accordion_header', $accordion->ID); 
@@ -696,7 +720,7 @@ if($meet_background_color == 'Blue') {
                             <?php endif; ?>
                             <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-lg-12 pe-lg-5<?php endif; ?>">
                               <?php if($accordion_content): ?>
-                                <div class="wysiwyg-content accordion-content pb-2">
+                                <div class="wysiwyg-content accordion-content <?php if($accordion_button): ?>pb-2<?php endif; ?> <?php echo $text_color; ?>">
                                   <?php echo wp_trim_words( $accordion_content, 42, '...' ); ?>
                                 </div>
                               <?php endif; ?>
@@ -727,7 +751,7 @@ if($meet_background_color == 'Blue') {
                         <h3 class="font-medium"><?php echo $cta_heading; ?></h3>
                       <?php endif; 
                       if($cta_content): ?>
-                        <div class="wysiwyg-content mb-3 text-start"><?php echo $cta_content; ?></div>
+                        <div class="wysiwyg-content <?php if($cta_link):?>mb-3<?php endif; ?> text-start"><?php echo $cta_content; ?></div>
                       <?php endif; 
                       if($cta_link): ?>
                         <a href="<?php echo $cta_link['url']; ?>" class="site-button" <?php if($cta_link['target']): ?>target="<?php echo $cta_link['target']; ?>"<?php endif; ?>><?php echo $cta_link['title']; ?></a>
@@ -752,7 +776,7 @@ if($meet_background_color == 'Blue') {
                   <<?php echo $column_3_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_fonts; ?> <?php echo $heading_color; ?>"><?php echo $column_3_heading['headline']; ?></<?php echo $column_3_heading['heading_type']; ?>>
               <?php endif; 
               if($column_3_content): ?>
-                <div class="wysiwyg-content <?php echo $content_fonts; ?> mb-3 <?php echo $text_color; ?>">
+                <div class="wysiwyg-content <?php echo $content_fonts; ?> <?php if($column_3_button): ?>mb-3<?php endif; ?> <?php echo $text_color; ?>">
                   <?php echo $column_3_content; ?>
                 </div>
               <?php endif; 
