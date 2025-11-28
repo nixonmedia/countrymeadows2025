@@ -640,6 +640,15 @@ img.alignleft {
   margin-right: -16px; 
 }
 
+/*********************
+*** Fome Zone ***
+*********************/
+.wysiwyg-content img{
+  max-width: 100%;
+  height: auto;
+}
+
+
 
 /*********************
 *** Custom Columns ***

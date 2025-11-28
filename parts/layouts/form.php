@@ -92,31 +92,46 @@ if (!empty($bg_svg_pattern)) {
             </div>
         <?php endif; ?>
         <!-- move form to left as its on right by default and add class to the row with name flex-row-reverse -->
-        <div class="row <?php echo $form_position == "left" ? "flex-row-reverse" : ""; ?>">
-            <div class="<?php echo $form_position == "center" ? "offset-lg-1 col-lg-10" : "col-lg-6"; ?>">
-                <?php if ($content) { ?>
-                    <div class="wysiwyg-content <?php echo $text_color; ?> <?php echo $form_position == "center" ? "text-center" : ""; ?>">
-                        <?php echo $content; ?>
-                    </div>
-                <?php } ?>
-                <!-- if form is center and form has value  -->
-                <?php if ($form_position == "center" && $form) { ?>
-                    <div class="form-container submit-button <?php echo $text_color; ?>">
-                        <?php echo do_shortcode('[gravityform id="' . $form . '" title="false" description="false"] '); ?>
-                    </div>
-                <?php } ?>
-            </div>
-            <!--if the form is right or not center this block will work -->
-            <?php if ($form_position != "center") { ?>
-                <div class="col-lg-6 ">
-                    <?php if ($form) { ?>
-                        <div class="form-container <?php echo $text_color; ?>">
-                            <?php echo  do_shortcode('[gravityform id="' . $form . '" title="true" description="false"]'); ?>
-                        </div>
-                    <?php } ?>
-                </div>
-            <?php } ?>
+        <?php if ($content || $form):
+            $row_class = ($form_position !== "center")
+                ? "justify-content-center"
+                : "";
+        ?>
+            <div class="row <?php echo $form_position == "left" ? "flex-row-reverse" : ""; ?> <?php echo $row_class; ?>">
+                <?php
+                $column_class = ($form_position === "center")
+                    ? "offset-lg-1 col-lg-10"
+                    : "col-lg-6 left-column";
+                ?>
+                <?php if ($content || $form_position == "center" && $form): ?>
+                    <div class="<?php echo $column_class; ?>">
+                        <?php if ($content) {
 
-        </div>
+                        ?>
+                            <div class="wysiwyg-content <?php echo $text_color; ?> <?php echo $form_position == "center" ? "text-center" : ""; ?>">
+                                <?php echo $content; ?>
+                            </div>
+                        <?php } ?>
+                        <!-- if form is center and form has value  -->
+                        <?php if ($form_position == "center" && $form) { ?>
+                            <div class="form-container submit-button <?php echo $text_color; ?>">
+                                <?php echo do_shortcode('[gravityform id="' . $form . '" title="false" description="false"] '); ?>
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php endif; ?>
+                <!--if the form is right or not center this block will work -->
+                <?php if ($form_position != "center") { ?>
+                    <div class="col-lg-6 right-column">
+                        <?php if ($form) { ?>
+                            <div class="form-container <?php echo $text_color; ?>">
+                                <?php echo  do_shortcode('[gravityform id="' . $form . '" title="true" description="false"]'); ?>
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
+
+            </div>
+        <?php endif; ?>
     </div>
 </section>
