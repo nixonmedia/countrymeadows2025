@@ -1765,8 +1765,8 @@
                         },
                         {
                             "key": "field_692001e07dce2",
-                            "label": "Background Pattern",
-                            "name": "background_pattern",
+                            "label": "Background Embellishment",
+                            "name": "background_embellishment",
                             "aria-label": "",
                             "type": "clone",
                             "instructions": "",
@@ -1778,12 +1778,18 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_691d772dc09c2"
+                                "group_6923d48130047"
                             ],
                             "display": "seamless",
                             "layout": "block",
                             "prefix_label": 0,
-                            "prefix_name": 0
+                            "prefix_name": 0,
+                            "choices": {
+                                "circles": "Circles",
+                                "dots": "Dots",
+                                "honeycomb": "Honeycomb",
+                                "sprinkles": "Sprinkles"
+                            }
                         }
                     ],
                     "min": "",
@@ -3977,5 +3983,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764224217
+    "modified": 1764304018
 }
