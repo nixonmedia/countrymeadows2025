@@ -391,7 +391,7 @@ if ($meet_background_color == 'Blue') {
                         $alt       = $img['alt'] ?? '';
                         if ($image_url): ?>
                           <div>
-                            <div class="icon-slide-box <?php if($alignment == 'Centered') echo 'text-center'; ?> px-2 px-md-3">
+                            <div class="icon-slide-box <?php if($alignment == 'Centered'):?>text-center<?php endif; ?> px-2 px-md-3">
                               <img src="<?php echo esc_url($image_url); ?>" class="img-fluid" alt="<?php echo esc_attr($alt); ?>">
                             </div>
                           </div>
