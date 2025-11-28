@@ -4,7 +4,7 @@ $background_water_color = $section['background_watercolor']['background_watercol
 $section_border = $section['border'] ?? []; 
 $border = $section_border['border'] ?? '';
 $angle = $section_border['angle'] ?? '';
-$background_pattern = $section['background_pattern'] ?? '';
+$background_pattern = $section['background_embellishment'] ?? '';
 
 $num_columns = $section['num_columns'] ?? '';
 $alignment = $section['alignment'] ?? '';
@@ -39,7 +39,7 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
 $custom_columns_zone_heading = $section['custom_columns_zone_heading'] ?? '';
 $custom_heading = $custom_columns_zone_heading['heading'] ?? '';
-$include_image_headers_on_custom_content = $section['include_image_headers_on_custom_content'] ?? false;
+$include_image_headers_on_custom_content = $section['include_image_headers_on_custom_content'] ?? false; 
 
 $column_1 = $section['column_1'] ?? '';
 $column_position = $column_1['column_position'] ?? '';
@@ -257,16 +257,16 @@ if($border == 'angle' && $angle == 'down_left') {
   $margin_class = '';
 }
 
-if($background_pattern == 'Circles') {
+if($background_pattern == 'circles') {
   $bg_pattern_class = 'bg-pattern bg-circles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/circles.svg');
-} elseif($background_pattern == 'Dots') {
+} elseif($background_pattern == 'dots') {
   $bg_pattern_class = 'bg-pattern bg-dots-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/dots.svg');
-} elseif($background_pattern == 'Honeycomb') {
+} elseif($background_pattern == 'honeycomb') {
   $bg_pattern_class = 'bg-pattern bg-honeycomb-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/honeycomb.svg');
-} elseif($background_pattern == 'Sprinkles') {
+} elseif($background_pattern == 'sprinkles') {
   $bg_pattern_class = 'bg-pattern bg-sprinkles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/sprinkles.svg');
 } else {
@@ -408,7 +408,7 @@ if ($meet_background_color == 'Blue') {
     <?php endif; ?>
     
     <?php if($num_columns == '2' || $num_columns == '3'): ?>
-      <!--- Custom Column 2 Layout --->
+      <!--- Custom Column 2 & 3 Layout --->
       <?php if($custom_heading['headline']): ?>
         <div class="row <?php echo $row_class; ?> pb-3">
           <div class="<?php echo $heading_column_class; ?>">
@@ -787,7 +787,7 @@ if ($meet_background_color == 'Blue') {
           </div>
         <?php endif; ?>
       </div>
-      <!--- End here Custom Column 2 Layout --->
+      <!--- End here Custom Column 2 & 3 Layout --->
     <?php endif; ?>
   </div>
 </section>
