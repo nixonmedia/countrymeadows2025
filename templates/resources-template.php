@@ -134,7 +134,7 @@ Template Name: Resources
     </div>
 </section>
 
-<section class="py-5 helpful-topics">
+<section class="py-5 git">
     <div class="container-fluid">
         <div class="row justify-content-center mb-5">
             <div class="col-12 text-center">
