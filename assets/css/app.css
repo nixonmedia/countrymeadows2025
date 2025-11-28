@@ -898,6 +898,10 @@ img.alignleft {
 /*********************
 *** Split Columns ***
 *********************/
+.split-column-zone {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
 .split-column-zone .image-box img {
   border-radius: 20px 0;
 }
@@ -1405,6 +1409,15 @@ img.alignleft {
     left: 0;
     bottom: unset;
     top: -15%;
+  }
+  
+  .split-column-zone .with-embellishment:after {
+    bottom: 50px;
+    height: 100px;
+    width: 118px;
+  }
+  .split-column-zone .with-embellishment.right-align-embellishment:after {
+    right: -75px;
   }
 }
 @media only screen and (min-width: 1200px) {
