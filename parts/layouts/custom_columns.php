@@ -290,28 +290,16 @@ if (!empty($bg_svg_pattern)) {
 }
 if ($meet_background_color == 'Blue') {
   $meet_bg_color = 'bg-blue';
-  $meet_text_color = 'text-white';
-  $meet_heading_color = 'text-white';
 } elseif($meet_background_color == 'Light Blue') {
   $meet_bg_color = 'bg-light-blue';
-  $meet_text_color = 'text-black-100';
-  $meet_heading_color = 'text-black-100';
 } elseif($meet_background_color == 'Teal') {
   $meet_bg_color = 'bg-teal';
-  $meet_text_color = 'text-black';
-  $meet_heading_color = 'text-black';
 } elseif($meet_background_color == 'Purple') {
   $meet_bg_color = 'bg-purple';
-  $meet_text_color = 'text-white';
-  $meet_heading_color = 'text-white';
 } elseif($meet_background_color == 'Gradient Yellow') {
   $meet_bg_color = 'bg-gradient-yellow';
-  $meet_text_color = 'text-black';
-  $meet_heading_color = 'text-black';
 } else {
   $meet_bg_color = 'bg-white';
-  $meet_text_color = 'text-black';
-  $meet_heading_color = 'text-black';
 }
 ?>
 
@@ -655,10 +643,10 @@ if ($meet_background_color == 'Blue') {
               <!------- Meet Our Team Special Content ------>
               <div class="meet-team-block <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?> <?php echo $meet_bg_color; ?>">
                 <?php if($meet_heading['headline']): ?>
-                  <<?php echo $meet_heading['heading_type']; ?> class="font-medium mb-4 <?php echo $meet_heading_color; ?>"><?php echo $meet_heading['headline']; ?></<?php echo $meet_heading['heading_type']; ?>>
+                  <<?php echo $meet_heading['heading_type']; ?> class="font-medium mb-4"><?php echo $meet_heading['headline']; ?></<?php echo $meet_heading['heading_type']; ?>>
                 <?php endif; ?>
                 <?php if (!empty($meet_our_team) && is_array($meet_our_team)): ?>
-                  <div class="meet-team-slider <?php echo $meet_text_color; ?>">
+                  <div class="meet-team-slider">
                     <?php foreach($meet_our_team as $post_meet_our_team):
                       $team_name = get_field('team_member_name', $post_meet_our_team->ID);
                       $team_image = get_field('team_member_photo', $post_meet_our_team->ID);
@@ -668,18 +656,18 @@ if ($meet_background_color == 'Blue') {
                           <div class="col-lg-4 team-img-col">
                             <img src="<?php echo $team_image['url']; ?>" alt="<?php echo $team_image['alt']; ?>" class="img-fluid">
                             <?php if($meet_button): ?>
-                              <a href="<?php echo $meet_button['url']; ?>" class="site-button meet-team-button mb-4 mb-lg-0 d-none d-lg-inline-block" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
+                              <a href="<?php echo $meet_button['url']; ?>" class="meet-team-button mb-4 mb-lg-0 d-none d-lg-inline-block" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
                             <?php endif; ?>
                           </div>
                           <div class="col-lg-8 team-content-col mt-4 mt-lg-0">
-                            <h3 class="text-pink font-xm <?php echo $meet_heading_color; ?>"><?php echo $team_name; ?></h3>
+                            <h3 class="text-pink font-xm"><?php echo $team_name; ?></h3>
                             <?php if($team_content): ?>
-                              <div class="wysiwyg-content <?php echo $meet_text_color; ?>">
+                              <div class="wysiwyg-content">
                                 <?php echo $team_content; ?>
                               </div>
                             <?php endif; ?>
                             <?php if($meet_button): ?>
-                              <a href="<?php echo $meet_button['url']; ?>" class="site-button meet-team-button mb-4 mb-lg-0 d-lg-none" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
+                              <a href="<?php echo $meet_button['url']; ?>" class="meet-team-button mb-4 mb-lg-0 d-lg-none" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
                             <?php endif; ?>
                           </div>
                         </div>
