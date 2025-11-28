@@ -26,6 +26,8 @@
   --cyan-blue: #00B2D0;
   --light-blue-100 : #2BA1C619;
   --light-gray : #666666;
+  --light-gray-100 : #F4F4F4;
+  --dark-blue: #2B58A6;
 }
 body {
   font-size: 18px;
@@ -60,11 +62,14 @@ h1, h2, h3, h4, h5, h6 {
 .bg-purple {
   background-color: var(--purple);
 }
+.bg-purple {
+  background-color: var(--purple);
+}
 .bg-gradient-yellow {
   background: linear-gradient(180deg, rgba(255, 202, 74, 0.10) 0%, #FFF 47.12%);
 }
-.bg-light-yellow {
-  background-color: var(--light-yellow);
+.bg-light-gray-100 {
+  background-color: var(--light-gray-100);
 }
 .bg-light-blue-100{
   background-color: var(--light-blue-100);
@@ -907,48 +912,26 @@ img.alignleft {
 
 
 /* find next career section starts  */
-
-/* :root {
-    --blue: #2BA1C6;
-    --pink: #D62F74;
-} */
-
-/* Search box */
-/* .search-box {
-    border-radius: 10px;
-    background: #fff;
-} */
-
-/* .search-btn {
-    background: var(--blue);
-    border-color: var(--blue);
-} */
-
-/* Filters */
-/* .filters {
-    border-radius: 10px;
-    background: #fff;
-} */
-
-/* Container Background */
 .search-box {
-    background: #E6F4F8; /* very light blue (like image) */
+    background: #E6F4F8; 
     border-radius: 12px;
 }
-/* Input */
+
 .search-box .form-control {
     border: none;
     border-radius: 10px !important;
 }
 
-/* Button */
 .search-box .search-btn {
     background: var(--pink);
     border: none;
-    border-radius: 0 10px 10px 10px !important;   /* rounded right side */
+    border-radius: 0 10px 10px 10px !important;  
+}
+.careers-section .search-box .heading{
+font-size:20px;
+line-height:25px;
 }
 
-/* Input */
 .search-box .form-control {
     border: none;
     background: #ffffff;
@@ -958,14 +941,12 @@ img.alignleft {
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
-/* Remove Bootstrap focus outline */
 .search-box .form-control:focus {
     box-shadow: none;
 }
 
-/* Pink Search Button */
 .search-box .search-btn {
-    background: var(--pink);   /* strong pink like screenshot */
+    background: var(--pink);
     border: none;
     border-radius: 0 8px 8px 0;
     padding: 0 20px;
@@ -976,12 +957,10 @@ img.alignleft {
     font-size: 1.1rem;
 }
 
-/* Lower divider text ("OR") — if you need it */
 .or-divider {
    color: #808080;
 
 }
-
 .or-divider::before,
 .or-divider::after {
     content: "";
@@ -992,49 +971,42 @@ img.alignleft {
     margin: 0 10px;
     vertical-align: middle;
 }
-
-
-.filter-title {
+.filters .filter-title {
+  font-size:16px;
     font-weight: 600;
     color: #333;
     margin-bottom: 6px;
 }
-
-/* Job Cards */
-.job-card {
-    background: #fff;
-    border-radius: 12px;
-    border: 1px solid #D9D9D9;
+.career-card {
+  background: #FFFFFF;
+border: 1px solid #D9D9D9;
 box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-    transition: 0.2s ease;
+transition: 0.2s ease;
 }
 
-/* .job-card:hover {
-    transform: translateY(-3px);
-} */
-
-.job-title {
-    margin-bottom: 6px;
-}
-
-.job-card .view-more {
+.career-card .view-more {
     color: var(--pink);
 }
-/* Pagination */
-.pagination .page-link {
-    border-radius: 50%;
+.careers-section .pagination {
+      padding: 40px 20px;
+}
+
+.careers-section .pagination .page-link {
+   border-radius: 10px;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
     width: 36px;
     height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.pagination .active .page-link {
-    background: var(--pink);
-    border-color: var(--pink);
+.careers-section .pagination .active .page-link {
+    background: var(--dark-blue);
+    border-color: var(--dark-blue);
 }
-.job-alert-box {
-    background: #E8F0FF;            /* light blue background */
+.career-alert-box {
+    background: #E8F0FF;            
     border-radius: 12px;
         padding: 30px 40px;
   
