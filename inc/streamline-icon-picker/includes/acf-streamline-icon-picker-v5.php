@@ -17,10 +17,14 @@ class ACF_Field_Streamline_Icon_Picker extends acf_field {
     }
 
     /**
-     * Render field dropdown
+     * Render field dropdown - load icons from local filesystem
      */
     public function render_field( $field ) {
-        $icons = get_option( 'streamline_icon_data', [] );
+        if ( class_exists('Streamline_API_Handler') ) {
+            $icons = Streamline_API_Handler::get_icons();
+        } else {
+            $icons = [];
+        }
         $value = esc_attr( $field['value'] ?? '' );
 
         echo '<select name="' . esc_attr( $field['name'] ) . '" class="streamline-icon-select" style="width:100%;">';
@@ -30,15 +34,15 @@ class ACF_Field_Streamline_Icon_Picker extends acf_field {
             foreach ( $icons as $icon ) {
                 $selected = selected( $value, $icon['id'], false );
                 printf(
-                    '<option value="%1$s" %3$s data-preview="%4$s">%2$s</option>',
+                    '<option value="%1$s" %2$s data-preview="%4$s">%3$s</option>',
                     esc_attr( $icon['id'] ),
-                    esc_html( $icon['name'] ),
                     $selected,
-                    esc_url( $icon['preview'] )
+                    esc_html( $icon['name'] ),
+                    esc_url( $icon['preview'] ?? '' )
                 );
             }
         } else {
-            echo '<option disabled>No icons found. Run ?streamline_sync=1</option>';
+            echo '<option disabled>No icons found in ' . esc_html( get_template_directory() . '/inc/streamline-icon-picker/icons' ) . '</option>';
         }
 
         echo '</select>';
@@ -97,37 +101,14 @@ class ACF_Field_Streamline_Icon_Picker extends acf_field {
     }
 
     /**
-     * ✅ Ensure formatted value returns the icon ID
+     * ✅ Return icon ID for get_field()
      */
-    // public function format_value( $value, $post_id, $field ) {
-    //     if ( empty( $value ) ) {
-    //         $value = get_post_meta( $post_id, $field['name'], true );
-    //     }
-
-    //     $value = sanitize_text_field( $value );
-    //     if ( empty( $value ) ) {
-    //         return null;
-    //     }
-
-    //     // Fetch full icon info from stored data
-    //     $icons = get_option( 'streamline_icon_data', [] );
-
-    //     if ( ! empty( $icons ) && is_array( $icons ) ) {
-    //         foreach ( $icons as $icon ) {
-    //             if ( isset( $icon['id'] ) && $icon['id'] === $value ) {
-    //                 return $icon;
-    //             }
-    //         }
-    //     }
-
-    //     // Fallback: just return ID if no match found
-    //     return [
-    //         'id'      => $value,
-    //         'name'    => '',
-    //         'family'  => '',
-    //         'preview' => '',
-    //     ];
-    // }
+    public function format_value( $value, $post_id, $field ) {
+        if ( empty( $value ) ) {
+            $value = get_post_meta( $post_id, $field['name'], true );
+        }
+        return $value ? sanitize_text_field( $value ) : '';
+    }
 
 }
 

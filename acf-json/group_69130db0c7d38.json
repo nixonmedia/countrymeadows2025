@@ -22,9 +22,9 @@
     "location": [
         [
             {
-                "param": "page_type",
+                "param": "post_type",
                 "operator": "==",
-                "value": "front_page"
+                "value": "page"
             }
         ]
     ],
@@ -38,5 +38,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1762856393
+    "modified": 1764326924
 }
