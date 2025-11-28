@@ -189,7 +189,7 @@ if($embellishment == 'circles' ) {
                               <?php endif; ?>
                               <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-lg-12 pe-lg-5<?php endif; ?>">
                                 <?php if($accordion_content): ?>
-                                  <div class="wysiwyg-content accordion-content <?php if($accordion_button): ?>pb-2<?php endif; ?> <?php echo $text_color; ?>">
+                                  <div class="wysiwyg-content accordion-content <?php if($accordion_button): ?>pb-2<?php endif; ?>">
                                     <?php echo wp_trim_words( $accordion_content, 42, '...' ); ?>
                                   </div>
                                 <?php endif; ?>
@@ -264,7 +264,7 @@ if($embellishment == 'circles' ) {
                               <?php endif; ?>
                               <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-lg-12 pe-lg-5<?php endif; ?>">
                                 <?php if($accordion_content): ?>
-                                  <div class="wysiwyg-content accordion-content <?php if($accordion_button): ?>pb-2<?php endif; ?> <?php echo $text_color; ?>">
+                                  <div class="wysiwyg-content accordion-content <?php if($accordion_button): ?>pb-2<?php endif; ?>">
                                     <?php echo wp_trim_words( $accordion_content, 42, '...' ); ?>
                                   </div>
                                 <?php endif; ?>
