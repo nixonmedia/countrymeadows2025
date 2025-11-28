@@ -1,4 +1,4 @@
-<?php $split_column_position = $section['split_column_position'] ?? '';
+<?php $split_column_position = $section['split_column_position'] ?? ''; 
 $standard_column = $section['standard_column'] ?? '';
 $image_headers = $standard_column['image_headers'] ?? '';
 $image_header_content = $standard_column['image_header_content'] ?? '';
@@ -46,6 +46,19 @@ $bottom_image_gallery = $bottom_gallery['image_gallery'] ?? '';
 $bottom_image_heading = $bottom_image_gallery['heading'] ?? '';
 $bottom_images = $bottom_image_gallery['gallery'] ?? '';
 
+if($background_color == 'Blue') {
+  $bg_color = 'bg-blue';
+} elseif($background_color == 'Light Blue') {
+  $bg_color = 'bg-light-blue';
+} elseif($background_color == 'Teal') {
+  $bg_color = 'bg-teal';
+} elseif($background_color == 'Purple') {
+  $bg_color = 'bg-purple';
+} elseif($background_color == 'Gradient Yellow') {
+  $bg_color = 'bg-gradient-yellow';
+} else {
+  $bg_color = 'bg-white';
+}
 
 if($embellishment_position == 'Left') {
   $embellishment_position_class = 'left-align-embellishment';
@@ -71,33 +84,12 @@ if($embellishment == 'circles' ) {
   $embellishment_class = '';
 }
 
-
-$section_has_data = array_filter([
-    $heading['headline'],
-    $content,
-    $button,
-    $image_header,
-    $top_standard_heading['headline'],
-    $top_standard_copy_content,
-    $top_standard_button,
-    $top_standard_icon,
-    $top_accordion,
-    $bottom_standard_heading['headline'],
-    $bottom_standard_copy_content,
-    $bottom_standard_button,
-    $bottom_standard_icon,
-    $bottom_accordion,
-    $bottom_images,
-    $bottom_icon,
-    $bottom_icon_text,
-]); 
 ?>
-<?php if(!empty($section_has_data)): ?>
   <section class="split-column-zone" id="split-column-zone-<?php echo get_the_ID().'-'.$key; ?>">
     <div class="container-fluid">
-      <div class="row <?php if($split_column_position == 'Left'):?>flex-row-reverse<?php endif; ?>">
+      <div class="row <?php if($split_column_position == 'left'):?>flex-row-reverse<?php endif; ?>">
         <?php if($heading['headline'] || $content || $button || $image_header): ?>
-          <div class="col-lg-5 pe-lg-5">
+          <div class="col-lg-5 mb-4 mb-lg-0 <?php if($split_column_position == 'left'):?>ps-lg-5 <?php else: ?>pe-lg-5<?php endif; ?> <?php if($split_column_position == 'left'):?>offset-lg-1<?php endif; ?>">
             <?php if($heading['headline']): ?>
             <<?php echo $heading['heading_type']; ?> class="font-medium mb-3 pb-lg-1"><?php echo $heading['headline']; ?></<?php echo $heading['heading_type']; ?>>
             <?php endif;
@@ -116,13 +108,14 @@ $section_has_data = array_filter([
             <?php endif; ?>
           </div>
         <?php endif; ?>
-        <div class="col-lg-6 offset-lg-1">
-          <?php if($top_content_type == 'Standard Content' || $top_content_type == 'Call-to-Action'): ?>
-            <div class="top-content-block mb-4 pb-lg-4">
+        
+        <div class="col-lg-6 <?php if($split_column_position == 'right'):?>offset-lg-1<?php endif; ?>">
+          <?php if($top_content_type == 'Standard Content' || $top_content_type == 'Call-to-Action' || $top_content_type == 'Accordions'): ?>
+            <div class="top-content-block mb-4 pb-3 pb-lg-4">
               <?php if($top_content_type == 'Standard Content'): ?>
                 <!-- Top Standard Content -->
                 <?php if($top_standard_copy_content || $top_standard_heading['headline'] || $top_standard_button): ?>
-                  <div class="top-standard-content text-center">
+                  <div class="top-standard-content text-center <?php echo $bg_color; ?>">
                     <?php if($top_standard_icon): ?>
                       <div class="heading-with-above-icon mb-2">
                         <?php echo $top_standard_icon; ?>
@@ -150,7 +143,7 @@ $section_has_data = array_filter([
                     $cta_heading = get_field('cta_headline', $post_cta->ID); 
                     $cta_content = get_field('cta_content', $post_cta->ID);
                     $cta_link = get_field('cta_link', $post_cta->ID); ?>
-                    <div class="cta-info text-center">
+                    <div class="cta-info text-center <?php echo $bg_color; ?>">
                       <div class="cta-content">
                         <?php if($cta_heading): ?>
                           <h3 class="font-medium"><?php echo $cta_heading; ?></h3>
@@ -166,6 +159,52 @@ $section_has_data = array_filter([
                   <?php endforeach; ?>
                 </div>
                 <!-- End Here Top CTA -->
+              <?php endif;  
+              if($top_content_type == 'Accordions'):?>
+                <!-- Top Accordions Content -->
+                <?php if($top_accordions_heading['headline']): ?>
+                  <<?php echo $top_accordions_heading['heading_type']; ?> class="font-medium mb-4"><?php echo $top_accordions_heading['headline']; ?></<?php echo $top_accordions_heading['heading_type']; ?>>
+                <?php endif; ?>
+                <?php if (!empty($top_accordion) && is_array($top_accordion)): ?>
+                  <div class="accordion accordion-block mt-3 mt-lg-0" id="TopAccordionExample-<?php echo $key; ?>">
+                    <?php $i = 1;
+                    foreach($top_accordion as $top_accordion_post): 
+                    $accordion_title = get_field('accordion_header', $top_accordion_post->ID); 
+                    $accordion_content = get_field('accordion_content', $top_accordion_post->ID);
+                    $accordion_image = get_field('accordion_image', $top_accordion_post->ID);
+                    $accordion_button = get_field('accordion_button', $top_accordion_post->ID); ?>
+                      <div class="accordion-item">
+                        <h3 class="accordion-header" id="heading-<?php echo $key.'-'.$i; ?>">
+                          <button class="accordion-button font-lexend font-xs-medium fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-<?php echo $key.'-'.$i; ?>" aria-expanded="true" aria-controls="collapse-<?php echo $key.'-'.$i; ?>">
+                            <?php echo $accordion_title; ?>
+                          </button>
+                        </h3>
+                        <div id="collapse-<?php echo $key.'-'.$i; ?>" class="accordion-collapse collapse" aria-labelledby="heading-<?php echo $key.'-'.$i; ?>" data-bs-parent="#TopAccordionExample-<?php echo $key; ?>">
+                          <div class="accordion-body">
+                            <div class="row">
+                              <?php if($accordion_image): ?>
+                                <div class="col-lg-4">
+                                  <img src="<?php echo $accordion_image['url']; ?>" alt="<?php echo $accordion_image['alt']; ?>" class="img-fluid">
+                                </div>
+                              <?php endif; ?>
+                              <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-lg-12 pe-lg-5<?php endif; ?>">
+                                <?php if($accordion_content): ?>
+                                  <div class="wysiwyg-content accordion-content <?php if($accordion_button): ?>pb-2<?php endif; ?> <?php echo $text_color; ?>">
+                                    <?php echo wp_trim_words( $accordion_content, 42, '...' ); ?>
+                                  </div>
+                                <?php endif; ?>
+                                <?php if($accordion_button): ?>
+                                  <a href="<?php echo $accordion_button['url']; ?>" class="site-button" <?php if($accordion_button['target']): ?>target="<?php echo $accordion_button['target']; ?>"<?php endif; ?>><?php echo $accordion_button['title']; ?></a>
+                                <?php endif; ?>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <?php $i++; endforeach; ?>
+                  </div>
+                <?php endif; ?>
+                <!-- End Here Top Accordions Content -->
               <?php endif; ?>
             </div>
           <?php endif; ?>
@@ -249,7 +288,7 @@ $section_has_data = array_filter([
                         <<?php echo $bottom_icon_heading['heading_type']; ?> class="font-medium mb-lg-4"><?php echo $bottom_icon_heading['headline']; ?></<?php echo $bottom_icon_heading['heading_type']; ?>>
                       <?php endif; ?>
                       <?php if (!empty($bottom_add_icons) && is_array($bottom_add_icons)): ?>
-                        <div class="icons-slider mb-3 pb-4 pt-3">
+                        <div class="icons-slider mb-lg-3 pb-lg-4 pt-3">
                           <?php foreach($bottom_add_icons as $icons_group_icon): 
                             $icon = $icons_group_icon['icon'] ?? ' ';
                             $text = $icons_group_icon['text'] ?? ' ';
@@ -279,7 +318,7 @@ $section_has_data = array_filter([
                         <<?php echo $bottom_image_heading['heading_type']; ?> class="font-medium mb-4"><?php echo $bottom_image_heading['headline']; ?></<?php echo $bottom_image_heading['heading_type']; ?>>
                       <?php endif; ?>
                     <?php if (!empty($bottom_images) && is_array($bottom_images)): ?>
-                      <div class="image-gallery-slider mb-3 pb-4 pt-3">
+                      <div class="image-gallery-slider mb-lg-3 pb-lg-4 pt-lg-3">
                         <?php foreach ($bottom_images as $gallery_post):
                             $images = get_field('community_galleries', $gallery_post->ID);
                             if (!empty($images) && is_array($images)):
@@ -304,4 +343,3 @@ $section_has_data = array_filter([
       </div>
     </div>
   </section>
-<?php endif; ?>

@@ -652,8 +652,7 @@ img.alignleft {
   padding: 55px 30px;
 }
 .meet-team-slider .slick-arrow {
-  /* color: var(--pink); */
-  color: inherit;
+  color: var(--pink);
   top: -75px;
   bottom: unset;
   z-index: 1;
@@ -677,21 +676,21 @@ img.alignleft {
   border-radius: 0 20px;
 }
 .meet-team-button {
-  /* text-decoration: none;
-  display: inline-block; */
+  text-decoration: none;
+  display: inline-block;
   font-size: 14px;
   line-height: 18px;
-  /* font-weight: 700;
+  font-weight: 700;
   color: var(--white);
   background-color: var(--pink);
-  border-radius: 10px; */
+  border-radius: 10px;
   padding: 10px 18px;
   margin-top: 20px;
 }
-/* .meet-team-button:hover {
+.meet-team-button:hover {
   background-color: var(--black-100);
   color: var(--white);
-} */
+}
 
 .with-embellishment {
   position: relative;
@@ -828,8 +827,10 @@ img.alignleft {
 }
 .cta-info {
   border-radius: 20px;
-  background: rgba(76, 87, 230, 0.05);
   padding: 40px 30px;
+}
+section:not(.split-column-zone) .cta-info {
+  background: rgba(76, 87, 230, 0.05);
 }
 .cta-info .site-button {
   border: 1px solid #B6B6B6;
@@ -899,11 +900,35 @@ img.alignleft {
 *** Split Columns ***
 *********************/
 .split-column-zone {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .split-column-zone .image-box img {
   border-radius: 20px 0;
+}
+.top-content-block .bg-blue {
+  background-color: color-mix(in srgb, var(--blue) 5%, transparent);
+}
+.top-content-block .bg-light-blue {
+  background-color: color-mix(in srgb, var(--light-blue) 10%, transparent);
+}
+.top-content-block .bg-teal {
+  background-color: color-mix(in srgb, var(--teal) 10%, transparent);
+}
+.top-content-block .bg-purple {
+  background-color: color-mix(in srgb, var(--purple) 5%, transparent);
+}
+.split-column-zone .cta-block .site-button, .split-column-zone .top-standard-content .site-button {
+  background-color: var(--purple);
+  color: var(--white);
+}
+.split-column-zone .cta-block .site-button:hover, .split-column-zone .top-standard-content .site-button:hover {
+  background-color: var(--gray);
+  color: var(--white);
+}
+.split-column-zone .top-standard-content:not(.bg-white) {
+  padding: 30px 20px;
+  border-radius: 20px;
 }
 
 /***********************
@@ -1418,6 +1443,16 @@ img.alignleft {
   }
   .split-column-zone .with-embellishment.right-align-embellishment:after {
     right: -75px;
+  }
+  .split-column-zone .with-embellishment.left-align-embellishment:after {
+    left: -75px;
+  }
+  .split-column-zone {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .split-column-zone .top-standard-content:not(.bg-white) {
+    padding: 50px 30px;
   }
 }
 @media only screen and (min-width: 1200px) {
