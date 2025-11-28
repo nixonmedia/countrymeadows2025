@@ -1765,8 +1765,8 @@
                         },
                         {
                             "key": "field_692001e07dce2",
-                            "label": "Background Embellishment",
-                            "name": "background_embellishment",
+                            "label": "Background Pattern",
+                            "name": "background_pattern",
                             "aria-label": "",
                             "type": "clone",
                             "instructions": "",
@@ -1778,18 +1778,12 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_6923d48130047"
+                                "group_691d772dc09c2"
                             ],
                             "display": "seamless",
                             "layout": "block",
                             "prefix_label": 0,
-                            "prefix_name": 0,
-                            "choices": {
-                                "circles": "Circles",
-                                "dots": "Dots",
-                                "honeycomb": "Honeycomb",
-                                "sprinkles": "Sprinkles"
-                            }
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -3409,7 +3403,7 @@
                 },
                 "layout_content_button_cards": {
                     "key": "layout_content_button_cards",
-                    "name": "content_button_cards",
+                    "name": "content_and_button_cards",
                     "label": "Content and Button Cards",
                     "display": "block",
                     "sub_fields": [
@@ -3815,11 +3809,11 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_691c0621c5c21",
+                            "key": "field_reviews_heading",
                             "label": "Heading",
                             "name": "heading",
                             "aria-label": "",
-                            "type": "clone",
+                            "type": "text",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -3828,16 +3822,43 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "clone": [
-                                "group_6918166601126"
-                            ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
                         },
                         {
-                            "key": "field_691c0cb3c5c23",
+                            "key": "field_reviews_heading_type",
+                            "label": "Heading Type",
+                            "name": "heading_type",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "h2": "H2",
+                                "h3": "H3",
+                                "h4": "H4"
+                            },
+                            "default_value": "h2",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_reviews_content",
                             "label": "Content",
                             "name": "content",
                             "aria-label": "",
@@ -3851,14 +3872,13 @@
                                 "id": ""
                             },
                             "default_value": "",
-                            "allow_in_bindings": 0,
                             "tabs": "all",
                             "toolbar": "full",
                             "media_upload": 1,
                             "delay": 0
                         },
                         {
-                            "key": "field_691c0cd2c5c24",
+                            "key": "field_reviews_button",
                             "label": "Button",
                             "name": "button",
                             "aria-label": "",
@@ -3867,94 +3887,137 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "50",
                                 "class": "",
                                 "id": ""
                             },
-                            "return_format": "array",
-                            "allow_in_bindings": 0
+                            "return_format": "array"
                         },
                         {
-                            "key": "field_691c0d0fc5c25",
+                            "key": "field_reviews_feed_select",
                             "label": "Review Feed",
                             "name": "review_feed",
                             "aria-label": "",
-                            "type": "taxonomy",
-                            "instructions": "",
+                            "type": "select",
+                            "instructions": "Can choose any of their different location feeds from Google",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "50",
                                 "class": "",
                                 "id": ""
                             },
-                            "taxonomy": "location",
-                            "add_term": 0,
-                            "save_terms": 1,
-                            "load_terms": 0,
-                            "return_format": "object",
-                            "field_type": "select",
+                            "choices": [],
+                            "default_value": false,
                             "allow_null": 0,
-                            "allow_in_bindings": 0,
-                            "bidirectional": 0,
                             "multiple": 0,
-                            "bidirectional_target": []
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         },
                         {
-                            "key": "field_691c0d50c5c26",
+                            "key": "field_reviews_background_color",
                             "label": "Background Color",
                             "name": "background_color",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "No white option",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": [],
+                            "default_value": false,
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_reviews_border",
+                            "label": "Border",
+                            "name": "border",
                             "aria-label": "",
                             "type": "select",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
                             "choices": {
-                                "blue": "Blue",
-                                "light_blue": "Light Blue",
-                                "teal": "Teal",
-                                "purple": "Purple",
-                                "gradient_yellow": "Gradient Yellow"
+                                "none": "None",
+                                "angle": "Angle",
+                                "straight": "Straight"
                             },
-                            "default_value": false,
-                            "return_format": "value",
-                            "multiple": 0,
+                            "default_value": "none",
                             "allow_null": 0,
-                            "allow_in_bindings": 0,
+                            "multiple": 0,
                             "ui": 0,
                             "ajax": 0,
+                            "return_format": "value",
                             "placeholder": "",
                             "create_options": 0,
                             "save_options": 0
                         },
                         {
-                            "key": "field_691c20ca7b1b0",
-                            "label": "Border",
-                            "name": "border",
+                            "key": "field_reviews_angle",
+                            "label": "Angle",
+                            "name": "angle",
                             "aria-label": "",
-                            "type": "clone",
+                            "type": "select",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_reviews_border",
+                                        "operator": "==",
+                                        "value": "angle"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
-                                "width": "",
+                                "width": "34",
                                 "class": "",
                                 "id": ""
                             },
-                            "clone": [
-                                "group_691c1dcdc6241"
-                            ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
+                            "choices": {
+                                "down_right": "Down to the Right",
+                                "down_left": "Down to the Left"
+                            },
+                            "default_value": false,
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         }
                     ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_692935f10c1f1": {
+                    "key": "layout_692935f10c1f1",
+                    "name": "find_next_career",
+                    "label": "Find Next Career",
+                    "display": "block",
+                    "sub_fields": [],
                     "min": "",
                     "max": ""
                 }
@@ -3983,5 +4046,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764249424
+    "modified": 1764308601
 }
