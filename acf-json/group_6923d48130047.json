@@ -1,11 +1,11 @@
 {
-    "key": "group_691d772dc09c2",
-    "title": "Background Pattern Component",
+    "key": "group_6923d48130047",
+    "title": "Background Embellishment Component",
     "fields": [
         {
-            "key": "field_691d772ed3d86",
-            "label": "Background Pattern",
-            "name": "background_pattern",
+            "key": "field_6923d48176d84",
+            "label": "Background Embellishment",
+            "name": "background_embellishment",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -17,10 +17,10 @@
                 "id": ""
             },
             "choices": {
-                "Circles": "Circles",
-                "Sprinkles": "Sprinkles",
-                "Honeycomb": "Honeycomb",
-                "Dots": "Dots"
+                "circles": "Circles",
+                "dots": "Dots",
+                "honeycomb": "Honeycomb",
+                "sprinkles": "Sprinkles"
             },
             "default_value": false,
             "return_format": "value",
@@ -60,5 +60,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763812306
+    "modified": 1764232316
 }
