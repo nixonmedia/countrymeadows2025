@@ -1,290 +1,255 @@
 <?php
 /**
- * Handles StreamlineHQ API integration and ACF icon picker data sync.
+ * Handles StreamlineHQ icon loading from local filesystem (no API).
  */
 
 class Streamline_API_Handler {
 
-    const OPTIONS_KEY       = 'streamline_icon_data';
-    const QUEUE_KEY         = 'streamline_icon_queue';
-    const PUBLIC_API_URL    = 'https://public-api.streamlinehq.com/v1/search/family/';
-    const INCLUDED_FAMILIES = ['freehand-free', 'streamline-freehand', 'streamline-freehand-duotone'];
-    const LIMIT             = 100; // icons per batch
-
-    // ✅ Extended query set to cover all possible icon names
-    const QUERY_SET = [
-        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-        '0','1','2','3','4','5','6','7','8','9','_','-'
-    ];
+    const OPTIONS_KEY   = 'streamline_icon_data';
+    const ICONS_FOLDER  = 'inc/streamline-icon-picker/icons';
 
     public static function init() {
-        add_action('admin_init', [__CLASS__, 'maybe_sync_icons']);
-        add_action('streamline_process_batch', [__CLASS__, 'process_batch']);
-        add_action('wp_ajax_streamline_start_sync', [__CLASS__, 'ajax_start_sync']);
-        add_action('wp_ajax_streamline_sync_progress', [__CLASS__, 'ajax_get_sync_progress']);
-        add_filter('acf/format_value/type=streamline_icon_picker', [__CLASS__, 'format_icon_to_svg'], 10, 3);
-        // add_action('wp_ajax_streamline_fetch_svg', [__CLASS__, 'ajax_fetch_svg']);
-        add_action('admin_notices', [__CLASS__, 'render_progress_bar']);
-        add_action('admin_enqueue_scripts', [__CLASS__, 'enqueue_admin_scripts']);
+        // Register AJAX search handler for admin (used by Select2 AJAX)
+        add_action( 'wp_ajax_streamline_icon_search', array( __CLASS__, 'ajax_search_icons' ) );
     }
 
-    /** Manual trigger */
-    public static function maybe_sync_icons() {
-        if (isset($_GET['streamline_sync']) && current_user_can('manage_options')) {
-            self::reset_sync();
-            wp_die('Streamline sync started. Processing in background...');
+    /**
+     * AJAX: search icons by query (returns select2-compatible JSON)
+     */
+    public static function ajax_search_icons() {
+        // only for logged-in admin users (field is used in WP admin)
+        if ( ! current_user_can( 'edit_posts' ) ) {
+            wp_send_json_error( 'unauthorized', 403 );
         }
-    }
 
-    private static function reset_sync() {
-        delete_transient(self::QUEUE_KEY);
-        delete_option(self::OPTIONS_KEY);
-        self::init_queue();
-        do_action('streamline_process_batch');
-    }
+        check_ajax_referer( 'streamline_icon_search', 'nonce' );
 
-    /** Initialize full queue */
-    private static function init_queue() {
-        $queue = [];
-        foreach (self::INCLUDED_FAMILIES as $family) {
-            foreach (self::QUERY_SET as $query) {
-                $queue[] = [
-                    'family' => $family,
-                    'query'  => $query,
-                    'page'   => 1
-                ];
-            }
-        }
-        set_transient(self::QUEUE_KEY, $queue, DAY_IN_SECONDS); // last longer
-    }
+        $q = isset( $_REQUEST['q'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['q'] ) ) : '';
+        $q = trim( $q );
 
-    /** Fetch and save icons batch-by-batch */
-    public static function process_batch() {
-        $queue = get_transient(self::QUEUE_KEY);
-        if (empty($queue)) return;
+        $icons_dir = get_template_directory() . '/' . self::ICONS_FOLDER;
+        $icons_uri = get_template_directory_uri() . '/' . self::ICONS_FOLDER;
 
-        $current = array_shift($queue);
-        $family  = $current['family'];
-        $query   = $current['query'];
-        $page    = $current['page'];
+        $results = array();
 
-        $url = self::PUBLIC_API_URL . $family
-             . '?productType=icons'
-             . '&query=' . urlencode($query)
-             . '&page=' . $page
-             . '&limit=' . self::LIMIT;
-
-        $args = [
-            'headers' => [
-                'accept'    => 'application/json',
-                'x-api-key' => STREAMLINE_API_KEY,
-            ],
-            'timeout'   => 30,
-            'sslverify' => false,
-        ];
-
-        $response = wp_remote_get($url, $args);
-        $added_count = 0;
-
-        if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
-            $body = json_decode(wp_remote_retrieve_body($response), true);
-
-            if (!empty($body['results'])) {
-                $existing = get_option(self::OPTIONS_KEY, []);
-                $icons = array_map(function($icon) use ($family) {
-                    return [
-                        'id'      => $icon['hash'] ?? '',
-                        'name'    => $icon['name'] ?? '',
-                        'family'  => $family,
-                        'preview' => $icon['imagePreviewUrl'] ?? '',
-                    ];
-                }, $body['results']);
-
-                $added_count = count($icons);
-                $all_icons = array_merge($existing, $icons);
-                $unique = [];
-                foreach ($all_icons as $icon) {
-                    if (!empty($icon['id'])) { // skip invalid entries
-                        $unique[$icon['id']] = $icon;
-                    }
-                }
-                update_option(self::OPTIONS_KEY, array_values($unique), 'no');
-
-                // Continue pagination
-                if (!empty($body['hasMore']) && $body['hasMore'] === true) {
-                    $current['page'] += 1;
-                    array_unshift($queue, $current);
+        if ( $q !== '' && is_dir( $icons_dir ) ) {
+            // Simple case-insensitive filename match
+            foreach ( glob( $icons_dir . '/*.svg' ) as $file ) {
+                $basename = basename( $file, '.svg' );
+                if ( stripos( $basename, $q ) !== false ) {
+                    $results[] = array(
+                        'id'   => $basename,
+                        'text' => self::humanize_label( $basename ),
+                        'preview' => $icons_uri . '/' . $basename . '.svg',
+                    );
                 }
             }
-        } else {
-            $code = wp_remote_retrieve_response_code($response);
-            $body = wp_remote_retrieve_body($response);
-            error_log("[StreamlineHQ] API error for {$family} query '{$query}' page {$page} | Code: {$code} | Response: {$body}");
+
+            // sort alphabetically by text
+            usort( $results, function( $a, $b ) {
+                return strcasecmp( $a['text'], $b['text'] );
+            } );
         }
 
-        if ($added_count > 0) {
-            error_log("[Streamline Sync] Family: {$family} | Query: {$query} | Page: {$page} | Added: {$added_count} icons");
-        }
-
-        if (!empty($queue)) {
-            set_transient(self::QUEUE_KEY, $queue, DAY_IN_SECONDS);
-            wp_schedule_single_event(time() + 5, 'streamline_process_batch'); // slower to prevent throttling
-        } else {
-            delete_transient(self::QUEUE_KEY);
-            $count = count(get_option(self::OPTIONS_KEY, []));
-            error_log("[Streamline Sync] Completed full sync. Total icons saved: {$count}");
-        }
+        // Select2 expects { results: [ { id, text, ... } ] }
+        wp_send_json( array( 'results' => $results ) );
     }
 
-    /** SVG fetcher */
-    public static function get_icon_svg($icon_id) {
-        if (is_array($icon_id)) $icon_id = $icon_id['id'] ?? '';
-        if (empty($icon_id)) return '';
+    /**
+     * Humanize filename to label (replace hyphens/underscores and ucwords)
+     */
+    private static function humanize_label( $basename ) {
+        $label = str_replace( array( '-', '_' ), ' ', $basename );
+        $label = preg_replace( '/\s+/', ' ', trim( $label ) );
+        return ucwords( $label );
+    }
 
-        // var_dump('id here '.$icon_id);
-        $cache_key = 'streamline_svg_' . sanitize_title($icon_id);
-        // var_dump("cache_key ". $cache_key);
-        if ($cached = get_transient($cache_key)) return $cached;
+    /**
+     * Load icons from local filesystem (icons folder)
+     */
+    public static function get_icons() {
+        $icons_dir = get_template_directory() . '/' . self::ICONS_FOLDER;
+        $icons = [];
 
-        $url = 'https://public-api.streamlinehq.com/v1/icons/'.$icon_id.'/download/svg?size=48&responsive=false';
-        // $url = 'https://public-api.streamlinehq.com/v1/icons/' . $icon_id . '/svg';
-        $args = [
-            'headers' => [
-                'x-api-key' => STREAMLINE_API_KEY,
-                'accept'    => 'image/svg+xml',
-            ],
-            'timeout'   => 15,
-            'sslverify' => false,
-            'decompress'  => true,
-        ];
-
-        $response = wp_remote_get($url, $args);
-        if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) return '';
-
-        $svg = wp_remote_retrieve_body($response);
-
-        // Fallback if empty
-        if (empty($svg) && isset($response['http_response'])) {
-            $svg_obj = $response['http_response']->get_response_object();
-            $svg = $svg_obj->body ?? '';
+        if (!is_dir($icons_dir)) {
+            return $icons;
         }
 
-        // Sanity check
-        if (strpos($svg, '<svg') === false) {
-            error_log('Invalid SVG response for icon ID: ' . $icon_id);
+        $files = glob($icons_dir . '/*.svg');
+        if (empty($files)) {
+            return $icons;
+        }
+
+        $icons_uri = get_template_directory_uri() . '/' . self::ICONS_FOLDER;
+
+        foreach ($files as $file) {
+            $basename = basename($file, '.svg');
+            $icons[] = [
+                'id'      => $basename,
+                'name'    => $basename,
+                'path'    => $file,
+                'preview' => $icons_uri . '/' . $basename . '.svg',
+            ];
+        }
+
+        // Sort icons by name
+        usort($icons, function($a, $b) {
+            return strcmp($a['name'], $b['name']);
+        });
+
+        return $icons;
+    }
+
+    /**
+     * Try to resolve a usable icon basename (filename without extension)
+     * from a stored value which may be a basename or a human label.
+     */
+    private static function resolve_icon_basename( $value ) {
+        if ( empty( $value ) ) {
             return '';
         }
 
-        // var_dump($svg);
-        set_transient($cache_key, $svg, 12 * HOUR_IN_SECONDS);
-        return $svg;
-    }
+        $value = (string) $value;
+        $icons_dir = get_template_directory() . '/' . self::ICONS_FOLDER;
 
+        // candidate transformations
+        $candidates = array();
 
-    /** ACF formatting */
-    public static function format_icon_to_svg($value, $post_id, $field) {
-        if (!$value) return '';
-        $icon_id = is_array($value) ? ($value['id'] ?? '') : $value;
-        // return $icon_id ? self::get_icon_svg($icon_id) : '';
-        $svg_icon = self::get_icon_svg($icon_id);
-        // var_dump("ssss ".$svg_icon);
-        return $svg_icon;
-    }
+        // 1) sanitize as-is
+        $candidates[] = sanitize_file_name( $value );
 
-    /** AJAX: Fetch SVG */
-    public static function ajax_fetch_svg() {
-        check_ajax_referer('streamline_icon_nonce', '_ajax_nonce');
-        $icon_id = isset($_GET['icon_id']) ? sanitize_text_field($_GET['icon_id']) : '';
-        $svg = self::get_icon_svg($icon_id);
-        if (!$svg) wp_send_json_error('Icon not found or invalid ID.');
-        wp_send_json_success($svg);
-    }
+        // 2) replace spaces/underscores with hyphens (common filename pattern)
+        $candidates[] = str_replace( array( ' ', '_' ), '-', $value );
 
-    /** Progress bar */
-    public static function render_progress_bar() {
-        if (!current_user_can('manage_options')) return;
-        $queue = get_transient(self::QUEUE_KEY);
-        $sync_running = $queue ? true : false;
+        // 3) lowercase variants
+        $candidates[] = strtolower( str_replace( array( ' ', '_' ), '-', $value ) );
 
-        echo '<div id="streamline-sync-progress" style="padding:10px; margin:10px 0; background:#f1f1f1; border:1px solid #ccc;">';
-        echo '<strong>Streamline Icon Sync:</strong><br>';
+        // 4) remove .svg if accidentally included
+        $candidates = array_map( function( $c ) {
+            return preg_replace( '/\.svg$/i', '', $c );
+        }, $candidates );
 
-        if ($sync_running) {
-            echo '<div style="background:#ddd; width:100%; height:20px; border-radius:3px; overflow:hidden; margin:5px 0;">';
-            echo '<div id="streamline-sync-bar" style="width:0%; height:100%; background:#0073aa;"></div>';
-            echo '</div>';
-            echo '<span id="streamline-sync-text">Loading...</span>';
-        } else {
-            echo '<button id="streamline-start-sync" class="button button-primary">Start Sync</button>';
-            echo '<span id="streamline-sync-text" style="margin-left:10px;"></span>';
+        // normalize and uniq
+        $candidates = array_unique( array_filter( array_map( 'trim', $candidates ) ) );
+
+        // check filesystem for candidates
+        foreach ( $candidates as $cand ) {
+            $path = $icons_dir . '/' . $cand . '.svg';
+            if ( file_exists( $path ) ) {
+                return $cand;
+            }
         }
 
-        echo '</div>';
-    }
-
-    /** Admin JS */
-    public static function enqueue_admin_scripts($hook) {
-        if (!current_user_can('manage_options')) return;
-        wp_enqueue_script('jquery');
-        wp_add_inline_script('jquery', "
-            function fetchStreamlineProgress(){
-                jQuery.get(ajaxurl, { action: 'streamline_sync_progress' }, function(response){
-                    if(response.success){
-                        var percent = response.data.percent;
-                        console.log('[Streamline Progress]', response.data.text);
-                        jQuery('#streamline-sync-bar').css('width', percent + '%');
-                        jQuery('#streamline-sync-text').text(response.data.text);
-                        if(percent < 100){
-                            setTimeout(fetchStreamlineProgress, 3000);
-                        } else {
-                            console.log('[Streamline Sync] Completed');
-                            jQuery('#streamline-sync-text').text('Sync complete!');
-                        }
-                    }
-                });
+        // fallback: try to match by humanized label against filenames
+        if ( is_dir( $icons_dir ) ) {
+            foreach ( glob( $icons_dir . '/*.svg' ) as $file ) {
+                $basename = basename( $file, '.svg' );
+                // humanize both sides for comparison
+                $labelA = self::humanize_label( $basename );
+                $labelB = self::humanize_label( $value );
+                if ( strcasecmp( $labelA, $labelB ) === 0 ) {
+                    return $basename;
+                }
+                // also allow partial match if user typed part of label
+                if ( stripos( $labelA, $labelB ) !== false || stripos( $labelB, $labelA ) !== false ) {
+                    return $basename;
+                }
             }
+        }
 
-            jQuery(document).on('click', '#streamline-start-sync', function(e){
-                e.preventDefault();
-                var btn = jQuery(this);
-                btn.prop('disabled', true).text('Starting...');
-                console.log('[Streamline Sync] Starting sync...');
-                jQuery.get(ajaxurl, { action: 'streamline_start_sync' }, function(response){
-                    if(response.success){
-                        btn.hide();
-                        fetchStreamlineProgress();
-                    } else {
-                        btn.prop('disabled', false).text('Start Sync');
-                        alert('Failed to start sync: ' + response.data);
-                    }
-                });
-            });
+        // last resort: return sanitized first candidate even if file missing
+        return $candidates[0] ?? '';
+    }
 
-            if(jQuery('#streamline-sync-bar').length){
-                fetchStreamlineProgress();
+    /**
+     * Get filesystem path to SVG file
+     */
+    public static function get_icon_svg_path( $icon_id ) {
+        $basename = self::resolve_icon_basename( $icon_id );
+        if ( empty( $basename ) ) {
+            return '';
+        }
+
+        $file_path = get_template_directory() . '/' . self::ICONS_FOLDER . '/' . $basename . '.svg';
+
+        if ( ! file_exists( $file_path ) || ! is_readable( $file_path ) ) {
+            return '';
+        }
+
+        return $file_path;
+    }
+
+    /**
+     * Return public URL to SVG
+     */
+    public static function get_icon_svg_url( $icon_id ) {
+        $basename = self::resolve_icon_basename( $icon_id );
+        if ( empty( $basename ) ) {
+            return '';
+        }
+
+        $icons_uri = get_template_directory_uri() . '/' . self::ICONS_FOLDER . '/' . $basename . '.svg';
+
+        return esc_url_raw( $icons_uri );
+    }
+
+    /**
+     * Format value hook - return full SVG markup when get_field() is called
+     * Supports stored value as array('icon' => 'name', 'size' => 'small') or legacy string.
+     */
+    public static function format_value( $value, $post_id, $field ) {
+        if ( empty( $value ) ) {
+            return '';
+        }
+
+        if ( is_array( $value ) ) {
+            $icon_id  = $value['icon'] ?? '';
+            $size_key = $value['size'] ?? '';
+        } else {
+            $icon_id  = $value;
+            $size_key = '';
+        }
+
+        if ( empty( $icon_id ) ) {
+            return '';
+        }
+
+        $file_path = self::get_icon_svg_path( $icon_id );
+        if ( empty( $file_path ) ) {
+            return '';
+        }
+
+        $svg_content = file_get_contents( $file_path );
+        if ( empty( $svg_content ) ) {
+            return '';
+        }
+
+        $size_map = array(
+            'extra_small' => 24,
+            'small'       => 40,
+            'medium'      => 60,
+            'large'       => 85,
+        );
+
+        $width = null;
+        if ( ! empty( $size_key ) && isset( $size_map[ $size_key ] ) ) {
+            $width = intval( $size_map[ $size_key ] );
+        }
+
+        if ( $width ) {
+            if ( preg_match( '/<svg\b[^>]*>/i', $svg_content, $m ) ) {
+                $svg_tag = $m[0];
+                $new_svg_tag = preg_replace( '/\s(width|height)=("|\')[^"\']*("|\')/i', '', $svg_tag );
+                $new_svg_tag = rtrim( $new_svg_tag, '>' ) . ' width="' . $width . '" height="' . $width . '">';
+                $svg_content = preg_replace( '/<svg\b[^>]*>/i', $new_svg_tag, $svg_content, 1 );
             }
-        ");
-    }
+        }
 
-    /** AJAX: Start sync */
-    public static function ajax_start_sync() {
-        if (!current_user_can('manage_options')) wp_send_json_error('No permission');
-        self::reset_sync();
-        wp_send_json_success('Sync started');
-    }
-
-    /** AJAX: Progress updates */
-    public static function ajax_get_sync_progress() {
-        if (!current_user_can('manage_options')) wp_send_json_error('No permission');
-        $total_icons = count(get_option(self::OPTIONS_KEY, []));
-        $queue = get_transient(self::QUEUE_KEY);
-        $remaining_batches = $queue ? count($queue) : 0;
-        $initial_total = $total_icons + ($remaining_batches * self::LIMIT);
-        $percent = $initial_total ? round(($total_icons / $initial_total) * 100) : 100;
-        $text = $total_icons . ' icons saved';
-        if ($remaining_batches) $text .= ', ' . $remaining_batches . ' batch(es) remaining';
-        wp_send_json_success(['percent' => $percent, 'text' => $text]);
+        return $svg_content;
     }
 }
+
+// Register ACF format_value filter for this field type
+add_filter( 'acf/format_value/type=streamline_icon_picker', array( 'Streamline_API_Handler', 'format_value' ), 10, 3 );
 
 Streamline_API_Handler::init();
