@@ -80,10 +80,17 @@ if (!empty($bg_svg_pattern)) {
             <div class="row">
                 <div class="col-lg-12">
                     <?php if (!empty($icon)): ?>
-                    <div class="icon" >
-                            <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/' . esc_attr($icon) . '.svg'; ?>" alt="<?php echo esc_attr($icon); ?>" class="section-icon">
-                        </div>
-                        <?php endif; ?>
+                    <div class="icon text-center">
+                        <?php 
+                        if (strpos($icon, '<svg') !== false) {
+                            // It's SVG code, output directly
+                            echo $icon;
+                        } else {
+                            echo '<img src="' . get_template_directory_uri() . '/assets/images/icons/' . esc_attr($icon) . '.svg" alt="' . esc_attr($icon) . '" class="section-icon">';
+                        }
+                        ?>
+                    </div>
+                    <?php endif; ?>
                     <?php if ($headline): ?>
                         <<?php echo $heading_type; ?> class="font-medium text-center <?php echo $text_color; ?>"><?php echo $headline; ?></<?php echo $heading_type; ?>>
                     <?php endif; ?>
