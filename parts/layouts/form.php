@@ -6,7 +6,7 @@ $background_color  = $section['background_color'];
 $content        = $section['content'] ?? "";
 $form_position = $section['form_position'];
 $form = $section['form'];
-$icon = $section['icon'] ?? '';
+$icon = $section['icon']    ?? '';
 $background_embellishment = $section['background_embellishment'] ?? '';
 if ($background_embellishment == 'circles') {
     $bg_pattern_class = 'bg-pattern bg-circles-pattern';
@@ -79,11 +79,11 @@ if (!empty($bg_svg_pattern)) {
         <?php if ($headline || $icon): ?>
             <div class="row">
                 <div class="col-lg-12">
-                    <div>
-                        <?php if (!empty($icon)): ?>
+                    <?php if (!empty($icon)): ?>
+                    <div class="icon" >
                             <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/' . esc_attr($icon) . '.svg'; ?>" alt="<?php echo esc_attr($icon); ?>" class="section-icon">
+                        </div>
                         <?php endif; ?>
-                    </div>
                     <?php if ($headline): ?>
                         <<?php echo $heading_type; ?> class="font-medium text-center <?php echo $text_color; ?>"><?php echo $headline; ?></<?php echo $heading_type; ?>>
                     <?php endif; ?>
@@ -99,7 +99,7 @@ if (!empty($bg_svg_pattern)) {
                 <?php
                 $column_class = ($form_position === "center")
                     ? "offset-lg-1 col-lg-10"
-                    : "col-lg-6 left-column";
+                    : "col-lg-6";
                 ?>
                 <?php if ($content || $form_position == "center" && $form): ?>
                     <div class="<?php echo $column_class; ?>">
@@ -119,7 +119,7 @@ if (!empty($bg_svg_pattern)) {
                     </div>
                 <?php endif; ?>
                 <?php if ($form_position != "center") { ?>
-                    <div class="col-lg-6 right-column">
+                    <div class="col-lg-6 ">
                         <?php if ($form) { ?>
                             <div class="form-container <?php echo $text_color; ?>">
                                 <?php echo  do_shortcode('[gravityform id="' . $form . '" title="true" description="false"]'); ?>
