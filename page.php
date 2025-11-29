@@ -10,18 +10,7 @@
  */
 
 get_header(); 
-// get_template_part('parts/layouts/stylized_heading_intro_zone'); ?>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12">
-      <h2>Home Page Content</h2>
-      <?php $icon = get_field('streamline_icon');
-    //   var_dump($icon);
-      echo "svg here ". $icon; ?>
-    </div>
-  </div>
-</div>
+get_template_part('parts/layouts/stylized_heading_intro_zone'); ?>
 
 <?php /*********  Flexible Content Start  ***********/
 $fields = get_fields( get_the_ID() );
