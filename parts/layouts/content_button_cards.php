@@ -11,13 +11,10 @@ $embellishment = $media_embellishment['embellishment'] ?? '';
 $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 $border = $section['border']['border'] ?? '';
 $angle = $section['border']['angle'] ?? '';
-// var_dump($border);
-// var_dump($angle);
 
 if($background_pattern == 'circles') {
   $bg_pattern_class = 'bg-pattern bg-circles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/circles.svg');
-//   var_dump($bg_svg_pattern);
 } elseif($background_pattern == 'dots') {
   $bg_pattern_class = 'bg-pattern bg-dots-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/dots.svg');
@@ -81,32 +78,12 @@ if (!empty($bg_svg_pattern)) {
 
 if (!empty($svg_encoded)): ?>
   <style>
-    #content-and-buttons-cards<?php echo get_the_ID().'-'.$key; ?>.bg-pattern {
+    #content-and-buttons-cards-<?php echo get_the_ID().'-'.$key; ?>.bg-pattern {
       --svg-bg: url('data:image/svg+xml,<?php echo $svg_encoded; ?>');
     }
   </style>
 <?php endif; ?>
 <?php
-
-
-
-$background_color_classes = [
-    'White' => 'bg-white',
-    'Blue' => 'bg-blue',
-    'Light Blue' => 'bg-light-blue',
-    'Teal' => 'bg-teal',
-    'Purple' => 'bg-purple',
-    'Gradient Yellow' => 'bg-gradient-yellow',
-];
-
-$heading_classes = [
-    'White' => 'text-blue',
-    'Blue' => 'text-white',
-    'Light Blue' => 'text-blue',
-    'Teal' => 'text-white',
-    'Purple' => 'text-white',
-    'Gradient Yellow' => 'text-black',
-];
 
 if($embellishment_position == 'Left') {
   $embellishment_position_class = 'left-align-embellishment';
@@ -144,11 +121,6 @@ if($border == 'angle' && $angle == 'down_left') {
   $angle_class = '';
   $margin_class = '';
 }
- 
-
-
-$bg_class = isset($background_color_classes[$background_color]) ? $background_color_classes[$background_color] : '';
-$heading_class = isset($heading_classes[$background_color]) ? $heading_classes[$background_color] : '';
 
 $valid_buttons = [];
 
@@ -161,25 +133,26 @@ if (!empty($button_cards)) {
         $link_url = $button['link']['url'] ?? '';
         $button_icon = $button['icon'] ?? '';
 
-        if ($text !== '' || $link !== '' || $icon !== '') {
-            $valid_buttons[] = $button;
-        }
+      if ($text !== '' || $link_url !== '' || $button_icon !== '') {
+    $valid_buttons[] = $button;
+}
+
     }
 }
 
 if ($heading || $content || !empty($valid_buttons) || $bottom_zone_content):
 ?>
 
-    <section id="content-and-buttons-cards-<?php echo get_the_ID().'-'.$key; ?>" class="content-and-button-cards py-5 <?php echo esc_attr($bg_class); ?> <?php echo $bg_pattern_class; ?> <?php echo $border_class; ?> <?php echo $angle_class; ?> <?php echo $margin_class; ?>">
+    <section id="content-and-buttons-cards-<?php echo get_the_ID().'-'.$key; ?>" class="content-and-button-cards py-5 <?php echo $bg_color; ?> <?php echo $bg_pattern_class; ?> <?php echo $border_class; ?> <?php echo $angle_class; ?> <?php echo $margin_class; ?>">
         <div class="container-fluid text-center text-white">
             <div class="row justify-content-center">
                 <div class="col-lg-10 d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="fw-bold mb-3 font-medium mb-2 <?php echo esc_attr($heading_class); ?>">
+                    <h2 class="fw-bold mb-3 font-medium mb-2 <?php echo esc_attr($text_color); ?>">
                         <?php echo $heading; ?>
                     </h2>
 
                     <?php if ($content): ?>
-                        <div class="wyswing-content pt-3 pb-5 top-content <?php echo esc_attr($heading_class); ?>">
+                        <div class="wyswing-content pt-3 pb-5 top-content <?php echo esc_attr($text_color); ?>">
                             <?php echo $content; ?>
                         </div>
                     <?php endif; ?>
@@ -198,7 +171,7 @@ if ($heading || $content || !empty($valid_buttons) || $bottom_zone_content):
                     </div>
 
                     <?php if ($bottom_zone_content): ?>
-                        <div class="wyswing-content bottom-content <?php echo esc_attr($heading_class); ?>">
+                        <div class="wyswing-content bottom-content <?php echo esc_attr($text_color); ?>">
                             <?php echo $bottom_zone_content; ?>
                         </div>
                     <?php endif; ?>
