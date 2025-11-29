@@ -37,16 +37,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "page_template",
                 "operator": "!=",
-                "value": "post"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "!=",
-                "value": "page"
+                "value": "default"
             }
         ]
     ],
@@ -60,5 +53,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764232316
+    "modified": 1764400015
 }

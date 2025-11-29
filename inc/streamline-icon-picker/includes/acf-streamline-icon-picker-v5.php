@@ -17,31 +17,114 @@ class ACF_Field_Streamline_Icon_Picker extends acf_field {
     }
 
     /**
-     * Render field dropdown
+     * Remove global icon size from field settings (no size while creating field)
+     */
+    public function render_field_settings( $field ) {
+        // intentionally empty — size is chosen per-instance when selecting an icon
+    }
+
+    /**
+     * Render field dropdown + inline size selector - load icons from local filesystem
      */
     public function render_field( $field ) {
-        $icons = get_option( 'streamline_icon_data', [] );
-        $value = esc_attr( $field['value'] ?? '' );
-
-        echo '<select name="' . esc_attr( $field['name'] ) . '" class="streamline-icon-select" style="width:100%;">';
-        echo '<option value="">Select Icon</option>';
-
-        if ( ! empty( $icons ) && is_array( $icons ) ) {
-            foreach ( $icons as $icon ) {
-                $selected = selected( $value, $icon['id'], false );
-                printf(
-                    '<option value="%1$s" %3$s data-preview="%4$s">%2$s</option>',
-                    esc_attr( $icon['id'] ),
-                    esc_html( $icon['name'] ),
-                    $selected,
-                    esc_url( $icon['preview'] )
-                );
-            }
+        // keep field value normalization (array or legacy string)
+        $raw_value = $field['value'] ?? '';
+        $selected_icon = '';
+        $selected_size = '';
+        if ( is_array( $raw_value ) ) {
+            $selected_icon = $raw_value['icon'] ?? '';
+            $selected_size = $raw_value['size'] ?? '';
         } else {
-            echo '<option disabled>No icons found. Run ?streamline_sync=1</option>';
+            $selected_icon = is_string( $raw_value ) ? $raw_value : '';
+        }
+
+        // render select with no options; Select2 AJAX will populate based on input
+        $nonce = wp_create_nonce( 'streamline_icon_search' );
+        $field_name = esc_attr( $field['name'] );
+
+        echo '<div class="streamline-icon-field" style="display:flex;gap:8px;align-items:center;">';
+
+        // icon select (ajax)
+        printf(
+            '<select name="%1$s[icon]" class="streamline-icon-select" data-ajax-action="streamline_icon_search" data-nonce="%2$s" style="flex:0 0 80%%;">',
+            $field_name,
+            esc_attr( $nonce )
+        );
+
+        // if there's an existing selected icon, include it as a single option so Select2 can show it
+        if ( $selected_icon ) {
+            // get preview URL and label if possible
+            $preview = Streamline_API_Handler::get_icon_svg_url( $selected_icon );
+            $label = str_replace( array( '-', '_' ), ' ', $selected_icon );
+            $label = ucwords( $label );
+            printf(
+                '<option value="%1$s" selected data-preview="%3$s">%2$s</option>',
+                esc_attr( $selected_icon ),
+                esc_html( $label ),
+                esc_url( $preview )
+            );
         }
 
         echo '</select>';
+
+        // size select (per selection)
+        $size_choices = array(
+            'extra_small' => 'Extra Small',
+            'small'       => 'Small',
+            'medium'      => 'Medium',
+            'large'       => 'Large',
+        );
+        echo '<select name="' . $field_name . '[size]" class="streamline-icon-size" style="flex:0 0 20%;">';
+        foreach ( $size_choices as $key => $label ) {
+            $sel = selected( $selected_size, $key, false );
+            printf( '<option value="%1$s" %2$s>%3$s</option>',
+                esc_attr( $key ),
+                $sel,
+                esc_html( $label )
+            );
+        }
+        echo '</select>';
+
+        echo '</div>';
+    }
+
+    /**
+     * Save the value (supports array or legacy string)
+     */
+    public function update_value( $value, $post_id, $field ) {
+        if ( is_array( $value ) ) {
+            $icon = sanitize_text_field( $value['icon'] ?? '' );
+            $size = sanitize_text_field( $value['size'] ?? '' );
+            $save = array( 'icon' => $icon, 'size' => $size );
+            update_post_meta( $post_id, $field['name'], $save );
+            return $save;
+        }
+
+        // legacy single string
+        $value = sanitize_text_field( $value );
+        update_post_meta( $post_id, $field['name'], $value );
+        return $value;
+    }
+
+    /**
+     * Load saved meta and normalize to array if needed
+     */
+    public function load_value( $value, $post_id, $field ) {
+        if ( empty( $value ) ) {
+            $meta_value = get_post_meta( $post_id, $field['name'], true );
+            if ( ! empty( $meta_value ) ) {
+                if ( is_array( $meta_value ) ) {
+                    $value = $meta_value;
+                } else {
+                    $value = array( 'icon' => sanitize_text_field( $meta_value ), 'size' => '' );
+                }
+            }
+        } else {
+            if ( is_string( $value ) ) {
+                $value = array( 'icon' => sanitize_text_field( $value ), 'size' => '' );
+            }
+        }
+        return $value;
     }
 
     /**
@@ -55,79 +138,18 @@ class ACF_Field_Streamline_Icon_Picker extends acf_field {
         wp_enqueue_script(
             'streamline-icon-field',
             $base_url . 'js/input.js',
-            ['jquery', 'select2'],
-            '1.0.3',
+            array( 'jquery', 'select2' ),
+            '1.0.0',
             true
         );
+
+        // pass ajax URL + defaults to JS
+        wp_localize_script( 'streamline-icon-field', 'StreamlineIconPicker', array(
+            'ajax_url' => admin_url( 'admin-ajax.php' ),
+            'nonce'    => wp_create_nonce( 'streamline_icon_search' ),
+            'min_chars' => 2, // require 1 or 2 characters as needed
+        ) );
     }
-
-    /**
-     * ✅ Save the value as plain meta
-     */
-    public function update_value( $value, $post_id, $field ) {
-        // var_dump($value);
-        // $icons = get_option('streamline_icon_data', []);
-    
-        // // If the value is not an actual ID (doesn't start with ico_), try to map it by name
-        // if (strpos($value, 'ico_') !== 0) {
-        //     foreach ($icons as $icon) {
-        //         if ($icon['name'] === $value) {
-        //             $value = $icon['id'];
-        //             break;
-        //         }
-        //     }
-        // }
-
-        $value = sanitize_text_field( $value );
-        update_post_meta( $post_id, $field['name'], $value );
-        return $value;
-    }
-
-    /**
-     * ✅ Load the saved meta so get_field() works
-     */
-    public function load_value( $value, $post_id, $field ) {
-        if ( empty( $value ) ) {
-            $meta_value = get_post_meta( $post_id, $field['name'], true );
-            if ( ! empty( $meta_value ) ) {
-                $value = $meta_value;
-            }
-        }
-        return $value;
-    }
-
-    /**
-     * ✅ Ensure formatted value returns the icon ID
-     */
-    // public function format_value( $value, $post_id, $field ) {
-    //     if ( empty( $value ) ) {
-    //         $value = get_post_meta( $post_id, $field['name'], true );
-    //     }
-
-    //     $value = sanitize_text_field( $value );
-    //     if ( empty( $value ) ) {
-    //         return null;
-    //     }
-
-    //     // Fetch full icon info from stored data
-    //     $icons = get_option( 'streamline_icon_data', [] );
-
-    //     if ( ! empty( $icons ) && is_array( $icons ) ) {
-    //         foreach ( $icons as $icon ) {
-    //             if ( isset( $icon['id'] ) && $icon['id'] === $value ) {
-    //                 return $icon;
-    //             }
-    //         }
-    //     }
-
-    //     // Fallback: just return ID if no match found
-    //     return [
-    //         'id'      => $value,
-    //         'name'    => '',
-    //         'family'  => '',
-    //         'preview' => '',
-    //     ];
-    // }
 
 }
 
