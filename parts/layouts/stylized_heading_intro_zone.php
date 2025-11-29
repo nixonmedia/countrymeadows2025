@@ -11,7 +11,7 @@ $image_type = $intro['image_type'] ?? " ";
 $standard_image = $intro['standard_image'] ?? " ";
 $layered_image_zone = $intro['layered_image_zone'] ?? "";
 $layered_image = $layered_image_zone['image'] ?? " ";
-$embellishment =  $layered_image_zone['embellishment'];
+$embellishment =  $layered_image_zone['embellishment'] ?? " ";
 $video_url = $intro['video_url'] ?? " ";
 $hide_breadcrumb = get_field("hide_breadcrumb");
 $hide_sidebar_navigation = get_field("hide_sidebar_navigation");
@@ -25,7 +25,6 @@ $show_layered_image = $media_column && $media_type == 'Image' && $image_type == 
 
 
 // Set background pattern class
-$background_pattern_class = '';
 if ($background_pattern == 'Dots') {
   $background_pattern_class = 'dots-background-pattern';
 } if ($background_pattern == 'Circles') {
@@ -63,12 +62,13 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
     $section_class .= ' image-media-column with-sidebar-submenu';
   }
 } elseif($media_column && $media_type === 'Video' ) {
-  $section_class .= ' video-media-column with-sidebar-submenu';
+  $section_class .= ' video-media-column';
   if(!$disable_sidebar_submenu) {
-    $section_class .= ' video-media-column with-sidebar-submenu';
+    $section_class .= ' image-media-column with-sidebar-submenu';
   }
+} elseif($disable_sidebar_submenu == false) {
+  $section_class .= ' with-sidebar-submenu';
 }
-
 ?>
 
 
@@ -79,7 +79,7 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
       <div class="row flex-column-reverse flex-lg-row">
         <!-- show if image type Image with Embellishment home page  -->
         <?php if ($media_column && $media_type == 'Image' && $image_type == 'Image with Embellishment'): ?>
-          <div class="col-lg-7 intro-content-col pb-5 with-background-pattern <?php echo esc_attr($background_pattern_class); ?> position-relative">
+          <div class="col-lg-7 intro-content-col pb-5 with-background-pattern <?php echo $background_pattern_class; ?> position-relative">
             <?php if ($stylized_heading): ?>
               <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
             <?php endif;
