@@ -74,7 +74,6 @@ if (!empty($bg_svg_pattern)) {
     </style>
 <?php endif; ?>
 
-
 <section id="custom-columns-zone-<?php echo get_the_ID() . '-' . $key; ?>" class="form_zone py-5 <?php echo $bg_pattern_class; ?> <?php echo $bg_color; ?>">
     <div class="container-fluid">
         <?php if ($headline || $icon): ?>
@@ -91,7 +90,6 @@ if (!empty($bg_svg_pattern)) {
                 </div>
             </div>
         <?php endif; ?>
-        <!-- move form to left as its on right by default and add class to the row with name flex-row-reverse -->
         <?php if ($content || $form):
             $row_class = ($form_position !== "center")
                 ? "justify-content-center"
@@ -114,13 +112,12 @@ if (!empty($bg_svg_pattern)) {
                         <?php } ?>
                         <!-- if form is center and form has value  -->
                         <?php if ($form_position == "center" && $form) { ?>
-                            <div class="form-container submit-button <?php echo $text_color; ?>">
-                                <?php echo do_shortcode('[gravityform id="' . $form . '" title="false" description="false"] '); ?>
+                            <div class="form-container submit-button py-4 <?php echo $text_color; ?>">
+                                <?php echo do_shortcode('[gravityform id="' . $form . '" title="false" description="false"]'); ?>
                             </div>
                         <?php } ?>
                     </div>
                 <?php endif; ?>
-                <!--if the form is right or not center this block will work -->
                 <?php if ($form_position != "center") { ?>
                     <div class="col-lg-6 right-column">
                         <?php if ($form) { ?>

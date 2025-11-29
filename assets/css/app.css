@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 .bg-purple {
   background-color: var(--purple);
 }
-.bg-gradient-yellow {
+.bg-gradient-yellow ,.bg-gradient-yellow.bg-pattern {
   background: linear-gradient(180deg, rgba(255, 202, 74, 0.10) 0%, #FFF 47.12%);
 }
 .bg-light-yellow {
@@ -899,35 +899,35 @@ img.alignleft {
 .custom-column-two.with-media.with-video-media .video-wrapper, .custom-column-two.with-media.with-video-media .video-wrapper iframe {
   height: 345px !important;
 }
-
 form .gfield_html {
     font-size: 13px;
     line-height: 16px;
 }
-.bg-blue form .gfield legend,.bg-blue form .gfield label.gfield_label,.bg-blue .gform_title, .bg-blue .gform_description,.bg-purple form .gfield legend,.bg-purple form .gfield label.gfield_label,.bg-purple .gform_title, .bg-purple .gform_description{
-    color: var(--white);
+.bg-blue form .gfield legend,.bg-blue form .gfield label.gfield_label,.bg-blue .gform_title, .bg-blue .gform_description,.bg-purple form .gfield legend,.bg-purple form .gfield label.gfield_label,.bg-purple .gform_title, .bg-purple .gform_description, .text-white a{
+  color: var(--white);
 }
-.bg-light-blue form .gfield legend,.bg-light-blue form .gfield label.gfield_label,.bg-light-blue .gform_title, .bg-light-blue .gform_description{
-    color: var(--black-100);
+.bg-light-blue form .gfield legend,.bg-light-blue form .gfield label.gfield_label,.bg-light-blue .gform_title, .bg-light-blue .gform_description,.text-black-100 a{
+  color: var(--black-100);
 }
-.bg-white form .gfield legend,.bg-white form .gfield label.gfield_label, .bg-white .gform_description,.bg-gradient-yellow form .gfield legend, .bg-gradient-yellow form .gfield label.gfield_label, .bg-gradient-yellow  .gform_title, .bg-gradient-yellow .gform_description, .bg-teal form .gfield legend, .bg-teal form .gfield label.gfield_label, .bg-teal  .gform_title, .bg-teal .gform_description{
-    color: var(--black);
+.bg-white form .gfield legend,.bg-white form .gfield label.gfield_label, .bg-white .gform_description,.bg-gradient-yellow form .gfield legend, .bg-gradient-yellow form .gfield label.gfield_label, .bg-gradient-yellow  .gform_title, .bg-gradient-yellow .gform_description, .bg-teal form .gfield legend, .bg-teal form .gfield label.gfield_label, .bg-teal  .gform_title, .bg-teal .gform_description, .text-black a{
+  color: var(--black);
 }
+
 .gform-theme--foundation .gfield--width-full{
    font-size: 13px;
    line-height: 17px;
 }
 .bg-white  .gform_title{
-color: var(--pink);
+  color: var(--pink);
 }
-form input:not(input[type="submit"]),form select, form textarea {
-    border-color: #D8D8D8 !important;
-    box-shadow: none !important;
-    outline-color: #d8d8d8 !important;
+form input:not([type ="submit"]),form select, form textarea {
+  border-color: #D8D8D8 !important;
+  box-shadow: none !important;
+  outline-color: #d8d8d8 !important;
 }
-  .gform_button.button{
-    font-size: 18px !important; 
-    padding: 7px 30px  !important;
+.gform_button.button{
+  font-size: 18px !important; 
+  padding: 7px 30px  !important;
   font-weight: 700;
   text-decoration: none;
   display: inline-block;
@@ -968,13 +968,43 @@ form input:not(input[type="submit"]),form select, form textarea {
   background-color: var(--black-100) !important;
   color: var(--white) !important;
 }
+.bg-white .gform_button {
+  background-color: var(--purple) !important;
+  color: var(--white) !important;
+}
+.bg-white .gform_button:hover{
+  background-color: var(--black-100) !important;
+  color: var(--white) !important;
+}
 .submit-button form .gform-footer {
-    display: block !important;
-    text-align: center;
+  display: block !important;
+  text-align: center;
 }
 .form_zone.bg-pattern {
-    background-position: 100% 100%;
+  background-position: 100% 100%;
 }
+.bg-gradient-yellow.bg-pattern {
+  position: relative; 
+  z-index: 0;
+}
+.bg-gradient-yellow.bg-pattern::before {
+  content: '';
+  position: absolute !important;
+  inset: 0;
+  background-image: var(--svg-bg); 
+  background-repeat: no-repeat;
+  background-position: 100% 70%;
+  background-size: 250px;
+  z-index: -1; /* below gradient */
+  bottom: 0 !important;
+}
+.form_zone.bg-gradient-yellow.bg-pattern::before{
+   background-position: 100% 100%;
+}
+.form_zone .wysiwyg-content img {
+    padding-left: 0;
+}
+
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   body {
