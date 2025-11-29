@@ -7,6 +7,7 @@
 
       <!-- LEFT SIDEBAR -->
       <div class="col-lg-3 col-md-4 mb-4">
+        <h1 class="font-medium fw-bold mb-2 pb-1">Find the next career</h1>
         <div class="left-search-col bg-light-blue-100 p-3 px-xl-4 py-xl-5 rounded">
 
 
@@ -28,23 +29,23 @@
 </h6>
 
             <p class="filter-title mb-2 fw-semibold">Company Location</p>
-            <div class="form-check py-2"><input class="form-check-input d-flex align-items-center" type="checkbox" id="Allentown"><label class="form-check-label">Allentown</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Bethlehem</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Forks of Easton</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Frederick</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Hershey</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Mechanicsburg</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Wyomissing</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">York-South</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">York-West</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox" id="Allentown"><label class="form-check-label">Allentown</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Bethlehem</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Forks of Easton</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Frederick</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Hershey</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Mechanicsburg</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Wyomissing</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">York-South</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">York-West</label></div>
 
 
             <p class="filter-title mb-2 fw-semibold">Job Category</p>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Dining</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Personal Care</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Admin Nursing</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Housekeeping</label></div>
-            <div class="form-check py-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Comm Life - Dynam Living</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Dining</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Personal Care</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Admin Nursing</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Housekeeping</label></div>
+            <div class="form-check py-3 d-flex align-items-center"><input class="form-check-input me-2" type="checkbox"><label class="form-check-label">Comm Life - Dynam Living</label></div>
           </div>
 
           <a class="text-blue">Load All career Categories</a>

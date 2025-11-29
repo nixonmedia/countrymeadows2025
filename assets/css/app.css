@@ -1005,7 +1005,7 @@ transition: 0.2s ease;
 }
 .career-alert-box {
     background: #E8F0FF;            
-   padding: 20px 40px;
+   padding: 20px;
   
 }
 
@@ -1030,6 +1030,10 @@ transition: 0.2s ease;
 
 .career-alert-box {
 font-size: 16px;
+}
+
+.left-search-col .form-check label{
+  line-height:20px;
 }
 
 
@@ -1452,6 +1456,7 @@ font-size: 16px;
   .or-divider::before, .or-divider::after {
     width: 40px;
 }
+}
 @media only screen and (min-width: 1200px) {
   #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu {
     max-width: max-content;
@@ -1636,6 +1641,9 @@ font-size: 16px;
 .or-divider::after {
    width: 80px;
   }
+  .career-alert-box {
+    padding: 20px 40px;
+}
 }
 @media only screen and (min-width: 1900px) {
   .footer-post-col .font-normal {
