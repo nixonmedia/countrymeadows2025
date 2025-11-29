@@ -16,6 +16,7 @@
                 "class": "",
                 "id": ""
             },
+            "icon_size": "large",
             "allow_in_bindings": 0
         }
     ],
@@ -38,5 +39,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764326924
+    "modified": 1764395970
 }
