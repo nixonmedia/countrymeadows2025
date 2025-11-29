@@ -927,7 +927,7 @@ img.alignleft {
     border: none;
     border-radius: 0 10px 10px 10px !important;  
 }
-.careers-section .search-box .heading{
+.careers-section .search-box .heading , .careers-section .filters .heading {
 font-size:20px;
 line-height:25px;
 }
@@ -954,11 +954,12 @@ line-height:25px;
 
 .search-box .search-btn i {
     color: white;
-    font-size: 1.1rem;
+  
 }
 
 .or-divider {
-   color: #808080;
+   color: #C6C6C6;
+   font-size:16px;
 
 }
 .or-divider::before,
@@ -973,12 +974,9 @@ line-height:25px;
 }
 .filters .filter-title {
   font-size:16px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 6px;
+  color: #333;
 }
 .career-card {
-  background: #FFFFFF;
 border: 1px solid #D9D9D9;
 box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 transition: 0.2s ease;
@@ -1007,26 +1005,31 @@ transition: 0.2s ease;
 }
 .career-alert-box {
     background: #E8F0FF;            
-    border-radius: 12px;
-        padding: 30px 40px;
+   padding: 20px 40px;
   
 }
 
 /* Subscribe Button */
 .subscribe-btn {
-    background: #4A4FF5;           /* purple/indigo from screenshot */
+    background: #4A4FF5;          
     color: #fff;
     font-weight: 600;
-       padding: 20px 34px;
+   padding: 20px 34px;
    border-radius: 0 10px 10px 10px !important; 
     border: none;
-    font-size: 0.9rem;
+    
+   line-height:20px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+
 }
 
 .subscribe-btn:hover {
     background: #4046e0;
     color: #fff;
+}
+
+.career-alert-box {
+font-size: 16px;
 }
 
 
@@ -1445,6 +1448,9 @@ transition: 0.2s ease;
   .cta-info {
     padding: 45px 60px 100px;
   }
+
+  .or-divider::before, .or-divider::after {
+    width: 40px;
 }
 @media only screen and (min-width: 1200px) {
   #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu {
@@ -1625,6 +1631,10 @@ transition: 0.2s ease;
   }
   .meet-team-slider .team-content-col {
     padding-right: 50px;
+  }
+  .or-divider::before,
+.or-divider::after {
+   width: 80px;
   }
 }
 @media only screen and (min-width: 1900px) {
