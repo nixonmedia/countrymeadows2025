@@ -911,6 +911,11 @@ width:100%;
   height: 345px !important;
 }
 
+.content-and-button-cards .bottom-content{
+  font-size:14px;
+  line-height:18px;
+}
+
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   body {
@@ -1514,7 +1519,7 @@ width:80%;
            padding: 35px 70px !important;
 }
   .content-and-button-cards  .bottom-content {
-    width:50%;
+    width:45%;
 
   }
  

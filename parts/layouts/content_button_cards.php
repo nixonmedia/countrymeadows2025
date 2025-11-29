@@ -85,29 +85,6 @@ if (!empty($svg_encoded)): ?>
 <?php endif; ?>
 <?php
 
-if($embellishment_position == 'Left') {
-  $embellishment_position_class = 'left-align-embellishment';
-} elseif($embellishment_position == 'Right') {
-  $embellishment_position_class = 'right-align-embellishment';
-} else {
-  $embellishment_position_class = '';
-} 
-
-if($embellishment == 'circles' ) {
-  $embellishment_class = 'with-embellishment circles-embellishment';
-} elseif($embellishment == 'seeds' ) {
-  $embellishment_class = 'with-embellishment seeds-embellishment';
-} elseif($embellishment == 'seeds-open' ) {
-  $embellishment_class = 'with-embellishment seeds-open-embellishment';
-} elseif($embellishment == 'seeds-open-large' ) {
-  $embellishment_class = 'with-embellishment seeds-open-large-embellishment';
-} elseif($embellishment == 'squiggles' ) {
-  $embellishment_class = 'with-embellishment squiggles-embellishment';
-} elseif($embellishment == 'Xs' ) {
-  $embellishment_class = 'with-embellishment xs-embellishment';
-} else {
-  $embellishment_class = '';
-}
 if($border == 'angle' && $angle == 'down_left') {
   $border_class = 'border-angle';
   $angle_class = 'angle_down_left';
@@ -133,7 +110,7 @@ if (!empty($button_cards)) {
         $link_url = $button['link']['url'] ?? '';
         $button_icon = $button['icon'] ?? '';
 
-      if ($text !== '' || $link_url !== '' || $button_icon !== '') {
+      if ($text !== '' && $link_url !== '' || $button_icon !== '') {
     $valid_buttons[] = $button;
 }
 
@@ -147,9 +124,9 @@ if ($heading || $content || !empty($valid_buttons) || $bottom_zone_content):
         <div class="container-fluid text-center text-white">
             <div class="row justify-content-center">
                 <div class="col-lg-10 d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="fw-bold mb-3 font-medium mb-2 <?php echo esc_attr($text_color); ?>">
+                    <<?php  echo $heading_style;  ?> class="fw-bold mb-3 font-medium mb-2 <?php echo esc_attr($text_color); ?>">
                         <?php echo $heading; ?>
-                    </h2>
+                    </<?php  echo $heading_style;  ?>>
 
                     <?php if ($content): ?>
                         <div class="wyswing-content pt-3 pb-5 top-content <?php echo esc_attr($text_color); ?>">
@@ -158,11 +135,10 @@ if ($heading || $content || !empty($valid_buttons) || $bottom_zone_content):
                     <?php endif; ?>
 
                     <!-- Buttons -->
-                    <div class="buttons d-flex flex-wrap justify-content-center gap-5 pb-5">
+                    <div class="buttons d-flex flex-wrap justify-content-center gap-4 pb-5">
                         <?php if (!empty($valid_buttons)): ?>
                             <?php foreach ($valid_buttons as $button):  ?>
-                            
-                                  <a href="<?php echo esc_url($button['link']['url']); ?>" class="p-4 bg-white shadow single-button text-black text-decoration-none">
+                             <a href="<?php echo esc_url($button['link']['url']); ?>" class="p-4 bg-white shadow single-button text-black text-decoration-none">
                                         <i class="fa-solid fa-house"></i>
                                   <strong><?php echo $button["text"]; ?></strong>
                                 </a>
