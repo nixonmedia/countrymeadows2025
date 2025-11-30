@@ -108,7 +108,8 @@ if (!empty($button_cards)) {
         $text = trim($button['text'] ?? '');
         $link_title = $button['link']['title'] ?? '';
         $link_url = $button['link']['url'] ?? '';
-        $button_icon = $button['icon'] ?? '';
+        $button_icon = $button['streamline_icon'] ?? '';
+        // var_dump($button_icon);
 
       if ($text !== '' && $link_url !== '' || $button_icon !== '') {
     $valid_buttons[] = $button;
@@ -137,9 +138,15 @@ if ($heading || $content || !empty($valid_buttons) || $bottom_zone_content):
                     <!-- Buttons -->
                     <div class="buttons d-flex flex-wrap justify-content-center gap-4 pb-5">
                         <?php if (!empty($valid_buttons)): ?>
-                            <?php foreach ($valid_buttons as $button):  ?>
+                            <?php foreach ($valid_buttons as $button):
+                            // echo "<pre>";  
+                            //      var_dump($button);
+                             $button_icon = $button['streamline_icon'] ?? '';
+                            //  var_dump($button_icon);
+                              ?>
+                          
                              <a href="<?php echo esc_url($button['link']['url']); ?>" class="p-4 bg-white shadow single-button text-black text-decoration-none">
-                                        <i class="fa-solid fa-house"></i>
+                                  <?php echo   $button_icon; ?>
                                   <strong><?php echo $button["text"]; ?></strong>
                                 </a>
                             <?php endforeach; ?>
@@ -155,5 +162,4 @@ if ($heading || $content || !empty($valid_buttons) || $bottom_zone_content):
             </div>
         </div>
     </section>
-
 <?php endif; ?>
