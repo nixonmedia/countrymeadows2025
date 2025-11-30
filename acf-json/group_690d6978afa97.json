@@ -200,7 +200,7 @@
                             "label": "Icon",
                             "name": "icon",
                             "aria-label": "",
-                            "type": "select",
+                            "type": "font-awesome",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -209,17 +209,21 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": [],
-                            "default_value": false,
-                            "return_format": "value",
-                            "multiple": 0,
+                            "icon_sets": [
+                                "solid",
+                                "regular",
+                                "brands"
+                            ],
+                            "custom_icon_set": "",
+                            "default_label": "",
+                            "default_value": "",
+                            "save_format": "element",
                             "allow_null": 0,
+                            "show_preview": 1,
+                            "enqueue_fa": 1,
                             "allow_in_bindings": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0,
+                            "fa_live_preview": "",
+                            "choices": [],
                             "parent_repeater": "field_690d6bbb5b034"
                         },
                         {
@@ -535,5 +539,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763123137
+    "modified": 1764309770
 }

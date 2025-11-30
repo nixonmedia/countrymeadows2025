@@ -66,4 +66,34 @@ jQuery(document).ready(function($){
       });
     }); 
 
+  
+  // Meet Team Slider
+  $('.meet-team-slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    dots: false,
+    infinite: true,
+    autoplay: false,
+    speed: 700,
+  });
+  // Icons Slider
+  $('.icons-slider, .image-gallery-slider').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    dots: false,
+    infinite: true,
+    autoplay: false,
+    speed: 700,
+    responsive: [
+      {
+          breakpoint: 768,
+          settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+          }
+      },
+    ],
+  });
 });

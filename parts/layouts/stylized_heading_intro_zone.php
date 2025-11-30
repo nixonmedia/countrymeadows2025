@@ -11,7 +11,7 @@ $image_type = $intro['image_type'] ?? " ";
 $standard_image = $intro['standard_image'] ?? " ";
 $layered_image_zone = $intro['layered_image_zone'] ?? "";
 $layered_image = $layered_image_zone['image'] ?? " ";
-$embellishment =  $layered_image_zone['embellishment'];
+$embellishment =  $layered_image_zone['embellishment'] ?? " ";
 $video_url = $intro['video_url'] ?? " ";
 $hide_breadcrumb = get_field("hide_breadcrumb");
 $hide_sidebar_navigation = get_field("hide_sidebar_navigation");
@@ -25,10 +25,18 @@ $show_layered_image = $media_column && $media_type == 'Image' && $image_type == 
 
 
 // Set background pattern class
-$background_pattern_class = '';
 if ($background_pattern == 'Dots') {
   $background_pattern_class = 'dots-background-pattern';
+} if ($background_pattern == 'Circles') {
+  $background_pattern_class = 'circles-background-pattern';
+} if ($background_pattern == 'Honeycomb') {
+  $background_pattern_class = 'honeycomb-background-pattern';
+} if ($background_pattern == 'Sprinkles') {
+  $background_pattern_class = 'sprinkles-background-pattern';
+} else {
+  $background_pattern_class = '';
 }
+
 
 $color = $intro['background_watercolor'] ?? '';
 
@@ -48,8 +56,19 @@ $section_class = '';
 
 if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embellishment') {
   $section_class .= ' layered-image-zone';
+} elseif($media_column && $media_type === 'Image' && $image_type === 'Standard' ) {
+  $section_class .= ' image-media-column';
+  if(!$disable_sidebar_submenu) {
+    $section_class .= ' image-media-column with-sidebar-submenu';
+  }
+} elseif($media_column && $media_type === 'Video' ) {
+  $section_class .= ' video-media-column';
+  if(!$disable_sidebar_submenu) {
+    $section_class .= ' image-media-column with-sidebar-submenu';
+  }
+} elseif($disable_sidebar_submenu == false) {
+  $section_class .= ' with-sidebar-submenu';
 }
-
 ?>
 
 
@@ -60,7 +79,7 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
       <div class="row flex-column-reverse flex-lg-row">
         <!-- show if image type Image with Embellishment home page  -->
         <?php if ($media_column && $media_type == 'Image' && $image_type == 'Image with Embellishment'): ?>
-          <div class=" home-page col-lg-7 intro-content-col pb-5 with-background-pattern <?php echo esc_attr($background_pattern_class); ?> position-relative">
+          <div class="col-lg-7 intro-content-col pb-5 with-background-pattern <?php echo $background_pattern_class; ?> position-relative">
             <?php if ($stylized_heading): ?>
               <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
             <?php endif;
@@ -97,7 +116,7 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
 
           <?php if ($col_class === 'col-lg-7'): ?>
             <!-- Layout when col-lg-7, no row, 7 + 5 columns -->
-            <div class="allentownpage <?php echo esc_attr($col_class); ?> intro-content-col position-relative with-background-pattern <?php echo esc_attr($background_pattern_class); ?>">
+            <div class=" <?php echo esc_attr($col_class); ?> intro-content-col position-relative with-background-pattern <?php echo esc_attr($background_pattern_class); ?>">
               <?php if ($stylized_heading): ?>
                 <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
               <?php endif; ?>
@@ -230,7 +249,7 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
 
           <?php else: ?>
             <!-- Layout when col-lg-8 (or others), with row and 2x col-lg-6 columns -->
-            <div class="allentownpage <?php echo esc_attr($col_class); ?> intro-content-col position-relative with-background-pattern <?php echo esc_attr($background_pattern_class); ?>">
+            <div class=" <?php echo esc_attr($col_class); ?> intro-content-col position-relative with-background-pattern <?php echo esc_attr($background_pattern_class); ?>">
               <?php if ($stylized_heading): ?>
                 <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
               <?php endif; ?>
@@ -260,7 +279,7 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
                     !empty($standard_image)
                   ): ?>
                     <div class="intro-img-col position-relative standard-image">
-                      <img src="<?php echo esc_url($standard_image['sizes']['allentown']); ?>"
+                      <img src="<?php echo esc_url($standard_image['sizes']['intro_photo']); ?>"
                         alt="<?php echo esc_attr($standard_image['alt'] ?? ''); ?>"
                         class="img-fluid">
 
@@ -379,7 +398,7 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
             $col_class = 'col-lg-8';
           }
         ?>
-          <div class="community-page <?php echo esc_attr($col_class); ?> intro-content-col with-background-pattern <?php echo esc_attr($background_pattern_class); ?> position-relative">
+          <div class=" <?php echo esc_attr($col_class); ?> intro-content-col with-background-pattern <?php echo esc_attr($background_pattern_class); ?> position-relative">
             <?php if ($stylized_heading): ?>
               <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
             <?php endif;
@@ -397,7 +416,7 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
         <!-- Home page show if image type Image with Embellishment image home page  -->
         <?php if ($show_layered_image): ?>
           <div class="col-lg-5 col-xl-4 offset-xl-1 intro-img-col position-relative">
-            <img src="<?php echo esc_url($layered_image['sizes']['cm-couple']); ?>"
+            <img src="<?php echo esc_url($layered_image['sizes']['layered_photo']); ?>"
               <?php if (!empty($layered_image['alt'])): ?>alt="<?php echo esc_attr($layered_image['alt']); ?>" <?php endif; ?>
               class="img-fluid">
           </div>
