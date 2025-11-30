@@ -988,7 +988,7 @@ img.alignleft {
   
 }
 .upper-content{
-    padding: 70px 10px;
+    padding: 60px 10px 90px 10px;
 
 }
 .upper-content  img{
@@ -1006,7 +1006,7 @@ img.alignleft {
 .topic-card .has-arrow:after{
   content:"";
   position:absolute;
-  background-image: url("http://localhost/countrymeadows/wp-content/uploads/2025/11/Primary.png");
+  background-image: url("../../assets/images/pink-arrow.png");
   background-size:contain;
   background-repeat: no-repeat;
  width: 10px;
@@ -1614,6 +1614,9 @@ img.alignleft {
 }
 .resources-category-col{
   padding-left: 30px;
+}
+.resource-card-main{
+  width: 45%;
 }
 
 }
