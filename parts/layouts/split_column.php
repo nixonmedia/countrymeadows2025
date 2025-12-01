@@ -142,21 +142,25 @@ if($embellishment == 'circles' ) {
                   <?php foreach($top_cta as $post_cta):
                     $cta_heading = get_field('cta_headline', $post_cta->ID); 
                     $cta_content = get_field('cta_content', $post_cta->ID);
-                    $cta_link = get_field('cta_link', $post_cta->ID); ?>
-                    <div class="cta-info text-center <?php echo $bg_color; ?>">
-                      <div class="cta-content">
-                        <?php if($cta_heading): ?>
-                          <h3 class="font-medium"><?php echo $cta_heading; ?></h3>
-                        <?php endif; 
-                        if($cta_content): ?>
-                          <div class="wysiwyg-content <?php if($cta_link):?>mb-3<?php endif; ?> text-start"><?php echo $cta_content; ?></div>
-                        <?php endif; 
-                        if($cta_link): ?>
-                          <a href="<?php echo $cta_link['url']; ?>" class="site-button" <?php if($cta_link['target']): ?>target="<?php echo $cta_link['target']; ?>"<?php endif; ?>><?php echo $cta_link['title']; ?></a>
-                        <?php endif; ?>
+                    $cta_link = get_field('cta_link', $post_cta->ID); 
+                    if($cta_heading || $cta_content || $cta_link): ?>
+                      <div class="cta-info text-center <?php echo $bg_color; ?>">
+                        <div class="cta-content">
+                          <div class="mb-2">
+                            <img src="<?php echo get_stylesheet_directory_uri( );?>/assets/images/call-icon.svg" class="img-fluid" alt="Call Icon">
+                          </div>
+                          <?php if($cta_heading): ?>
+                            <h3 class="font-medium"><?php echo $cta_heading; ?></h3>
+                          <?php endif; 
+                          if($cta_content): ?>
+                            <div class="wysiwyg-content <?php if($cta_link):?>mb-3<?php endif; ?> text-start"><?php echo $cta_content; ?></div>
+                          <?php endif; 
+                          if($cta_link): ?>
+                            <a href="<?php echo $cta_link['url']; ?>" class="site-button" <?php if($cta_link['target']): ?>target="<?php echo $cta_link['target']; ?>"<?php endif; ?>><?php echo $cta_link['title']; ?></a>
+                          <?php endif; ?>
+                        </div>
                       </div>
-                    </div>
-                  <?php endforeach; ?>
+                  <?php endif; endforeach; ?>
                 </div>
                 <!-- End Here Top CTA -->
               <?php endif;  
