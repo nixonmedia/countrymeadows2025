@@ -167,8 +167,8 @@ img.alignleft {
 
 .wysiwyg-button, .site-button {
   font-size: 17px;
-  line-height: 45px;
-  padding: 7px 24px;
+  line-height: 18px;
+  padding: 20px 24px;
   margin-top: 10px;
 }
 .wysiwyg-button, .event-button, .site-button {
@@ -759,10 +759,6 @@ img.alignleft {
 .custom-col-with-top-header-image img {
   border: 1px solid #B6B6B6;
 }
-.heading-with-icon svg {
-  width: 40px;
-  height: 40px;
-}
 .bg-purple .heading-with-icon svg, .bg-purple .heading-with-icon svg path,
 .bg-blue .heading-with-icon svg, .bg-blue .heading-with-icon svg path {
   fill: var(--white);
@@ -900,12 +896,32 @@ img.alignleft {
 .custom-column-two.with-media.with-video-media .video-wrapper, .custom-column-two.with-media.with-video-media .video-wrapper iframe {
   height: 345px !important;
 }
-.custom-columns-zone .image-box {
+.image-box {
   width: max-content;
   max-width: 100%;
 }
 .custom-columns-zone .image-box img {
   border-radius: 0 20px;
+}
+
+
+/*********************
+*** Split Columns ***
+*********************/
+.split-column-zone .image-box img {
+  border-radius: 20px 0;
+}
+
+/***********************
+*** Text Column Grid ***
+***********************/
+
+.text-column-grid-zone {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.text-column-grid-zone .row {
+  --bs-gutter-y: 45px;
 }
 
 /* Media Queries  */
@@ -1177,6 +1193,7 @@ img.alignleft {
   }
   .wysiwyg-button, .site-button {
     font-size: 18px;
+    line-height: 45px;
     padding: 7px 30px;
   }
   .footer-post-col .font-normal {
@@ -1367,6 +1384,36 @@ img.alignleft {
   .meet-team-button {
     font-size: 14px;
     line-height: 18px;
+  }
+  
+  .text-column-grid-zone {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .text-column-grid-zone .row {
+    --bs-gutter-x: 3.5rem;
+    --bs-gutter-y: 100px;
+  }
+  .text-column-grid-zone .site-button {
+    position: absolute;
+    bottom: 0;
+    left: 28px;
+    right: 28px;
+    max-width: 100%;
+    width: max-content;
+    margin: 0 auto;
+  }
+  .text-column-grid-block {
+    padding-bottom: 80px;
+  }
+  .text-column-grid-zone.bg-water-color:after {
+    width: 438px;
+    height: 1054px;
+    transform: rotate(-86.949deg);
+    right: unset;
+    left: 0;
+    bottom: unset;
+    top: -15%;
   }
 }
 @media only screen and (min-width: 1200px) {
