@@ -1020,7 +1020,11 @@ form input:not([type ="submit"]),form select, form textarea {
 .form_zone .wysiwyg-content img {
     padding-left: 0;
 }
-
+.form-icon svg {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   body {

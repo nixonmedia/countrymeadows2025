@@ -1,5 +1,5 @@
 <?php
-$heading        = $section['heading'];
+$heading = $section['heading'];
 $headline = $heading['headline'];
 $heading_type = $heading['heading_type'];
 $background_color  = $section['background_color'];
@@ -80,7 +80,7 @@ if (!empty($bg_svg_pattern)) {
             <div class="row">
                 <div class="col-lg-12">
                     <?php if (!empty($icon)): ?>
-                    <div class="icon text-center">
+                    <div class="icon text-center pt-1 pb-3 form-icon">
                         <?php 
                         if (strpos($icon, '<svg') !== false) {
                             // It's SVG code, output directly
@@ -126,7 +126,7 @@ if (!empty($bg_svg_pattern)) {
                     </div>
                 <?php endif; ?>
                 <?php if ($form_position != "center") { ?>
-                    <div class="col-lg-6 ">
+                    <div class="col-lg-6 py-lg-0 py-4">
                         <?php if ($form) { ?>
                             <div class="form-container <?php echo $text_color; ?>">
                                 <?php echo  do_shortcode('[gravityform id="' . $form . '" title="true" description="false"]'); ?>
