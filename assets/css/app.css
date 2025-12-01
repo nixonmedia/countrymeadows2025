@@ -984,9 +984,7 @@ img.alignleft {
 .topic-card .below-content{
   display: grid;
  grid-template-columns: 80px auto;
- /* align-items: center; */
-  
-}
+  }
 .upper-content{
     padding: 60px 10px 90px 10px;
 
@@ -1017,22 +1015,23 @@ img.alignleft {
 
 .topic-card {
     display: flex;
-    flex-direction: column;   /* Stack top + bottom */
-    height: 100%;             /* Fill equal height from JS */
+    flex-direction: column; 
+    height: 100%;            
 }
 
-/* This makes the upper content stretch to fill extra space */
+
 .topic-card .upper-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;   /* center items vertically */
+    justify-content: center; 
     align-items: center;
 }
 
-/* Push the blue panel to the bottom */
 .topic-card .below-content {
     margin-top: auto;
+background-color: #D6F0FF80;
+     
 }
 
 

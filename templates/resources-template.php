@@ -154,7 +154,7 @@ Template Name: Resources
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="">
 
                             </div>
-                            <div class="below-content bg-light-blue p-3">
+                            <div class="below-content p-3">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/family.png  " class="">
                                 <div>
                                     <p class="text-blue mb-0">Latest Resource</p>
@@ -172,7 +172,7 @@ Template Name: Resources
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="" alt="">
 
                             </div>
-                            <div class="below-content bg-light-blue p-3">
+                            <div class="below-content p-3">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/family.png" class="" alt="">
                                 <div>
                                     <p class="text-blue mb-0">Family & Caregivers</p>
@@ -190,7 +190,7 @@ Template Name: Resources
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="">
 
                             </div>
-                            <div class="below-content bg-light-blue p-3">
+                            <div class="below-content p-3">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/family.png" class="">
                                 <div>
                                     <p class="text-blue mb-0">Latest Resource</p>
@@ -208,7 +208,7 @@ Template Name: Resources
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Adoptation_Family.png" class="">
 
                             </div>
-                            <div class="below-content bg-light-blue p-3">
+                            <div class="below-content p-3">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/family.png" class="">
                                 <div>
                                     <p class="text-blue mb-0">Latest Resource</p>
@@ -226,7 +226,7 @@ Template Name: Resources
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="">
 
                             </div>
-                            <div class="below-content bg-light-blue p-3">
+                            <div class="below-content p-3">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/family.png" class="">
                                 <div>
                                     <p class="text-blue mb-0">Latest Resource</p>
@@ -244,7 +244,7 @@ Template Name: Resources
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="">
 
                             </div>
-                            <div class="below-content bg-light-blue p-3">
+                            <div class="below-content p-3">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/family.png" class="">
                                 <div>
                                     <p class="text-blue mb-0">Independent Living</p>
@@ -262,7 +262,7 @@ Template Name: Resources
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="">
 
                             </div>
-                            <div class="below-content bg-light-blue p-3">
+                            <div class="below-content p-3">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/family.png" class="">
                                 <div>
                                     <p class="text-blue mb-0">Let’s Get Started...</p>
@@ -280,7 +280,7 @@ Template Name: Resources
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="">
 
                             </div>
-                            <div class="below-content bg-light-blue p-3">
+                            <div class="below-content p-3">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/family.png" class="">
                                 <div>
                                     <p class="text-blue mb-0">Lifestyle</p>
@@ -298,7 +298,7 @@ Template Name: Resources
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Disability-Sit-Cane-Streamline-Freehand-Duotone.png" class="">
 
                             </div>
-                            <div class="below-content bg-light-blue p-3">
+                            <div class="below-content p-3">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/family.png" class="">
                                 <div>
                                     <p class="text-blue mb-0">Memory Care</p>
