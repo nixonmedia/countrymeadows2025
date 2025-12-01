@@ -759,10 +759,6 @@ img.alignleft {
 .custom-col-with-top-header-image img {
   border: 1px solid #B6B6B6;
 }
-.heading-with-icon svg {
-  width: 40px;
-  height: 40px;
-}
 .bg-purple .heading-with-icon svg, .bg-purple .heading-with-icon svg path,
 .bg-blue .heading-with-icon svg, .bg-blue .heading-with-icon svg path {
   fill: var(--white);

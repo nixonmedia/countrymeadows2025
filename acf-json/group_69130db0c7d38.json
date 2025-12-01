@@ -1,0 +1,42 @@
+{
+    "key": "group_69130db0c7d38",
+    "title": "Streamline Icon",
+    "fields": [
+        {
+            "key": "field_69130db0e74bc",
+            "label": "Streamline Icon",
+            "name": "streamline_icon",
+            "aria-label": "",
+            "type": "streamline_icon_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1764571530
+}

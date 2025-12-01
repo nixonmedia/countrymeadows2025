@@ -9,7 +9,12 @@
           $content = $content_block['content'] ?? ''; 
           $button = $content_block['button'] ?? ''; ?>
           <div class="col-lg-6 position-relative text-column-grid-block">
-            <?php if($heading): ?>
+            <?php if($icon): ?>
+              <div class="mb-2 text-center heading-with-icon">
+                <?php echo $icon; ?>
+              </div>
+            <?php endif;
+            if($heading): ?>
               <h2><?php echo $heading; ?></h2>
             <?php endif; 
             if($content): ?>
