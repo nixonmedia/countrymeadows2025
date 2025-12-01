@@ -7,11 +7,9 @@ $embellishment = $media_embellishment['embellishment'] ?? '';
 $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 $section_border = $section['border'] ?? [];
 $border = $section_border['border'] ?? '';
+// var_dump($border);
 $angle = $section_border['angle'] ?? '';
 
-var_dump($call_to_action);
-var_dump($background_color);
-var_dump($background_pattern);
 
 
 if ($background_color == 'Blue') {
@@ -39,7 +37,13 @@ if ($background_color == 'Blue') {
     $text_color = 'text-black';
     $heading_color = 'text-black';
     $svg_fill = '#F1F1F1';
-} else {
+}elseif ($background_color == 'Light Yellow') {
+    $bg_color = 'bg-light-yellow';
+    $text_color = 'text-black';
+    $heading_color = 'text-black';
+    $svg_fill = 'rgba(0, 0, 0, 0.05)';
+}
+else {
     $bg_color = 'bg-white';
     $text_color = 'text-black';
     $heading_color = 'text-black';
@@ -78,7 +82,12 @@ if ($border == 'angle' && $angle == 'down_left') {
     $border_class = 'border-angle';
     $angle_class = 'angle_down_right';
     $margin_class = 'my-7 position-relative';
-} else {
+}elseif ($border == 'straight') {
+    $border_class = 'border-straight';
+    $angle_class = '';
+    $margin_class = 'my-7 position-relative';
+}
+ else {
     $border_class = '';
     $angle_class = '';
     $margin_class = '';

@@ -853,6 +853,28 @@ img.alignleft {
   margin-top: 7rem;
   margin-bottom: 7rem;
 }
+.border-straight {
+  position: relative;
+  /* background-color: #f8b739; 
+  height: 60px;  */
+}
+
+.border-straight:before {
+   position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  width: 100%;
+     top: -18px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 22px;
+  background-position: right;
+}
+
+
+
+
 .angle_down_left{
   clip-path: polygon(0 -50%, 100% -50%, 100% 99%, 0% 100%);
 }
@@ -888,6 +910,15 @@ img.alignleft {
 }
 .border-angle.bg-yellow:before{
   background-image: url(../images/edge_yellow.svg);
+}
+
+.border-straight.bg-light-yellow:before{
+  background-image: url(../images/straight-yellow-border.svg);
+}
+.call-to-action.bg-pattern{
+    background-size: 530px;
+    background-position: 0% -30%;
+    background-repeat: no-repeat;
 }
 
 .bg-pattern {
