@@ -1,5 +1,4 @@
 <?php
-var_dump($section);exit;
 
 $heading        = $section['heading']['heading']        ?? "";
 $heading_style  = $section['heading']['heading_style']  ?? "";
@@ -11,7 +10,8 @@ $border_data    = $section['border_component']          ?? [];
 $border         = $border_data['border']                ?? "";
 $angle          = $border_data['angle']                 ?? "";
 
-
+$background = strtolower(trim($background));     // lowercase
+$background = str_replace(' ', '_', $background); // spaces → underscores
 $background_map = [
     "blue"           => "bg-blue",
     "light_blue"     => "bg-light-blue",
@@ -19,8 +19,8 @@ $background_map = [
     "purple"         => "bg-purple",
     "gradient_yellow"=> "bg-gradient-yellow",
 ];
-
 $background_class = $background_map[$background] ?? "";
+var_dump($background_class);
 $use_dark_text    = in_array($background, ["light_blue", "teal", "gradient_yellow"]);
 $text_class       = $use_dark_text ? "text-black-100" : "text-white";
 
@@ -29,35 +29,15 @@ $border_class = ($border === "angle") ? "border-angle" : "";
 $angle_class  = $border === "angle" ? 
     ($angle === "down_right" ? "angle_down_right" : ($angle === "down_left" ? "angle_down_left" : "")) : "";
 
-// --- Query Reviews to check if section should display ---
-$args = [
-    'post_type'      => 'google_review',
-    'posts_per_page' => -1,
-    'post_status'    => 'publish',
-    'orderby'        => 'date',
-    'order'          => 'DESC',
-];
-if (!empty($review_feed->term_id)) {
-    $args['tax_query'] = [[
-        'taxonomy' => 'location',
-        'field'    => 'term_id',
-        'terms'    => $review_feed->term_id,
-    ]];
-}
-$reviews = new WP_Query($args);
-
-// Only show section if there are reviews OR if we're in the admin/editor
-$show_section = $reviews->have_posts() || is_admin() || (function_exists('is_customize_preview') && is_customize_preview());
-
-if ($show_section) :
 ?>
+<?php if ( $heading || $content || $button || $reviews->have_posts() ) : ?>
 <section class="reviews-zone position-relative mt-5 <?= $background_class ?> <?= $border_class ?> <?= $angle_class ?>">
     <div class="container-fluid pt-lg-4 pb-lg-5 pt-0 pb-5 position-relative z-1">
         <div class="row pb-4">
             <div class="offset-lg-1 col-lg-10 pb-4">
 
                 <?php if ($heading): ?>
-                    <<?php echo $heading_style; ?> class="font-medium fw-bold mb-2 pb-1 text-center <?= $text_class ?>"><?= esc_html($heading); ?></<?php echo $heading_style; ?>>
+                    <<?php echo $heading_style; ?>  class="font-medium fw-bold mb-2 pb-1 text-center <?= $text_class ?>"><?= esc_html($heading); ?></<?php echo $heading_style; ?>>
                 <?php endif; ?>
 
                 <?php if ($content): ?>
@@ -70,9 +50,30 @@ if ($show_section) :
                     </div>
                 <?php endif; ?>
 
+
                 <!-- Review Slider -->
                 <div class="review-slider ps-lg-4 pt-4">
+
                 <?php
+                // --- Query Reviews ---
+                $args = [
+                    'post_type'      => 'google_review',
+                    'posts_per_page' => -1,
+                    'post_status'    => 'publish',
+                    'orderby'        => 'date',
+                    'order'          => 'DESC',
+                ];
+
+                if (!empty($review_feed->term_id)) {
+                    $args['tax_query'] = [[
+                        'taxonomy' => 'location',
+                        'field'    => 'term_id',
+                        'terms'    => $review_feed->term_id,
+                    ]];
+                }
+
+                $reviews = new WP_Query($args);
+
                 if ($reviews->have_posts()) :
                     while ($reviews->have_posts()) : $reviews->the_post();
 
@@ -93,13 +94,14 @@ if ($show_section) :
                                 "Posted today"));
                         }
                 ?>
+
                     <div class="bg-white p-4">
                         <div class="text-center d-flex justify-content-center pb-2 gap-1">
                             <?php for ($i = 0; $i < $review_stars; $i++): ?>
                                 <img src="<?= get_template_directory_uri(); ?>/assets/images/star.svg" 
-                                        alt="Star Icon" 
-                                        class="img-fluid" 
-                                        style="width:20px;height:20px;">
+                                     alt="Star Icon" 
+                                     class="img-fluid" 
+                                     style="width:20px;height:20px;">
                             <?php endfor; ?>
                         </div>
 
@@ -108,14 +110,19 @@ if ($show_section) :
                         <?php endif; ?>
 
                         <?php if ($date_posted): ?>
-                            <<?php echo $heading_style; ?> class="font-xsm fw-light text-center mb-0 post-date"><?= esc_html($date_posted) ?></<?php echo $heading_style; ?>>
+                            <<?php echo $heading_style;?> class="font-xsm fw-light text-center mb-0 post-date"><?= esc_html($date_posted) ?></<?php echo $heading_style;?>>
                         <?php endif; ?>
 
                         <?php if ($review_excerpt): ?>
                             <div class="font-xs-medium pb-3"><?= esc_html($review_excerpt); ?></div>
                         <?php endif; ?>
 
-                        <a href="<?= $review_url ? esc_url($review_url) : '#'; ?>" <?= $review_url ? 'target="_blank"' : ''; ?
+                        <a href="<?= $review_url ? esc_url($review_url) : '#'; ?>" <?= $review_url ? 'target="_blank"' : ''; ?> class="read-more-text text-pink fw-bold">Read More</a>
+                    </div>
+
+                <?php 
+                    endwhile;
+                    wp_reset_postdata();
                 else: ?>
 
                 <div class="bg-white p-4 text-center">
@@ -129,5 +136,5 @@ if ($show_section) :
             </div>
         </div>
     </div>
-    </section>
-<?php }?>
+</section>
+<?php endif; ?>
