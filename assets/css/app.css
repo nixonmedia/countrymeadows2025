@@ -748,10 +748,10 @@ img.alignleft {
   right: unset;
   left: 10%;
 }
-.icon-slide-box svg {
+/* .icon-slide-box svg {
   width: 65px;
   height: 65px;
-}
+} */
 .icons-slider, .image-gallery-slider {
   padding-right: 30px;
   padding-left: 30px;
@@ -1335,10 +1335,6 @@ img.alignleft {
   .wysiwyg-testimonial-block {
     padding: 0 35px;
   }
-  .icon-slide-box svg {
-    width: 72px;
-    height: 72px;
-  }
   .with-embellishment.circles-embellishment.left-align-embellishment:after {
     left: -30px;
     bottom: -32px;
@@ -1425,7 +1421,7 @@ img.alignleft {
     clip-path: polygon(0 -50%, 100% -50%, 100% 100%, 0% 95%);
   }
   .border-angle:before {
-    top: -60px;
+    top: -56px;
     height: 8vw;
     min-height: 40px;
     max-height: 62px;
