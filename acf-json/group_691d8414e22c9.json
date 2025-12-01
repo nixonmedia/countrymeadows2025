@@ -17,12 +17,12 @@
                 "id": ""
             },
             "choices": {
-                "Circles": "Circles",
-                "Seeds": "Seeds",
-                "Seeds Open": "Seeds Open",
-                "Seeds Open Large": "Seeds Open Large",
-                "Squiggles": "Squiggles",
-                "X’s": "X’s"
+                "circles": "Circles",
+                "seeds": "Seeds",
+                "seeds-open": "Seeds Open",
+                "seeds-open-large": "Seeds Open Large",
+                "squiggles": "Squiggles",
+                "Xs": "Xs"
             },
             "default_value": false,
             "return_format": "value",
@@ -68,9 +68,9 @@
     "location": [
         [
             {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
+                "param": "page_template",
+                "operator": "!=",
+                "value": "default"
             }
         ]
     ],
@@ -84,5 +84,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763542120
+    "modified": 1764400030
 }

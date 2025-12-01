@@ -642,9 +642,24 @@ img.alignleft {
 /*********************
 *** Custom Columns ***
 *********************/
+.meet-team-block.bg-blue {
+  background-color: color-mix(in srgb, var(--blue) 50%, transparent);
+}
+.meet-team-block.bg-light-blue {
+  background-color: color-mix(in srgb, var(--light-blue) 50%, transparent);
+}
+.meet-team-block.bg-teal {
+  background-color: color-mix(in srgb, var(--teal) 50%, transparent);
+}
+.meet-team-block.bg-purple {
+  background-color: color-mix(in srgb, var(--purple) 50%, transparent);
+}
 .custom-columns-zone {
   padding-top: 30px;
   padding-bottom: 30px;
+}
+.custom-columns-zone.bg-water-color {
+  overflow: hidden;
 }
 .meet-team-block {
   border-radius: 20px;
@@ -1180,6 +1195,9 @@ section:not(.split-column-zone) .cta-info {
   .stylized-heading-intro-zone:not(.layered-image-zone) .stylized-heading {
     font-size: 35px;
   }
+  .icon-slide-box {
+    line-height: 24px;
+  }
 
 }
 @media only screen and (min-width: 992px) {
@@ -1386,7 +1404,7 @@ section:not(.split-column-zone) .cta-info {
     padding: 45px 60px 100px;
   }
   .push-info .video-wrapper {
-    height: 362px;
+    height: 230px;
   }
   .bg-pattern {
     background-image: var(--svg-bg);
@@ -1498,12 +1516,19 @@ section:not(.split-column-zone) .cta-info {
   }
   .custom-columns-zone.border-angle {
     padding-bottom: 100px;
+    padding-top: 60px;
   }
   .angle_down_left{
     clip-path: polygon(0 -50%, 100% -50%, 100% 95%, 0% 100%);
   }
   .angle_down_right{
     clip-path: polygon(0 -50%, 100% -50%, 100% 100%, 0% 95%);
+  }
+  .border-angle:before {
+    top: -60px;
+    height: 8vw;
+    min-height: 40px;
+    max-height: 62px;
   }
   .with-embellishment.left-align-embellishment:after {
     left: -40px;
@@ -1513,6 +1538,9 @@ section:not(.split-column-zone) .cta-info {
   }
   .with-embellishment.right-align-embellishment:after {
     right: -50px;
+  }
+  .meet-team-block.with-embellishment.left-align-embellishment:after {
+    left: -16px;
   }
 }
 @media only screen and (min-width: 1250px) {
@@ -1620,9 +1648,8 @@ section:not(.split-column-zone) .cta-info {
   .meet-team-button {
     font-size: 16px;
   }
-  .border-angle:before {
-    top: -58px;
-    height: 60px;
+  .push-info .video-wrapper {
+    height: 362px;
   }
 }
 @media only screen and (min-width: 1620px) {
@@ -1728,6 +1755,10 @@ section:not(.split-column-zone) .cta-info {
   .container-fluid {
     max-width: 1800px;
     margin: 0 auto;
+  }
+  .border-angle:before {
+    top: -90px;
+    max-height: 120px;
   }
 }
 @media only screen and (min-width: 2200px) {
