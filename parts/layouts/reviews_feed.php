@@ -20,7 +20,6 @@ $background_map = [
     "gradient_yellow"=> "bg-gradient-yellow",
 ];
 $background_class = $background_map[$background] ?? "";
-var_dump($background_class);
 $use_dark_text    = in_array($background, ["light_blue", "teal", "gradient_yellow"]);
 $text_class       = $use_dark_text ? "text-black-100" : "text-white";
 

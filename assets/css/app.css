@@ -173,6 +173,7 @@ img.alignleft {
 .bg-light-yellow .wysiwyg-button:hover,  .bg-light-yellow .site-button:hover {
   background-color: var(--black-100);
   color: var(--white);
+}
 .slick-slider .slick-arrow {
   opacity: 1;
   font-size: 0;
@@ -612,7 +613,7 @@ border-radius: 10px;
   left: 0;
   right: 0;
   width: 100%;
-  top: -51px;
+  top: -49px;
   background-size: cover;
   background-repeat: no-repeat;
   height: 52px;
@@ -1039,10 +1040,10 @@ form .gfield_html {
     line-height: 16px;
 }
 .bg-blue form .gfield legend,.bg-blue form .gfield label.gfield_label,.bg-blue .gform_title, .bg-blue .gform_description,.bg-purple form .gfield legend,.bg-purple form .gfield label.gfield_label,.bg-purple .gform_title, .bg-purple .gform_description{
-    color: var(--white);
+  color: var(--white);
 }
 .bg-light-blue form .gfield legend,.bg-light-blue form .gfield label.gfield_label,.bg-light-blue .gform_title, .bg-light-blue .gform_description{
-    color: var(--black-100);
+  color: var(--black-100);
 }
 .bg-white form .gfield legend,.bg-white form .gfield label.gfield_label, .bg-white .gform_description,.bg-gradient-yellow form .gfield legend, .bg-gradient-yellow form .gfield label.gfield_label, .bg-gradient-yellow  .gform_title, .bg-gradient-yellow .gform_description, .bg-teal form .gfield legend, .bg-teal form .gfield label.gfield_label, .bg-teal  .gform_title, .bg-teal .gform_description{
     color: var(--black);
@@ -1052,23 +1053,23 @@ form .gfield_html {
    line-height: 17px;
 }
 .bg-white  .gform_title{
-color: var(--pink);
+  color: var(--pink);
 }
 form input:not(input[type="submit"]),form select, form textarea {
-    border-color: #D8D8D8 !important;
-    box-shadow: none !important;
-    outline-color: #d8d8d8 !important;
+  border-color: #D8D8D8 !important;
+  box-shadow: none !important;
+  outline-color: #d8d8d8 !important;
 }
-  .gform_button.button{
-    font-size: 18px !important; 
-    padding: 7px 30px  !important;
+.gform_button.button{
+  font-size: 18px !important; 
+  padding: 7px 30px  !important;
   font-weight: 700;
   text-decoration: none;
   display: inline-block;
   border-radius: 10px;
   background-color: var(--purple);
   color: var(--white);
-  }
+}
 .gform_button:hover{ 
    background-color: var(--gray) !important;
 }
