@@ -3,7 +3,7 @@
     "title": "Testimonial Categories",
     "menu_order": 0,
     "active": true,
-    "taxonomy": "testimonial_category",
+    "taxonomy": "testimonial_categories",
     "object_type": [
         "testimonials"
     ],
@@ -71,5 +71,5 @@
     "meta_box": "default",
     "meta_box_cb": "",
     "meta_box_sanitize_cb": "",
-    "modified": 1762425454
+    "modified": 1764670842
 }
