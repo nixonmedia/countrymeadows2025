@@ -37,8 +37,7 @@ $media_embellishment = $special_content['embellishment'] ?? '';
 $embellishment = $media_embellishment['embellishment'] ?? '';
 $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
-$custom_columns_zone_heading = $section['custom_columns_zone_heading'] ?? '';
-$custom_heading = $custom_columns_zone_heading['heading'] ?? '';
+$custom_heading = $section['custom_columns_zone_heading'] ?? '';
 $include_image_headers_on_custom_content = $section['include_image_headers_on_custom_content'] ?? false;
 
 $column_1 = $section['column_1'] ?? '';
@@ -319,8 +318,8 @@ if ($meet_background_color == 'Blue') {
       <!--- Custom Column 1 Layout --->
       <div class="row justify-content-center">
         <div class="col-lg-11 col-xl-9">
-          <?php if($custom_heading['headline']): ?>
-            <<?php echo $custom_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_color; ?>"><?php echo $custom_heading['headline']; ?></<?php echo $custom_heading['heading_type']; ?>>
+          <?php if($custom_heading['heading']): ?>
+            <<?php echo $custom_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_color; ?>"><?php echo $custom_heading['heading']; ?></<?php echo $custom_heading['heading_type']; ?>>
           <?php endif; ?>
           <?php if($column_1_heading['headline']): 
             if($heading_icon && $heading_icon_position == 'Above Heading'): ?>
@@ -397,10 +396,10 @@ if ($meet_background_color == 'Blue') {
     
     <?php if($num_columns == '2' || $num_columns == '3'): ?>
       <!--- Custom Column 2 & 3 Layout --->
-      <?php if($custom_heading['headline']): ?>
+      <?php if($custom_heading['heading']): ?>
         <div class="row <?php echo $row_class; ?> pb-3">
           <div class="<?php echo $heading_column_class; ?>">
-            <<?php echo $custom_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_color; ?>"><?php echo $custom_heading['headline']; ?></<?php echo $custom_heading['heading_type']; ?>>
+            <<?php echo $custom_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_color; ?>"><?php echo $custom_heading['heading']; ?></<?php echo $custom_heading['heading_type']; ?>>
           </div>
         </div>
       <?php endif; ?>

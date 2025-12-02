@@ -837,11 +837,11 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_691ed016e7b38",
+                                    "key": "field_692e9e25f0d5f",
                                     "label": "Heading",
                                     "name": "heading",
                                     "aria-label": "",
-                                    "type": "clone",
+                                    "type": "text",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -850,13 +850,43 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "clone": [
-                                        "group_691d7eaf7eef3"
-                                    ],
-                                    "display": "seamless",
-                                    "layout": "block",
-                                    "prefix_label": 0,
-                                    "prefix_name": 0
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_692e9e4ef0d60",
+                                    "label": "Heading Type",
+                                    "name": "heading_type",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "h1": "H1",
+                                        "h2": "H2",
+                                        "h3": "H3",
+                                        "h4": "H4"
+                                    },
+                                    "default_value": "h2",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "create_options": 0,
+                                    "save_options": 0
                                 }
                             ]
                         },
@@ -4605,5 +4635,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764571475
+    "modified": 1764662942
 }
