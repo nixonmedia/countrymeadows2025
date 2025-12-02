@@ -634,8 +634,19 @@ border-radius: 10px;
 .reviews-zone.bg-yellow:before{
   background-image: url(../images/edge_yellow.svg);
 }
+.reviews-zone.bg-gradient-yellow .slick-initialized .slick-slide,.reviews-zone.bg-white .slick-initialized .slick-slide  {
+
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.reviews-zone.bg-gradient-yellow .slick-list.draggable,.reviews-zone.bg-white .slick-list.draggable  {
+  padding: 10px 0;
+}
+.reviews-zone.bg-gradient-yellow .slick-initialized .slick-slide,.reviews-zone.bg-white .slick-initialized .slick-slide {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #D9D9D9;
+}
 .post-date{
-color: #787878;
+  color: #787878;
 }
 
 /**********************

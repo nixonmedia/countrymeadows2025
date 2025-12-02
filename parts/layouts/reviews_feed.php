@@ -1,12 +1,19 @@
 <?php
 
-$heading        = $section['heading']['heading']  ?? "";
-$heading_style  = $section['heading']['heading_style']  ?? "";
+// $heading        = $section['heading']['heading']  ?? "";
+$heading        = $section['heading'];
+$headline = $heading['headline'];
+// var_dump($headline);
+
+$heading_type = $heading['heading_type'];
+// var_dump($heading_type);
+// $heading_style  = $section['heading']['heading_style']  ?? "";
 $background_color = $section['background_color'] ?? '';
 $content        = $section['content']                   ?? "";
 $button         = $section['button']                    ?? "";
 $review_feed    = $section['review_feed']               ?? "";
-$border_data    = $section['border_component'] ;
+$border_data    = $section['border'] ;
+// var_dump($border_data);
 // $border_data    = $section['border_component']          ?? [];
 $border         = $border_data['border']                ?? "";
 $angle          = $border_data['angle']                 ?? "";
@@ -51,8 +58,8 @@ $angle_class  = $border === "angle" ?
             <div class="row pb-4">
                 <div class="offset-lg-1 col-lg-10 pb-4">
 
-                    <?php if ($heading): ?>
-                        <<?php echo $heading_style; ?> class="font-medium fw-bold mb-2 pb-1 text-center <?= $heading_color ?>"><?= esc_html($heading); ?></<?php echo $heading_style; ?>>
+                    <?php if ($headline): ?>
+                        <<?php echo $heading_type; ?> class="font-medium fw-bold mb-2 pb-1 text-center <?php echo $heading_color;?>"><?php echo $headline; ?></<?php echo $heading_type; ?>>
                     <?php endif; ?>
 
                     <?php if ($content): ?>
@@ -117,11 +124,11 @@ $angle_class  = $border === "angle" ?
                                     </div>
 
                                     <?php if ($review_name): ?>
-                                        <<?php echo $heading_style; ?> class="text-black font-xm text-center mb-0"><?= esc_html($review_name) ?></<?php echo $heading_style; ?>>
+                                        <<?php echo $heading_type; ?> class="text-black font-xm text-center mb-0"><?= esc_html($review_name) ?></<?php echo $heading_type; ?>>
                                     <?php endif; ?>
 
                                     <?php if ($date_posted): ?>
-                                        <<?php echo $heading_style; ?> class="font-xsm fw-light text-center mb-0 post-date"><?= esc_html($date_posted) ?></<?php echo $heading_style; ?>>
+                                        <<?php echo $heading_type; ?> class="font-xsm fw-light text-center mb-0 post-date"><?= esc_html($date_posted) ?></<?php echo $heading_type; ?>>
                                     <?php endif; ?>
 
                                     <?php if ($review_excerpt): ?>
