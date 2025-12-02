@@ -93,8 +93,7 @@ if (! function_exists('country_meadows_styles')) :
         // Enqueue Bootstrap JS
         wp_enqueue_script('country_meadows-bootstrap-bundle', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js', array(), $theme_version, true);
 
-
-        // Enqueue slick css
+		// Enqueue slick css
         wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array(), $theme_version);
 
         // Enqueue slick JS

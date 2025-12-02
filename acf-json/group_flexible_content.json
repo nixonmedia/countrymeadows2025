@@ -4493,7 +4493,7 @@
                             "name": "review_feed",
                             "aria-label": "",
                             "type": "taxonomy",
-                            "instructions": "",
+                            "instructions": "Select the location to display reviews",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -4518,7 +4518,7 @@
                             "label": "Background Color",
                             "name": "background_color",
                             "aria-label": "",
-                            "type": "select",
+                            "type": "clone",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -4527,23 +4527,13 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": {
-                                "blue": "Blue",
-                                "light_blue": "Light Blue",
-                                "teal": "Teal",
-                                "purple": "Purple",
-                                "gradient_yellow": "Gradient Yellow"
-                            },
-                            "default_value": false,
-                            "return_format": "value",
-                            "multiple": 0,
-                            "allow_null": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
+                            "clone": [
+                                "group_691d6ed5d9932"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         },
                         {
                             "key": "field_691c20ca7b1b0",
@@ -4605,5 +4595,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764571475
+    "modified": 1764556868
 }
