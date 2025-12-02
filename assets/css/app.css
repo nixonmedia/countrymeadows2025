@@ -135,6 +135,15 @@ img.alignleft {
   margin-bottom: 0;
 }
 
+/* color classes for anchor wyswing */
+.bg-blue .wyswing-content a:not(.btn):not([role="button"]):not(.wysiwyg-button),
+.bg-purple .wyswing-content a:not(.btn):not([role="button"]):not(.wysiwyg-button) {
+  color: var(--white);
+}
+
+
+/* end color classes for anchor wyswing */
+
 .slick-slider .slick-arrow {
   opacity: 1;
   font-size: 0;
@@ -1611,7 +1620,7 @@ width:100%;
 
   }
  .content-and-button-cards  .wyswing-content.top-content{
-width:80%;
+width:85%;
 }
   .content-and-button-cards  .single-button{
            padding: 35px 70px !important;

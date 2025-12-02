@@ -99,51 +99,50 @@ if ($border == 'angle' && $angle == 'down_left') {
   $margin_class = '';
 }
 
-$valid_buttons = [];
-
-if (!empty($button_cards)) {
-
-  foreach ($button_cards as $button) {
-    $text = trim($button['text'] ?? '');
-    $link_title = $button['link']['title'] ?? '';
-    $link_url = $button['link']['url'] ?? '';
-    $button_icon = $button['streamline_icon'] ?? '';
-    if ($text !== '' && $link_url !== '' || $button_icon !== '') {
-      $valid_buttons[] = $button;
-    }
-  }
-}
-
-if ($heading || $content || !empty($valid_buttons) || $bottom_zone_content):
+if ($heading || $content || !empty($button_cards) || $bottom_zone_content):
 ?>
-
   <section id="content-and-buttons-cards-<?php echo get_the_ID() . '-' . $key; ?>" class="content-and-button-cards py-5 <?php echo $bg_color; ?> <?php echo $bg_pattern_class; ?> <?php echo $border_class; ?> <?php echo $angle_class; ?> <?php echo $margin_class; ?>">
-    <div class="container-fluid text-center text-white">
+    <div class="container-fluid text-center text-white pb-5">
       <div class="row justify-content-center">
         <div class="col-lg-10 d-flex flex-column justify-content-center align-items-center">
           <<?php echo $heading_style;  ?> class="fw-bold mb-3 font-medium mb-2 <?php echo esc_attr($text_color); ?>">
             <?php echo $heading; ?>
           </<?php echo $heading_style;  ?>>
-
           <?php if ($content): ?>
             <div class="wyswing-content pt-3 pb-5 top-content <?php echo esc_attr($text_color); ?>">
               <?php echo $content; ?>
             </div>
           <?php endif; ?>
-
-          <!-- Buttons -->
           <div class="buttons d-flex flex-wrap justify-content-center gap-4 pb-5">
-            <?php if (!empty($valid_buttons)): ?>
-              <?php foreach ($valid_buttons as $button):
+            <?php if (!empty($button_cards) && is_array($button_cards)): ?>
+              <?php foreach ($button_cards as $button):
+                $button_text     = $button['text'] ?? '';
+                $button_link_url = $button['link']['url'] ?? '';
+                $button_target = $button['link']['target'] ?? '';
+                $button_icon     = $button['streamline_icon'] ?? '';
+                if (!empty($button_text)) :
               ?>
-                <a href="<?php echo esc_url($button['link']['url']); ?>" class="p-4 bg-white shadow single-button text-black text-decoration-none">
-                  <?php echo  $button['streamline_icon']; ?>
-                  <strong><?php echo $button["text"]; ?></strong>
-                </a>
+                  <?php
+                  ?>
+                  <?php if (!empty($button_link_url)): ?>
+                    <!-- click -->
+                    <a href="<?php echo esc_url($button_link_url); ?>"
+                      class="p-4 bg-white shadow single-button text-black text-decoration-none"
+                      <?php if (!empty($button_target)) : ?> target="<?php echo esc_attr($button_target); ?>" <?php endif; ?>>
+                      <?php echo $button_icon; ?>
+                      <strong><?php echo esc_html($button_text); ?></strong>
+                    </a>
+                  <?php else: ?>
+                    <!-- non click -->
+                    <div class="p-4 bg-white shadow single-button text-black">
+                      <?php echo $button_icon; ?>
+                      <strong><?php echo esc_html($button_text); ?></strong>
+                    </div>
+                  <?php endif; ?>
+                <?php endif; ?>
               <?php endforeach; ?>
             <?php endif; ?>
           </div>
-
           <?php if ($bottom_zone_content): ?>
             <div class="wyswing-content bottom-content <?php echo esc_attr($text_color); ?>">
               <?php echo $bottom_zone_content; ?>
