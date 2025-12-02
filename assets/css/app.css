@@ -210,8 +210,8 @@ img.alignleft {
 
 .wysiwyg-button, .site-button{
   font-size: 17px;
-  line-height: 45px;
-  padding: 7px 24px;
+  line-height: 18px;
+  padding: 20px 24px;
   margin-top: 10px;
 }
 .wysiwyg-button, .event-button, .site-button{
@@ -887,20 +887,16 @@ border-radius: 10px;
   right: unset;
   left: 10%;
 }
-.icon-slide-box svg {
+/* .icon-slide-box svg {
   width: 65px;
   height: 65px;
-}
+} */
 .icons-slider, .image-gallery-slider {
   padding-right: 30px;
   padding-left: 30px;
 }
 .custom-col-with-top-header-image img {
   border: 1px solid #B6B6B6;
-}
-.heading-with-icon svg {
-  width: 40px;
-  height: 40px;
 }
 .bg-purple .heading-with-icon svg, .bg-purple .heading-with-icon svg path,
 .bg-blue .heading-with-icon svg, .bg-blue .heading-with-icon svg path {
@@ -1038,7 +1034,7 @@ border-radius: 10px;
 .custom-column-two.with-media.with-video-media .video-wrapper, .custom-column-two.with-media.with-video-media .video-wrapper iframe {
   height: 345px !important;
 }
-.custom-columns-zone .image-box {
+.image-box {
   width: max-content;
   max-width: 100%;
 }
@@ -1121,6 +1117,26 @@ form input:not(input[type="submit"]),form select, form textarea {
 .form_zone.bg-pattern {
     background-position: 100% 100%;
 }
+
+/*********************
+*** Split Columns ***
+*********************/
+.split-column-zone .image-box img {
+  border-radius: 20px 0;
+}
+
+/***********************
+*** Text Column Grid ***
+***********************/
+
+.text-column-grid-zone {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.text-column-grid-zone .row {
+  --bs-gutter-y: 45px;
+}
+
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   body {
@@ -1390,6 +1406,7 @@ form input:not(input[type="submit"]),form select, form textarea {
   }
   .wysiwyg-button, .site-button{
     font-size: 18px;
+    line-height: 45px;
     padding: 7px 30px;
   }
   .footer-post-col .font-normal {
@@ -1561,10 +1578,6 @@ form input:not(input[type="submit"]),form select, form textarea {
   .wysiwyg-testimonial-block {
     padding: 0 35px;
   }
-  .icon-slide-box svg {
-    width: 72px;
-    height: 72px;
-  }
   .with-embellishment.circles-embellishment.left-align-embellishment:after {
     left: -30px;
     bottom: -32px;
@@ -1597,6 +1610,36 @@ form input:not(input[type="submit"]),form select, form textarea {
   .meet-team-button {
     font-size: 14px;
     line-height: 18px;
+  }
+  
+  .text-column-grid-zone {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .text-column-grid-zone .row {
+    --bs-gutter-x: 3.5rem;
+    --bs-gutter-y: 100px;
+  }
+  .text-column-grid-zone .site-button {
+    position: absolute;
+    bottom: 0;
+    left: 28px;
+    right: 28px;
+    max-width: 100%;
+    width: max-content;
+    margin: 0 auto;
+  }
+  .text-column-grid-block {
+    padding-bottom: 80px;
+  }
+  .text-column-grid-zone.bg-water-color:after {
+    width: 438px;
+    height: 1054px;
+    transform: rotate(-86.949deg);
+    right: unset;
+    left: 0;
+    bottom: unset;
+    top: -15%;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -1651,7 +1694,7 @@ form input:not(input[type="submit"]),form select, form textarea {
     clip-path: polygon(0 -50%, 100% -50%, 100% 100%, 0% 95%);
   }
   .border-angle:before {
-    top: -60px;
+    top: -56px;
     height: 8vw;
     min-height: 40px;
     max-height: 62px;
