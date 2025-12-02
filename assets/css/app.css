@@ -221,6 +221,19 @@ img.alignleft {
   color: var(--white);
 }
 
+/* Breadcrumb */
+
+.breadcrumb a {
+  color: var(--blue);
+}
+.breadcrumb a:hover {
+  text-decoration: none;
+}
+.breadcrumb * {
+  font-size: 16px;
+  line-height: 35px;
+}
+
 /* Header */
 .site-header {
   padding-top: 50px;
