@@ -43,9 +43,9 @@ jQuery(document).ready(function($){
         autoplay: true,
         autoplaySpeed: 3000,
          prevArrow:
-      '<img src="/countrymeadows/wp-content/uploads/2025/11/slide-arrow-left.svg" alt="icon" class="icon-prev">',
+      '<img src="/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/images/slide-arrow-left.svg" alt="icon" class="icon-prev">',
     nextArrow:
-      '<img src="/countrymeadows/wp-content/uploads/2025/11/slide-arrow-right.svg" alt="icon" class="icon-next">',
+      '<img src="/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/images/slide-arrow-right.svg" alt="icon" class="icon-next">',
     responsive: [
       {
         breakpoint: 992,

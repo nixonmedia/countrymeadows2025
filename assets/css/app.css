@@ -263,6 +263,12 @@ img.alignleft {
   color: var(--white);
 }
 
+/* color classes for anchor wyswing */
+.bg-blue .wyswing-content a:not(.btn):not([role="button"]):not(.wysiwyg-button),
+.bg-purple .wyswing-content a:not(.btn):not([role="button"]):not(.wysiwyg-button) {
+  color: var(--white);
+}
+
 /* Header */
 .site-header {
   padding-top: 50px;
@@ -647,6 +653,49 @@ border-radius: 10px;
 }
 .post-date{
   color: #787878;
+}
+
+
+/****************************
+****** Border straight ******
+****************************/
+.border-straight {
+  position: relative;
+}
+ 
+.border-straight:before {
+   position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: -18px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 22px;
+  background-position: right;
+}
+ .border-straight.bg-light-yellow:before{
+  background-image: url(../images/straight-yellow-border.svg);
+}
+ 
+.border-straight.bg-purple:before{
+  background-image: url(../images/straight-purple.svg);
+}
+ 
+.border-straight.bg-blue:before{
+  background-image: url(../images/straight-blue.svg);
+}
+ 
+.border-straight.bg-teal:before{
+  background-image: url(../images/straight-teal.svg);
+}
+.border-straight.bg-light-blue:before{
+  background-image: url(../images/straight-light-blue.svg);
+}
+ 
+.border-angle.bg-yellow:before{
+  background-image: url(../images/edge_yellow.svg);
 }
 
 /**********************
