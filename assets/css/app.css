@@ -865,10 +865,10 @@ img.alignleft {
   left: 0;
   right: 0;
   width: 100%;
-     top: -18px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 22px;
+  top: -18px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 22px;
   background-position: right;
 }
 
@@ -914,6 +914,14 @@ img.alignleft {
 
 .border-straight.bg-light-yellow:before{
   background-image: url(../images/straight-yellow-border.svg);
+}
+
+.border-straight.bg-purple:before{
+  background-image: url(../images/straight-purple.svg);
+}
+
+.border-straight.bg-blue:before{
+  background-image: url(../images/straight-blue.svg);
 }
 .call-to-action.bg-pattern{
     background-size: 530px;

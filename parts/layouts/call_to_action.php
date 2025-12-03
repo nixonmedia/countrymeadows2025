@@ -7,7 +7,6 @@ $embellishment = $media_embellishment['embellishment'] ?? '';
 $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 $section_border = $section['border'] ?? [];
 $border = $section_border['border'] ?? '';
-// var_dump($border);
 $angle = $section_border['angle'] ?? '';
 
 
@@ -150,11 +149,13 @@ if (!empty($svg_encoded)): ?>
     ?>
         <div class="col-lg-6 text-center text-capitalize">
             <?php if($call_to_action_title): ?>
-            <h2 class="<?php $text_color; ?> fw-bold mb-0"><?php echo $call_to_action_title; ?></h2>
+            <h2 class="<?php echo $text_color; ?> fw-bold mb-0"><?php echo $call_to_action_title; ?></h2>
             <?php endif; ?>
-            <?php if($call_to_action_content): ?>
-           <p class="<?php $text_color; ?>"><?php echo $call_to_action_content; ?></p>
-           <?php endif; ?>
+          <?php if($call_to_action_content): ?>
+    <div class="<?php echo $text_color; ?>">
+        <?php echo $call_to_action_content; ?>
+    </div>
+<?php endif; ?>
               <?php if($call_to_action_button): ?>
             <a href="<?php echo $call_to_action_button['url']; ?>" class="site-button" <?php if($call_to_action_button['target']): ?>target="<?php echo $call_to_action_button['target']; ?>" <?php endif; ?>><?php echo $call_to_action_button['title']; ?></a>
           <?php endif; ?>
