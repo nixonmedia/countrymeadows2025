@@ -137,12 +137,8 @@ if (!empty($svg_encoded)): ?>
    
    <div class="row justify-content-center">
     <?php foreach ($call_to_action as $cta) : 
-        // $cta is an integer ID, not an object
         $cta_id = $cta;
-        // var_dump($cta_id);
-
-
-        $call_to_action_title = get_field("cta_headline", $cta_id);
+$call_to_action_title = get_field("cta_headline", $cta_id);
         $call_to_action_content = get_field("cta_content", $cta_id);
         $call_to_action_button = get_field("cta_link", $cta_id);
         //  var_dump( $call_to_action_title);
@@ -155,7 +151,7 @@ if (!empty($svg_encoded)): ?>
     <div class="<?php echo $text_color; ?>">
         <?php echo $call_to_action_content; ?>
     </div>
-<?php endif; ?>
+      <?php endif; ?>
               <?php if($call_to_action_button): ?>
             <a href="<?php echo $call_to_action_button['url']; ?>" class="site-button" <?php if($call_to_action_button['target']): ?>target="<?php echo $call_to_action_button['target']; ?>" <?php endif; ?>><?php echo $call_to_action_button['title']; ?></a>
           <?php endif; ?>

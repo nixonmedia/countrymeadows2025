@@ -855,8 +855,6 @@ img.alignleft {
 }
 .border-straight {
   position: relative;
-  /* background-color: #f8b739; 
-  height: 60px;  */
 }
 
 .border-straight:before {
@@ -923,9 +921,20 @@ img.alignleft {
 .border-straight.bg-blue:before{
   background-image: url(../images/straight-blue.svg);
 }
+
+.border-straight.bg-teal:before{
+  background-image: url(../images/straight-teal.svg);
+}
+.border-straight.bg-light-blue:before{
+  background-image: url(../images/straight-light-blue.svg);
+}
+
+.border-angle.bg-yellow:before{
+  background-image: url(../images/edge_yellow.svg);
+}
 .call-to-action.bg-pattern{
-    background-size: 530px;
-    background-position: 0% -30%;
+ background-size: contain;
+    background-position: 98px -39%;
     background-repeat: no-repeat;
 }
 
