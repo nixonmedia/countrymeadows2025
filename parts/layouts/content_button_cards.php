@@ -54,7 +54,7 @@ if ($background_color == 'Blue') {
   $bg_color = 'bg-gradient-yellow';
   $text_color = 'text-black';
   $heading_color = 'text-black';
-  $svg_fill = '#F1F1F1';
+  $svg_fill = '#F2BD3E';
 } else {
   $bg_color = 'bg-white';
   $text_color = 'text-black';
@@ -78,8 +78,8 @@ if (!empty($bg_svg_pattern)) {
 
 if (!empty($svg_encoded)): ?>
   <style>
-    #content-and-buttons-cards-<?php echo get_the_ID() . '-' . $key; ?>.bg-pattern {
-      --svg-bg: url('data:image/svg+xml,<?php echo $svg_encoded; ?>');
+      #content-and-buttons-cards-<?php echo get_the_ID() . '-' . $key; ?>.bg-pattern {
+        --svg-bg: url('data:image/svg+xml,<?php echo $svg_encoded; ?>');
     }
   </style>
 <?php endif; ?>
@@ -99,50 +99,35 @@ if ($border == 'angle' && $angle == 'down_left') {
   $margin_class = '';
 }
 
-if ($heading || $content || !empty($button_cards) || $bottom_zone_content):
-?>
+if ($heading || $content || !empty($button_cards) || $bottom_zone_content): ?>
   <section id="content-and-buttons-cards-<?php echo get_the_ID() . '-' . $key; ?>" class="content-and-button-cards py-5 <?php echo $bg_color; ?> <?php echo $bg_pattern_class; ?> <?php echo $border_class; ?> <?php echo $angle_class; ?> <?php echo $margin_class; ?>">
     <div class="container-fluid text-center text-white pb-5">
       <div class="row justify-content-center">
         <div class="col-lg-10 d-flex flex-column justify-content-center align-items-center">
+          <?php if($heading){ ?>
           <<?php echo $heading_style;  ?> class="fw-bold mb-3 font-medium mb-2 <?php echo esc_attr($text_color); ?>">
             <?php echo $heading; ?>
           </<?php echo $heading_style;  ?>>
+          <?php } ?>
           <?php if ($content): ?>
-            <div class="wyswing-content pt-3 pb-5 top-content <?php echo esc_attr($text_color); ?>">
+            <div class="wysiwyg-content pt-3 pb-5 top-content <?php echo esc_attr($text_color); ?>">
               <?php echo $content; ?>
             </div>
           <?php endif; ?>
-          <div class="buttons d-flex flex-wrap justify-content-center gap-4 pb-5">
-            <?php if (!empty($button_cards) && is_array($button_cards)): ?>
+          <?php if (!empty($button_cards) && is_array($button_cards)): ?>
+            <div class="buttons d-flex flex-wrap justify-content-center gap-4 pb-5">
               <?php foreach ($button_cards as $button):
                 $button_text     = $button['text'] ?? '';
-                $button_link_url = $button['link']['url'] ?? '';
-                $button_target = $button['link']['target'] ?? '';
-                $button_icon     = $button['streamline_icon'] ?? '';
-                if (!empty($button_text)) :
-              ?>
-                  <?php
-                  ?>
-                  <?php if (!empty($button_link_url)): ?>
-                    <!-- click -->
-                    <a href="<?php echo esc_url($button_link_url); ?>"
-                      class="p-4 bg-white shadow single-button text-black text-decoration-none"
-                      <?php if (!empty($button_target)) : ?> target="<?php echo esc_attr($button_target); ?>" <?php endif; ?>>
-                      <?php echo $button_icon; ?>
-                      <strong><?php echo esc_html($button_text); ?></strong>
-                    </a>
-                  <?php else: ?>
-                    <!-- non click -->
-                    <div class="p-4 bg-white shadow single-button text-black">
-                      <?php echo $button_icon; ?>
-                      <strong><?php echo esc_html($button_text); ?></strong>
-                    </div>
-                  <?php endif; ?>
+                $button_link_url = $button['link'] ?? '';
+                $button_icon     = $button['icon'] ?? '';
+                if ($button_text && $button_link_url) : ?>
+                  <a href="<?php echo esc_url($button_link_url); ?>"
+                    class="p-4 bg-white <?php echo ($bg_color == 'bg-white' || $bg_color == 'bg-gradient-yellow') ? 'shadow ': ''; ?>single-button text-black text-decoration-none font-lexend"><?php echo $button_icon; ?> <strong><?php echo esc_html($button_text); ?></strong>
+                  </a>
                 <?php endif; ?>
               <?php endforeach; ?>
-            <?php endif; ?>
-          </div>
+            </div>
+          <?php endif; ?>
           <?php if ($bottom_zone_content): ?>
             <div class="wyswing-content bottom-content <?php echo esc_attr($text_color); ?>">
               <?php echo $bottom_zone_content; ?>

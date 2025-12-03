@@ -58,6 +58,16 @@ h1, h2, h3, h4, h5, h6 {
 .bg-purple {
   background-color: var(--purple);
 }
+.bg-gradient-yellow.bg-pattern:after {
+    content: '';
+    background: linear-gradient(180deg, rgba(255, 202, 74, 0.10) 0%, #ffffff00 47.12%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
 .bg-gradient-yellow {
   background: linear-gradient(180deg, rgba(255, 202, 74, 0.10) 0%, #FFF 47.12%);
 }
