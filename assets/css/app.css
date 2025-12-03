@@ -924,6 +924,26 @@ img.alignleft {
   --bs-gutter-y: 45px;
 }
 
+/***********************
+********* Blog *********
+***********************/
+
+.search-box-block {
+  padding: 30px 20px;
+  border-radius: 20px;
+}
+.blog-intro-zone {
+  margin-top: -10px;
+  position: relative;
+  clip-path: polygon(0 -50%, 100% -50%, 100% 100%, 0% 95%);
+  padding-bottom: 60px;
+  margin-bottom: 40px;
+}
+.blog-intro-zone:after {
+  content: "";
+  background-image: url(../images/bottom-down_right_border.svg);
+}
+
 /* Media Queries  */
 @media only screen and (max-width: 991px) {
   body {
@@ -1414,6 +1434,13 @@ img.alignleft {
     left: 0;
     bottom: unset;
     top: -15%;
+  }
+  .search-box-block {
+    padding: 52px 72px;
+  }
+  .blog-intro-zone {
+    padding-bottom: 115px;
+    margin-bottom: 70px;
   }
 }
 @media only screen and (min-width: 1200px) {

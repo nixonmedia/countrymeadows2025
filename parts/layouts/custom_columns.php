@@ -95,7 +95,7 @@ $column_3_button = $column_3['button'] ?? '';
   $bg_color = 'bg-gradient-yellow';
   $text_color = 'text-black';
   $heading_color = 'text-black';
-  $svg_fill = '#F1F1F1';
+  $svg_fill = '#F2BD3E';
 } else {
   $bg_color = 'bg-white';
   $text_color = 'text-black';

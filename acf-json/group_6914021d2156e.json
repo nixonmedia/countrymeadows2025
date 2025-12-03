@@ -361,12 +361,12 @@
                                 "id": ""
                             },
                             "choices": {
-                                "929": "Circles",
-                                "936": "Seeds",
-                                "937": "Seeds Open",
-                                "938": "Seeds Open Large",
-                                "939": "Squiggles",
-                                "940": "X’s"
+                                "circles": "Circles",
+                                "seeds": "Seeds",
+                                "seeds-open": "Seeds Open",
+                                "seeds-open-large": "Seeds Open Large",
+                                "squiggles": "Squiggles",
+                                "Xs": "Xs"
                             },
                             "default_value": false,
                             "return_format": "value",
@@ -529,6 +529,11 @@
                 "param": "page_type",
                 "operator": "==",
                 "value": "front_page"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "posts_page"
             }
         ],
         [
@@ -536,6 +541,11 @@
                 "param": "page_template",
                 "operator": "==",
                 "value": "default"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "posts_page"
             }
         ]
     ],
@@ -549,5 +559,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763547786
+    "modified": 1764748725
 }
