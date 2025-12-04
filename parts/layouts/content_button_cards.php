@@ -34,22 +34,22 @@ if ($background_color == 'Blue') {
   $bg_color = 'bg-blue';
   $text_color = 'text-white';
   $heading_color = 'text-white';
-  $svg_fill = 'rgba(0, 0, 0, 0.10)';
+  $svg_fill = '#0C689F';
 } elseif ($background_color == 'Light Blue') {
   $bg_color = 'bg-light-blue';
   $text_color = 'text-black-100';
   $heading_color = 'text-black-100';
-  $svg_fill = 'rgba(43, 161, 198, 0.10)';
+  $svg_fill = '#CAE7F4';
 } elseif ($background_color == 'Teal') {
   $bg_color = 'bg-teal';
   $text_color = 'text-black';
   $heading_color = 'text-black';
-  $svg_fill = 'rgba(0, 0, 0, 0.05)';
+  $svg_fill = '#00B4D3';
 } elseif ($background_color == 'Purple') {
   $bg_color = 'bg-purple';
   $text_color = 'text-white';
   $heading_color = 'text-white';
-  $svg_fill = 'rgba(0, 0, 0, 0.05)';
+  $svg_fill = '#4953DA';
 } elseif ($background_color == 'Gradient Yellow') {
   $bg_color = 'bg-gradient-yellow';
   $text_color = 'text-black';
@@ -93,6 +93,10 @@ if ($border == 'angle' && $angle == 'down_left') {
   $border_class = 'border-angle';
   $angle_class = 'angle_down_right';
   $margin_class = 'my-7 position-relative';
+} elseif($border == 'straight') {
+  $border_class = 'border-straight';
+  $angle_class = '';
+  $margin_class = 'position-relative';
 } else {
   $border_class = '';
   $angle_class = '';
@@ -129,7 +133,7 @@ if ($heading || $content || !empty($button_cards) || $bottom_zone_content): ?>
             </div>
           <?php endif; ?>
           <?php if ($bottom_zone_content): ?>
-            <div class="wyswing-content bottom-content <?php echo esc_attr($text_color); ?>">
+            <div class="wysiwyg-content bottom-content <?php echo esc_attr($text_color); ?>">
               <?php echo $bottom_zone_content; ?>
             </div>
           <?php endif; ?>
