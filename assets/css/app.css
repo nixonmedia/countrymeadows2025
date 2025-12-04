@@ -145,14 +145,14 @@ img.alignleft {
   margin-bottom: 0;
 }
 
-/* color classes for anchor wyswing */
-.bg-blue .wyswing-content a:not(.btn):not([role="button"]):not(.wysiwyg-button),
-.bg-purple .wyswing-content a:not(.btn):not([role="button"]):not(.wysiwyg-button) {
+/* color classes for anchor wysiwyg */
+.bg-blue .wysiwyg-content a:not(.btn):not([role="button"]):not(.wysiwyg-button),
+.bg-purple .wysiwyg-content a:not(.btn):not([role="button"]):not(.wysiwyg-button) {
   color: var(--white);
 }
 
 
-/* end color classes for anchor wyswing */
+/* end color classes for anchor wysiwyg */
 
 .slick-slider .slick-arrow {
   opacity: 1;
@@ -940,9 +940,9 @@ width:100%;
   left: 0;
   right: 0;
   width: 100%;
-  top: -18px;
-  background-size: cover;
-  background-repeat: no-repeat;
+  top: -13px;
+  background-size: contain;
+  background-repeat: repeat-x;
   height: 22px;
   background-position: right;
 }
