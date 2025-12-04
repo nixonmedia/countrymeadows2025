@@ -59,14 +59,14 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--purple);
 }
 .bg-gradient-yellow.bg-pattern:after {
-    content: '';
-    background: linear-gradient(180deg, rgba(255, 202, 74, 0.10) 0%, #ffffff00 47.12%);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
+  content: '';
+  background: linear-gradient(180deg, rgba(255, 202, 74, 0.10) 0%, #ffffff00 47.12%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 .bg-gradient-yellow {
   background: linear-gradient(180deg, rgba(255, 202, 74, 0.10) 0%, #FFF 47.12%);
@@ -514,9 +514,16 @@ img.alignleft {
   height: 257px;
   width: 100%;
   position: absolute;
-  right: 0;
   bottom: 0;
+  top: 0;
+  margin: auto;
   z-index: -1;
+}
+.bg-water-color.bg-water-color-left:after {
+  left: 0;
+}
+.bg-water-color.bg-water-color-right:after {
+  right: 0;
 }
 .bg-water-color.bg-pink-water-color:after {
   background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.60) 0%, rgba(250, 216, 225, 0.65) 0.01%, #FEFEFE 71.63%);
@@ -781,10 +788,10 @@ width:100%;
   right: -35px;
   bottom: -40px;
 }
-.custom-columns-zone.custom-column-one.bg-water-color:after {
+/* .custom-columns-zone.custom-column-one.bg-water-color:after {
   right: unset;
   left: 10%;
-}
+} */
 /* .icon-slide-box svg {
   width: 65px;
   height: 65px;
@@ -875,10 +882,12 @@ width:100%;
 }
 .cta-info {
   border-radius: 20px;
-  background: rgba(76, 87, 230, 0.05);
   padding: 40px 30px;
 }
-.cta-info .site-button {
+.bg-gradient-yellow .cta-info, .bg-white .cta-info {
+  background-color: rgba(76, 87, 230, 0.05);
+}
+.bg-gradient-yellow .cta-info .site-button, .bg-white .cta-info .site-button {
   border: 1px solid #B6B6B6;
 }
 
@@ -922,6 +931,36 @@ width:100%;
 .border-angle.bg-yellow:before{
   background-image: url(../images/edge_yellow.svg);
 }
+.border-straight {
+  position: relative;
+}
+.border-straight:before {
+   position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: -18px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 22px;
+  background-position: right;
+}
+.border-straight.bg-light-yellow:before{
+  background-image: url(../images/straight-yellow-border.svg);
+}
+.border-straight.bg-purple:before{
+  background-image: url(../images/straight-purple.svg);
+}
+.border-straight.bg-blue:before{
+  background-image: url(../images/straight-blue.svg);
+}
+.border-straight.bg-teal:before{
+  background-image: url(../images/straight-teal.svg);
+}
+.border-straight.bg-light-blue:before{
+  background-image: url(../images/straight-light-blue.svg);
+}
 
 .bg-pattern {
   position: relative;
@@ -939,6 +978,37 @@ width:100%;
 }
 .custom-columns-zone .image-box img {
   border-radius: 0 20px;
+}
+.video-box iframe {
+  z-index: 2;
+  position: relative;
+}
+.lightbox .lb-outerContainer {
+  width: 90% !important;
+  height: 100% !important;
+  background-color: transparent !important;
+}
+.lightbox .lb-container {
+  padding: 0 35px !important;
+}
+.lb-data .lb-details {
+  display: none !important;
+}
+.lightbox .lb-image {
+  border: 0 !important;
+  margin: 0 auto;
+  max-width: 100% !important;
+}
+.lightbox .lb-closeContainer {
+  position: absolute !important;
+  top: -40px !important;
+  right: 7% !important;
+  z-index: 2;
+}
+.lb-nav a.lb-prev, .lb-nav a.lb-next {
+  opacity: 1 !important;
+  width: 50px !important;
+  background-size: 30px !important;
 }
 
 .content-and-button-cards .bottom-content{
@@ -1361,8 +1431,9 @@ width:100%;
   }
   
   .bg-water-color:after {
-    height: 442px;
-    width: 100%;
+    width: 438.447px;
+    height: 1054.704px;
+    transform: rotate(-86.949deg);
   }
   .wysiwyg-testimonial-content {
     position: relative;
@@ -1448,13 +1519,18 @@ width:100%;
     padding-bottom: 80px;
   }
   .text-column-grid-zone.bg-water-color:after {
-    width: 438px;
-    height: 1054px;
-    transform: rotate(-86.949deg);
-    right: unset;
-    left: 0;
     bottom: unset;
     top: -15%;
+  }
+  .bg-water-color.bg-water-color-left:after {
+    left: 130px;
+  }
+  .bg-water-color.bg-water-color-right:after {
+    right: 150px;
+  }
+  .lb-nav a.lb-prev, .lb-nav a.lb-next {
+    width: 70px !important;
+    background-size: 60px !important;
   }
 }
 @media only screen and (min-width: 1200px) {
