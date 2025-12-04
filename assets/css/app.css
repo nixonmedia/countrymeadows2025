@@ -966,6 +966,19 @@ width:100%;
 }
 
 /* Media Queries  */
+@media only screen and (max-width:575px) {
+  .content-and-button-cards .buttons a{
+    width: 80%;
+  }
+}
+@media (min-width:576px) and (max-width:767px) {
+  .content-and-button-cards .buttons a {
+    width: 48%;
+    display: inline-block;
+  }
+}
+
+
 @media only screen and (max-width: 991px) {
   body {
     font-size: 17px;
