@@ -74,6 +74,10 @@ h1, h2, h3, h4, h5, h6 {
 .bg-light-yellow {
   background-color: var(--light-yellow);
 }
+
+.text-white {
+  color: var(--white);
+}
 .text-blue {
   color: var(--blue);
 }
@@ -140,6 +144,15 @@ img.alignleft {
 .wysiwyg-content :last-child, .copyright-content :last-child {
   margin-bottom: 0;
 }
+
+/* color classes for anchor wyswing */
+.bg-blue .wyswing-content a:not(.btn):not([role="button"]):not(.wysiwyg-button),
+.bg-purple .wyswing-content a:not(.btn):not([role="button"]):not(.wysiwyg-button) {
+  color: var(--white);
+}
+
+
+/* end color classes for anchor wyswing */
 
 .slick-slider .slick-arrow {
   opacity: 1;
@@ -535,6 +548,20 @@ img.alignleft {
 .sidebar-submenu-block li {
   line-height: 45px;
 }
+
+
+/****************************
+****** Content and button card ******
+****************************/
+
+.content-and-button-card  .single-button{
+    padding: 35px 84px !important
+}
+.content-and-button-card  .wyswing-content.top-content{
+width:100%;
+
+  }
+ 
 
 /**********************
 ****** Video Box ******
@@ -984,6 +1011,10 @@ img.alignleft {
   background-size: 30px !important;
 }
 
+.content-and-button-cards .bottom-content{
+  font-size:14px;
+  line-height:18px;
+}
 
 /*********************
 *** Split Columns ***
@@ -1536,6 +1567,15 @@ img.alignleft {
   .footer-menu {
     padding: 0 30px;
   }
+    .content-and-button-card  .single-button{
+    padding: 25px 40px !important
+}
+ .content-and-button-card  .wyswing-content.top-content {
+    width:90%;
+  }
+  .content-and-button-cards  .bottom-content {
+    width:70%;
+  }
   .meet-team-info-col {
     padding-right: 40px;
   }
@@ -1703,10 +1743,21 @@ img.alignleft {
   .footer-menu {
     padding: 0 80px;
   }
-  
-  .stylized-heading {
+   .stylized-heading {
     font-size: 103px;
+
   }
+ .content-and-button-cards  .wyswing-content.top-content{
+width:85%;
+}
+  .content-and-button-cards  .single-button{
+           padding: 35px 70px !important;
+}
+  .content-and-button-cards  .bottom-content {
+    width:45%;
+
+  }
+ 
   .meet-team-button {
     margin-right: 20px;
   }

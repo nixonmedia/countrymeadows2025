@@ -837,7 +837,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_692e9e25f0d5f",
+                                    "key": "field_6931618ae3825",
                                     "label": "Heading",
                                     "name": "heading",
                                     "aria-label": "",
@@ -858,7 +858,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_692e9e4ef0d60",
+                                    "key": "field_69316191e3826",
                                     "label": "Heading Type",
                                     "name": "heading_type",
                                     "aria-label": "",
@@ -877,7 +877,7 @@
                                         "h3": "H3",
                                         "h4": "H4"
                                     },
-                                    "default_value": "h2",
+                                    "default_value": false,
                                     "return_format": "value",
                                     "multiple": 0,
                                     "allow_null": 0,
@@ -4623,6 +4623,13 @@
                 "operator": "==",
                 "value": "page"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
         ]
     ],
     "menu_order": 0,
@@ -4635,5 +4642,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764662942
+    "modified": 1764843950
 }
