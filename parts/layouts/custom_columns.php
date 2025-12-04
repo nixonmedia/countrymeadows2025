@@ -1,10 +1,11 @@
 <?php $video_url = $section['video'] ?? '';  
 $background_color = $section['background_color'] ?? '';
 $background_water_color = $section['background_watercolor']['background_watercolor'] ?? '';
+$background_watercolor_position = $section['background_watercolor']['background_watercolor_position'] ?? '';
 $section_border = $section['border'] ?? []; 
 $border = $section_border['border'] ?? '';
 $angle = $section_border['angle'] ?? '';
-$background_pattern = $section['background_pattern'] ?? '';
+$background_pattern = $section['background_embellishment'] ?? '';
 
 $num_columns = $section['num_columns'] ?? '';
 $alignment = $section['alignment'] ?? '';
@@ -74,42 +75,67 @@ $column_3_button = $column_3['button'] ?? '';
   $bg_color = 'bg-blue';
   $text_color = 'text-white';
   $heading_color = 'text-white';
-  $svg_fill = 'rgba(0, 0, 0, 0.10)';
+  $svg_fill = '#0C689F';
+  $cta_bg = 'bg-light-yellow';
+  $cta_heading_color = 'text-black-100';
+  $cta_text_color = 'text-black-100';
 } elseif($background_color == 'Light Blue') {
   $bg_color = 'bg-light-blue';
   $text_color = 'text-black-100';
   $heading_color = 'text-black-100';
-  $svg_fill = 'rgba(43, 161, 198, 0.10)';
+  $svg_fill = ' #CAE7F4';
+  $cta_bg = 'bg-blue';
+  $cta_heading_color = 'text-white';
+  $cta_text_color = 'text-white';
 } elseif($background_color == 'Teal') {
   $bg_color = 'bg-teal';
   $text_color = 'text-black';
   $heading_color = 'text-black';
-  $svg_fill = 'rgba(0, 0, 0, 0.05)';
+  $svg_fill = '#00B4D3';
+  $cta_bg = 'bg-light-yellow';
+  $cta_heading_color = 'text-black-100';
+  $cta_text_color = 'text-black-100';
 } elseif($background_color == 'Purple') {
   $bg_color = 'bg-purple';
   $text_color = 'text-white';
   $heading_color = 'text-white';
-  $svg_fill = 'rgba(0, 0, 0, 0.05)';
+  $svg_fill = '#4953DA';
+  $cta_bg = 'bg-light-yellow';
+  $cta_heading_color = 'text-black-100';
+  $cta_text_color = 'text-black-100';
 } elseif($background_color == 'Gradient Yellow') {
   $bg_color = 'bg-gradient-yellow';
   $text_color = 'text-black';
   $heading_color = 'text-black';
-  $svg_fill = '#F1F1F1';
+  $svg_fill = '#F2BD3E';
+  $cta_bg = '';
+  $cta_heading_color = '';
+  $cta_text_color = '';
 } else {
   $bg_color = 'bg-white';
   $text_color = 'text-black';
   $heading_color = 'text-black';
   $svg_fill = '#F1F1F1';
+  $cta_bg = '';
+  $cta_heading_color = '';
+  $cta_text_color = '';
 }
 
-if($background_water_color == 'Blue' && $background_color == 'White') {
+if($background_water_color == 'Blue') {
   $bg_water_color = 'bg-water-color bg-blue-water-color';
-} elseif($background_water_color == 'Yellow' && $background_color == 'White') {
+} elseif($background_water_color == 'Yellow') {
   $bg_water_color = 'bg-water-color bg-yellow-water-color';
-} elseif($background_water_color == 'Pink' && $background_color == 'White') {
+} elseif($background_water_color == 'Pink') {
   $bg_water_color = 'bg-water-color bg-pink-water-color';
 } else {
   $bg_water_color = '';
+}
+if($background_watercolor_position == 'left') {
+  $bg_water_color_position = 'bg-water-color-left';
+} elseif($background_watercolor_position == 'right') {
+  $bg_water_color_position = 'bg-water-color-right';
+} else {
+  $bg_water_color_position = '';
 }
 
 if($num_columns == '1') {
@@ -250,22 +276,26 @@ if($border == 'angle' && $angle == 'down_left') {
   $border_class = 'border-angle';
   $angle_class = 'angle_down_right';
   $margin_class = 'my-7 position-relative';
+} elseif($border == 'straight') {
+  $border_class = 'border-straight';
+  $angle_class = '';
+  $margin_class = 'position-relative';
 } else {
   $border_class = '';
   $angle_class = '';
   $margin_class = '';
 }
 
-if($background_pattern == 'Circles') {
+if($background_pattern == 'circles') {
   $bg_pattern_class = 'bg-pattern bg-circles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/circles.svg');
-} elseif($background_pattern == 'Dots') {
+} elseif($background_pattern == 'dots') {
   $bg_pattern_class = 'bg-pattern bg-dots-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/dots.svg');
-} elseif($background_pattern == 'Honeycomb') {
+} elseif($background_pattern == 'honeycomb') {
   $bg_pattern_class = 'bg-pattern bg-honeycomb-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/honeycomb.svg');
-} elseif($background_pattern == 'Sprinkles') {
+} elseif($background_pattern == 'sprinkles') {
   $bg_pattern_class = 'bg-pattern bg-sprinkles-pattern';
   $bg_svg_pattern = file_get_contents(get_stylesheet_directory() . '/assets/images/bg-patterns/sprinkles.svg');
 } else {
@@ -312,7 +342,7 @@ if ($meet_background_color == 'Blue') {
 
 
 
-<section id="custom-columns-zone-<?php echo get_the_ID().'-'.$key; ?>" class="custom-columns-zone <?php echo $section_class; ?> <?php echo $bg_color; ?> <?php echo $bg_water_color; ?> <?php echo $border_class ?> <?php echo $angle_class ?> <?php echo $margin_class; ?> <?php if($num_columns == '1' && $alignment == 'Centered'): ?>text-center<?php endif; ?> <?php echo $special_content_alignment; ?> <?php echo $bg_pattern_class; ?>">
+<section id="custom-columns-zone-<?php echo get_the_ID().'-'.$key; ?>" class="custom-columns-zone <?php echo $section_class; ?> <?php echo $bg_color; ?> <?php echo $bg_water_color; ?> <?php echo $bg_water_color_position; ?> <?php echo $border_class ?> <?php echo $angle_class ?> <?php echo $margin_class; ?> <?php if($num_columns == '1' && $alignment == 'Centered'): ?>text-center<?php endif; ?> <?php echo $special_content_alignment; ?> <?php echo $bg_pattern_class; ?>">
   <div class="container-fluid">
     <?php if($num_columns == '1'): ?>
       <!--- Custom Column 1 Layout --->
@@ -732,13 +762,13 @@ if ($meet_background_color == 'Blue') {
                   $cta_heading = get_field('cta_headline', $post_cta->ID); 
                   $cta_content = get_field('cta_content', $post_cta->ID);
                   $cta_link = get_field('cta_link', $post_cta->ID); ?>
-                  <div class="cta-info text-center">
+                  <div class="cta-info text-center <?php echo $cta_bg; ?>">
                     <div class="cta-content">
                       <?php if($cta_heading): ?>
-                        <h3 class="font-medium"><?php echo $cta_heading; ?></h3>
+                        <h3 class="font-medium <?php echo $cta_heading_color; ?>"><?php echo $cta_heading; ?></h3>
                       <?php endif; 
                       if($cta_content): ?>
-                        <div class="wysiwyg-content <?php if($cta_link):?>mb-3<?php endif; ?> text-start"><?php echo $cta_content; ?></div>
+                        <div class="wysiwyg-content <?php echo $cta_text_color; ?> <?php if($cta_link):?>mb-3<?php endif; ?> text-start"><?php echo $cta_content; ?></div>
                       <?php endif; 
                       if($cta_link): ?>
                         <a href="<?php echo $cta_link['url']; ?>" class="site-button" <?php if($cta_link['target']): ?>target="<?php echo $cta_link['target']; ?>"<?php endif; ?>><?php echo $cta_link['title']; ?></a>
