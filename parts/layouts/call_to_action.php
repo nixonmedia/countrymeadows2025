@@ -40,7 +40,7 @@ if ($background_color == 'Blue') {
     $bg_color = 'bg-light-yellow';
     $text_color = 'text-black';
     $heading_color = 'text-black';
-    $svg_fill = 'rgba(0, 0, 0, 0.05)';
+    $svg_fill = 'rgba(214, 47, 116, 0.08)';
 }
 else {
     $bg_color = 'bg-white';
