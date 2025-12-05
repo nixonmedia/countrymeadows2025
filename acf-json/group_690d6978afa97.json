@@ -217,7 +217,7 @@
                             "custom_icon_set": "",
                             "default_label": "",
                             "default_value": "",
-                            "save_format": "element",
+                            "save_format": "class",
                             "allow_null": 0,
                             "show_preview": 1,
                             "enqueue_fa": 1,
@@ -539,5 +539,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764664479
+    "modified": 1764844152
 }

@@ -14,5 +14,5 @@ if ( isset( $fields['flexible_content'] ) && is_array( $fields['flexible_content
 			include( $loc_template );
 		}
 	endforeach;
-endif; ?>
-<?php get_footer(); ?>
+endif;
+get_footer(); ?>
