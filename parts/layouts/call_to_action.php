@@ -131,19 +131,20 @@ if (!empty($svg_encoded)): ?>
     </style>
 <?php endif; ?>
 
+<?php if (!empty($section['call_to_action'])): ?>
 
 <section id="call-to-action-<?php echo get_the_ID() . '-' . $key; ?>" class="call-to-action py-5 <?php echo $bg_color; ?> <?php echo $border_class ?> <?php echo $angle_class ?> <?php echo $margin_class; ?> <?php echo $bg_pattern_class; ?>">
-    <div class="container-fluid">
+    <div class="container-fluid py-2">
    
    <div class="row justify-content-center">
+    <?php if($call_to_action):?>
     <?php foreach ($call_to_action as $cta) : 
-        $cta_id = $cta;
-$call_to_action_title = get_field("cta_headline", $cta_id);
-        $call_to_action_content = get_field("cta_content", $cta_id);
-        $call_to_action_button = get_field("cta_link", $cta_id);
+$call_to_action_title = get_field("cta_headline", $cta);
+        $call_to_action_content = get_field("cta_content", $cta);
+        $call_to_action_button = get_field("cta_link", $cta);
         //  var_dump( $call_to_action_title);
     ?>
-        <div class="col-lg-6 text-center text-capitalize">
+        <div class="col-md-10 col-lg-8 col-xl-6 text-center text-capitalize">
             <?php if($call_to_action_title): ?>
             <h2 class="<?php echo $text_color; ?> fw-bold mb-0"><?php echo $call_to_action_title; ?></h2>
             <?php endif; ?>
@@ -157,6 +158,8 @@ $call_to_action_title = get_field("cta_headline", $cta_id);
           <?php endif; ?>
         </div>
     <?php endforeach; ?>
+    <?php endif; ?>
 </div>
 </div>
 </section>
+<?php endif; ?>

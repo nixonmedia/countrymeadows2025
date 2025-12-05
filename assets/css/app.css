@@ -858,16 +858,16 @@ img.alignleft {
 }
 
 .border-straight:before {
-   position: absolute;
-  content: "";
-  left: 0;
-  right: 0;
-  width: 100%;
-  top: -18px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 22px;
-  background-position: right;
+position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: -8px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 10px;
+    background-position: right;
 }
 
 
@@ -933,8 +933,8 @@ img.alignleft {
   background-image: url(../images/edge_yellow.svg);
 }
 .call-to-action.bg-pattern{
- background-size: contain;
-    background-position: 98px -39%;
+background-size: 340px;
+    background-position: -33px 120px;
     background-repeat: no-repeat;
 }
 
@@ -1599,6 +1599,11 @@ img.alignleft {
   .push-info .video-wrapper {
     height: 362px;
   }
+  .call-to-action.bg-pattern{
+      background-size: 640px;
+      background-position: -34px -12%;  
+   
+}  
 }
 @media only screen and (min-width: 1620px) {
   .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
