@@ -1,23 +1,20 @@
 <?php
 $stylized_heading = get_field("stylized_heading");
 $intro = get_field("intro");
-$headline = $intro['headline'] ?? "";
-$content = $intro['content'] ?? "";
-$background_pattern = $intro['background_pattern'] ?? " ";
-$background_watercolor = $intro['background_watercolor'] ?? " ";
-$media_column = $intro['media_column'] ?? " ";
-$media_type = $intro['media_type'] ?? " ";
-$image_type = $intro['image_type'] ?? " ";
-$standard_image = $intro['standard_image'] ?? " ";
-$layered_image_zone = $intro['layered_image_zone'] ?? "";
+$headline = get_field('headline') ?? "";
+$content = get_field('content') ?? "";
+$background_pattern = get_field('background_pattern') ?? " ";
+$background_watercolor = get_field('background_watercolor') ?? " ";
+$media_column = get_field('media_column') ?? " ";
+$media_type = get_field('media_type') ?? " ";
+$image_type = get_field('image_type') ?? " ";
+$standard_image = get_field('standard_image') ?? " ";
+$layered_image_zone = get_field('layered_image_zone') ?? "";
 $layered_image = $layered_image_zone['image'] ?? " ";
 $embellishment =  $layered_image_zone['embellishment'] ?? " ";
-$video_url = $intro['video_url'] ?? " ";
-$hide_breadcrumb = get_field("hide_breadcrumb");
-$hide_sidebar_navigation = get_field("hide_sidebar_navigation");
+$video_url = get_field('video_url') ?? " ";
+
 $disable_sidebar_submenu = get_field("disable_sidebar_submenu");
-$help_tool = get_field("help_tool");
-$disable_help_too = get_field("disable_help_too");
 
 
 // Check if standard image should be shown
@@ -77,8 +74,8 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
   <section class="stylized-heading-intro-zone <?php echo $section_class . ' ' . $background_watercolor; ?>" >
     <div class="container-fluid">
       <div class="row flex-column-reverse flex-lg-row">
-        <!-- show if image type Image with Embellishment home page  -->
         <?php if ($media_column && $media_type == 'Image' && $image_type == 'Image with Embellishment'): ?>
+           <!-- show if image type Image with Embellishment home page  -->
           <div class="col-lg-7 intro-content-col pb-5 with-background-pattern <?php echo $background_pattern_class; ?> position-relative">
             <?php if ($stylized_heading): ?>
               <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
@@ -92,17 +89,14 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
               </div>
             <?php endif; ?>
           </div>
+          <!-- show if media type image or video allentown page  -->
         <?php endif; ?>
-
-        <!-- show if media type image or video allentown page  -->
         <?php
-
         // Determine the column class based on conditions
         $col_class = 'col-lg-7';
 
         $show_media_col = $media_column &&
-          (
-            ($media_type === 'Image' && $image_type === 'Standard') ||
+          ( ($media_type === 'Image' && $image_type === 'Standard') ||
             $media_type === 'Video'
           ) &&
           $image_type !== 'Image with Embellishment';
@@ -384,20 +378,17 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
 
               </div> <!-- close row -->
 
-            </div> <!-- close allentownpage -->
-
+            </div> <!-- close -->
           <?php endif; ?>
-
         <?php endif; ?>
-
-
-        <!-- Intro Zone No Media Column With Sidebar Community page  -->
+        
         <?php if (!$media_column):
           $col_class = 'col-lg-12'; // default
           if (!$media_column && !$disable_sidebar_submenu) {
             $col_class = 'col-lg-8';
           }
         ?>
+        <!-- Intro Zone No Media Column With Sidebar Community page  -->
           <div class=" <?php echo esc_attr($col_class); ?> intro-content-col with-background-pattern <?php echo esc_attr($background_pattern_class); ?> position-relative">
             <?php if ($stylized_heading): ?>
               <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
@@ -413,16 +404,17 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
           </div>
         <?php endif; ?>
 
-        <!-- Home page show if image type Image with Embellishment image home page  -->
         <?php if ($show_layered_image): ?>
+           <!-- Home page show if image type Image with Embellishment image home page  -->
           <div class="col-lg-5 col-xl-4 offset-xl-1 intro-img-col position-relative">
             <img src="<?php echo esc_url($layered_image['sizes']['layered_photo']); ?>"
               <?php if (!empty($layered_image['alt'])): ?>alt="<?php echo esc_attr($layered_image['alt']); ?>" <?php endif; ?>
               class="img-fluid">
           </div>
         <?php endif; ?>
-        <!-- Intro Zone No Media Column With Sidebar -->
+        
         <?php if (!$media_column && !$disable_sidebar_submenu): ?>
+          <!-- Intro Zone No Media Column With Sidebar -->
           <div class="col-lg-4 sidebar-submenu-col d-none d-lg-block">
             <div class="sidebar-submenu-block">
               <h3 class="font-medium">Communities</h3>
@@ -440,8 +432,7 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
             </div>
           </div>
         <?php endif; ?>
-
-        <!-- Intro Zone Media (Standard plus video) Column With Sidebar -->
+        
         <?php
         if (
           $media_column &&
@@ -449,8 +440,8 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
           !($media_type === 'Image' && $image_type === 'Image with Embellishment')
         ):
         ?>
-
-          <div class="col-lg-4 sidebar-submenu-col d-none d-lg-block video with iamge">
+        <!-- Intro Zone Media (Standard plus video) Column With Sidebar -->
+          <div class="col-lg-4 sidebar-submenu-col d-none d-lg-block">
             <div class="sidebar-submenu-block">
               <h3 class="font-medium">Allentown</h3>
               <ul class="list-unstyled mb-0">
