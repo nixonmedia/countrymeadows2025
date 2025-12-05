@@ -12,7 +12,7 @@
 get_header(); 
 $hide_breadcrumb = get_field('hide_breadcrumb'); 
 if($hide_breadcrumb == false): ?>
-<section class="breadcrumb pt-4 d-none d-lg-block mb-0">
+<section class="breadcrumb pt-4 d-none d-lg-block mb-0 z-2 position-relative">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
