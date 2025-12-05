@@ -10,6 +10,21 @@
  */
 
 get_header(); 
+$hide_breadcrumb = get_field('hide_breadcrumb'); 
+if($hide_breadcrumb == false): ?>
+<section class="breadcrumb pt-4 d-none d-lg-block mb-0">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<?php if(function_exists('bcn_display')) {
+						bcn_display();
+					}
+				?>
+			</div>
+		</div>
+	</div>
+</section><!-- /.breadcrumb -->
+<?php endif;
 get_template_part('parts/layouts/stylized_heading_intro_zone'); ?>
 
 <?php /*********  Flexible Content Start  ***********/
