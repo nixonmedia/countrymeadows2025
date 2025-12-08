@@ -433,6 +433,8 @@ img.alignleft {
 /* Footer */
 .site-footer {
   padding: 32px 0 80px;
+  position: relative;
+  z-index: 1;
 }
 .footer-white-button, .small-white-button {
   display: inline-block;
@@ -1280,6 +1282,9 @@ width:100%;
   .stylized-heading-intro-zone:not(.layered-image-zone) .stylized-heading {
     font-size: 42px;
   }
+  .stylized-heading-intro-zone.bg-water-color.bg-water-color-right:after {
+    display: none;
+  }
   
   .with-embellishment:after {
     width: 80px;
@@ -1610,6 +1615,9 @@ width:100%;
   .bg-water-color.bg-water-color-right:after {
     right: 150px;
   }
+  .stylized-heading-intro-zone.bg-water-color.bg-water-color-right:after {
+    bottom: -265px;
+  }
   .lb-nav a.lb-prev, .lb-nav a.lb-next {
     width: 70px !important;
     background-size: 60px !important;
@@ -1713,6 +1721,12 @@ width:100%;
   .stylized-heading-intro-zone .with-background-pattern:before {
     width: 422px;
     height: 350px;
+  }
+  .stylized-heading-intro-zone .with-background-pattern.circles-background-pattern:before,
+  .stylized-heading-intro-zone .with-background-pattern.honeycomb-background-pattern:before,
+  .stylized-heading-intro-zone .with-background-pattern.sprinkles-background-pattern:before {
+    width: 350px;
+    height: 250px;
   }
   .home .stylized-heading-intro-zone.layered-image-zone .intro-content-col {
     padding-top: 100px;
