@@ -9,7 +9,7 @@
     "import_date": "",
     "labels": {
         "name": "Blog Authors",
-        "singular_name": "blog author",
+        "singular_name": "Blog Author",
         "menu_name": "Blog Authors",
         "all_items": "All Blog Authors",
         "edit_item": "Edit blog authors",
@@ -85,5 +85,5 @@
     "delete_with_user": false,
     "register_meta_box_cb": "",
     "enter_title_here": "",
-    "modified": 1765176637
+    "modified": 1765179518
 }

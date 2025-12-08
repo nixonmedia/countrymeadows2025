@@ -1,13 +1,13 @@
 {
-    "key": "group_6936584f48f12",
-    "title": "Blog Author",
+    "key": "group_693689878e9fb",
+    "title": "Blog Authors",
     "fields": [
         {
-            "key": "field_6936584f45ba3",
-            "label": "Blog Author",
-            "name": "blog_author",
+            "key": "field_69368987d4339",
+            "label": "Name",
+            "name": "name",
             "aria-label": "",
-            "type": "relationship",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,19 +16,12 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "blog-author"
-            ],
-            "post_status": "",
-            "taxonomy": "",
-            "filters": "",
-            "return_format": "object",
-            "min": "",
-            "max": 1,
+            "default_value": "",
+            "maxlength": "",
             "allow_in_bindings": 0,
-            "elements": "",
-            "bidirectional": 0,
-            "bidirectional_target": []
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -36,7 +29,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "post"
+                "value": "blog-author"
             }
         ]
     ],
@@ -50,5 +43,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1765179551
+    "modified": 1765181852
 }
