@@ -12,8 +12,8 @@ $media_type = get_field('media_type');
 $image_type = get_field('image_type');
 $standard_image = get_field('standard_image');
 $layered_image_zone = get_field('layered_image_zone');
-$layered_image = $layered_image_zone['image'] ?? " ";
-$embellishment =  $layered_image_zone['embellishment'] ?? " ";
+$layered_image = $layered_image_zone['image'] ?? "";
+$embellishment =  $layered_image_zone['embellishment'] ?? "";
 $video_url = get_field('video_url');
 
 $disable_sidebar_submenu = get_field("disable_sidebar_submenu");
@@ -162,7 +162,7 @@ if(!$media_column) {
         <?php endif;?>
         
               <?php if ( ($stylized_heading && $disable_sidebar_submenu == true) || ($disable_sidebar_submenu == false && !$media_column) || $headline || $content): ?>
-                <div class="<?php echo $content_col_class; ?> <?php if($disable_sidebar_submenu == true || $media_column == false): echo $background_pattern_class; endif; ?> position-relative">
+                <div class="<?php echo $content_col_class; ?> <?php if($disable_sidebar_submenu == true || $media_column == false || !$children): echo $background_pattern_class; endif; ?> position-relative">
                   <?php if ( ($stylized_heading && $disable_sidebar_submenu == true) || ($disable_sidebar_submenu == false && !$media_column) || !$children): ?>
                     <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
                   <?php endif;
@@ -273,7 +273,7 @@ if(!$media_column) {
                     <?php endif; ?>
                 </div>
               <?php endif; ?>
-        <?php if($disable_sidebar_submenu == false && $media_column): ?>
+        <?php if(($disable_sidebar_submenu == false && $children) && $media_column): ?>
           </div>
           </div>
         <?php endif; ?>

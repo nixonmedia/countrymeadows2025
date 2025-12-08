@@ -550,13 +550,13 @@ main section.bg-white {
   right: 0;
 }
 .bg-water-color.bg-pink-water-color:after {
-  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.60) 0%, rgba(250, 216, 225, 0.65) 0.01%, #FEFEFE 71.63%);
+  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.60) 0%, rgba(250, 216, 225, 0.65) 0.01%, #fefefe00 71.63%);
 }
 .bg-water-color.bg-yellow-water-color:after {
-  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.36) 0%, rgba(255, 202, 74, 0.30) 0.01%, rgba(254, 254, 254, 0.60) 71.63%);
+  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.36) 0%, rgba(255, 202, 74, 0.30) 0.01%, rgba(254, 254, 254, 0.00) 71.63%);
 }
 .bg-water-color.bg-blue-water-color:after {
-  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(43, 161, 198, 0.40) 0%, rgba(43, 161, 198, 0.45) 0.01%, rgba(254, 254, 254, 0.70) 71.63%);
+  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(43, 161, 198, 0.40) 0%, rgba(43, 161, 198, 0.45) 0.01%, rgba(254, 254, 254, 0.00) 71.63%);
 }
 
 
@@ -581,7 +581,7 @@ main section.bg-white {
 .content-and-button-card  .single-button{
     padding: 35px 84px !important
 }
-.content-and-button-card  .wyswing-content.top-content{
+.content-and-button-card  .wysiwyg-content.top-content{
 width:100%;
 
   }
@@ -1085,6 +1085,91 @@ width:100%;
 }
 .text-column-grid-zone .row {
   --bs-gutter-y: 45px;
+}
+
+/*** Reviews Feed ***/
+
+.reviews-zone.border-angle.angle_down_right {
+    padding-top: 20px;
+}
+.reviews-zone{
+    padding-top: 50px;
+}
+
+
+.reviews-zone.angle_down_right:before{
+  transform: scaleX(-1);
+}
+
+.review-slider .slick-slide{
+border-radius: 10px;
+}
+.review-slider .slick-arrow {
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+}
+.review-slider .slick-track {
+    display: flex;
+}
+.review-slider .slick-slide {
+    height: unset;
+}
+.review-slider .icon-prev.slick-arrow {
+    left: -18px;
+}
+.review-slider .icon-next.slick-arrow {
+    right: -18px;
+}
+.review-slider .slick-slide {
+    margin: 0px 2px;
+    left: 0;
+    position: relative;
+}
+.review-slider .icon-prev.slick-arrow , .review-slider .icon-next.slick-arrow {
+    width: 20px;
+}
+/* .reviews-zone.border-angle:before{
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: -49px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 52px;
+  background-position: right;
+}
+.reviews-zone.bg-blue:before{
+  background-image: url(../images/edge_blue.svg);
+}
+.reviews-zone.bg-light-blue:before{
+  background-image: url(../images/edge_light_blue.svg);
+}
+.reviews-zone.bg-purple:before{
+  background-image: url(../images/edge_purple.svg);
+}
+.reviews-zone.bg-teal:before{
+  background-image: url(../images/edge_teal.svg);
+} */
+.reviews-zone.bg-yellow:before{
+  background-image: url(../images/edge_yellow.svg);
+}
+.reviews-zone.bg-gradient-yellow .slick-initialized .slick-slide,.reviews-zone.bg-white .slick-initialized .slick-slide  {
+
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.reviews-zone.bg-gradient-yellow .slick-list.draggable,.reviews-zone.bg-white .slick-list.draggable  {
+  padding: 10px 0;
+}
+.reviews-zone.bg-gradient-yellow .slick-initialized .slick-slide,.reviews-zone.bg-white .slick-initialized .slick-slide {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #D9D9D9;
+}
+.post-date{
+  color: #787878;
 }
 
 /* Media Queries  */
@@ -1622,6 +1707,21 @@ width:100%;
     width: 70px !important;
     background-size: 60px !important;
   }
+  
+  .review-slider .slick-slide {
+    margin: 0px 14px;
+    left: -13px;
+    position: relative;
+  }
+  .review-slider .icon-prev.slick-arrow {
+    left: -65px;
+  }
+  .review-slider .icon-next.slick-arrow {
+    right: -65px;
+  }
+  .review-slider .icon-prev.slick-arrow , .review-slider .icon-next.slick-arrow {
+    width:auto;
+  }
 }
 @media only screen and (min-width: 1200px) {
   #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu {
@@ -1859,6 +1959,10 @@ width:85%;
   }
   .meet-team-slider .team-content-col {
     padding-right: 50px;
+  }
+  .reviews-zone:before{
+    top: -92px;
+    height: 95px;
   }
 }
 @media only screen and (min-width: 1900px) {
