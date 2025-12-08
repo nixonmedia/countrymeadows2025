@@ -885,6 +885,9 @@ function cc_mime_types($mimes) {
 add_filter('upload_mimes', 'cc_mime_types');
 
 
+// Load WP All Import ACF Auto-populate
+require_once get_template_directory() . '/inc/wp-all-import-acf-auto-populate.php';
+
 // Load ACF options preview (use filesystem path, not URI)
 $acf_preview_file = get_template_directory() . '/inc/acf-select-options-preview.php';
 if ( file_exists( $acf_preview_file ) ) {
