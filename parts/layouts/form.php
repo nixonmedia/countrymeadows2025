@@ -74,7 +74,7 @@ if (!empty($bg_svg_pattern)) {
     </style>
 <?php endif; ?>
 
-<section id="custom-columns-zone-<?php echo get_the_ID() . '-' . $key; ?>" class="form_zone py-5 <?php echo $bg_pattern_class; ?> <?php echo $bg_color; ?>">
+<section id="form-zone-<?php echo get_the_ID() . '-' . $key; ?>" class="form_zone py-5 <?php echo $bg_pattern_class; ?> <?php echo $bg_color; ?>">
     <div class="container-fluid">
         <?php if ($headline || $icon): ?>
             <div class="row">
