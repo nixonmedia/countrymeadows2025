@@ -45,6 +45,25 @@ jQuery(document).ready(function($){
     autoplay: false,
     speed: 700,
   });
+
+  // Floor plan slider
+
+  $('.floorplan-slider').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinite: true,
+    arrows: true,
+    dots: false,
+    centerMode: true,
+      // centerPadding: '50px',
+    responsive: [
+        { breakpoint: 992, settings: { slidesToShow: 2 }},
+        { breakpoint: 576, settings: { slidesToShow: 1 }}
+    ]
+});
+
+
+
   // Icons Slider
   $('.icons-slider, .image-gallery-slider').slick({
     slidesToShow: 3,
@@ -64,4 +83,28 @@ jQuery(document).ready(function($){
       },
     ],
   });
+});
+
+jQuery(document).ready(function($){
+    if (window.matchMedia('(min-width: 992px)').matches) {
+        $.fn.equalHeights = function(){
+            var selector = this;
+            var heights = [];
+
+            // Save the heights of every element into an array
+            selector.each(function(){
+                var height = $(this).height();
+                heights.push(height);
+            });
+
+            // Get the biggest height
+            var maxHeight = Math.max.apply(null, heights);
+
+            // Set the maxHeight to every selected element
+            selector.each(function(){
+                $(this).height(maxHeight);
+            }); 
+        };                             
+        $('.floorplan-slider.floor-card-inner').equalHeights();
+    }
 });
