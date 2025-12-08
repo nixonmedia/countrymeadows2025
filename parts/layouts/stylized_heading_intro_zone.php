@@ -138,7 +138,7 @@ if(!$media_column) {
         <?php endif; ?>
               <?php if ( ($stylized_heading && $disable_sidebar_submenu == true) || $headline || $content): ?>
                 <div class="<?php echo $content_col_class; ?> <?php if($disable_sidebar_submenu == true): echo $background_pattern_class; endif; ?> position-relative">
-                  <?php if ($stylized_heading && $disable_sidebar_submenu == true || $stylized_heading || !$media_column): ?>
+                  <?php if ( ($stylized_heading && $disable_sidebar_submenu == true) || !$media_column): ?>
                     <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
                   <?php endif;
                   if ($headline): ?>
