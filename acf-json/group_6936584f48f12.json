@@ -21,11 +21,7 @@
             ],
             "post_status": "",
             "taxonomy": "",
-            "filters": [
-                "search",
-                "post_type",
-                "taxonomy"
-            ],
+            "filters": "",
             "return_format": "object",
             "min": "",
             "max": "",
@@ -54,5 +50,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1765169281
+    "modified": 1765169693
 }
