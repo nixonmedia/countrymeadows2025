@@ -549,13 +549,13 @@ main section.bg-white {
   right: 0;
 }
 .bg-water-color.bg-pink-water-color:after {
-  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.60) 0%, rgba(250, 216, 225, 0.65) 0.01%, #FEFEFE 71.63%);
+  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.60) 0%, rgba(250, 216, 225, 0.65) 0.01%, #fefefe00 71.63%);
 }
 .bg-water-color.bg-yellow-water-color:after {
-  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.36) 0%, rgba(255, 202, 74, 0.30) 0.01%, rgba(254, 254, 254, 0.60) 71.63%);
+  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.36) 0%, rgba(255, 202, 74, 0.30) 0.01%, rgba(254, 254, 254, 0.00) 71.63%);
 }
 .bg-water-color.bg-blue-water-color:after {
-  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(43, 161, 198, 0.40) 0%, rgba(43, 161, 198, 0.45) 0.01%, rgba(254, 254, 254, 0.70) 71.63%);
+  background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(43, 161, 198, 0.40) 0%, rgba(43, 161, 198, 0.45) 0.01%, rgba(254, 254, 254, 0.00) 71.63%);
 }
 
 
@@ -618,7 +618,7 @@ border-radius: 10px;
 .review-slider .icon-prev.slick-arrow , .review-slider .icon-next.slick-arrow {
     width: 20px;
 }
-.reviews-zone.border-angle:before{
+/* .reviews-zone.border-angle:before{
   position: absolute;
   content: "";
   left: 0;
@@ -641,7 +641,7 @@ border-radius: 10px;
 }
 .reviews-zone.bg-teal:before{
   background-image: url(../images/edge_teal.svg);
-}
+} */
 .reviews-zone.bg-yellow:before{
   background-image: url(../images/edge_yellow.svg);
 }

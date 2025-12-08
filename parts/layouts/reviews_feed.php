@@ -53,12 +53,12 @@ if ($border == 'angle' && $angle == 'down_left') {
 } else {
     $border_class = '';
     $angle_class = '';
-    $margin_class = '';
+    $margin_class = 'my-5';
 }
 
 ?>
 <?php if ($headline || $content || $button || $review_feed) : ?>
-    <section class="reviews-zone position-relative mt-5 <?php echo $bg_color; ?> <?= $border_class ?> <?= $angle_class ?>">
+    <section class="reviews-zone position-relative <?php echo $margin_class; ?> <?php echo $bg_color; ?> <?= $border_class ?> <?= $angle_class ?>">
         <div class="container-fluid pt-lg-4 pb-lg-5 pt-0 pb-5 position-relative z-1">
             <div class="row pb-4">
                 <div class="offset-lg-1 col-lg-10 pb-4">
@@ -68,7 +68,7 @@ if ($border == 'angle' && $angle == 'down_left') {
                     <?php endif; ?>
 
                     <?php if ($content): ?>
-                        <div class="wyswing-content text-center <?= $text_color ?>"><?= wp_kses_post($content); ?></div>
+                        <div class="wysiwyg-content text-center <?= $text_color ?>"><?php echo $content; ?></div>
                     <?php endif; ?>
                     <!-- Review Slider -->
                     <?php if ($review_feed): ?>
