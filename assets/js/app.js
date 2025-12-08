@@ -64,4 +64,33 @@ jQuery(document).ready(function($){
       },
     ],
   });
+  $('.review-slider').slick({
+    dots: false,
+    arrows: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    prevArrow:
+      '<img src="/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/images/slide-arrow-left.svg" alt="icon" class="icon-prev">',
+    nextArrow:
+      '<img src="/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/images/slide-arrow-right.svg" alt="icon" class="icon-next">',
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false
+        },
+      },
+    ],
+  });
 });
