@@ -56,10 +56,22 @@ jQuery(document).ready(function($){
     dots: false,
     centerMode: true,
       // centerPadding: '50px',
-    responsive: [
-        { breakpoint: 992, settings: { slidesToShow: 2 }},
-        { breakpoint: 576, settings: { slidesToShow: 1 }}
-    ]
+responsive: [
+    {
+      breakpoint: 1200,  // below 1200px
+      settings: {
+        slidesToShow: 2,
+        centerPadding: '30px' // optional: adjust padding for smaller screens
+      }
+    },
+    {
+      breakpoint: 768,   // below 768px
+      settings: {
+        slidesToShow: 1,
+        centerPadding: '20px' // optional: adjust padding for mobile
+      }
+    }
+  ]
 });
 
 

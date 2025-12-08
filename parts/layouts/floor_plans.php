@@ -14,7 +14,7 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 ?>
 
 <section class="allentown-section py-5">
-    <div class="container-fluid">
+    <div class="container-fluid px-3 px-lg-0">
 
         <div class="row align-items-center">
 
@@ -32,12 +32,12 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
             </div>
 
             <!-- RIGHT COLUMN -->
-            <div class="col-lg-7">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h3 class="fw-bold">Explore our <br> floor plans</h3>
+            <div class="col-lg-7 right-floorplan-col">
+                <div class="row mb-4 ">
+                    <div class="col-lg-5 col-xl-3 left-content me-xl-4">
+                        <h3 class="fw-bold">Explore our floor plans</h3>
                     </div>
-                    <div class="col-lg-6">
+                    <div class=" col-lg-7 col-xl-6">
                         <div class=" wysiwyg-content font-xs-medium ">
                             The all-rental, monthly starting rates for all of our campuses are based on your needs and preferences
                             and vary by campus, apartment style and level of care.
@@ -49,11 +49,11 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
                 <!-- Slick Slider -->
                    <div class="row">
-                <div class="floorplan-slider gap-4">
+                <div class="floorplan-slider my-4">
 
                     <!-- Card 1 -->
                     <div class="floor-card p-4 text-center">
-                        <div class="floor-card-inner p-5">
+                        <div class="floor-card-inner p-3">
                             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2" alt="">
                             <p class="fw-semibold text-start">Studio Apartment with Kitchen</p>
                         </div>
@@ -61,7 +61,7 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
                     <!-- Card 2 -->
                     <div class="floor-card p-4 text-center">
-                        <div class="floor-card-inner p-5">
+                        <div class="floor-card-inner p-3">
                             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2" alt="">
                             <p class="fw-semibold text-start">Alcove Apartment with Kitchen/Laundry Area</p>
                         </div>
@@ -69,7 +69,7 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
                     <!-- Card 3 -->
                     <div class="floor-card p-4 text-center">
-                        <div class="floor-card-inner p-5">
+                        <div class="floor-card-inner p-3">
                             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2" alt="">
                             <p class="fw-semibold text-start">One Bedroom Apartment with Kitchen/Laundry Area</p>
                         </div>
@@ -77,7 +77,7 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
                     <!-- Card 4 -->
                     <div class="floor-card p-4 text-center">
-                        <div class="floor-card-inner p-5">
+                        <div class="floor-card-inner p-3">
                             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2" alt="">
                             <p class="fw-semibold text-start">Premium One Bedroom</p>
                         </div>
@@ -87,7 +87,7 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 </div>
 
                 <div class="text-center">
-                    <a href="#" class="small">View our Allentown floor plans</a>
+                    <a href="#" class="font-xs-medium text-blue fw-bold">View our Allentown floor plans</a>
                 </div>
 
             </div>
