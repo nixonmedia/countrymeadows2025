@@ -138,7 +138,7 @@ if(!$media_column) {
         <?php endif; ?>
               <?php if ( ($stylized_heading && $disable_sidebar_submenu == true) || $headline || $content): ?>
                 <div class="<?php echo $content_col_class; ?> <?php if($disable_sidebar_submenu == true): echo $background_pattern_class; endif; ?> position-relative">
-                  <?php if ($stylized_heading && $disable_sidebar_submenu == true || $stylized_heading && !$media_column): ?>
+                  <?php if ($stylized_heading && $disable_sidebar_submenu == true || $stylized_heading || !$media_column): ?>
                     <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
                   <?php endif;
                   if ($headline): ?>
@@ -252,24 +252,67 @@ if(!$media_column) {
           </div>
           </div>
         <?php endif; ?>
-        <?php if ($disable_sidebar_submenu == false): ?>
-          <!-- Intro Zone With Sidebar -->
-          <div class="col-lg-4 sidebar-submenu-col d-none d-lg-block">
-            <div class="sidebar-submenu-block">
-              <h3 class="font-medium">Communities</h3>
-              <ul class="list-unstyled mb-0">
-                <li><a href="#">Allentown</a></li>
-                <li><a href="#">Bethlehem</a></li>
-                <li><a href="#">Forks of Easton</a></li>
-                <li><a href="#">Frederick</a></li>
-                <li><a href="#">Hershey</a></li>
-                <li><a href="#">Mechanicsburg</a></li>
-                <li><a href="#">Wyomissing</a></li>
-                <li><a href="#">York-South</a></li>
-                <li><a href="#">York-West</a></li>
-              </ul>
+        
+        <?php if(!is_page('home')):
+            $hide = get_field('hide_sidebar_navigation');
+            global $post;
+            // Always initialize your array
+            $pageids = array();
+            // Find excluded pages by ACF
+            $nav_args = array(
+                'post_type'   => 'page',
+                'numberposts' => -1,
+                'meta_key'    => 'hide_sidebar_navigation',
+                'meta_compare'=> '=',
+                'meta_value'  => 1
+            );
+            $pages = get_posts($nav_args);
+
+            if ($pages) {
+                foreach ($pages as $page) {
+                    $pageids[] = $page->ID;
+                }
+            }
+
+            // Now $pageids is always at least an empty array
+            $exclude_list = implode(",", $pageids);
+
+            $children = wp_list_pages('exclude=' . $exclude_list . '&depth=2&title_li=&echo=0&child_of=' . $post->ID);
+
+            if($post->post_parent || $children):
+                $parentTitle = get_the_title($post->post_parent);
+
+                $thispage = $post->ID;
+                $parent_id =  wp_get_post_parent_id( $post->ID );
+                $parent_link = get_permalink($parent_id);
+                $pageTitle = $post->post_title;
+
+                $pagekids = get_pages('exclude=' . $exclude_list . '&depth=1&sort_column=menu_order&child_of=' . $thispage);
+
+          ?>
+            <?php if ($disable_sidebar_submenu == false): ?>
+            <!-- Intro Zone With Sidebar -->
+            <div class="col-lg-4 sidebar-submenu-col d-none d-lg-block">
+                <div class="sidebar-submenu-block">
+                    <?php if($pagekids) { ?>
+                        <h3 class="font-medium">
+                            <a href="<?php echo get_permalink(get_the_id()); ?>" class="text-decoration-none"><?php echo $pageTitle; ?></a>
+                        </h3>
+                        <ul class="list-unstyled mb-0">
+                            <?php wp_list_pages('exclude=' . $exclude_list . '&depth=1&title_li=&sort_column=menu_order&child_of=' . $thispage); ?>
+                        </ul>
+                    <?php } else { ?>
+                        <h3 class="font-medium">
+                            <a href="<?php echo $parent_link; ?>" class="text-decoration-none"><?php echo $parentTitle; ?></a>
+                        </h3>
+                        <ul class="list-unstyled mb-0">
+                            <?php echo wp_list_pages('exclude=' . $exclude_list . '&depth=1&title_li=&child_of=' . $post->post_parent . '&echo=0&sort_order=ASC'); ?>
+                        </ul>
+                    <?php } ?>
+                </div>
             </div>
-          </div>
+            <?php endif; ?>
+        <?php endif; ?>
         <?php endif; ?>
       </div>
     </div>
