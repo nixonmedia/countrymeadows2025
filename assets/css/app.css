@@ -114,7 +114,7 @@ h5, .font-xs-medium {
   font-size: 17px;
   line-height: 25px;
 }
-h6, .font-normal ,.wysiwyg-content form .gfield_label{
+h6, .font-normal , .wysiwyg-content form .gfield_label{
   font-size: 16px;
   line-height: 24px;
 }
@@ -1180,17 +1180,19 @@ border-radius: 10px;
   color: #787878;
 }
 
-form .gfield_html {
+.wysiwyg-content form .gfield_html {
     font-size: 13px;
     line-height: 16px;
 }
-.bg-blue form .gfield legend,.bg-blue form .gfield label.gfield_label,.bg-blue .gform_title, .bg-blue .gform_description,.bg-purple form .gfield legend,.bg-purple form .gfield label.gfield_label,.bg-purple .gform_title, .bg-purple .gform_description, .text-white a{
+.bg-blue .wysiwyg-content form .gfield legend,.bg-blue .wysiwyg-content form .gfield label.gfield_label, .bg-blue .gform_title, 
+.bg-blue .gform_description, .bg-purple .wysiwyg-content form .gfield legend,.bg-purple .wysiwyg-content form .gfield label.gfield_label, 
+.bg-purple .gform_title, .bg-purple .gform_description, .text-white a {
   color: var(--white);
 }
-.bg-light-blue form .gfield legend,.bg-light-blue form .gfield label.gfield_label,.bg-light-blue .gform_title, .bg-light-blue .gform_description,.text-black-100 a{
+.bg-light-blue .wysiwyg-content form .gfield legend, .bg-light-blue .wysiwyg-content form .gfield label.gfield_label, .bg-light-blue .gform_title, .bg-light-blue .gform_description, .text-black-100 a {
   color: var(--black-100);
 }
-.bg-white form .gfield legend,.bg-white form .gfield label.gfield_label, .bg-white .gform_description,.bg-gradient-yellow form .gfield legend, .bg-gradient-yellow form .gfield label.gfield_label, .bg-gradient-yellow  .gform_title, .bg-gradient-yellow .gform_description, .bg-teal form .gfield legend, .bg-teal form .gfield label.gfield_label, .bg-teal  .gform_title, .bg-teal .gform_description, .text-black a{
+.bg-white .wysiwyg-content form .gfield legend,.bg-white .wysiwyg-content form .gfield label.gfield_label, .bg-white .gform_description, .bg-gradient-yellow .wysiwyg-content form .gfield legend, .bg-gradient-yellow .wysiwyg-content form .gfield label.gfield_label, .bg-gradient-yellow  .gform_title, .bg-gradient-yellow .gform_description, .bg-teal .wysiwyg-content form .gfield legend, .bg-teal .wysiwyg-content form .gfield label.gfield_label, .bg-teal  .gform_title, .bg-teal .gform_description, .text-black a{
   color: var(--black);
 }
 
@@ -1198,15 +1200,32 @@ form .gfield_html {
    font-size: 13px;
    line-height: 17px;
 }
-.bg-white  .gform_title{
+.bg-white  .gform_title {
   color: var(--pink);
 }
-form input:not([type ="submit"]),form select, form textarea {
-  border-color: #D8D8D8 !important;
+.wysiwyg-content .gform_wrapper form input:not([type ="submit"]), .wysiwyg-content .gform_wrapper form select, .wysiwyg-content .gform_wrapper form textarea {
+  border: 2px solid #D8D8D8 !important;
   box-shadow: none !important;
   outline-color: #d8d8d8 !important;
 }
-.gform_button.button{
+.wysiwyg-content .gform_wrapper form input:not([type ="submit"]), .wysiwyg-content .gform_wrapper form select {
+  height: 53px;
+}
+.wysiwyg-content .gform_wrapper form textarea {
+  height: 120px !important;
+  resize: none;
+}
+.wysiwyg-content .gform_wrapper form select {
+  background-image: url(../images/gray-down-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: 99% 50%;
+  appearance: none;
+}
+.wysiwyg-content .gform_wrapper .gform_required_legend {
+  display: none;
+}
+.gform_button.button {
   font-size: 18px !important; 
   padding: 7px 30px  !important;
   font-weight: 700;
@@ -1215,69 +1234,48 @@ form input:not([type ="submit"]),form select, form textarea {
   border-radius: 10px;
   background-color: var(--purple);
   color: var(--white);
-  }
-.gform_button:hover{ 
-   background-color: var(--gray) !important;
+  border: 1px solid #B6B6B6;
 }
-.bg-blue .gform_button,.bg-purple .gform_button{
-  background-color: var(--yellow) !important;
-  color: var(--black-100) !important;
+.bg-light-blue .gform_button, .bg-gradient-yellow .gform_button {
+  background-color: var(--purple);
+  color: var(--white);
+}
+.bg-blue .gform_button, .bg-purple .gform_button {
+  background-color: var(--yellow);
+  color: var(--black-100);
+  border: 0;
 }
 .bg-teal .gform_button {
-  background-color: var(--pink) !important;
-  color: var(--white) !important;
-}
-.bg-blue .gform_button:hover,.bg-purple .gform_button:hover{
-  background-color: var(--white) !important;
-  color: var(--black-100) !important; 
-}
-.bg-light-blue .gform_button,.bg-gradient-yellow .gform_button {
-  background-color: var(--purple) !important;
-  color: var(--white) !important;
-  border: 1px solid #B6B6B6 !important;
-}
- .bg-gradient-yellow .gform_button:hover,.bg-light-blue .gform_button:hover, .bg-teal .gform_button:hover {
-  background-color: var(--black-100) !important;
-  color: var(--white) !important;
-  border-color: var(--black-100) !important;
+  background-color: var(--pink);
+  color: var(--white);
+  border: 0;
 }
 .bg-light-yellow .gform_button {
-  background-color: var(--gray) !important;
-  color: var(--white) !important;
+  background-color: var(--gray);
+  color: var(--white);
 }
-.bg-light-yellow .gform_button:hover{
-  background-color: var(--black-100) !important;
-  color: var(--white) !important;
+.gform_button.button:hover {
+  border-color: var(--black-100);
 }
-.bg-white .gform_button {
-  background-color: var(--purple) !important;
-  color: var(--white) !important;
+.gform_button.button:hover, .bg-gradient-yellow .gform_button:hover {
+  background-color: var(--gray);
+  color: var(--white);
 }
-.bg-white .gform_button:hover{
-  background-color: var(--black-100) !important;
-  color: var(--white) !important;
+.bg-blue .gform_button:hover, .bg-purple .gform_button:hover, 
+.bg-light-yellow .gform_button:hover {
+  background-color: var(--white);
+  color: var(--black-100); 
 }
-.submit-button form .gform-footer {
-  display: block !important;
-  text-align: center;
+.bg-light-blue .gform_button:hover, .bg-teal .gform_button:hover {
+  background-color: var(--black-100);
+  color: var(--white); 
+}
+
+.form-center .wysiwyg-content form .gform_footer {
+  justify-content: center;
 }
 .form_zone.bg-pattern {
   background-position: 100% 100%;
-}
-.bg-gradient-yellow.bg-pattern {
-  position: relative; 
-  z-index: 0;
-}
-.bg-gradient-yellow.bg-pattern::before {
-  content: '';
-  position: absolute !important;
-  inset: 0;
-  background-image: var(--svg-bg); 
-  background-repeat: no-repeat;
-  background-position: 100% 70%;
-  background-size: 250px;
-  z-index: -1; /* below gradient */
-  bottom: 0 !important;
 }
 .form_zone.bg-gradient-yellow.bg-pattern::before{
    background-position: 100% 100%;
@@ -1285,11 +1283,7 @@ form input:not([type ="submit"]),form select, form textarea {
 .form_zone .wysiwyg-content img {
     padding-left: 0;
 }
-.form-icon svg {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-}
+
 /* Media Queries  */
 @media only screen and (max-width:575px) {
   .content-and-button-cards .buttons a{
@@ -1722,6 +1716,10 @@ form input:not([type ="submit"]),form select, form textarea {
       line-height: 35px;
       font-weight: 700;
   }
+  .bg-white .wysiwyg-testimonial-content:before, .bg-white .wysiwyg-testimonial-content:after,
+  .bg-gradient-yellow .wysiwyg-testimonial-content:before, .bg-gradient-yellow .wysiwyg-testimonial-content:after {
+    color: var(--purple);
+  }
   .wysiwyg-testimonial-content:after {
       content: "”";
       right: -40px;
@@ -1839,6 +1837,9 @@ form input:not([type ="submit"]),form select, form textarea {
   }
   .review-slider .icon-prev.slick-arrow , .review-slider .icon-next.slick-arrow {
     width:auto;
+  }
+  .form_zone:not(.form-center) .gform_wrapper form {
+    max-width: 510px;
   }
 }
 @media only screen and (min-width: 1200px) {
