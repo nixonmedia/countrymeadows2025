@@ -114,7 +114,7 @@ h5, .font-xs-medium {
   font-size: 17px;
   line-height: 25px;
 }
-h6, .font-normal {
+h6, .font-normal , .wysiwyg-content form .gfield_label{
   font-size: 16px;
   line-height: 24px;
 }
@@ -188,13 +188,13 @@ img.alignleft {
 
 /* Wysiwyg Button */
 
-.wysiwyg-button, .site-button {
+.wysiwyg-button, .site-button{
   font-size: 17px;
   line-height: 18px;
   padding: 20px 24px;
   margin-top: 10px;
 }
-.wysiwyg-button, .event-button, .site-button {
+.wysiwyg-button, .event-button, .site-button{
   font-weight: 700;
   text-decoration: none;
   display: inline-block;
@@ -207,39 +207,38 @@ img.alignleft {
 }
 .bg-blue .wysiwyg-button, .bg-purple .wysiwyg-button,
 .bg-blue .event-button, .bg-purple .event-button,
-.bg-blue .site-button, .bg-purple .site-button {
+.bg-blue .site-button, .bg-purple .site-button{
   background-color: var(--yellow);
   color: var(--black-100);
 }
-.bg-teal .wysiwyg-button, .bg-teal .event-button, .bg-teal .site-button {
+.bg-teal .wysiwyg-button, .bg-teal .event-button, .bg-teal .site-button{
   background-color: var(--pink);
   color: var(--white);
 }
 .bg-blue .wysiwyg-button:hover, .bg-purple .wysiwyg-button:hover,
 .bg-blue .event-button:hover, .bg-purple .event-button:hover,
-.bg-blue .site-button:hover, .bg-purple .site-button:hover {
+.bg-blue .site-button:hover, .bg-purple .site-button:hover{
   background-color: var(--white);
   color: var(--black-100);
 }
 .bg-light-blue .wysiwyg-button, .bg-gradient-yellow .wysiwyg-button,
 .bg-light-blue .event-button, .bg-gradient-yellow .event-button,
-.bg-light-blue .site-button, .bg-gradient-yellow .site-button {
+.bg-light-blue .site-button, .bg-gradient-yellow .site-button{
   background-color: var(--purple);
   color: var(--white);
   border: 1px solid #B6B6B6;
 }
 .bg-light-blue .wysiwyg-button:hover, .bg-teal .wysiwyg-button:hover, .bg-gradient-yellow .wysiwyg-button:hover,
-.bg-light-blue .event-button:hover, .bg-teal .event-button:hover, .bg-gradient-yellow .event-button:hover,
-.bg-light-blue .site-button:hover, .bg-teal .site-button:hover, .bg-gradient-yellow .site-button:hover {
+.bg-light-blue .event-button:hover, .bg-teal .event-button:hover, .bg-gradient-yellow .event-button:hover,.bg-light-blue .site-button:hover, .bg-teal .site-button:hover, .bg-gradient-yellow .site-button:hover{
   background-color: var(--black-100);
   color: var(--white);
   border-color: var(--black-100);
 }
-.bg-light-yellow .wysiwyg-button, .bg-light-yellow .event-button, .bg-light-yellow .site-button {
+.bg-light-yellow .wysiwyg-button, .bg-light-yellow .event-button, .bg-light-yellow .site-button{
   background-color: var(--gray);
   color: var(--white);
 }
-.bg-light-yellow .wysiwyg-button:hover, .bg-light-yellow .event-button:hover, .bg-light-yellow .site-button:hover {
+.bg-light-yellow .wysiwyg-button:hover, .bg-light-yellow .event-button:hover, .bg-light-yellow .site-button:hover{
   background-color: var(--black-100);
   color: var(--white);
 }
@@ -705,6 +704,15 @@ width:100%;
 .wysiwyg-gallery .slick-list {
   margin-right: -16px; 
 }
+
+/*********************
+*** Fome Zone ***
+*********************/
+.wysiwyg-content img{
+  max-width: 100%;
+  height: auto;
+}
+
 
 
 /*********************
@@ -1172,6 +1180,110 @@ border-radius: 10px;
   color: #787878;
 }
 
+.wysiwyg-content form .gfield_html {
+    font-size: 13px;
+    line-height: 16px;
+}
+.bg-blue .wysiwyg-content form .gfield legend,.bg-blue .wysiwyg-content form .gfield label.gfield_label, .bg-blue .gform_title, 
+.bg-blue .gform_description, .bg-purple .wysiwyg-content form .gfield legend,.bg-purple .wysiwyg-content form .gfield label.gfield_label, 
+.bg-purple .gform_title, .bg-purple .gform_description, .text-white a {
+  color: var(--white);
+}
+.bg-light-blue .wysiwyg-content form .gfield legend, .bg-light-blue .wysiwyg-content form .gfield label.gfield_label, .bg-light-blue .gform_title, .bg-light-blue .gform_description, .text-black-100 a {
+  color: var(--black-100);
+}
+.bg-white .wysiwyg-content form .gfield legend,.bg-white .wysiwyg-content form .gfield label.gfield_label, .bg-white .gform_description, .bg-gradient-yellow .wysiwyg-content form .gfield legend, .bg-gradient-yellow .wysiwyg-content form .gfield label.gfield_label, .bg-gradient-yellow  .gform_title, .bg-gradient-yellow .gform_description, .bg-teal .wysiwyg-content form .gfield legend, .bg-teal .wysiwyg-content form .gfield label.gfield_label, .bg-teal  .gform_title, .bg-teal .gform_description, .text-black a{
+  color: var(--black);
+}
+
+.gform-theme--foundation .gfield--width-full{
+   font-size: 13px;
+   line-height: 17px;
+}
+.bg-white  .gform_title {
+  color: var(--pink);
+}
+.wysiwyg-content .gform_wrapper form input:not([type ="submit"]), .wysiwyg-content .gform_wrapper form select, .wysiwyg-content .gform_wrapper form textarea {
+  border: 2px solid #D8D8D8 !important;
+  box-shadow: none !important;
+  outline-color: #d8d8d8 !important;
+}
+.wysiwyg-content .gform_wrapper form input:not([type ="submit"]), .wysiwyg-content .gform_wrapper form select {
+  height: 53px;
+}
+.wysiwyg-content .gform_wrapper form textarea {
+  height: 120px !important;
+  resize: none;
+}
+.wysiwyg-content .gform_wrapper form select {
+  background-image: url(../images/gray-down-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: 99% 50%;
+  appearance: none;
+}
+.wysiwyg-content .gform_wrapper .gform_required_legend {
+  display: none;
+}
+.gform_button.button {
+  font-size: 18px !important; 
+  padding: 7px 30px  !important;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: var(--purple);
+  color: var(--white);
+  border: 1px solid #B6B6B6;
+}
+.bg-light-blue .gform_button, .bg-gradient-yellow .gform_button {
+  background-color: var(--purple);
+  color: var(--white);
+}
+.bg-blue .gform_button, .bg-purple .gform_button {
+  background-color: var(--yellow);
+  color: var(--black-100);
+  border: 0;
+}
+.bg-teal .gform_button {
+  background-color: var(--pink);
+  color: var(--white);
+  border: 0;
+}
+.bg-light-yellow .gform_button {
+  background-color: var(--gray);
+  color: var(--white);
+}
+.gform_button.button:hover {
+  border-color: var(--black-100);
+}
+.gform_button.button:hover, .bg-gradient-yellow .gform_button:hover {
+  background-color: var(--gray);
+  color: var(--white);
+}
+.bg-blue .gform_button:hover, .bg-purple .gform_button:hover, 
+.bg-light-yellow .gform_button:hover {
+  background-color: var(--white);
+  color: var(--black-100); 
+}
+.bg-light-blue .gform_button:hover, .bg-teal .gform_button:hover {
+  background-color: var(--black-100);
+  color: var(--white); 
+}
+
+.form-center .wysiwyg-content form .gform_footer {
+  justify-content: center;
+}
+.form_zone.bg-pattern {
+  background-position: 100% 100%;
+}
+.form_zone.bg-gradient-yellow.bg-pattern::before{
+   background-position: 100% 100%;
+}
+.form_zone .wysiwyg-content img {
+    padding-left: 0;
+}
+
 /* Media Queries  */
 @media only screen and (max-width:575px) {
   .content-and-button-cards .buttons a{
@@ -1341,7 +1453,7 @@ border-radius: 10px;
     padding-right: 8px;
     padding-left: 8px;
   }
-  .wysiwyg-button {
+  .wysiwyg-button,  .gform_button {
     font-size: 17px;
     line-height: 44px;
     padding: 7px 35px;
@@ -1455,7 +1567,7 @@ border-radius: 10px;
     font-size: 18px;
     line-height: 35px;
   }
-  .wysiwyg-button, .site-button {
+  .wysiwyg-button, .site-button{
     font-size: 18px;
     line-height: 45px;
     padding: 7px 30px;
@@ -1604,6 +1716,10 @@ border-radius: 10px;
       line-height: 35px;
       font-weight: 700;
   }
+  .bg-white .wysiwyg-testimonial-content:before, .bg-white .wysiwyg-testimonial-content:after,
+  .bg-gradient-yellow .wysiwyg-testimonial-content:before, .bg-gradient-yellow .wysiwyg-testimonial-content:after {
+    color: var(--purple);
+  }
   .wysiwyg-testimonial-content:after {
       content: "”";
       right: -40px;
@@ -1721,6 +1837,9 @@ border-radius: 10px;
   }
   .review-slider .icon-prev.slick-arrow , .review-slider .icon-next.slick-arrow {
     width:auto;
+  }
+  .form_zone:not(.form-center) .gform_wrapper form {
+    max-width: 510px;
   }
 }
 @media only screen and (min-width: 1200px) {
