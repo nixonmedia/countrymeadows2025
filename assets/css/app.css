@@ -1206,14 +1206,15 @@ border-radius: 10px;
 .wysiwyg-content .gform_wrapper form input:not([type ="submit"]), .wysiwyg-content .gform_wrapper form select, .wysiwyg-content .gform_wrapper form textarea {
   border: 2px solid #D8D8D8 !important;
   box-shadow: none !important;
-  outline-color: #d8d8d8 !important;
+  outline: 0 !important;
 }
-.wysiwyg-content .gform_wrapper form input:not([type ="submit"]), .wysiwyg-content .gform_wrapper form select {
+.wysiwyg-content .gform_wrapper form input:not([type ="submit"]) {
   height: 53px;
 }
 .wysiwyg-content .gform_wrapper form textarea {
   height: 120px !important;
   resize: none;
+  min-block-size: 120px !important;
 }
 .wysiwyg-content .gform_wrapper form select {
   background-image: url(../images/gray-down-arrow.svg);
@@ -1221,54 +1222,57 @@ border-radius: 10px;
   background-size: 18px;
   background-position: 99% 50%;
   appearance: none;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  height: unset;
 }
 .wysiwyg-content .gform_wrapper .gform_required_legend {
   display: none;
 }
 .gform_button.button {
   font-size: 18px !important; 
-  padding: 7px 30px  !important;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 10px;
-  background-color: var(--purple);
-  color: var(--white);
-  border: 1px solid #B6B6B6;
+  padding: 20px 48px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  border-radius: 10px !important;
+  background-color: var(--purple) !important;
+  color: var(--white) !important;
+  border: 1px solid #B6B6B6 !important;
 }
 .bg-light-blue .gform_button, .bg-gradient-yellow .gform_button {
-  background-color: var(--purple);
-  color: var(--white);
+  background-color: var(--purple) !important;
+  color: var(--white) !important;
 }
 .bg-blue .gform_button, .bg-purple .gform_button {
-  background-color: var(--yellow);
-  color: var(--black-100);
-  border: 0;
+  background-color: var(--yellow) !important;
+  color: var(--black-100) !important;
+  border: 0 !important;
 }
 .bg-teal .gform_button {
-  background-color: var(--pink);
-  color: var(--white);
-  border: 0;
+  background-color: var(--pink) !important;
+  color: var(--white) !important;
+  border: 0 !important;
 }
 .bg-light-yellow .gform_button {
-  background-color: var(--gray);
-  color: var(--white);
+  background-color: var(--gray) !important;
+  color: var(--white) !important;
 }
 .gform_button.button:hover {
-  border-color: var(--black-100);
+  border-color: var(--black-100) !important;
 }
 .gform_button.button:hover, .bg-gradient-yellow .gform_button:hover {
-  background-color: var(--gray);
-  color: var(--white);
+  background-color: var(--gray) !important;
+  color: var(--white) !important;
 }
 .bg-blue .gform_button:hover, .bg-purple .gform_button:hover, 
 .bg-light-yellow .gform_button:hover {
-  background-color: var(--white);
-  color: var(--black-100); 
+  background-color: var(--white) !important;
+  color: var(--black-100) !important; 
 }
 .bg-light-blue .gform_button:hover, .bg-teal .gform_button:hover {
-  background-color: var(--black-100);
-  color: var(--white); 
+  background-color: var(--black-100) !important;
+  color: var(--white) !important; 
 }
 
 .form-center .wysiwyg-content form .gform_footer {
@@ -1520,6 +1524,20 @@ border-radius: 10px;
   }
   .custom-columns-zone.border-angle {
     padding-bottom: 50px;
+  }
+  .review-slider .slick-slide {
+    margin: 0px 14px;
+    position: relative;
+  }
+  .review-slider {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .review-slider .icon-next.slick-arrow {
+    right: 0;
+  }
+  .review-slider .icon-prev.slick-arrow {
+    left: 0;
   }
 } 
 @media only screen and (max-width: 429px) {
@@ -2078,10 +2096,6 @@ width:85%;
   }
   .meet-team-slider .team-content-col {
     padding-right: 50px;
-  }
-  .reviews-zone:before{
-    top: -92px;
-    height: 95px;
   }
 }
 @media only screen and (min-width: 1900px) {

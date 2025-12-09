@@ -72,12 +72,12 @@ jQuery(document).ready(function($){
     autoplay: true,
     autoplaySpeed: 3000,
     prevArrow:
-      '<img src="/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/images/slide-arrow-left.svg" alt="icon" class="icon-prev">',
+    `<img src="${themeDir}/assets/images/slide-arrow-left.svg" alt="icon" class="icon-prev">`,
     nextArrow:
-      '<img src="/countrymeadows2025/wp-content/themes/countrymeadows2025/assets/images/slide-arrow-right.svg" alt="icon" class="icon-next">',
+    `<img src="${themeDir}/assets/images/slide-arrow-right.svg" alt="icon" class="icon-next">`,
     responsive: [
       {
-        breakpoint: 992,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 2,
           centerMode: false,
