@@ -55,8 +55,15 @@ jQuery(document).ready(function($){
     arrows: true,
     dots: false,
     centerMode: true,
-      // centerPadding: '50px',
+  centerPadding: '0px',
 responsive: [
+  {
+      breakpoint: 1600,  // below 1200px
+      settings: {
+        slidesToShow: 3,
+        centerPadding: '30px' // optional: adjust padding for smaller screens
+      }
+    },
     {
       breakpoint: 1200,  // below 1200px
       settings: {

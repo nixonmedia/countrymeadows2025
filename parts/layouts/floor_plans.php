@@ -21,8 +21,8 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
             <!-- LEFT COLUMN -->
             <div class="col-lg-4 mb-5 mb-lg-0 full-width-left-col">
 
-                <h2 class="font-medium fw-bold mb-2 pb-1">Our Apartments at Allentown</h2>
-                <div class="wysiwyg-content">
+                <h2 class="font-medium fw-bold mb-2 pb-1 font-poppins">Our Apartments at Allentown</h2>
+                <div class="wysiwyg-content font-poppins">
                     <p>Here, our residents enjoy a neighborly feeling of community living with the personalization and privacy of their own apartment in the heart of Allentown. Our apartment homes are rented on a month-to-month basis with one simple monthly bill and no large upfront fees. At our retirement community in Allentown, we offer a range of apartment styles in many configurations in each level of care.</p>
 
 
@@ -34,11 +34,11 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
             <!-- RIGHT COLUMN -->
             <div class="col-lg-7 right-floorplan-col">
                 <div class="row mb-4 ">
-                    <div class="col-lg-5 col-xl-3 left-content me-xl-4">
-                        <h3 class="fw-bold">Explore our floor plans</h3>
+                    <div class="col-lg-5 col-xl-4 left-content">
+                        <h3 class="fw-bold font-poppins">Explore our floor plans</h3>
                     </div>
                     <div class=" col-lg-7 col-xl-6">
-                        <div class=" wysiwyg-content font-xs-medium ">
+                        <div class=" wysiwyg-content font-xs-medium font-poppins">
                             The all-rental, monthly starting rates for all of our campuses are based on your needs and preferences
                             and vary by campus, apartment style and level of care.
                             <a href="#">View all floor plans</a>
@@ -48,43 +48,44 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
 
                 <!-- Slick Slider -->
-                   <div class="row">
-                <div class="floorplan-slider my-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="floorplan-slider my-4 font-poppins">
 
-                    <!-- Card 1 -->
-                    <div class="floor-card p-4 text-center">
-                        <div class="floor-card-inner p-3">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2" alt="">
-                            <p class="fw-semibold text-start">Studio Apartment with Kitchen</p>
+                            <!-- Card 1 -->
+                            <div class="floor-card p-2 p-md-4 text-center">
+                                <div class="floor-card-inner p-3">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
+                                    <p class="fw-semibold text-start font-poppins">Studio Apartment with Kitchen</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="floor-card p-2 p-md-4 text-center">
+                                <div class="floor-card-inner p-3">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
+                                    <p class="fw-semibold text-start">Alcove Apartment with Kitchen/Laundry Area</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="floor-card p-2 p-md-4 text-center">
+                                <div class="floor-card-inner p-3">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
+                                    <p class="fw-semibold text-start">One Bedroom Apartment with Kitchen/Laundry Area</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="floor-card p-2 p-md-4 text-center">
+                                <div class="floor-card-inner p-3">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
+                                    <p class="fw-semibold text-start">Premium One Bedroom</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Card 2 -->
-                    <div class="floor-card p-4 text-center">
-                        <div class="floor-card-inner p-3">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2" alt="">
-                            <p class="fw-semibold text-start">Alcove Apartment with Kitchen/Laundry Area</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="floor-card p-4 text-center">
-                        <div class="floor-card-inner p-3">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2" alt="">
-                            <p class="fw-semibold text-start">One Bedroom Apartment with Kitchen/Laundry Area</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="floor-card p-4 text-center">
-                        <div class="floor-card-inner p-3">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2" alt="">
-                            <p class="fw-semibold text-start">Premium One Bedroom</p>
-                        </div>
-                    </div>
-
                 </div>
-</div>
 
                 <div class="text-center">
                     <a href="#" class="font-xs-medium text-blue fw-bold">View our Allentown floor plans</a>
@@ -92,6 +93,79 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
             </div>
         </div>
+
+
+
+        <div class="row px-3 mt-5 mt-lg-0">
+
+          <!-- RIGHT COLUMN -->
+            <div class="col-lg-5 my-auto">
+                <div class="row mb-4 ">
+                    <div class="col-xl-5">
+                        <h3 class="fw-bold font-poppins">Explore our floor plans</h3>
+                    </div>
+                    <div class=" col-xl-7">
+                        <div class=" wysiwyg-content font-xs-medium font-poppins my-3 mb-lg-3">
+                            The all-rental, monthly starting rates for all of our campuses are based on your needs and preferences
+                            and vary by campus, apartment style and level of care.
+                            <a href="#">View all floor plans</a>
+                        </div>
+                        
+                <div class="text-start">
+                    <a href="#" class="font-xs-medium text-blue fw-bold">View our Allentown floor plans</a>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+                <!-- Slick Slider -->
+              
+                    <div class="col-lg-7">
+                        <div class="floorplan-slider floorplan-sm-slider my-4 font-poppins">
+
+                            <!-- Card 1 -->
+                            <div class="floor-card p-2 p-md-4 text-center">
+                                <div class="floor-card-inner p-3">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
+                                    <p class="fw-semibold text-start font-poppins">Studio Apartment with Kitchen</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="floor-card p-2 p-md-4 text-center">
+                                <div class="floor-card-inner p-3">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
+                                    <p class="fw-semibold text-start">Alcove Apartment with Kitchen/Laundry Area</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="floor-card p-2 p-md-4 text-center">
+                                <div class="floor-card-inner p-3">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
+                                    <p class="fw-semibold text-start">One Bedroom Apartment with Kitchen/Laundry Area</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="floor-card p-2 p-md-4 text-center">
+                                <div class="floor-card-inner p-3">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
+                                    <p class="fw-semibold text-start">Premium One Bedroom</p>
+                                </div>
+                            </div>
+                        </div>
+                  
+             
+
+
+            </div>
+
+        </div>
+
+
 
     </div>
 </section>
