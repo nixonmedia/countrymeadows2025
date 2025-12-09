@@ -156,6 +156,11 @@ $column_2_link = $content_column_2['link'] ?? '';
   </div>
 </footer>
 </div>
+<!-- Global JS variable used in app.js (for slider arrow image paths) -->
+  <script>
+    const themeDir = "<?php echo get_template_directory_uri(); ?>";
+  </script>
+<!-- /Global JS variable -->
 <?php wp_footer(); ?>
 </body>
 
