@@ -532,7 +532,7 @@ if ($meet_background_color == 'Blue') {
                         }
                         $unique_key = uniqid();
                       ?>
-                      <div class="video-box <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?>">
+                      <div class="video-box">
                         <div class="embed-responsive embed-responsive-16by9 video-wrapper position-relative">
                           <span class="play-icon" id="play-<?php echo $unique_key; ?>">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-icon.svg" alt="Play Video">
