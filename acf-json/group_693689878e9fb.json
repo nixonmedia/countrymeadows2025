@@ -1,13 +1,13 @@
 {
-    "key": "group_69130db0c7d38",
-    "title": "Streamline Icon",
+    "key": "group_693689878e9fb",
+    "title": "Blog Authors",
     "fields": [
         {
-            "key": "field_69130db0e74bc",
-            "label": "Streamline Icon",
-            "name": "streamline_icon",
+            "key": "field_69368987d4339",
+            "label": "Name",
+            "name": "name",
             "aria-label": "",
-            "type": "streamline_icon_picker",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,15 +16,20 @@
                 "class": "",
                 "id": ""
             },
-            "allow_in_bindings": 0
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
         [
             {
-                "param": "page_type",
+                "param": "post_type",
                 "operator": "==",
-                "value": "front_page"
+                "value": "blog-author"
             }
         ]
     ],
@@ -38,5 +43,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764574321
+    "modified": 1765181852
 }

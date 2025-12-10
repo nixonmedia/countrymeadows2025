@@ -75,9 +75,9 @@
     "location": [
         [
             {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
+                "param": "page_template",
+                "operator": "!=",
+                "value": "default"
             }
         ]
     ],
@@ -91,5 +91,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764332210
+    "modified": 1765345246
 }
