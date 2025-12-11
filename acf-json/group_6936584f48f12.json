@@ -45,10 +45,13 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content",
+        "author"
+    ],
     "active": true,
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1765191613
+    "modified": 1765436729
 }
