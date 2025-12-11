@@ -125,7 +125,7 @@ if($embellishment == 'circles' ) {
                       <<?php echo $top_standard_heading['heading_type']; ?> class="font-medium font-lexend text-black-100 mb-3 mb-lg-4"><?php echo $top_standard_heading['headline']; ?></<?php echo $top_standard_heading['heading_type']; ?>>
                     <?php endif; 
                     if($top_standard_copy_content): ?>
-                      <div class="wysiwyg-content text-black-100 font-lexend mb-4">
+                      <div class="wysiwyg-content text-black-100 font-lexend <?php if($top_standard_button): ?>mb-4<?php endif; ?>">
                         <?php echo $top_standard_copy_content; ?>
                       </div>
                     <?php endif; 

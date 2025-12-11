@@ -107,7 +107,7 @@ if ($heading || $content || !empty($button_cards) || $bottom_zone_content): ?>
   <section id="content-and-buttons-cards-<?php echo get_the_ID() . '-' . $key; ?>" class="content-and-button-cards py-5 <?php echo $bg_color; ?> <?php echo $bg_pattern_class; ?> <?php echo $border_class; ?> <?php echo $angle_class; ?> <?php echo $margin_class; ?>">
     <div class="container-fluid text-center text-white pb-5">
       <div class="row justify-content-center">
-        <div class="col-lg-10 d-flex flex-column justify-content-center align-items-center">
+        <div class="col-lg-11 col-xl-10 d-flex flex-column justify-content-center align-items-center">
           <?php if($heading){ ?>
           <<?php echo $heading_style;  ?> class="fw-bold mb-3 font-medium mb-2 <?php echo esc_attr($text_color); ?>">
             <?php echo $heading; ?>
@@ -118,18 +118,30 @@ if ($heading || $content || !empty($button_cards) || $bottom_zone_content): ?>
               <?php echo $content; ?>
             </div>
           <?php endif; ?>
-          <?php if (!empty($button_cards) && is_array($button_cards)): ?>
-            <div class="buttons d-flex flex-wrap justify-content-center gap-4 pb-5">
-              <?php foreach ($button_cards as $button):
-                $button_text     = $button['text'] ?? '';
-                $button_link_url = $button['link'] ?? '';
-                $button_icon     = $button['icon'] ?? '';
-                if ($button_text && $button_link_url) : ?>
-                  <a href="<?php echo esc_url($button_link_url); ?>"
-                    class="p-4 bg-white <?php echo ($bg_color == 'bg-white' || $bg_color == 'bg-gradient-yellow') ? 'shadow ': ''; ?>single-button text-black text-decoration-none font-lexend"><?php echo $button_icon; ?> <strong><?php echo esc_html($button_text); ?></strong>
-                  </a>
-                <?php endif; ?>
-              <?php endforeach; ?>
+          <?php if (!empty($button_cards) && is_array($button_cards)): 
+            $button_cards = array_filter($button_cards, function($btn) {
+                return !empty($btn['text']) && !empty($btn['link']);
+            });
+            $button_count = count($button_cards); ?>
+            <div class="content-buttons-wrapper <?php if($button_count > 4): ?>content-buttons-slider w-100 pb-5<?php endif; ?>">
+              <div class="buttons <?php if($button_count <= 4): ?>d-flex flex-wrap justify-content-center gap-4 pb-5<?php endif; ?>">
+                <?php foreach ($button_cards as $button):
+                  $button_text     = $button['text'] ?? '';
+                  $button_link_url = $button['link'] ?? '';
+                  $button_icon     = $button['icon'] ?? '';
+                  if ($button_text && $button_link_url) : ?>
+                  <?php if($button_count > 4): ?>
+                    <div class="slide-item">
+                  <?php endif; ?>
+                      <a href="<?php echo esc_url($button_link_url); ?>"
+                        class="p-4 bg-white <?php if($button_count > 4): ?>d-flex align-items-center justify-content-center gap-2<?php else: ?>d-inline-block<?php endif; ?> <?php echo ($bg_color == 'bg-white' || $bg_color == 'bg-gradient-yellow') ? 'shadow ': ''; ?>single-button text-black text-decoration-none font-lexend"><?php echo $button_icon; ?> <strong><?php echo esc_html($button_text); ?></strong>
+                      </a>
+                  <?php if($button_count > 4): ?>
+                    </div>
+                  <?php endif; ?>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              </div>
             </div>
           <?php endif; ?>
           <?php if ($bottom_zone_content): ?>

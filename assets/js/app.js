@@ -93,4 +93,25 @@ jQuery(document).ready(function($){
       },
     ],
   });
+  $(".content-buttons-slider .buttons").slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      dots: false,
+      infinite: true,
+      responsive: [
+          {
+              breakpoint: 992,
+              settings: { slidesToShow: 3 }
+          },
+          {
+              breakpoint: 768,
+              settings: { slidesToShow: 2 }
+          },
+          {
+              breakpoint: 480,
+              settings: { slidesToShow: 1 }
+          }
+      ]
+  });
 });

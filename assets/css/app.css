@@ -579,6 +579,20 @@ main section.bg-white {
 
 .content-and-button-card  .single-button{
     padding: 35px 84px !important
+    min-width: 170px;
+}
+.content-buttons-slider .slick-track {
+  display: flex;
+  gap: 1.5rem;
+}
+.content-buttons-slider .slick-slide {
+  height: inherit;
+}
+.content-buttons-slider .single-button {
+  height: 100%;
+}
+.content-buttons-slider .slick-list {
+  margin: 0 20px;
 }
 .content-and-button-card  .wysiwyg-content.top-content{
 width:100%;
@@ -1290,8 +1304,14 @@ border-radius: 10px;
 
 /* Media Queries  */
 @media only screen and (max-width:575px) {
-  .content-and-button-cards .buttons a{
+  .content-and-button-cards .content-buttons-wrapper:not(.content-buttons-slider) .buttons a{
     width: 80%;
+  }
+  .content-buttons-slider .slick-track {
+    display: block;
+  }
+  .content-buttons-slider .slick-list {
+    margin: 0 30px;
   }
 }
 @media (min-width:576px) and (max-width:767px) {
@@ -1558,9 +1578,11 @@ border-radius: 10px;
   .icon-slide-box {
     line-height: 24px;
   }
-
 }
 @media only screen and (min-width: 992px) {
+  body {
+    line-height: 26px;
+  }
   .container-fluid {
     padding-right: 30px;
     padding-left: 30px;
@@ -1579,7 +1601,7 @@ border-radius: 10px;
   }
   h3, .font-xm {
     font-size: 24px;
-    line-height: 35px;
+    line-height: 24px;
   }
   h5, .font-xs-medium {
     font-size: 18px;
@@ -1861,6 +1883,9 @@ border-radius: 10px;
   }
 }
 @media only screen and (min-width: 1200px) {
+  body {
+    line-height: 35px;
+  }
   #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu {
     max-width: max-content;
     min-width: 990px;
