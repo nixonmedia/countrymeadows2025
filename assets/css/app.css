@@ -1302,7 +1302,7 @@ border-radius: 10px;
     padding-left: 0;
 }
 
-.stories-post-content .story-post-content img {
+.post-content img, .post-featured-image img {
   max-width: 100%;
   height: auto;
 }

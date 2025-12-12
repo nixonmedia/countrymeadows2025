@@ -8,7 +8,7 @@ if ( have_posts() ) : ?>
         <div class="col-lg-12">
           <?php while ( have_posts() ) : the_post(); ?>
             <h1><?php the_title(); ?></h1>
-            <div class="story-post-content">
+            <div class="post-content">
                 <?php the_content(); ?>
             </div>
           <?php endwhile; ?>
