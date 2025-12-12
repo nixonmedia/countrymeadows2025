@@ -2140,26 +2140,59 @@
                                             "bidirectional_target": []
                                         },
                                         {
-                                            "key": "field_6923e86bf2f30",
+                                            "key": "field_693ba9b2d279b",
                                             "label": "Background Color",
                                             "name": "background_color",
                                             "aria-label": "",
-                                            "type": "clone",
+                                            "type": "group",
                                             "instructions": "",
                                             "required": 0,
-                                            "conditional_logic": 0,
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_6923e71ef2f27",
+                                                        "operator": "==",
+                                                        "value": "Standard Content"
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "field": "field_6923e71ef2f27",
+                                                        "operator": "==",
+                                                        "value": "Call-to-Action"
+                                                    }
+                                                ]
+                                            ],
                                             "wrapper": {
                                                 "width": "",
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "clone": [
-                                                "group_691d6ed5d9932"
-                                            ],
-                                            "display": "seamless",
                                             "layout": "block",
-                                            "prefix_label": 0,
-                                            "prefix_name": 0
+                                            "sub_fields": [
+                                                {
+                                                    "key": "field_6923e86bf2f30",
+                                                    "label": "Background Color",
+                                                    "name": "background_color",
+                                                    "aria-label": "",
+                                                    "type": "clone",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": 0,
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "clone": [
+                                                        "group_691d6ed5d9932"
+                                                    ],
+                                                    "display": "seamless",
+                                                    "layout": "block",
+                                                    "prefix_label": 0,
+                                                    "prefix_name": 0
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
@@ -4642,5 +4675,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1765196967
+    "modified": 1765517803
 }

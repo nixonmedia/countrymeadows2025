@@ -21,7 +21,7 @@ $top_accordions = $top_content['accordions'] ?? '';
 $top_accordions_heading = $top_accordions['heading'] ?? '';
 $top_accordion = $top_accordions['accordion'] ?? '';
 $top_cta = $top_content['call_to_action'] ?? '';
-$background_color = $top_content['background_color'] ?? '';
+$background_color = $top_content['background_color']['background_color'] ?? '';
 
 $bottom_content = $split_column['bottom_content'] ?? '';
 $bottom_content_type = $bottom_content['content_type'] ?? '';
