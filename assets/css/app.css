@@ -926,7 +926,7 @@ width:100%;
   background-color: var(--blue);
   color: var(--white);
 }
-.cta-info {
+.bg-white:not(.split-column-zone) .cta-info {
   border-radius: 20px;
   padding: 40px 30px;
 }
@@ -1783,7 +1783,7 @@ border-radius: 10px;
   .special-content-left-align .accordion-content-col, .special-content-left-align .push-content-col {
     padding-left: 60px;
   }
-  .cta-info {
+  .bg-white:not(.split-column-zone) .cta-info {
     padding: 45px 60px 100px;
   }
   .push-info .video-wrapper {
