@@ -41,18 +41,18 @@ if (! function_exists('country_meadows_support')) :
             )
         );
 
-		// Register custom thumbnail size
-		add_image_size('footer-column', 225, 125, true);
+        // Register custom thumbnail size
+        add_image_size('footer-column', 225, 125, true);
         add_image_size('wysiwyg-event-image', 396, 554, true);
         add_image_size('wysiwyg-gallery-image', 300, 300, true);
-        add_image_size( 'intro_photo', 550, 365, true );
-        add_image_size( 'layered_photo', 760, 9999, false );
+        add_image_size('intro_photo', 550, 365, true);
+        add_image_size('layered_photo', 760, 9999, false);
         add_image_size('allentown', 551, 367, true);
-		add_image_size('cm-couple', 661, 728, true);
+        add_image_size('cm-couple', 661, 728, true);
         add_image_size('two_col_wide_image', 575, 345, true);
         add_image_size('two_col_tall_image', 440, 525, true);
         add_image_size('two_col_top', 444, 263, true);
-	}
+    }
 endif;
 
 add_action('after_setup_theme', 'country_meadows_support');
@@ -82,7 +82,7 @@ if (! function_exists('country_meadows_styles')) :
         // Enqueue theme stylesheet.
         wp_enqueue_style('country_meadows-style');
 
-        
+
 
         // Enqueue Bootstrap CSS
         wp_enqueue_style('country_meadows-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array(), $theme_version);
@@ -105,7 +105,7 @@ if (! function_exists('country_meadows_styles')) :
 
         // Localize script for AJAX
         wp_localize_script('country_meadows-custom-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
-        
+
         // Enqueue Font Awesome
         wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/151a7a2238.js', array(), null, true);
     }
@@ -592,7 +592,7 @@ function wysiwyg_testimonial_shortcode($atts)
             $output  = '<div class="wysiwyg-testimonial font-lexend py-3">';
 
             if (!empty($testimonial_quote)) {
-                $output .=  '<div class="wysiwyg-testimonial-block"><div class="wysiwyg-testimonial-content font-xm fw-bold mb-4 pb-lg-2">'.$testimonial_quote.'</div></div>';
+                $output .=  '<div class="wysiwyg-testimonial-block"><div class="wysiwyg-testimonial-content font-xm fw-bold mb-4 pb-lg-2">' . $testimonial_quote . '</div></div>';
             }
 
             if (!empty($testimonial_name)) {
@@ -839,7 +839,7 @@ function wysiwyg_event_shortcode($atts)
             $output .= '</div>';     // end row
             $events_archive_url = get_post_type_archive_link('tribe_events');
 
-            
+
             $output .= '</div>';     // end event wrapper
         }
         // Dynamic button linking to the tribe_events archive page
@@ -885,18 +885,276 @@ add_shortcode('add_event', 'wysiwyg_event_shortcode');
 
 
 // Allow Upload SVG File Type
-function cc_mime_types($mimes) {
- $mimes['svg'] = 'image/svg+xml';
- return $mimes;
+function cc_mime_types($mimes)
+{
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
 }
 add_filter('upload_mimes', 'cc_mime_types');
 
 
 // Load ACF options preview (use filesystem path, not URI)
 $acf_preview_file = get_template_directory() . '/inc/acf-select-options-preview.php';
-if ( file_exists( $acf_preview_file ) ) {
+if (file_exists($acf_preview_file)) {
     require_once $acf_preview_file;
 } else {
-    error_log( "ACF preview file not found: " . $acf_preview_file );
+    error_log("ACF preview file not found: " . $acf_preview_file);
 }
+
+
+/**
+ * UKG Job Importer (Fixed & Production Ready)
+ */
+
+/* ----------------------------------------
+   UKG Credentials
+----------------------------------------- */
+define('UKG_CLIENT_ID', 'GEO1014GMLFclientimport');
+define('UKG_CLIENT_SECRET', 'TQnCUfKnJGCQ1GmCY1D0kP8dW8OyjZK0r7yXxgoDtv6mgJZKy5l_mftpuX8WEXantSTrL4SblTKXWynqYShI_11Zjk');
+
+define('UKG_TOKEN_URL', 'https://signin.ultipro.com/signin/oauth2/t/GEO1014GMLF/access_token');
+define('UKG_JOB_API', 'https://service2.ultipro.com/talent/recruiting/v2/GEO1014GMLF/api/opportunities');
+
+define('UKG_ACCESS_TOKEN_TRANSIENT', 'ukg_access_token');
+
+/* ----------------------------------------
+   GET ACCESS TOKEN (FIXED)
+----------------------------------------- */
+function ukg_get_access_token()
+{
+
+    // Check cached token
+    $token = get_transient(UKG_ACCESS_TOKEN_TRANSIENT);
+    if ($token) {
+        return $token;
+    }
+
+    // Request token
+    $response = wp_remote_post(UKG_TOKEN_URL, [
+        'headers' => [
+            'Content-Type' => 'application/x-www-form-urlencoded'
+        ],
+        'body' => http_build_query([
+            'grant_type'    => 'client_credentials',
+            'client_id'     => UKG_CLIENT_ID,
+            'client_secret' => UKG_CLIENT_SECRET,
+        ]),
+    ]);
+
+    if (is_wp_error($response)) {
+        error_log("UKG TOKEN ERROR: " . $response->get_error_message());
+        return false;
+    }
+
+    $body = json_decode(wp_remote_retrieve_body($response), true);
+
+    if (!isset($body['access_token'])) {
+        error_log("UKG TOKEN MISSING: " . wp_remote_retrieve_body($response));
+        return false;
+    }
+
+    $token = $body['access_token'];
+    $expires = isset($body['expires_in']) ? (int)$body['expires_in'] : 600;
+
+    // Cache token (subtract 30s)
+    set_transient(UKG_ACCESS_TOKEN_TRANSIENT, $token, $expires - 30);
+
+    return $token;
+}
+
+
+/* ----------------------------------------
+   FETCH JOBS
+----------------------------------------- */
+function ukg_fetch_jobs()
+{
+
+    $token = ukg_get_access_token();
+    if (!$token) return;
+
+    $response = wp_remote_get(UKG_JOB_API, [
+        'headers' => [
+            'Authorization' => "Bearer $token",
+            'Accept'        => 'application/json'
+        ]
+    ]);
+
+    if (is_wp_error($response)) {
+        error_log("UKG API ERROR: " . $response->get_error_message());
+        return;
+    }
+
+    $json = wp_remote_retrieve_body($response);
+    error_log("UKG RAW RESPONSE: $json");
+
+    $jobs = json_decode($json, true);
+
+    if (!is_array($jobs)) {
+        error_log("UKG INVALID JSON");
+        return;
+    }
+
+    // UKG sometimes wraps results in "items"
+    if (isset($jobs['items']) && is_array($jobs['items'])) {
+        $jobs = $jobs['items'];
+    }
+
+    foreach ($jobs as $job) {
+        ukg_create_or_update_job($job);
+    }
+}
+
+
+/* ----------------------------------------
+   CREATE OR UPDATE JOB
+----------------------------------------- */
+function ukg_create_or_update_job($job)
+{
+
+    $req = $job['requisition_number'] ?? null;
+    if (!$req) return;
+
+    // Find existing post
+    $existing = get_posts([
+        'post_type'  => 'career',
+        'meta_key'   => 'career_requisition_number',
+        'meta_value' => $req,
+        'post_status' => 'any',
+        'numberposts' => 1,
+    ]);
+
+    $post_id = $existing ? $existing[0]->ID : 0;
+
+    // TITLE
+    $title = $job['title']['en_us'] ?? 'No Title';
+
+    // CONTENT
+    $content = $job['description']['brief']['external']['en_us'] ?? '';
+
+    // Fix future date issues
+    // $post_date = current_time('mysql');
+
+    // Convert API updated_at → WordPress datetime
+    $updated_at = $job['updated_at'] ?? null;
+
+    if ($updated_at) {
+        // Convert ISO8601 → mysql datetime
+        $post_date = gmdate('Y-m-d H:i:s', strtotime($updated_at));
+    } else {
+        // Fallback if missing
+        $post_date = current_time('mysql');
+    }
+
+    // Insert/update post
+    $post_id = wp_insert_post([
+        'ID'          => $post_id,
+        'post_title'  => $title,
+        // 'post_content' => $content,
+        'post_type'   => 'career',
+        'post_status' => 'publish',
+        'post_date'   => $post_date,
+    ]);
+
+    if (!$post_id) return;
+
+    /* ------------------------------------------------------
+       UPDATE ACF FIELDS
+    ------------------------------------------------------- */
+    if (function_exists('update_field')) {
+        update_field('career_description', $content, $post_id);
+        update_field('career_requisition_number', $req, $post_id);
+        update_field('career_job_listing_url', $job['links'][0]['href'] ?? '', $post_id);
+        update_field('career_job_date', $post_date, $post_id);
+    }
+
+    /* ------------------------------------------------------
+       NEW FIELD MAPPING
+    ------------------------------------------------------- */
+
+    // 1. CAMPUS → taxonomy "campus"
+    $campus_name = $job['locations'][0]['name'] ?? '';
+
+    if ($campus_name) {
+
+        // Create or get term
+        $campus_term = term_exists($campus_name, 'campus');
+        if (!$campus_term) {
+            $campus_term = wp_insert_term($campus_name, 'campus');
+        }
+
+        if (!is_wp_error($campus_term)) {
+
+            // Assign taxonomy term
+            wp_set_post_terms($post_id, [$campus_term['term_id']], 'campus', false);
+
+            // ALSO update ACF taxonomy field so it auto-selects
+            update_field('campus', $campus_term['term_id'], $post_id);
+        }
+
+        // Update careers_city
+        if (function_exists('update_field')) {
+            $city = $job['locations'][0]['city'] ?? $campus_name;
+            update_field('careers_city', $city, $post_id);
+        }
+    }
+
+
+    // 2. JOB CATEGORY → taxonomy + ACF auto-select
+    $job_category_raw = $job['job_family']['name']['en_us'] ?? '';
+    $job_category = preg_replace('/\s+\d+$/', '', $job_category_raw); // remove trailing numbers
+
+    if ($job_category) {
+
+        // Create or get term
+        $category_term = term_exists($job_category, 'job_category');
+        if (!$category_term) {
+            $category_term = wp_insert_term($job_category, 'job_category');
+        }
+
+        if (!is_wp_error($category_term)) {
+
+            // Assign taxonomy term
+            wp_set_post_terms($post_id, [$category_term['term_id']], 'job_category', false);
+
+            // Auto-select in ACF taxonomy field
+            update_field('job_category', $category_term['term_id'], $post_id);
+        }
+    }
+
+    // 3. SCHEDULE → ACF TEXT FIELD "schedule" (store is_fulltime)
+    $is_fulltime = $job['compensation']['is_fulltime'] ?? null;
+
+    if (!is_null($is_fulltime) && function_exists('update_field')) {
+
+        $schedule_value = $is_fulltime ? 'Full Time' : 'Part Time';
+
+        update_field('schedule', $schedule_value, $post_id);
+    }
+
+    error_log("UKG JOB SAVED: $title ($req)");
+}
+
+
+/* ----------------------------------------
+   MANUAL RUN TRIGGER (OPTIONAL)
+----------------------------------------- */
+add_action('init', function () {
+    if (isset($_GET['ukg_run'])) {
+        ukg_fetch_jobs();
+        echo "UKG IMPORT COMPLETE";
+        exit;
+    }
+});
+
+
+/* ----------------------------------------
+   CRON SCHEDULING
+----------------------------------------- */
+add_action('ukg_cron_import_jobs', 'ukg_fetch_jobs');
+
+if (!wp_next_scheduled('ukg_cron_import_jobs')) {
+    wp_schedule_event(time(), 'hourly', 'ukg_cron_import_jobs');
+}
+
+
 
