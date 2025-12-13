@@ -68,7 +68,7 @@ responsive: [
       breakpoint: 1200,  // below 1200px
       settings: {
         slidesToShow: 2,
-        centerPadding: '30px' // optional: adjust padding for smaller screens
+        centerPadding: '0px' // optional: adjust padding for smaller screens
       }
     },
     {

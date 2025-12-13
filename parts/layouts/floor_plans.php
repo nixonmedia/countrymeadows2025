@@ -13,7 +13,7 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
 
 ?>
 
-<section class="allentown-section py-5">
+<section class="allentown-section py-5 ">
     <div class="container-fluid px-3 px-lg-0">
 
         <div class="row align-items-center">
@@ -50,37 +50,37 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
                 <!-- Slick Slider -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="floorplan-slider my-4 font-poppins">
+                        <div class="floorplan-slider my-4 font-poppins  bg-water-color bg-blue-water-color bg-water-color-right">
 
                             <!-- Card 1 -->
-                            <div class="floor-card p-2 p-md-4 text-center">
-                                <div class="floor-card-inner p-3">
+                            <div class="floor-card p-3 p-md-5  text-center">
+                                <div class="floor-card-inner">
                                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
-                                    <p class="fw-semibold text-start font-poppins">Studio Apartment with Kitchen</p>
+                                    <p class="fw-semibold text-lg-start font-poppins">Studio Apartment with Kitchen</p>
                                 </div>
                             </div>
 
                             <!-- Card 2 -->
-                            <div class="floor-card p-2 p-md-4 text-center">
-                                <div class="floor-card-inner p-3">
+                            <div class="floor-card p-3 p-md-5  text-center">
+                                <div class="floor-card-inner">
                                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
-                                    <p class="fw-semibold text-start">Alcove Apartment with Kitchen/Laundry Area</p>
+                                    <p class="fw-semibold text-lg-start">Alcove Apartment with Kitchen/Laundry Area</p>
                                 </div>
                             </div>
 
                             <!-- Card 3 -->
-                            <div class="floor-card p-2 p-md-4 text-center">
-                                <div class="floor-card-inner p-3">
+                            <div class="floor-card p-3 p-md-5  text-center">
+                                <div class="floor-card-inner">
                                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
-                                    <p class="fw-semibold text-start">One Bedroom Apartment with Kitchen/Laundry Area</p>
+                                    <p class="fw-semibold text-lg-start">One Bedroom Apartment with Kitchen/Laundry Area</p>
                                 </div>
                             </div>
 
                             <!-- Card 4 -->
-                            <div class="floor-card p-2 p-md-4 text-center">
-                                <div class="floor-card-inner p-3">
+                            <div class="floor-card p-3 p-md-5  text-center">
+                                <div class="floor-card-inner">
                                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
-                                    <p class="fw-semibold text-start">Premium One Bedroom</p>
+                                    <p class="fw-semibold text-lg-start">Premium One Bedroom</p>
                                 </div>
                             </div>
                         </div>
@@ -92,27 +92,26 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
                 </div>
 
             </div>
+
         </div>
 
 
 
-        <div class="row px-3 mt-5 mt-lg-0">
+        <div class="row py-5">
 
           <!-- RIGHT COLUMN -->
             <div class="col-lg-5 my-auto">
-                <div class="row mb-4 ">
+                <div class="row mb-4 px-0 px-lg-3">
                     <div class="col-xl-5">
-                        <h3 class="fw-bold font-poppins">Explore our floor plans</h3>
+                        <h3 class="fw-bold font-poppins dotted-underline">Explore our floor plans</h3>
                     </div>
                     <div class=" col-xl-7">
                         <div class=" wysiwyg-content font-xs-medium font-poppins my-3 mb-lg-3">
-                            The all-rental, monthly starting rates for all of our campuses are based on your needs and preferences
-                            and vary by campus, apartment style and level of care.
-                            <a href="#">View all floor plans</a>
+                            <b>The all-rental, monthly </b>starting rates for all of our campuses are based on your needs and preferences and vary by campus, apartment style and level of care. 
                         </div>
                         
                 <div class="text-start">
-                    <a href="#" class="font-xs-medium text-blue fw-bold">View our Allentown floor plans</a>
+                    <a href="#" class="font-xs-medium text-blue fw-bold">View all floor plans by community</a>
                 </div>
                     </div>
                 </div>
@@ -123,37 +122,37 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
                 <!-- Slick Slider -->
               
                     <div class="col-lg-7">
-                        <div class="floorplan-slider floorplan-sm-slider my-4 font-poppins">
+                        <div class="floorplan-slider floorplan-sm-slider my-4 font-poppins bg-water-color bg-blue-water-color bg-water-color-left">
 
                             <!-- Card 1 -->
-                            <div class="floor-card p-2 p-md-4 text-center">
-                                <div class="floor-card-inner p-3">
+                            <div class="floor-card p-3 p-md-5  text-center">
+                                <div class="floor-card-inner">
                                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
-                                    <p class="fw-semibold text-start font-poppins">Studio Apartment with Kitchen</p>
+                                    <p class="fw-semibold text-lg-start font-poppins">Studio Apartment with Kitchen</p>
                                 </div>
                             </div>
 
                             <!-- Card 2 -->
-                            <div class="floor-card p-2 p-md-4 text-center">
-                                <div class="floor-card-inner p-3">
+                            <div class="floor-card p-3 p-md-5  text-center">
+                                <div class="floor-card-inner">
                                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
-                                    <p class="fw-semibold text-start">Alcove Apartment with Kitchen/Laundry Area</p>
+                                    <p class="fw-semibold text-lg-start">Alcove Apartment with Kitchen/Laundry Area</p>
                                 </div>
                             </div>
 
                             <!-- Card 3 -->
-                            <div class="floor-card p-2 p-md-4 text-center">
-                                <div class="floor-card-inner p-3">
+                            <div class="floor-card p-3 p-md-5  text-center">
+                                <div class="floor-card-inner">
                                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
-                                    <p class="fw-semibold text-start">One Bedroom Apartment with Kitchen/Laundry Area</p>
+                                    <p class="fw-semibold text-lg-start">One Bedroom Apartment with Kitchen/Laundry Area</p>
                                 </div>
                             </div>
 
                             <!-- Card 4 -->
-                            <div class="floor-card p-2 p-md-4 text-center">
-                                <div class="floor-card-inner p-3">
+                            <div class="floor-card p-3 p-md-5  text-center">
+                                <div class="floor-card-inner">
                                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/floorplan_img.jpg" class="img-fluid mb-2 mx-auto d-block" alt="">
-                                    <p class="fw-semibold text-start">Premium One Bedroom</p>
+                                    <p class="fw-semibold text-lg-start">Premium One Bedroom</p>
                                 </div>
                             </div>
                         </div>
