@@ -918,10 +918,9 @@ define('UKG_JOB_API', 'https://service2.ultipro.com/talent/recruiting/v2/GEO1014
 define('UKG_ACCESS_TOKEN_TRANSIENT', 'ukg_access_token');
 
 /* ----------------------------------------
-   GET ACCESS TOKEN (FIXED)
+   GET ACCESS TOKEN
 ----------------------------------------- */
-function ukg_get_access_token()
-{
+function ukg_get_access_token() {
 
     // Check cached token
     $token = get_transient(UKG_ACCESS_TOKEN_TRANSIENT);
@@ -966,40 +965,144 @@ function ukg_get_access_token()
 /* ----------------------------------------
    FETCH JOBS
 ----------------------------------------- */
-function ukg_fetch_jobs()
-{
+function ukg_fetch_jobs() {
 
     $token = ukg_get_access_token();
     if (!$token) return;
 
-    $response = wp_remote_get(UKG_JOB_API, [
-        'headers' => [
-            'Authorization' => "Bearer $token",
-            'Accept'        => 'application/json'
-        ]
-    ]);
+    $page     = 1;
+    $per_page = 1000; // adjust if API allows higher
+    $start_of_month = new DateTime('first day of this month 00:00:00', new DateTimeZone('UTC'));
+    $iso_utc = $start_of_month->format('Y-m-d\TH:i:s\Z');
+    var_dump($iso_utc); 
+    $updated_after = (new DateTime('now', new DateTimeZone('UTC')))
+    ->modify('-16 days')
+    ->format('Y-m-d\TH:i:s\Z');
+    // var_dump($updated_after); exit;
+    $all_jobs = [];
+    $today = new DateTime('today', new DateTimeZone('UTC'));
+    $target_board_id = 'e66070ad-299d-4c5e-ad6e-43f81eb083fd';
 
-    if (is_wp_error($response)) {
-        error_log("UKG API ERROR: " . $response->get_error_message());
+    while (true) {
+
+        $response = wp_remote_get(
+            add_query_arg([
+                'page'     => $page,
+                'per_page' => $per_page,
+                'updated_after' => $iso_utc,
+            ], UKG_JOB_API),
+            [
+                'headers' => [
+                    'Authorization' => "Bearer $token",
+                    'Accept'        => 'application/json'
+                ],
+                'timeout' => 30
+            ]
+        );
+
+        if (is_wp_error($response)) {
+            error_log("UKG API ERROR: " . $response->get_error_message());
+            break;
+        }
+
+        $json = wp_remote_retrieve_body($response);
+        $data = json_decode($json, true);
+
+        if (!is_array($data)) {
+            error_log("UKG INVALID JSON");
+            break;
+        }
+
+        // UKG sometimes wraps results in "items"
+        $jobs = $data['items'] ?? $data;
+
+        // ✅ Stop condition
+        if (empty($jobs)) {
+            error_log("UKG: No more records at page {$page}");
+            break;
+        }
+
+        // ✅ Accumulate
+        $all_jobs = array_merge($all_jobs, $jobs);
+
+        $page++;
+    }
+
+    /**
+     * ------------------------------------
+     * ALL RECORDS FETCHED AT THIS POINT
+     * ------------------------------------
+     */
+
+    if (empty($all_jobs)) {
+        error_log("UKG: No jobs found overall");
         return;
     }
 
-    $json = wp_remote_retrieve_body($response);
-    error_log("UKG RAW RESPONSE: $json");
+    /**
+     * 🔧 FILTER / TRANSFORM / GROUP DATA HERE
+     */
 
-    $jobs = json_decode($json, true);
+    // Example: remove inactive jobs
+    $filtered_jobs = array_values(array_filter($all_jobs, function ($job) use ($target_board_id, $today) {
 
-    if (!is_array($jobs)) {
-        error_log("UKG INVALID JSON");
-        return;
-    }
+        // 1. Must be Active
+        if (empty($job['status']) || $job['status'] !== 'Published') {
+            return false;
+        }
 
-    // UKG sometimes wraps results in "items"
-    if (isset($jobs['items']) && is_array($jobs['items'])) {
-        $jobs = $jobs['items'];
-    }
+        // 2. closed_date must be >= today (UTC)
+        if (!empty($job['closed_date'])) {
+            try {
+                // ISO 8601 with Z is auto-detected as UTC
+                $closed_date = new DateTime($job['closed_date']);
+            } catch (Exception $e) {
+                return false;
+            }
 
-    foreach ($jobs as $job) {
+            if ($closed_date < $today) {
+                return false;
+            }
+        }
+
+        // 3. job_boards must exist
+        if (empty($job['job_boards']) || !is_array($job['job_boards'])) {
+            return false;
+        }
+
+        
+        // if (!isset($job['is_featured']) || filter_var($job['is_featured'], FILTER_VALIDATE_BOOLEAN) !== true) {
+        //     return false;
+        // }
+
+        /**
+         * job_boards could be:
+         * - single object
+         * - OR array of boards
+         */
+        foreach ($job['job_boards'] as $board) {
+            if (
+                isset($board['id']) &&
+                $board['id'] === $target_board_id
+            ) {
+                return true;
+            }
+        }
+
+        return false;
+    }));
+
+    // Example: re-index array
+    $filtered_jobs = array_values($filtered_jobs);
+    echo "<pre>";
+    var_dump($filtered_jobs);
+
+    /**
+     * ------------------------------------
+     * CREATE / UPDATE ONLY AFTER FILTERING
+     * ------------------------------------
+     */
+    foreach ($filtered_jobs as $job) {
         ukg_create_or_update_job($job);
     }
 }
@@ -1008,8 +1111,7 @@ function ukg_fetch_jobs()
 /* ----------------------------------------
    CREATE OR UPDATE JOB
 ----------------------------------------- */
-function ukg_create_or_update_job($job)
-{
+function ukg_create_or_update_job($job) {
 
     $req = $job['requisition_number'] ?? null;
     if (!$req) return;
@@ -1150,7 +1252,7 @@ add_action('init', function () {
 /* ----------------------------------------
    CRON SCHEDULING
 ----------------------------------------- */
-add_action('ukg_cron_import_jobs', 'ukg_fetch_jobs');
+// add_action('ukg_cron_import_jobs', 'ukg_fetch_jobs');
 
 if (!wp_next_scheduled('ukg_cron_import_jobs')) {
     wp_schedule_event(time(), 'hourly', 'ukg_cron_import_jobs');
