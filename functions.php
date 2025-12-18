@@ -1294,10 +1294,7 @@ function ukg_delete_old_careers(array $api_requisitions) {
 /* ----------------------------------------
    CRON SCHEDULING
 ----------------------------------------- */
-// add_action('ukg_cron_import_jobs', 'ukg_fetch_jobs');
-// if (!wp_next_scheduled('ukg_cron_import_jobs')) {
-//     wp_schedule_event(time(), 'hourly', 'ukg_cron_import_jobs');
-// }
+
 /* ----------------------------------------
    ADD CUSTOM CRON INTERVAL (5 MINUTES)
 ----------------------------------------- */
