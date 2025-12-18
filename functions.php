@@ -965,8 +965,9 @@ function ukg_get_access_token() {
 /* ----------------------------------------
    FETCH JOBS
 ----------------------------------------- */
-function ukg_fetch_jobs() {
 
+function ukg_fetch_jobs() {
+    error_log('UKG Cron ran at: ' . current_time('mysql'));
     $token = ukg_get_access_token();
     if (!$token) return;
 
@@ -974,7 +975,7 @@ function ukg_fetch_jobs() {
     $per_page = 1000; // adjust if API allows higher
     $start_of_month = new DateTime('first day of this month 00:00:00', new DateTimeZone('UTC'));
     $iso_utc = $start_of_month->format('Y-m-d\TH:i:s\Z');
-    var_dump($iso_utc); 
+    // var_dump($iso_utc); 
     $updated_after = (new DateTime('now', new DateTimeZone('UTC')))
     ->modify('-16 days')
     ->format('Y-m-d\TH:i:s\Z');
@@ -1097,15 +1098,31 @@ function ukg_fetch_jobs() {
     echo "<pre>";
     var_dump($filtered_jobs);
 
+    $api_requisitions = [];
+
+
     /**
      * ------------------------------------
      * CREATE / UPDATE ONLY AFTER FILTERING
      * ------------------------------------
      */
+
+    // foreach ($filtered_jobs as $job) {
+    //     ukg_create_or_update_job($job);
+    // }
     foreach ($filtered_jobs as $job) {
-        ukg_create_or_update_job($job);
+
+    if (!empty($job['requisition_number'])) {
+        $api_requisitions[] = $job['requisition_number'];
     }
+
+    ukg_create_or_update_job($job);
 }
+ukg_delete_old_careers($api_requisitions);
+
+
+}
+
 
 
 /* ----------------------------------------
@@ -1236,27 +1253,145 @@ function ukg_create_or_update_job($job) {
     error_log("UKG JOB SAVED: $title ($req)");
 }
 
-
 /* ----------------------------------------
-   MANUAL RUN TRIGGER (OPTIONAL)
+   DELETE OLD CAREERS NOT IN API
 ----------------------------------------- */
-add_action('init', function () {
-    if (isset($_GET['ukg_run'])) {
-        ukg_fetch_jobs();
-        echo "UKG IMPORT COMPLETE";
-        exit;
+function ukg_delete_old_careers(array $api_requisitions) {
+
+    if (empty($api_requisitions)) {
+        return;
     }
-});
+
+    $existing_posts = get_posts([
+        'post_type'      => 'career',
+        'posts_per_page' => -1,
+        'post_status'    => 'any',
+        'fields'         => 'ids',
+        'meta_query'     => [
+            [
+                'key'     => 'career_requisition_number',
+                'compare' => 'EXISTS',
+            ],
+        ],
+    ]);
+
+    foreach ($existing_posts as $post_id) {
+
+        $req = get_post_meta($post_id, 'career_requisition_number', true);
+
+        // ❌ Not found in API → delete
+        if (!in_array($req, $api_requisitions, true)) {
+
+            wp_delete_post($post_id, true); // true = permanent delete
+            error_log("UKG JOB DELETED: Post ID {$post_id} (Req {$req})");
+        }
+    }
+}
+
 
 
 /* ----------------------------------------
    CRON SCHEDULING
 ----------------------------------------- */
 // add_action('ukg_cron_import_jobs', 'ukg_fetch_jobs');
+// if (!wp_next_scheduled('ukg_cron_import_jobs')) {
+//     wp_schedule_event(time(), 'hourly', 'ukg_cron_import_jobs');
+// }
+/* ----------------------------------------
+   ADD CUSTOM CRON INTERVAL (5 MINUTES)
+----------------------------------------- */
+add_filter('cron_schedules', function ($schedules) {
+    $schedules['every_five_minutes'] = array(
+        'interval' => 300, // 300 seconds = 5 minutes
+        'display'  => __('Every 5 Minutes'),
+    );
+    return $schedules;
+});
 
-if (!wp_next_scheduled('ukg_cron_import_jobs')) {
-    wp_schedule_event(time(), 'hourly', 'ukg_cron_import_jobs');
+/* ----------------------------------------
+   SCHEDULE CRON JOB
+----------------------------------------- */
+add_action('init', function () {
+
+    if (!wp_next_scheduled('ukg_fetch_careers_cron_event')) {
+        wp_schedule_event(
+            time(),
+            'every_five_minutes',
+            'ukg_fetch_careers_cron_event'
+        );
+    }
+
+});
+
+/* ----------------------------------------
+   CRON JOB CALLBACK
+----------------------------------------- */
+add_action('ukg_fetch_careers_cron_event', 'ukg_fetch_careers_cron_callback');
+
+function ukg_fetch_careers_cron_callback() {
+
+    // Debug log start
+    error_log('UKG Careers Cron: Started at ' . current_time('mysql'));
+
+    if (function_exists('ukg_fetch_jobs')) {
+        ukg_fetch_jobs();
+        error_log('UKG Careers Cron: Jobs fetched successfully');
+    } else {
+        error_log('UKG Careers Cron: ukg_fetch_jobs() function NOT FOUND');
+    }
+
+    // Debug log end
+    error_log('UKG Careers Cron: Finished at ' . current_time('mysql'));
 }
 
 
+/* ----------------------------------------
+   MANUAL RUN TRIGGER (OPTIONAL)
+----------------------------------------- */
+add_action('admin_menu', function () {
 
+    add_submenu_page(
+        'edit.php?post_type=career',     // Parent (Careers)
+        'Fetch Careers',                 // Page title
+        'Fetch Careers',                 // Menu title
+        'manage_options',                // Capability
+        'fetch-careers',                 // Slug
+        'render_fetch_careers_page',     // Callback
+        99                               // Position (after Schedule)
+    );
+
+});
+
+
+/* ----------------------------------------
+   FETCH CAREERS PAGE CALLBACK
+----------------------------------------- */
+function render_fetch_careers_page() {
+
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    // Run fetch when button clicked
+    if (isset($_POST['fetch_careers'])) {
+
+        // Run your API function
+        ukg_fetch_jobs();
+
+        echo '<div class="notice notice-success is-dismissible">
+                <p><strong>Careers fetched successfully!</strong></p>
+              </div>';
+    }
+    ?>
+
+    <div class="wrap">
+        <h1>Fetch Careers</h1>
+        <p>Click the button below to fetch the latest careers from the API.</p>
+
+        <form method="post">
+            <?php submit_button('Fetch Latest Careers', 'primary', 'fetch_careers'); ?>
+        </form>
+    </div>
+
+    <?php
+}
