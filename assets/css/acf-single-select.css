@@ -1,0 +1,178 @@
+/**
+ * ACF Relationship Field - Single Select Dropdown UI Styles
+ * 
+ * Transforms the relationship field UI into a dropdown-like interface
+ */
+
+/* Target the specific Blog Author field */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship {
+    position: relative;
+}
+
+/* Hide the selected items panel (right side) */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship .values {
+    display: none !important;
+}
+
+/* Hide drag handles */
+.acf-field[data-key="field_6936584f45ba3"] .acf-rel-item-handle {
+    display: none !important;
+}
+
+/* Make items not draggable */
+.acf-field[data-key="field_6936584f45ba3"] .acf-rel-item {
+    cursor: pointer !important;
+    padding-left: 10px !important;
+}
+
+/* Dropdown toggle button */
+.acf-field[data-key="field_6936584f45ba3"] .acf-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: #fff;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    cursor: pointer;
+    min-height: 40px;
+    margin-bottom: 0;
+    transition: border-color 0.2s;
+}
+
+.acf-field[data-key="field_6936584f45ba3"] .acf-dropdown-toggle:hover {
+    border-color: #2271b1;
+}
+
+.acf-field[data-key="field_6936584f45ba3"] .acf-dropdown-label {
+    flex: 1;
+    color: #2c3338;
+    font-size: 13px;
+}
+
+.acf-field[data-key="field_6936584f45ba3"] .acf-dropdown-arrow {
+    color: #8c8f94;
+    font-size: 10px;
+    transition: transform 0.2s;
+}
+
+/* Rotate arrow when expanded */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship.expanded .acf-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Choices panel - collapsed by default */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship .choices {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid #8c8f94;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: -1px;
+}
+
+/* Show choices when expanded */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship.expanded .choices {
+    display: block;
+}
+
+/* Style the choices list */
+.acf-field[data-key="field_6936584f45ba3"] .choices .list {
+    margin: 0;
+    padding: 0;
+}
+
+.acf-field[data-key="field_6936584f45ba3"] .choices .acf-rel-item {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f0f1;
+    transition: background-color 0.2s;
+}
+
+.acf-field[data-key="field_6936584f45ba3"] .choices .acf-rel-item:hover {
+    background-color: #f6f7f7;
+    color: #3c434a;
+}
+
+.acf-field[data-key="field_6936584f45ba3"] .choices .acf-rel-item:last-child {
+    border-bottom: none;
+}
+
+/* Hide checkboxes in choices */
+.acf-field[data-key="field_6936584f45ba3"] .choices .acf-rel-item input[type="checkbox"] {
+    display: none;
+}
+
+/* Style disabled (selected) items in choices */
+.acf-field[data-key="field_6936584f45ba3"] .choices .acf-rel-item.disabled {
+    background-color: #f0f0f1;
+    color: #8c8f94;
+    cursor: default;
+}
+
+/* Hide the search box */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship .filters {
+    display: none !important;
+}
+
+/* Adjust the relationship container */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship .list {
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* Remove the two-column layout */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship {
+    display: block !important;
+}
+
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship .choices,
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship .values {
+    width: 100% !important;
+    float: none !important;
+}
+
+/* Style the field to match taxonomy fields */
+.acf-field[data-key="field_6936584f45ba3"] .acf-input {
+    max-width: 25em;
+}
+
+/* Remove any margins/padding from the relationship container */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship > .list {
+    margin: 0 !important;
+}
+
+/* Ensure proper positioning */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship {
+    position: relative;
+    min-height: 40px;
+}
+
+/* Loading state */
+.acf-field[data-key="field_6936584f45ba3"] .acf-relationship.is-loading .acf-dropdown-toggle {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Empty state - let ACF handle this */
+.acf-field[data-key="field_6936584f45ba3"] .choices .list:empty::after {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 782px) {
+    .acf-field[data-key="field_6936584f45ba3"] .acf-input {
+        max-width: 100%;
+    }
+    
+    .acf-field[data-key="field_6936584f45ba3"] .acf-dropdown-toggle {
+        min-height: 44px;
+    }
+}

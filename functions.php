@@ -52,7 +52,9 @@ if (! function_exists('country_meadows_support')) :
         add_image_size('two_col_wide_image', 575, 345, true);
         add_image_size('two_col_tall_image', 440, 525, true);
         add_image_size('two_col_top', 444, 263, true);
-    }
+    
+        add_image_size('split-col-image', 1110, 734, true);
+	}
 endif;
 
 add_action('after_setup_theme', 'country_meadows_support');
@@ -99,7 +101,9 @@ if (! function_exists('country_meadows_styles')) :
 
         // Enqueue slick JS
         wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), $theme_version, true);
-
+        //Enqueue LightBox CSS-JS
+        wp_enqueue_style('lightbox2-css', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css');
+        wp_enqueue_script('lightbox2-js', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js', array('jquery'), null, true);
         // Enqueue Custom JS
         wp_enqueue_script('country_meadows-custom-js', get_template_directory_uri() . '/assets/js/app.js', array('jquery'), $theme_version, true);
 
@@ -407,66 +411,57 @@ function wysiwyg_image_gallery_shortcode($atts)
     }
 
     $images = get_field('community_galleries', $post_id);
-
     if (empty($images)) {
         return 'No gallery images';
     }
 
     $total_images = count($images);
-    if ($total_images <= $max) {
-        $slidesToShow    = 3;
-        $slidesToScroll  = 3;
-    } else {
-        $slidesToShow    = $max;
-        $slidesToScroll  = $max;
-    }
+    $slidesToShow = ($total_images <= $max) ? 3 : $max;
 
-    /* Slick Slider always used */
     $slider_id = 'slickGallery_' . $post_id . '_' . rand(1000, 9999);
+    $lightbox_group = 'gallery_' . $post_id;
 
     $output = '<div id="' . $slider_id . '" class="wysiwyg-gallery">';
 
     foreach ($images as $img) {
-        $url = isset($img['sizes']['wysiwyg-gallery-image'])
+
+        $thumb = isset($img['sizes']['wysiwyg-gallery-image'])
             ? esc_url($img['sizes']['wysiwyg-gallery-image'])
             : esc_url($img['url']);
 
-        $alt = esc_attr($img['alt']);
+        $full = esc_url($img['url']);
+        $alt  = esc_attr($img['alt']);
 
         $output .= '
             <div class="gallery-slide">
-                <img src="' . $url . '" alt="' . $alt . '" class="img-fluid">
+                <a href="' . $full . '" data-lightbox="' . $lightbox_group . '" data-title="' . $alt . '">
+                    <img src="' . $thumb . '" alt="' . $alt . '" class="img-fluid">
+                </a>
             </div>';
     }
 
     $output .= '</div>';
 
-    /* Slick init script */
+    // slick initialization script
     $output .= "
     <script>
         jQuery(document).ready(function($) {
             $('#{$slider_id}').slick({
                 slidesToShow: {$slidesToShow},
                 slidesToScroll: 1,
-                infinite: true,
                 arrows: true,
+                infinite: true,
                 dots: false,
                 speed: 700,
                 autoplay: false,
                 responsive: [
                     {
                         breakpoint: 992,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1
-                        }
+                        settings: { slidesToShow: 3 }
                     },
                     {
                         breakpoint: 768,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1
-                        }
+                        settings: { slidesToShow: 2 }
                     }
                 ]
             });
@@ -892,6 +887,12 @@ function cc_mime_types($mimes)
 }
 add_filter('upload_mimes', 'cc_mime_types');
 
+
+// Load WP All Import ACF Auto-populate
+require_once get_template_directory() . '/inc/wp-all-import-acf-auto-populate.php';
+
+// Load ACF Blog Author Single Select Dropdown
+require_once get_template_directory() . '/inc/acf-blog-author-single-select-dropdown.php';
 
 // Load ACF options preview (use filesystem path, not URI)
 $acf_preview_file = get_template_directory() . '/inc/acf-select-options-preview.php';

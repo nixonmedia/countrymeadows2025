@@ -837,11 +837,11 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_691ed016e7b38",
+                                    "key": "field_6931618ae3825",
                                     "label": "Heading",
                                     "name": "heading",
                                     "aria-label": "",
-                                    "type": "clone",
+                                    "type": "text",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -850,13 +850,43 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "clone": [
-                                        "group_691d7eaf7eef3"
-                                    ],
-                                    "display": "seamless",
-                                    "layout": "block",
-                                    "prefix_label": 0,
-                                    "prefix_name": 0
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_69316191e3826",
+                                    "label": "Heading Type",
+                                    "name": "heading_type",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "h1": "H1",
+                                        "h2": "H2",
+                                        "h3": "H3",
+                                        "h4": "H4"
+                                    },
+                                    "default_value": false,
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "create_options": 0,
+                                    "save_options": 0
                                 }
                             ]
                         },
@@ -2110,26 +2140,59 @@
                                             "bidirectional_target": []
                                         },
                                         {
-                                            "key": "field_6923e86bf2f30",
+                                            "key": "field_693ba9b2d279b",
                                             "label": "Background Color",
                                             "name": "background_color",
                                             "aria-label": "",
-                                            "type": "clone",
+                                            "type": "group",
                                             "instructions": "",
                                             "required": 0,
-                                            "conditional_logic": 0,
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_6923e71ef2f27",
+                                                        "operator": "==",
+                                                        "value": "Standard Content"
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "field": "field_6923e71ef2f27",
+                                                        "operator": "==",
+                                                        "value": "Call-to-Action"
+                                                    }
+                                                ]
+                                            ],
                                             "wrapper": {
                                                 "width": "",
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "clone": [
-                                                "group_691d6ed5d9932"
-                                            ],
-                                            "display": "seamless",
                                             "layout": "block",
-                                            "prefix_label": 0,
-                                            "prefix_name": 0
+                                            "sub_fields": [
+                                                {
+                                                    "key": "field_6923e86bf2f30",
+                                                    "label": "Background Color",
+                                                    "name": "background_color",
+                                                    "aria-label": "",
+                                                    "type": "clone",
+                                                    "instructions": "",
+                                                    "required": 0,
+                                                    "conditional_logic": 0,
+                                                    "wrapper": {
+                                                        "width": "",
+                                                        "class": "",
+                                                        "id": ""
+                                                    },
+                                                    "clone": [
+                                                        "group_691d6ed5d9932"
+                                                    ],
+                                                    "display": "seamless",
+                                                    "layout": "block",
+                                                    "prefix_label": 0,
+                                                    "prefix_name": 0
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
@@ -3685,7 +3748,7 @@
                             "name": "form_position",
                             "aria-label": "",
                             "type": "select",
-                            "instructions": "If position=center, zone is one column. If position is left or right, zone is two column.",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -4206,7 +4269,7 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "return_format": "array",
+                                    "return_format": "url",
                                     "allow_in_bindings": 1,
                                     "parent_repeater": "field_button_cards_repeater"
                                 },
@@ -4442,7 +4505,7 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_6918166601126"
+                                "group_691d7eaf7eef3"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -4560,7 +4623,7 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_691c1dcdc6241"
+                                "group_691d7a68d536e"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -4593,6 +4656,13 @@
                 "operator": "==",
                 "value": "page"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
         ]
     ],
     "menu_order": 0,
@@ -4605,5 +4675,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764571475
+    "modified": 1765517803
 }
