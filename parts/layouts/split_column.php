@@ -327,12 +327,15 @@ if($embellishment == 'circles' ) {
                             $images = get_field('community_galleries', $gallery_post->ID);
                             if (!empty($images) && is_array($images)):
                               foreach ($images as $img):
-                                $image_url = $img['sizes']['wysiwyg-gallery-image'] ?? '';
+                                $image_url = $img['sizes']['wysiwyg-gallery-image'] ?? ''; 
+                                $image_url_full = $img['url'] ?? '';
                                 $alt       = $img['alt'] ?? '';
                                 if ($image_url): ?>
                                   <div>
                                     <div class="icon-slide-box px-2 px-md-3">
-                                      <img src="<?php echo esc_url($image_url); ?>" class="img-fluid" alt="<?php echo esc_attr($alt); ?>">
+                                      <a href="<?php echo $image_url_full; ?>" data-lightbox="community-gallery-<?php echo $key; ?>" data-title="<?php echo esc_attr($alt); ?>">
+                                          <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($alt); ?>" class="img-fluid">
+                                      </a>
                                     </div>
                                   </div>
                         <?php endif; endforeach; endif; endforeach; ?>

@@ -583,10 +583,10 @@ main section.bg-white {
 }
 .content-buttons-slider .slick-track {
   display: flex;
-  gap: 1.5rem;
 }
 .content-buttons-slider .slick-slide {
   height: inherit;
+  padding: 25px 15px;
 }
 .content-buttons-slider .single-button {
   height: 100%;
@@ -595,9 +595,11 @@ main section.bg-white {
   margin: 0 20px;
 }
 .content-and-button-card  .wysiwyg-content.top-content{
-width:100%;
-
-  }
+  width:100%;
+}
+.content-buttons-slider .slick-slider .slick-arrow {
+  top: 20px;
+}
  
 
 /**********************
@@ -1044,6 +1046,7 @@ width:100%;
   border: 0 !important;
   margin: 0 auto;
   max-width: 100% !important;
+  border-radius: 0 !important;
 }
 .lightbox .lb-closeContainer {
   position: absolute !important;

@@ -114,7 +114,7 @@ if ($heading || $content || !empty($button_cards) || $bottom_zone_content): ?>
           </<?php echo $heading_style;  ?>>
           <?php } ?>
           <?php if ($content): ?>
-            <div class="wysiwyg-content pt-3 pb-5 top-content <?php echo esc_attr($text_color); ?>">
+            <div class="wysiwyg-content pt-3 pb-4 top-content <?php echo esc_attr($text_color); ?>">
               <?php echo $content; ?>
             </div>
           <?php endif; ?>
@@ -123,8 +123,8 @@ if ($heading || $content || !empty($button_cards) || $bottom_zone_content): ?>
                 return !empty($btn['text']) && !empty($btn['link']);
             });
             $button_count = count($button_cards); ?>
-            <div class="content-buttons-wrapper <?php if($button_count > 4): ?>content-buttons-slider w-100 pb-5<?php endif; ?>">
-              <div class="buttons <?php if($button_count <= 4): ?>d-flex flex-wrap justify-content-center gap-4 pb-5<?php endif; ?>">
+            <div class="content-buttons-wrapper <?php if($button_count > 4): ?>content-buttons-slider w-100 pb-4<?php endif; ?>">
+              <div class="buttons <?php if($button_count <= 4): ?>d-flex flex-wrap justify-content-center gap-4 pb-5 pt-lg-4<?php endif; ?>">
                 <?php foreach ($button_cards as $button):
                   $button_text     = $button['text'] ?? '';
                   $button_link_url = $button['link'] ?? '';
@@ -134,7 +134,7 @@ if ($heading || $content || !empty($button_cards) || $bottom_zone_content): ?>
                     <div class="slide-item">
                   <?php endif; ?>
                       <a href="<?php echo esc_url($button_link_url); ?>"
-                        class="p-4 bg-white <?php if($button_count > 4): ?>d-flex align-items-center justify-content-center gap-2<?php else: ?>d-inline-block<?php endif; ?> <?php echo ($bg_color == 'bg-white' || $bg_color == 'bg-gradient-yellow') ? 'shadow ': ''; ?>single-button text-black text-decoration-none font-lexend"><?php echo $button_icon; ?> <strong><?php echo esc_html($button_text); ?></strong>
+                        class="p-4 bg-white <?php if($button_count > 4): ?>d-flex align-items-center justify-content-center gap-2<?php else: ?>d-inline-block<?php endif; ?> shadow single-button text-black text-decoration-none font-lexend"><?php echo $button_icon; ?> <strong><?php echo esc_html($button_text); ?></strong>
                       </a>
                   <?php if($button_count > 4): ?>
                     </div>
