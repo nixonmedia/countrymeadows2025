@@ -517,7 +517,7 @@ img.alignleft {
 }
 .searchwp-modal-form .searchwp-modal-form-default .searchwp-form-input-container:after {
   content: "Press ENTER to search or ESC to close";
-  bottom: -50;
+  bottom: -50px;
   right: 0;
   font-weight: 400;
 }
