@@ -1096,8 +1096,8 @@ function ukg_fetch_jobs() {
 
     // Example: re-index array
     $filtered_jobs = array_values($filtered_jobs);
-    echo "<pre>";
-    var_dump($filtered_jobs);
+    // echo "<pre>";
+    // var_dump($filtered_jobs);
 
     $api_requisitions = [];
 
