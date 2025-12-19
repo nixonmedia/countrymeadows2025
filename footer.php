@@ -162,6 +162,22 @@ $column_2_link = $content_column_2['link'] ?? '';
   </script>
 <!-- /Global JS variable -->
 <?php wp_footer(); ?>
+<script>
+document.addEventListener('facetwp-loaded', function() {
+
+    // Find "See more" toggle inside the job_family facet
+    const el = document.querySelector('.facetwp-facet-job_family .facetwp-toggle:not(.facetwp-hidden)');
+
+    if (el && el.textContent.includes('See')) {
+        el.textContent = 'Load All Job Categories';
+    }
+
+});
+</script>
+
+
+
 </body>
 
 </html>
+
