@@ -1768,6 +1768,9 @@ border-radius: 10px;
   .main-menu {
     padding: 22px 0 28px;
   }
+  .helpfull-suggestions {
+      margin-top: 20px;
+  }
 
   .footer-menu {
     display: grid;
