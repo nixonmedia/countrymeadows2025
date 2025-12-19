@@ -92,10 +92,8 @@
                                                 <?php echo $button['title']; ?>
                                             </a>
                                         <?php endif; ?>
-                                    <div class="search-button">
-                                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
-                                            <path d="M17.25 9.775C17.25 11.4245 16.7145 12.9483 15.8125 14.1845L20.3622 18.7378C20.8114 19.187 20.8114 19.9166 20.3622 20.3658C19.913 20.815 19.1834 20.815 18.7342 20.3658L14.1845 15.8125C12.9483 16.7145 11.4245 17.25 9.77499 17.25C5.64577 17.25 2.29999 13.9042 2.29999 9.775C2.29999 5.64578 5.64577 2.3 9.77499 2.3C13.9042 2.3 17.25 5.64578 17.25 9.775ZM9.77499 14.95C12.632 14.95 14.95 12.632 14.95 9.775C14.95 6.91797 12.632 4.6 9.77499 4.6C6.91796 4.6 4.59999 6.91797 4.59999 9.775C4.59999 12.632 6.91796 14.95 9.77499 14.95Z" fill="white"/>
-                                        </svg></a>
+                                    <div class="search-button header-search-form">
+                                        <?php echo do_shortcode('[searchwp_modal_search_form template="My Custom Template"]') ?>
                                     </div>
                                     <button class="navbar-toggler close-button d-lg-none" type="button" id="navbar-button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                         <img src="<?php echo get_stylesheet_directory_uri( );?>/assets/images/close-icon.svg" class="close-btn img-fluid" alt="Menu Open Icon">

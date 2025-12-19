@@ -32,6 +32,17 @@
 		<div class="searchwp-modal-form__container" role="dialog" aria-modal="true">
 			<main class="searchwp-modal-form__content">
 				<?php echo do_shortcode('[searchwp_form id="1"]');?>
+				<?php $helpful_suggestions = get_field("helpful_suggestions_for_search", "option"); 
+				if($helpful_suggestions){ ?>
+					<div class="helpfull-suggestions">
+						<p class="font-lexend font-medium fw-500 text-white fw-bold">Helpful Suggestions:</p>
+						<ul class="d-flex list-unstyled m-0 p-0 gap-3 flex-wrap">
+							<?php foreach($helpful_suggestions as $suggestion){ ?>
+								<li><a class="px-3 px-xl-4 py-1 py-xl-2 d-inline-block text-decoration-none font-lexend font-normal text-blue bg-white rounded-5" href="<?php echo $suggestion['helpful_suggestion']['url']; ?>" <?php echo $suggestion['helpful_suggestion']['target'] ? 'target="'.$suggestion['helpful_suggestion']['target'].'"': ''; ?>><?php echo $suggestion['helpful_suggestion']['title']; ?></a></li>
+							<?php }?>
+						</ul>
+					</div>
+				<?php } ?>
 			</main>
 			<footer class="searchwp-modal-form__footer">
 				<button class="searchwp-modal-form__close button" aria-label="Close" data-searchwp-modal-form-close></button>
