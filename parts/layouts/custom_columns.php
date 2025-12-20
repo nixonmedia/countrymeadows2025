@@ -189,7 +189,7 @@ if($num_columns == '2' && $include_special_content == false || $num_columns == '
   $content_fonts = 'font-lexend';
 } elseif($num_columns == '2' && $include_special_content == true) {
   $heading_column_class = 'col-md-12';
-  $left_column_class = 'col-md-7 pt-4 custom-columns-content-col';
+  $left_column_class = 'col-md-7 pt-4 pt-md-0 pt-lg-4 custom-columns-content-col';
   $row_class = '';
   $heading_fonts = 'font-lexend';
   $content_fonts = 'font-lexend';
@@ -216,7 +216,7 @@ if($num_columns == '2' && $include_special_content == false || $num_columns == '
   }
   if($choose_special_content == 'Media' && $media_type == 'Image' && $image_type == 'Portrait') {
     $right_column_class = 'col-md-5 col-lg-4';
-    $left_column_class = 'col-md-7 pt-4 custom-columns-content-col';
+    $left_column_class = 'col-md-7 pt-4 pt-md-0 pt-lg-4 custom-columns-content-col';
   }
 } elseif($num_columns == '3' || $include_special_content == true ) {
   $right_column_class = 'col-md-4 mb-4 mb-md-0';
