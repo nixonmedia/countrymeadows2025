@@ -124,7 +124,7 @@ if ($heading || $content || !empty($button_cards) || $bottom_zone_content): ?>
             });
             $button_count = count($button_cards); ?>
             <div class="content-buttons-wrapper <?php if($button_count > 4): ?>content-buttons-slider w-100 pb-4<?php endif; ?>">
-              <div class="buttons <?php if($button_count <= 4): ?>d-flex flex-wrap justify-content-center gap-4 pb-5 pt-lg-4<?php endif; ?>">
+              <div class="buttons <?php if($button_count <= 4): ?>d-flex flex-wrap justify-content-center gap-3 gap-lg-4 pb-5 pt-lg-4<?php endif; ?>">
                 <?php foreach ($button_cards as $button):
                   $button_text     = $button['text'] ?? '';
                   $button_link_url = $button['link'] ?? '';
