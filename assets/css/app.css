@@ -1016,7 +1016,7 @@ main section.bg-white {
   transform: none;
 }
 .push-heading {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 22px;
 }
 .push-info {
@@ -1684,6 +1684,12 @@ border-radius: 10px;
   .review-slider .icon-prev.slick-arrow {
     left: 0;
   }
+  .meet-team-slider .team-img-col img {
+    max-width: 265px;
+  }
+  .custom-columns-zone .wysiwyg-event-list img {
+    max-width: 175px;
+  }
 } 
 @media only screen and (max-width: 767px) {
   body {
@@ -1698,6 +1704,13 @@ border-radius: 10px;
     top: 70px;
     left: -22px;
     height: 290px;
+  }
+  .push-heading {
+    font-size: 22px;
+    line-height: 22px;
+  }
+  .meet-team-slider .team-img-col img, .custom-columns-zone .wysiwyg-event-list img {
+    max-width: 100%;
   }
 }
 @media only screen and (max-width: 429px) {
@@ -1782,6 +1795,10 @@ border-radius: 10px;
   .custom-columns-zone {
     padding-top: 50px;
     padding-bottom: 50px;
+  }
+  .push-button {
+    font-size: 14px;
+    padding: 5px 20px;
   }
 }
 @media only screen and (min-width: 992px) {
@@ -2052,6 +2069,10 @@ border-radius: 10px;
   }
   .form_zone.bg-pattern {
     background-position: 100% 100%;
+  }
+  .push-button {
+    font-size: 16px;
+    padding: 5px 33px;
   }
 }
 @media only screen and (min-width: 1200px) {
