@@ -117,27 +117,27 @@ if ($media_column && $media_type === 'Image' && $image_type === 'Image with Embe
 
 
 if(!$media_column) {
-    $content_col_class = 'col-lg-8 intro-content-col';
+    $content_col_class = 'col-md-8 intro-content-col';
     $outer_content_col_class = '';
     $media_col_class = '';
 } elseif($media_column && $media_type == 'Image' && $image_type == 'Image with Embellishment') {
   if($disable_sidebar_submenu == true || !$children) {
-    $content_col_class = 'col-lg-7 intro-content-col pb-5';
+    $content_col_class = 'col-md-7 intro-content-col pb-5';
     $outer_content_col_class = '';
-    $media_col_class = 'col-lg-5 col-xl-4 offset-xl-1 intro-img-col';
+    $media_col_class = 'col-md-5 col-xl-4 offset-xl-1 intro-img-col';
   } else {
-    $content_col_class = 'col-lg-6 mb-4 mb-lg-0 z-1';
-    $outer_content_col_class = 'col-lg-8 intro-content-col';
-    $media_col_class = 'col-lg-6 intro-img-col';
+    $content_col_class = 'col-md-6 mb-4 mb-md-0 z-1';
+    $outer_content_col_class = 'col-md-8 intro-content-col';
+    $media_col_class = 'col-md-6 intro-img-col';
   }
 } elseif($media_column && $media_type == 'Image' && $image_type == 'Standard' || $media_column && $media_type == 'Video' && $video_url) {
   if($disable_sidebar_submenu == true || !$children) {
-    $content_col_class = 'col-lg-7 intro-content-col';
+    $content_col_class = 'col-md-7 intro-content-col';
     $outer_content_col_class = '';
-    $media_col_class = 'col-lg-5 intro-media-col';
+    $media_col_class = 'col-md-5 intro-media-col';
   } else {
-    $content_col_class = 'col-lg-6 mb-4 mb-lg-0 z-1';
-    $outer_content_col_class = 'col-lg-8 intro-content-col';
+    $content_col_class = 'col-lg-6 mb-4 mb-lg-0 z-1 ';
+    $outer_content_col_class = 'col-md-8 intro-content-col';
     $media_col_class = 'col-lg-6 intro-media-col';
   }
 } else {
@@ -152,7 +152,7 @@ if(!$media_column) {
 <?php if ($stylized_heading || $headline || $content || $standard_image || $layered_image || $video_url): ?>
   <section class="stylized-heading-intro-zone <?php echo $section_class . ' ' . $bg_water_color; ?> <?php if ($background_water_color != 'None'): echo $bg_water_color_position; endif; ?>">
     <div class="container-fluid">
-      <div class="row flex-column-reverse flex-lg-row">
+      <div class="row flex-column-reverse flex-md-row">
         <?php if(($disable_sidebar_submenu == false && $children) && $media_column): ?>
           <div class="<?php echo $outer_content_col_class; ?> <?php echo $background_pattern_class; ?> position-relative">
             <?php if ($stylized_heading): ?>
@@ -292,7 +292,7 @@ if(!$media_column) {
           ?>
             <?php if ($disable_sidebar_submenu == false): ?>
             <!-- Intro Zone With Sidebar -->
-            <div class="col-lg-4 sidebar-submenu-col d-none d-lg-block">
+            <div class="col-md-4 sidebar-submenu-col d-none d-md-block">
                 <div class="sidebar-submenu-block">
                     <?php if($pagekids) { ?>
                         <h3 class="font-medium">

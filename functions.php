@@ -810,7 +810,7 @@ function wysiwyg_event_shortcode($atts)
             if (!empty($event_img)) {
 
                 // Example link URL (replace with your own variable)
-                $output .= '      <div class="col-md-4 mb-4 mb-md-0">';
+                $output .= '      <div class="col-lg-4 mb-4 mb-lg-0">';
                 $output .= '          <a href="' . $event_link . '">';
                 $output .=                $event_img;
                 $output .= '          </a>';
@@ -818,7 +818,7 @@ function wysiwyg_event_shortcode($atts)
             }
 
             // ---- COL 9 (Content) ----
-            $output .= '    <div class="col-md-8 ps-lg-3 wysiwyg-event-content-col">';
+            $output .= '    <div class="col-lg-8 ps-lg-3 wysiwyg-event-content-col">';
 
             // Event title (as link)
             $output .= '          <h4 class="font-lexend event-title mb-2"><a href="' . esc_url($event_link) . '">' . esc_html($event_title) . '</a></h4>';
