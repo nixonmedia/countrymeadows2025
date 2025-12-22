@@ -560,9 +560,6 @@ if ($meet_background_color == 'Blue') {
                               loading="lazy"
                               allow="autoplay"></iframe>
                           `);
-                            // Adjust height
-                            let videoHeight = jQuery('.push-info .video-image').outerHeight();
-                            jQuery('.push-info .video-player iframe').css('height', videoHeight);
                           });
                         });
                       </script>
@@ -647,9 +644,6 @@ if ($meet_background_color == 'Blue') {
                           loading="lazy"
                           allow="autoplay"></iframe>
                       `);
-                        // Adjust height
-                        let videoHeight = jQuery('.video-image').outerHeight();
-                        jQuery('.video-player iframe').css('height', videoHeight);
                       });
                     });
                   </script>
