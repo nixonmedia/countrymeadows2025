@@ -74,6 +74,11 @@
                 "param": "page_template",
                 "operator": "!=",
                 "value": "default"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "templates\/job-career.php"
             }
         ]
     ],
@@ -87,5 +92,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764829675
+    "modified": 1766225844
 }

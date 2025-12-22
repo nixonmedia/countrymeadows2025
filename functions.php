@@ -983,7 +983,11 @@ function ukg_fetch_jobs() {
     // var_dump($updated_after); exit;
     $all_jobs = [];
     $today = new DateTime('today', new DateTimeZone('UTC'));
-    $target_board_id = 'e66070ad-299d-4c5e-ad6e-43f81eb083fd';
+    // $target_board_id = 'e66070ad-299d-4c5e-ad6e-43f81eb083fd';
+    $target_board_ids = [
+        'e66070ad-299d-4c5e-ad6e-43f81eb083fd', // CM
+        '44b07573-b66f-4efe-a89b-b35cfe1cc42b', // Ecumenical Retirement
+    ];
 
     while (true) {
 
@@ -1046,7 +1050,7 @@ function ukg_fetch_jobs() {
      */
 
     // Example: remove inactive jobs
-    $filtered_jobs = array_values(array_filter($all_jobs, function ($job) use ($target_board_id, $today) {
+    $filtered_jobs = array_values(array_filter($all_jobs, function ($job) use ($target_board_ids, $today) {
 
         // 1. Must be Active
         if (empty($job['status']) || $job['status'] !== 'Published') {
@@ -1082,10 +1086,10 @@ function ukg_fetch_jobs() {
          * - single object
          * - OR array of boards
          */
-        foreach ($job['job_boards'] as $board) {
+        foreach (($job['job_boards'] ?? []) as $board) {
             if (
                 isset($board['id']) &&
-                $board['id'] === $target_board_id
+                in_array($board['id'], $target_board_ids, true)
             ) {
                 return true;
             }
@@ -1096,8 +1100,8 @@ function ukg_fetch_jobs() {
 
     // Example: re-index array
     $filtered_jobs = array_values($filtered_jobs);
-    // echo "<pre>";
-    // var_dump($filtered_jobs);
+    echo "<pre>";
+    var_dump($filtered_jobs);
 
     $api_requisitions = [];
 

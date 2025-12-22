@@ -87,6 +87,9 @@ h1, h2, h3, h4, h5, h6 {
 .text-black-100 {
   color: var(--black-100);
 }
+.text-purple {
+  color: var(--purple);
+}
 /* Global fonts  */
 .font-gloss-bloom {
   font-family: 'Gloss And Bloom';
@@ -413,7 +416,7 @@ img.alignleft {
   background-color: var(--pink);
   color: var(--white);
 }
-.search-button a {
+.search-button a, .facetwp-facet-career_search i {
   border-radius: 0 11.466px 11.466px 11.466px;
   background-color: var(--pink);
   height: 62px;
@@ -440,7 +443,7 @@ img.alignleft {
   text-decoration: none;
   font-size: 0;
 }
-.header-search, .header-search-form a {
+.header-search, .header-search-form a, .facetwp-facet-career_search i:before {
   color: var(--white);
   font-size: 16px;
   line-height: 28px;
@@ -1417,7 +1420,176 @@ border-radius: 10px;
   height: auto;
 }
 
+/* Careers template */
+.job-card {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 0px rgb(0 0 0 / 10%);
+}
+.job-title, .job-link {
+  font-size: 16px;
+  line-height: 16px;
+}
+.job-meta, .job-date {
+  font-size: 14px;
+  line-height: 14px;
+}
+.job-card-description {
+  border-top: 1px solid rgb(81 81 81 / 20%);
+  font-size: 16px;
+  line-height: 20px;
+}
+.careers-filters {
+    background-color: rgb(43 161 198 / 10%);
+    border-radius: 10px;
+    padding: 40px 20px 10px;
+}
+.careers-filters .facetwp-facet-career_search {
+    margin-bottom: 30px;
+}
+.careers-filters .facetwp-facet-career_search input {
+    height: 53px;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px;
+    width: calc(100% - 70px);
+    display: block;
+    min-width: unset !important;
+    margin-right: 10px !important;
+}
+.careers-filters .facetwp-facet-career_search i {
+    width: 65px;
+    height: 53px;
+    position: relative;
+    opacity: 1;
+}
+.careers-filters .facetwp-facet-career_search i:before {
+    content: "\f002";
+    font-family: "Font Awesome 6 Pro";
+    font-weight: 400;
+    font-size: 20px;
+    height: unset;
+    width: unset;
+    background: unset;
+    font-style: normal;
+    animation: unset !important;
+}
+.careers-filters .divider {
+    color: #666666;
+}
+
+.careers-filters .divider:before, .careers-filters .divider:after {
+    content: '';
+    width: 70px;
+    height: 1px;
+    display: block;
+    background-color: #C6C6C6;
+}
+.careers-filters .divider:before {
+    margin-right: 9px;
+}
+.careers-filters .divider:after {
+    margin-left: 9px;
+}
+.careers-filters .facetwp-facet-career_search .facetwp-input-wrap {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.careers-filters .facetwp-checkbox:before {
+    border: 1px solid #D9D9D9;
+    background-color: #fff;
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: block;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 7px;
+}
+.careers-filters .facetwp-checkbox {
+    position: relative;
+    background-image: unset !important;
+    padding-left: 30px;
+}
+.careers-filters .facetwp-checkbox.checked:before {
+    background-color: #d9d9d9;
+}
+.careers-filters .facetwp-toggle {
+    color: #0D74B1;
+    font-size: 14px;
+    margin-left: 0;
+}
+.careers-filters .divider {
+    color: #666666;
+}
+
+.careers-filters .divider:before, .careers-filters .divider:after {
+    content: '';
+    width: 70px;
+    height: 1px;
+    display: block;
+    background-color: #C6C6C6;
+}
+.careers-filters .divider:before {
+    margin-right: 9px;
+}
+.careers-filters .divider:after {
+    margin-left: 9px;
+}
+a.facetwp-toggle {
+    color: #0D74B1;
+    font-size: 14px;
+    margin-left: 30px;
+}
+.facetwp-facet-job_pagination {
+    background-color: #F4F4F4;
+    text-align: center;
+    padding: 33px;
+    margin-top: 35px;
+    border-radius: 10px;
+}
+.facetwp-facet-job_pagination a.active, .facetwp-facet-job_pagination a:hover {
+    background-color: #2B58A6;
+    color: #fff;
+}
+.facetwp-facet-job_pagination a {
+    text-decoration: none;
+    font-weight: 400 !important;
+    padding: 0px 15px !important;
+    border-radius: 10px;
+    text-align: center;
+}
+.job-alert-cta {
+    background-color: #F5F5FE;
+    border-radius: 10px;
+    padding: 26px 20px;
+    margin-top: 22px;
+}
+
+
 /* Media Queries  */
+
+@media only screen and (max-width: 429px) {
+  .wysiwyg-button, .site-button {
+    font-size: 14px;
+  }
+  .home .stylized-heading-intro-zone.layered-image-zone .intro-img-col:before {
+    top: 40px;
+    left: -20px;
+    height: 260px;
+  }
+  .stylized-heading-intro-zone.layered-image-zone .intro-img-col img {
+    max-width: 100%;
+  }
+  .stylized-heading-intro-zone:not(.layered-image-zone) .stylized-heading {
+    font-size: 35px;
+  }
+  .icon-slide-box {
+    line-height: 24px;
+  }
+}
 @media only screen and (max-width:575px) {
   .content-and-button-cards .content-buttons-wrapper:not(.content-buttons-slider) .buttons a{
     width: 80%;
@@ -1681,26 +1853,10 @@ border-radius: 10px;
   .review-slider .icon-prev.slick-arrow {
     left: 0;
   }
+  .careers-filters .facetwp-checkbox {
+    font-size: 16px;
+  }
 } 
-@media only screen and (max-width: 429px) {
-  .wysiwyg-button, .site-button {
-    font-size: 14px;
-  }
-  .home .stylized-heading-intro-zone.layered-image-zone .intro-img-col:before {
-    top: 40px;
-    left: -20px;
-    height: 260px;
-  }
-  .stylized-heading-intro-zone.layered-image-zone .intro-img-col img {
-    max-width: 100%;
-  }
-  .stylized-heading-intro-zone:not(.layered-image-zone) .stylized-heading {
-    font-size: 35px;
-  }
-  .icon-slide-box {
-    line-height: 24px;
-  }
-}
 @media only screen and (min-width: 992px) {
   body {
     line-height: 26px;
@@ -2006,6 +2162,37 @@ border-radius: 10px;
   }
   .form_zone:not(.form-center) .gform_wrapper form {
     max-width: 510px;
+  }
+  .careers-filters {
+    padding: 40px 32px 10px;
+  }
+  .careers-filters .facetwp-toggle {
+    margin-left: 30px;
+  }
+  .job-alert-cta {
+    padding: 26px 30px;
+  }
+  .job-title, .job-link {
+    font-size: 18px;
+    line-height: 18px;
+  }
+  .job-meta, .job-date {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .job-card-description {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .careers-filters .facetwp-checkbox:before {
+    width: 22px;
+    height: 22px;
+    top: 5px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .facetwp-facet-job_pagination a {
+    padding: 4px 15px !important;
   }
 }
 @media only screen and (min-width: 1200px) {
