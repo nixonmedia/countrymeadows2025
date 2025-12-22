@@ -1572,7 +1572,9 @@ a.facetwp-toggle {
     padding: 26px 20px;
     margin-top: 22px;
 }
-
+.careers-filters .facetwp-counter {
+  display: none;
+}
 
 /* Media Queries  */
 
