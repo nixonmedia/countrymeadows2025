@@ -101,9 +101,9 @@ if (!empty($bg_svg_pattern)) {
                     <?php if($form_position == 'center') {
                         $column_class = 'offset-lg-1 col-lg-10';
                     } elseif($form_position == 'right') {
-                        $column_class = 'col-lg-5 offset-lg-1';
+                        $column_class = 'col-md-6 col-lg-5 offset-lg-1';
                     } else {
-                        $column_class = 'col-lg-6';
+                        $column_class = 'col-md-6';
                     }
                     ?>
                     <?php if ($content || $form_position == "center" && $form): ?>
@@ -127,7 +127,7 @@ if (!empty($bg_svg_pattern)) {
                         </div>
                     <?php endif; ?>
                     <?php if ($form_position != "center") { ?>
-                        <div class="<?php if($form_position == 'right'): ?>col-lg-6 <?php else: ?>col-lg-5 offset-lg-1<?php endif; ?> py-lg-0 py-4 <?php if($form_position == 'right' || $form_position == 'left'): echo 'pe-lg-5'; endif; ?>">
+                        <div class="<?php if($form_position == 'right'): ?>col-md-6 <?php else: ?>col-md-6 col-lg-5 offset-lg-1<?php endif; ?> py-md-0 py-4 <?php if($form_position == 'right' || $form_position == 'left'): echo 'pe-lg-5'; endif; ?>">
                             <?php if ($form) { ?>
                                 <div class="wysiwyg-content <?php echo $text_color; ?>">
                                     <?php echo  do_shortcode('[gravityform id="' . $form . '" title="true" description="false"]'); ?>

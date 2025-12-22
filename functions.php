@@ -810,7 +810,7 @@ function wysiwyg_event_shortcode($atts)
             if (!empty($event_img)) {
 
                 // Example link URL (replace with your own variable)
-                $output .= '      <div class="col-md-4 mb-4 mb-md-0">';
+                $output .= '      <div class="col-lg-4 mb-4 mb-lg-0">';
                 $output .= '          <a href="' . $event_link . '">';
                 $output .=                $event_img;
                 $output .= '          </a>';
@@ -818,7 +818,7 @@ function wysiwyg_event_shortcode($atts)
             }
 
             // ---- COL 9 (Content) ----
-            $output .= '    <div class="col-md-8 ps-lg-3 wysiwyg-event-content-col">';
+            $output .= '    <div class="col-lg-8 ps-lg-3 wysiwyg-event-content-col">';
 
             // Event title (as link)
             $output .= '          <h4 class="font-lexend event-title mb-2"><a href="' . esc_url($event_link) . '">' . esc_html($event_title) . '</a></h4>';
@@ -1100,8 +1100,8 @@ function ukg_fetch_jobs() {
 
     // Example: re-index array
     $filtered_jobs = array_values($filtered_jobs);
-    echo "<pre>";
-    var_dump($filtered_jobs);
+    // echo "<pre>";
+    // var_dump($filtered_jobs);
 
     $api_requisitions = [];
 
@@ -1284,7 +1284,7 @@ function ukg_delete_old_careers(array $api_requisitions) {
 
         $req = get_post_meta($post_id, 'career_requisition_number', true);
 
-        // ❌ Not found in API → delete
+        // Not found in API → delete
         if (!in_array($req, $api_requisitions, true)) {
 
             wp_delete_post($post_id, true); // true = permanent delete
