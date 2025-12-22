@@ -134,11 +134,11 @@ if(!$media_column) {
   if($disable_sidebar_submenu == true || !$children) {
     $content_col_class = 'col-md-7 intro-content-col';
     $outer_content_col_class = '';
-    $media_col_class = 'col-md-5 intro-media-col';
+    $media_col_class = 'col-md-5 intro-media-col mb-4 mb-lg-0';
   } else {
-    $content_col_class = 'col-lg-6 mb-4 mb-lg-0 z-1 ';
+    $content_col_class = 'col-lg-6 z-1 ';
     $outer_content_col_class = 'col-md-8 intro-content-col';
-    $media_col_class = 'col-lg-6 intro-media-col';
+    $media_col_class = 'col-lg-6 intro-media-col mb-4 mb-lg-0';
   }
 } else {
   $content_col_class = '';
@@ -158,13 +158,13 @@ if(!$media_column) {
             <?php if ($stylized_heading): ?>
               <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
             <?php endif; ?>
-            <div class="row">
+            <div class="row flex-column-reverse <?php if($disable_sidebar_submenu == false && $children): ?>flex-lg-row<?php else: ?>flex-md-row<?php endif; ?>">
         <?php endif;?>
         
               <?php if ( ($stylized_heading && $disable_sidebar_submenu == true) || ($disable_sidebar_submenu == false && !$media_column) || $headline || $content): ?>
                 <div class="<?php echo $content_col_class; ?> <?php if($disable_sidebar_submenu == true || $media_column == false || !$children): echo $background_pattern_class; endif; ?> position-relative">
                   <?php if ( ($stylized_heading && $disable_sidebar_submenu == true) || ($disable_sidebar_submenu == false && !$media_column) || !$children): ?>
-                    <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
+                    <span class="stylized-heading d-block text-pink font-gloss-bloom mb-4 <?php if(!is_page('home') && ($disable_sidebar_submenu == true || !$children)):?>d-none d-md-block<?php endif; ?>"><?php echo $stylized_heading; ?></span>
                   <?php endif;
                   if ($headline): ?>
                     <h1 class="font-medium fw-bold mb-2 pb-1"><?php echo $headline; ?></h1>
@@ -179,6 +179,9 @@ if(!$media_column) {
               <!-- Media Column -->
                <?php if($media_column): ?>
                 <div class="<?php echo $media_col_class; ?> position-relative">
+                  <?php if ((!is_page('home') && $stylized_heading && $disable_sidebar_submenu == true) || (!is_page('home') && $stylized_heading && !$children)): ?>
+                    <span class="stylized-heading d-block d-md-none text-pink font-gloss-bloom mb-4"><?php echo $stylized_heading; ?></span>
+                  <?php endif; ?>
                   <?php if ($media_column && $media_type == 'Image' && $image_type == 'Image with Embellishment' && $layered_image): ?>
                     <div class="image-box <?php echo $embellishment_class; ?> left-align-embellishment">
                       <img src="<?php echo esc_url($layered_image['sizes']['layered_photo']); ?>"
@@ -254,7 +257,7 @@ if(!$media_column) {
 
                               // Add video iframe
                               jQuery('.vp-<?php echo $unique_key; ?>').html(`
-                                <iframe title="Video" width="100%" height="360"
+                                <iframe title="Video"
                                   src="<?php echo esc_url($embed_src); ?>"
                                   frameborder="0"
                                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -262,10 +265,6 @@ if(!$media_column) {
                                   loading="lazy"
                                   allow="autoplay"></iframe>
                               `);
-
-                              // Adjust height
-                              let videoHeight = jQuery('.video-image').outerHeight();
-                              jQuery('.video-player iframe').css('height', videoHeight);
                             });
                           });
                         </script>
@@ -277,16 +276,13 @@ if(!$media_column) {
           </div>
           </div>
         <?php endif; ?>
-        
         <?php if(!is_page('home')):
             if($post->post_parent || $children):
                 $parentTitle = get_the_title($post->post_parent);
-
                 $thispage = $post->ID;
                 $parent_id =  wp_get_post_parent_id( $post->ID );
                 $parent_link = get_permalink($parent_id);
                 $pageTitle = $post->post_title;
-
                 $pagekids = get_pages('exclude=' . $exclude_list . '&depth=1&sort_column=menu_order&child_of=' . $thispage);
 
           ?>
