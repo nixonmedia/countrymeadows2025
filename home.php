@@ -5,7 +5,7 @@ $headline = get_field("headline", $blog_page_id);
 $content = get_field('content', $blog_page_id);
 $button = get_field('button', $blog_page_id);
 $hide_breadcrumb = get_field('hide_breadcrumb', $blog_page_id);  ?>
-<section class="stylized-heading-intro-zone blog-intro-zone bg-light-blue pt-5">
+  <section class="stylized-heading-intro-zone blog-intro-zone bg-light-blue pt-5">
     <div class="container-fluid">
       <?php if($hide_breadcrumb == false): ?>
         <div class="breadcrumb d-none d-lg-block">
@@ -36,12 +36,27 @@ $hide_breadcrumb = get_field('hide_breadcrumb', $blog_page_id);  ?>
             <a href="<?php echo $button['url']; ?>" class="site-button" <?php if($button['target']): ?>target="<?php echo $button['target']; ?>"<?php endif; ?>><?php echo $button['title']; ?></a>
           <?php endif; ?>
         </div>
-        <div class="col-lg-5 align-self-end mb-lg-4">
+        <div class="col-lg-6 align-self-end mb-lg-4">
           <div class="search-box-block bg-blue">
             <h3 class="font-medium text-white mb-3 mb-lg-4">What can we help you find?</h3>
+            <div class="d-flex">
+              <?php echo do_shortcode('[facetwp facet="blog_search"]'); ?>
+              or
+              <?php echo do_shortcode('[facetwp facet="browse_by_topic"]'); ?>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+  <section class="blog-posts-zone py-5">
+    <div class="container">
+      <?php echo do_shortcode('[facetwp template="blog_posts"]'); ?>
+    </div>
+  </section>
+  <section class="blog-pagination text-center">
+    <div class="container">
+      <?php echo do_shortcode('[facetwp facet="blog_pagination"]'); ?>
     </div>
   </section>
 <?php get_footer(); ?>

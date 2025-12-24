@@ -1543,11 +1543,11 @@ a.facetwp-toggle {
     margin-top: 35px;
     border-radius: 10px;
 }
-.facetwp-facet-job_pagination a.active, .facetwp-facet-job_pagination a:hover {
+.facetwp-facet-job_pagination a.active, .facetwp-facet-job_pagination a:hover, .blog-pagination .facetwp-facet-pager a {
     background-color: #2B58A6;
     color: #fff;
 }
-.facetwp-facet-job_pagination a {
+.facetwp-facet-job_pagination a, .blog-pagination .facetwp-facet-pager a {
     text-decoration: none;
     font-weight: 400 !important;
     padding: 0px 15px !important;
@@ -1565,6 +1565,27 @@ a.facetwp-toggle {
 }
 .job-alert-cta .site-button {
     border-top-left-radius: 0;
+}
+
+/* Blog Archive */
+.post-title {
+  font-size: 25px;
+  line-height: 36px;
+}
+.post-img {
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  margin-bottom: 15px;
+}
+.blog-post-date {
+  color: #666666;
+}
+.blog-pagination {
+  padding: 62px 30px;
+  background-image: url(../images/blog-pagination.svg);
+}
+.blog-pagination .facetwp-type-pager {
+  margin-bottom: 0;
 }
 
 

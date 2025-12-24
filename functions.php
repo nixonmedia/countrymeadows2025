@@ -52,6 +52,7 @@ if (! function_exists('country_meadows_support')) :
         add_image_size('two_col_wide_image', 575, 345, true);
         add_image_size('two_col_tall_image', 440, 525, true);
         add_image_size('two_col_top', 444, 263, true);
+        add_image_size('blog_post_thumb', 930, 616, true);
     
         add_image_size('split-col-image', 1110, 734, true);
 	}
@@ -1397,3 +1398,37 @@ function render_fetch_careers_page() {
 
     <?php
 }
+
+/**
+ * FacetWP Integration: Prevent filtering on home page main query
+ */
+add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
+  if ( $query->is_home() && $query->is_main_query() ) {
+    $is_main_query = false;
+  }
+  return $is_main_query;
+}, 10, 2 );
+
+/**
+ * FacetWP Integration: Scroll to top on filter change
+ */
+add_action( 'wp_head', function() { ?>
+  <script>
+    (function($) {
+        $(document).on('facetwp-refresh', function() {
+            if ( FWP.soft_refresh == true )  {
+                FWP.enable_scroll = true;
+            } else {
+                FWP.enable_scroll = false;
+            }
+        });
+        $(document).on('facetwp-loaded', function() {
+            if (FWP.enable_scroll == true) {
+                $('html, body').animate({
+                    scrollTop: 0 // Scroll to the top of the page
+                }, 500);
+            }
+        });
+    })(jQuery);
+  </script>
+<?php } );
