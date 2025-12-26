@@ -1580,6 +1580,9 @@ a.facetwp-toggle {
   height: 49px;
   padding: 8px 5px !important;
 }
+.blog-pagination a.active, .blog-pagination a:hover {
+  background-color: #F2BD3E;
+}
 .facetwp-facet-job_pagination a {
   padding: 0px 15px !important;
 }
