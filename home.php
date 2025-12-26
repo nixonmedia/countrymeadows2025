@@ -36,12 +36,12 @@ $hide_breadcrumb = get_field('hide_breadcrumb', $blog_page_id);  ?>
             <a href="<?php echo $button['url']; ?>" class="site-button" <?php if($button['target']): ?>target="<?php echo $button['target']; ?>"<?php endif; ?>><?php echo $button['title']; ?></a>
           <?php endif; ?>
         </div>
-        <div class="col-lg-6 align-self-end mb-lg-4">
-          <div class="search-box-block bg-blue">
+        <div class="col-lg-6 align-self-end mb-lg-4 position-relative">
+          <div class="search-box-block bg-blue with-background-pattern circles-background-pattern">
             <h3 class="font-medium text-white mb-3 mb-lg-4">What can we help you find?</h3>
-            <div class="d-flex">
+            <div class="d-md-flex">
               <?php echo do_shortcode('[facetwp facet="blog_search"]'); ?>
-              or
+              <span class="text-white align-items-center fw-bold px-3">Or</span>
               <?php echo do_shortcode('[facetwp facet="browse_by_topic"]'); ?>
             </div>
           </div>

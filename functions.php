@@ -1412,23 +1412,17 @@ add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
 /**
  * FacetWP Integration: Scroll to top on filter change
  */
-add_action( 'wp_head', function() { ?>
+add_action( 'wp_head', function() {
+  ?>
   <script>
     (function($) {
-        $(document).on('facetwp-refresh', function() {
-            if ( FWP.soft_refresh == true )  {
-                FWP.enable_scroll = true;
-            } else {
-                FWP.enable_scroll = false;
-            }
-        });
-        $(document).on('facetwp-loaded', function() {
-            if (FWP.enable_scroll == true) {
-                $('html, body').animate({
-                    scrollTop: 0 // Scroll to the top of the page
-                }, 500);
-            }
-        });
+      $(document).on('facetwp-loaded', function() {
+        if ( FWP.loaded ) { // Run only after the initial page load
+          $('html, body').animate({
+            scrollTop: $('.facetwp-template').offset().top - 100 // Scroll to the top of the element with class "facetp-template"
+          }, 500);
+        }
+      });
     })(jQuery);
   </script>
 <?php } );
