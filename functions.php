@@ -53,6 +53,7 @@ if (! function_exists('country_meadows_support')) :
         add_image_size('two_col_tall_image', 440, 525, true);
         add_image_size('two_col_top', 444, 263, true);
         add_image_size('blog_post_thumb', 930, 616, true);
+        add_image_size('single_post_thumb', 1136, 744, true);
     
         add_image_size('split-col-image', 1110, 734, true);
 	}

@@ -1493,7 +1493,7 @@ border-radius: 10px;
     font-style: normal;
     animation: unset !important;
 }
-.careers-filters .divider {
+.careers-filters .divider, .author-info .author-name, .author-info .author-bio {
     color: #666666;
 }
 
@@ -1626,6 +1626,42 @@ a.facetwp-toggle {
   margin-bottom: 0;
 }
 
+/*** Single Blog Posts ***/
+.related-posts-wrapper {
+  background-color: #F3F1F1;
+  padding: 53px 53px 47px;
+}
+.related-posts-wrapper .related-post-title {
+  line-height: 18px;
+  font-size: 14px;
+}
+.related-posts-wrapper .related-post {
+  background-color: #FFF;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+}
+.related-posts-wrapper .related-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.post-image-wrapper img {
+  border-radius: 16px;
+}
+.single-post-meta .blog-post-date, .post-categories a {
+  font-size: 16px;
+  line-height: 45px;
+}
+.post-stylized-heading {
+  font-size: 58px;
+  line-height: 58px;
+  transform: rotate(-1.888deg);
+}
+.post-cta-zone {
+  padding: 82px 0;
+}
+.author-image img {
+  border-radius: 100px;
+}
 
 /* Media Queries  */
 
@@ -2560,6 +2596,10 @@ a.facetwp-toggle {
     font-size: 28px;
     line-height: 28px;
   }
+  .single-post-title {
+    font-size: 50px;
+    line-height: 60px;
+  }
 }
 @media only screen and (min-width: 1400px) {
   .meet-team-button {
@@ -2608,6 +2648,10 @@ width:85%;
   }
   .meet-team-slider .team-content-col {
     padding-right: 50px;
+  }
+  .post-stylized-heading {
+    font-size: 76px;
+    line-height: 76px;
   }
 }
 @media only screen and (min-width: 1900px) {
@@ -2674,6 +2718,10 @@ width:85%;
   }
   .custom-columns-content-col {
     padding-left: 34px;
+  }
+  .related-posts-wrapper .related-post-title {
+    line-height: 25px;
+    font-size: 18px;
   }
 }
 @media only screen and (min-width: 1920px) {
