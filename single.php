@@ -66,7 +66,7 @@ if ( have_posts() ) : ?>
               ?>
               <div class="blog-author row align-items-center mt-4">
                   <?php if ( $author_image_url ) : ?>
-                    <div class="col-lg-2 author-image">
+                    <div class="col-md-2 author-image mb-3 mb-md-0">
                         <img 
                             src="<?php echo esc_url( $author_image_url ); ?>"
                             alt="<?php echo esc_attr( $author_name ); ?>"
@@ -75,8 +75,8 @@ if ( have_posts() ) : ?>
                         >
                     </div>
                 <?php endif; ?>
-                  <div class="col-lg-10 author-info">
-                      <h6 class="author-name mb-1"><?php echo esc_html( $author_name ); ?>, 
+                  <div class="col-md-10 author-info">
+                      <h6 class="author-name mb-1 font-xs-medium"><?php echo esc_html( $author_name ); ?>, 
                       <?php if ( $job_title ) : ?><?php echo esc_html( $job_title ); ?></h6>
                       <?php endif; ?>
                       <?php if ( $bio ) : ?>
@@ -89,51 +89,72 @@ if ( have_posts() ) : ?>
               <?php endif; ?>
         </div>
       </div>
-      <div class="col-md-4 offset-md-1">
-        <div class="related-posts-wrapper position-relative">
-          <?php
-            // Get categories of current post
-            $categories = get_the_category();
-            $first_cat = $categories[0];
-            $cat_link  = get_category_link( $first_cat->term_id );
-            if ( ! empty( $categories ) ) :
-                // Use only the FIRST category
-                $first_cat_id = $categories[0]->term_id;
-                $related_args = [
-                    'post_type'      => 'post',
-                    'posts_per_page' => 3,
-                    'post__not_in'   => [ get_the_ID() ],
-                    'cat'            => $first_cat_id,
-                    'orderby'        => 'date',
-                    'order'          => 'DESC',
-                ];
-                $related_query = new WP_Query( $related_args );
-                if ( $related_query->have_posts() ) : ?>
+      <?php $categories = get_the_category();
+        if ( ! empty( $categories ) ) :
+        $category_ids = [];
+        foreach ( $categories as $cat ) {
+          if ( 'uncategorized' !== $cat->slug ) {  // Exclude "Uncategorized" category
+            $category_ids[] = $cat->term_id;
+          }
+        }
+        // Check if there are any valid categories to query
+        if ( ! empty( $category_ids ) ) :
+            // Query for related posts (from the same categories)
+            $related_args = [
+              'post_type'      => 'post',
+              'posts_per_page' => 3,  
+              'post__not_in'   => [ get_the_ID() ], 
+              'category__in'   => $category_ids,  
+              'orderby'        => 'date', 
+              'order'          => 'DESC',
+            ];
+            $related_query = new WP_Query( $related_args );
+            // Only render the related posts block if related posts are found
+            if ( $related_query->have_posts() ) : ?>
+              <div class="col-lg-4 col-md-5 offset-lg-1 d-none d-md-block">
+                <div class="related-posts-wrapper position-relative">
                   <h4 class="font-xm mb-4 pb-lg-2">Related Posts</h4>
                   <?php while ( $related_query->have_posts() ) : $related_query->the_post(); ?>
-                      <div class="related-post mb-4 row">
-                        <div class="col-md-5 ps-lg-0">
+                    <div class="related-post mb-4 row mx-0">
+                        <div class="col-md-5 ps-md-0">
                             <?php if ( has_post_thumbnail() ) : ?>
-                              <div class="related-thumb h-100">
-                                <?php the_post_thumbnail( 'full' ); ?>
-                              </div>
+                                <div class="related-thumb h-100">
+                                    <?php the_post_thumbnail( 'full' ); ?>
+                                </div>
                             <?php endif; ?>
                         </div>
                         <div class="col-md-7 py-3">
-                          <h6 class="related-post-title mb-0"><a href="<?php the_permalink(); ?>" class="text-blue text-decoration-none">
-                            <?php the_title(); ?>
-                          </a></h6>
+                            <h6 class="related-post-title mb-0">
+                                <a href="<?php the_permalink(); ?>" class="text-blue text-decoration-none">
+                                    <?php the_title(); ?>
+                                </a>
+                            </h6>
                         </div>
-                      </div>
+                    </div>
                   <?php endwhile; ?>
-                  <a href="<?php echo esc_url( $cat_link ); ?>" class="text-blue fw-bold font-xs-medium">More posts about these topics</a>
+                  <div class="text-center">
+                    <?php
+                    // Get category slugs
+                    $category_slugs = [];
+                    foreach ( $categories as $cat ) {
+                        if ( 'uncategorized' !== $cat->slug ) {  // Skip "Uncategorized"
+                            $category_slugs[] = $cat->slug;
+                        }
+                    }
+                    // Join slugs with commas
+                    $category_param = implode(',', $category_slugs);
+                    ?>
+                    <a href="<?php echo esc_url( home_url( '/blog' ) . '?_browse_by_topic=' . $category_param ); ?>" class="text-blue fw-bold font-xs-medium">
+                        More posts about these topics
+                    </a>
+                  </div>
+                </div>
+              </div>
             <?php
-                    wp_reset_postdata();
-                endif;
-            endif;
-            ?>
-        </div>
-      </div>
+                wp_reset_postdata();  
+            endif;  
+          endif;  
+        endif;  ?>
     </div>
   </div>
 </section>
@@ -149,29 +170,92 @@ if ( have_posts() ) : ?>
     endif;
  endif; ?>
  
-<?php $cta_heading = get_field('heading');
-$cta_content = get_field('content');
-$cta_buttons = get_field('buttons'); ?>
-<section class="post-cta-zone bg-light-blue border-straight">
-  <div class="container-fluid">
-    <div class="row justify-content-center text-center">
-      <div class="col-lg-7">
-        <?php if($cta_heading): ?>
-        <h2 class="text-pink fw-normal pt-3 post-stylized-heading font-gloss-bloom"><?php echo $cta_heading; ?></h2>
-        <?php endif;
-        if($cta_content): ?>
-          <div class="wysiwyg-content">
-            <?php echo $cta_content; ?>
-          </div>
-        <?php endif;  ?>
-          <div class="post-cta-buttons d-flex align-items-center justify-content-center gap-4 flex-wrap mt-4">
-            <?php foreach($cta_buttons as $button): ?>
-              <a href="<?php echo $button['button']['url'];?>" class="site-button" <?php if($button['button']['target']): ?>target="<?php echo $button['button']['target']; ?>"<?php endif; ?>><?php echo $button['button']['title']; ?></a>
-            <?php endforeach; ?>
-          </div>
+<div class="related-posts-wrapper position-relative d-md-none">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <?php
+          // Get categories of current post
+          $categories = get_the_category();
+          $first_cat = $categories[0];
+          $cat_link  = get_category_link( $first_cat->term_id );
+          if ( ! empty( $categories ) ) :
+              // Use only the FIRST category
+              $first_cat_id = $categories[0]->term_id;
+              $related_args = [
+                  'post_type'      => 'post',
+                  'posts_per_page' => 3,
+                  'post__not_in'   => [ get_the_ID() ],
+                  'cat'            => $first_cat_id,
+                  'orderby'        => 'date',
+                  'order'          => 'DESC',
+              ];
+              $related_query = new WP_Query( $related_args );
+              if ( $related_query->have_posts() ) : ?>
+                <h4 class="font-xm mb-4 pb-lg-2">Related Posts</h4>
+                <?php while ( $related_query->have_posts() ) : $related_query->the_post(); ?>
+                    <div class="related-post mb-4 row mx-0">
+                      <div class="col-4 px-0">
+                          <?php if ( has_post_thumbnail() ) : ?>
+                            <div class="related-thumb h-100">
+                              <?php the_post_thumbnail( 'full' ); ?>
+                            </div>
+                          <?php endif; ?>
+                      </div>
+                      <div class="col-8 py-3">
+                        <h6 class="related-post-title mb-0"><a href="<?php the_permalink(); ?>" class="text-blue text-decoration-none">
+                          <?php the_title(); ?>
+                        </a></h6>
+                      </div>
+                    </div>
+                <?php endwhile; ?>
+                <a href="<?php echo esc_url( $cat_link ); ?>" class="text-blue fw-bold font-xs-medium">More posts about these topics</a>
+          <?php
+                  wp_reset_postdata();
+              endif;
+          endif;
+          ?>
       </div>
     </div>
   </div>
-</section>
+</div>
+<?php 
+$cta_heading = get_field('heading');
+$cta_content = get_field('content');
+$cta_buttons = get_field('buttons'); // Repeater field
+
+// Check if any of the fields have values
+if ($cta_heading || $cta_content || ($cta_buttons && count($cta_buttons) > 0)): ?>
+  <section class="post-cta-zone bg-light-blue border-straight">
+    <div class="container-fluid">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-9 col-xl-8 col-xxl-7">
+          <?php if($cta_heading): ?>
+            <h2 class="text-pink fw-normal pt-3 post-stylized-heading font-gloss-bloom">
+              <?php echo $cta_heading; ?>
+            </h2>
+          <?php endif; ?>
+          <?php if($cta_content): ?>
+            <div class="wysiwyg-content">
+              <?php echo $cta_content; ?>
+            </div>
+          <?php endif; ?>
+            <?php if($cta_buttons && count($cta_buttons) > 0): ?>
+              <div class="post-cta-buttons d-flex align-items-center justify-content-center gap-4 flex-wrap mt-4">
+                <?php foreach($cta_buttons as $button): ?>
+                  <a href="<?php echo esc_url($button['button']['url']); ?>" class="site-button" 
+                    <?php if($button['button']['target']): ?> 
+                        target="<?php echo esc_attr($button['button']['target']); ?>" 
+                    <?php endif; ?>>
+                    <?php echo esc_html($button['button']['title']); ?>
+                  </a>
+                <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </section>
+<?php endif; ?>
 <?php get_footer();
 ?>

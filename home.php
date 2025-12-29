@@ -59,4 +59,17 @@ $hide_breadcrumb = get_field('hide_breadcrumb', $blog_page_id);  ?>
       <?php echo do_shortcode('[facetwp facet="blog_pagination"]'); ?>
     </div>
   </section>
+<!-- Hide Pagination section if page is equal to 1 -->
+<script>
+  document.addEventListener('facetwp-loaded', function () {
+    const paginationSection = document.querySelector('.blog-pagination');
+    const pager = paginationSection?.querySelector('.facetwp-pager');
+
+    if (!pager || pager.children.length <= 1) {
+        paginationSection.style.display = 'none';
+    } else {
+        paginationSection.style.display = '';
+    }
+  });
+</script>
 <?php get_footer(); ?>

@@ -1427,3 +1427,15 @@ add_action( 'wp_head', function() {
     })(jQuery);
   </script>
 <?php } );
+//Remove 'View' option from Blog Authors CPT
+add_filter('post_row_actions', function ($actions, $post) {
+    if ($post->post_type === 'blog-author') {
+        unset($actions['view']);
+    }
+    return $actions;
+}, 10, 2);
+add_action('admin_bar_menu', function ($wp_admin_bar) {
+    if (get_post_type() === 'blog-author') {
+        $wp_admin_bar->remove_node('view');
+    }
+}, 999);

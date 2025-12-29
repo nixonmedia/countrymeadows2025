@@ -1631,6 +1631,16 @@ a.facetwp-toggle {
   background-color: #F3F1F1;
   padding: 53px 53px 47px;
 }
+.related-posts-wrapper:after {
+  content: "";
+  background-color: #F3F1F1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: -100%;
+  top: 0;
+  z-index: -1;
+}
 .related-posts-wrapper .related-post-title {
   line-height: 18px;
   font-size: 14px;
@@ -1956,6 +1966,9 @@ a.facetwp-toggle {
   .custom-columns-zone .wysiwyg-event-list img {
     max-width: 175px;
   }
+  .related-posts-wrapper {
+    padding: 30px 20px;
+  }
 } 
 @media only screen and (max-width: 767px) {
   body {
@@ -2099,7 +2112,7 @@ a.facetwp-toggle {
   }
   h5, .font-xs-medium {
     font-size: 18px;
-    line-height: 35px;
+    line-height: 26px;
   }
   .bg-pattern {
     background-size: 250px;
@@ -2381,6 +2394,9 @@ a.facetwp-toggle {
   .facetwp-facet-job_pagination a {
     padding: 4px 15px !important;
   }
+  .related-posts-wrapper {
+    padding: 30px 20px;
+  }
 }
 @media only screen and (min-width: 1200px) {
   body {
@@ -2542,7 +2558,7 @@ a.facetwp-toggle {
     padding: 32px 0 170px;
   }
   .footer-white-button {
-    padding: 6px 20px;
+    padding: 6px 18px;
     font-size: 16px;
     line-height: 45px;
   }
