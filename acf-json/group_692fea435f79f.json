@@ -1,39 +1,11 @@
 {
-    "key": "group_6936584f48f12",
-    "title": "Single Blog Post",
+    "key": "group_692fea435f79f",
+    "title": "Blog Intro Zone",
     "fields": [
         {
-            "key": "field_6936584f45ba3",
-            "label": "Blog Author",
-            "name": "blog_author",
-            "aria-label": "",
-            "type": "post_object",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "blog-author"
-            ],
-            "post_status": "",
-            "taxonomy": "",
-            "return_format": "object",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "bidirectional": 0,
-            "ui": 1,
-            "bidirectional_target": [],
-            "max": 1
-        },
-        {
-            "key": "field_694e840d06ddb",
-            "label": "Heading",
-            "name": "heading",
+            "key": "field_692fea4300d5a",
+            "label": "Stylized Heading Text",
+            "name": "stylized_heading_text",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -52,7 +24,28 @@
             "append": ""
         },
         {
-            "key": "field_694e841906ddc",
+            "key": "field_692febf200d5b",
+            "label": "Headline",
+            "name": "headline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_692febff00d5c",
             "label": "Content",
             "name": "content",
             "aria-label": "",
@@ -73,11 +66,11 @@
             "delay": 0
         },
         {
-            "key": "field_694e85dd172eb",
-            "label": "Buttons",
-            "name": "buttons",
+            "key": "field_692fec0800d5d",
+            "label": "Button",
+            "name": "button",
             "aria-label": "",
-            "type": "repeater",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -86,41 +79,16 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Add Button",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_694e85e8172ec",
-                    "label": "Button",
-                    "name": "button",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "allow_in_bindings": 0,
-                    "parent_repeater": "field_694e85dd172eb"
-                }
-            ]
+            "return_format": "array",
+            "allow_in_bindings": 0
         }
     ],
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "page_type",
                 "operator": "==",
-                "value": "post"
+                "value": "posts_page"
             }
         ]
     ],
@@ -129,13 +97,10 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": [
-        "the_content",
-        "author"
-    ],
+    "hide_on_screen": "",
     "active": true,
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1766754627
+    "modified": 1764748313
 }
