@@ -34,8 +34,8 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
             <!-- RIGHT COLUMN -->
             <div class="col-lg-7 right-floorplan-col">
                 <div class="row mb-4 ">
-                    <div class="col-lg-5 col-xl-4 left-content">
-                        <h3 class="fw-bold font-poppins">Explore our floor plans</h3>
+                    <div class="col-lg-5 col-xl-4 left-floorplan-content">
+                        <h3 class="fw-bold font-poppins heading">Explore our floor plans</h3>
                     </div>
                     <div class=" col-lg-7 col-xl-6">
                         <div class=" wysiwyg-content font-xs-medium font-poppins">
@@ -102,8 +102,8 @@ $embellishment_position = $media_embellishment['embellishment_position'] ?? '';
           <!-- RIGHT COLUMN -->
             <div class="col-lg-5 my-auto">
                 <div class="row mb-4 px-0 px-lg-3">
-                    <div class="col-xl-5">
-                        <h3 class="fw-bold font-poppins dotted-underline">Explore our floor plans</h3>
+                    <div class="col-xl-5 left-floorplan-content">
+                        <h3 class="fw-bold font-poppins dotted-underline heading">Explore our floor plans</h3>
                     </div>
                     <div class=" col-xl-7">
                         <div class=" wysiwyg-content font-xs-medium font-poppins my-3 mb-lg-3">

@@ -1166,7 +1166,7 @@ width:100%;
 
 }
 
-.right-floorplan-col .left-content{
+ .left-floorplan-content .heading{
   font-size:30px;
   line-height:35px;
 }
@@ -2025,7 +2025,7 @@ width:85%;
   .meet-team-slider .team-content-col {
     padding-right: 50px;
   }
-  .right-floorplan-col .left-content{
+  .left-floorplan-content .heading{
   font-size:40px;
   line-height:45px;
 }
