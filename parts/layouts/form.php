@@ -97,7 +97,7 @@ if (!empty($bg_svg_pattern)) {
                     ? "justify-content-center"
                     : "";
             ?>
-                <div class="row <?php echo $form_position == "left" ? "flex-row-reverse" : ""; ?> <?php echo $row_class; ?>">
+                <div class="row <?php echo $form_position == "left" ? "flex-column-reverse flex-md-row-reverse" : ""; ?> <?php echo $row_class; ?>">
                     <?php if($form_position == 'center') {
                         $column_class = 'offset-lg-1 col-lg-10';
                     } elseif($form_position == 'right') {
@@ -121,7 +121,7 @@ if (!empty($bg_svg_pattern)) {
                             <!-- if form is center and form has value  -->
                             <?php if ($form_position == "center" && $form) { ?>
                                 <div class="wysiwyg-content py-4 <?php echo $text_color; ?>">
-                                    <?php echo do_shortcode('[gravityform id="' . $form . '" title="false" description="false"]'); ?>
+                                    <?php echo do_shortcode('[gravityform id="' . $form . '" title="false" description="false" ajax="true"]'); ?>
                                 </div>
                             <?php } ?>
                         </div>
@@ -130,7 +130,7 @@ if (!empty($bg_svg_pattern)) {
                         <div class="<?php if($form_position == 'right'): ?>col-md-6 <?php else: ?>col-md-6 col-lg-5 offset-lg-1<?php endif; ?> py-md-0 py-4 <?php if($form_position == 'right' || $form_position == 'left'): echo 'pe-lg-5'; endif; ?>">
                             <?php if ($form) { ?>
                                 <div class="wysiwyg-content <?php echo $text_color; ?>">
-                                    <?php echo  do_shortcode('[gravityform id="' . $form . '" title="true" description="false"]'); ?>
+                                    <?php echo  do_shortcode('[gravityform id="' . $form . '" title="true" description="false" ajax="true"]'); ?>
                                 </div>
                             <?php } ?>
                         </div>

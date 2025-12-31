@@ -978,14 +978,11 @@ function ukg_fetch_jobs() {
     $per_page = 1000; // adjust if API allows higher
     $start_of_month = new DateTime('first day of this month 00:00:00', new DateTimeZone('UTC'));
     $iso_utc = $start_of_month->format('Y-m-d\TH:i:s\Z');
-    // var_dump($iso_utc); 
     $updated_after = (new DateTime('now', new DateTimeZone('UTC')))
     ->modify('-16 days')
     ->format('Y-m-d\TH:i:s\Z');
-    // var_dump($updated_after); exit;
     $all_jobs = [];
     $today = new DateTime('today', new DateTimeZone('UTC'));
-    // $target_board_id = 'e66070ad-299d-4c5e-ad6e-43f81eb083fd';
     $target_board_ids = [
         'e66070ad-299d-4c5e-ad6e-43f81eb083fd', // CM
         '44b07573-b66f-4efe-a89b-b35cfe1cc42b', // Ecumenical Retirement
@@ -1041,7 +1038,6 @@ function ukg_fetch_jobs() {
      * ALL RECORDS FETCHED AT THIS POINT
      * ------------------------------------
      */
-
     if (empty($all_jobs)) {
         error_log("UKG: No jobs found overall");
         return;
@@ -1056,6 +1052,10 @@ function ukg_fetch_jobs() {
 
         // 1. Must be Active
         if (empty($job['status']) || $job['status'] !== 'Published') {
+            return false;
+        }
+
+        if ($job['company']['auto_feed_company_name'] !== 'Country Meadows Retirement Communities') {
             return false;
         }
 
@@ -1077,11 +1077,6 @@ function ukg_fetch_jobs() {
         if (empty($job['job_boards']) || !is_array($job['job_boards'])) {
             return false;
         }
-
-        
-        // if (!isset($job['is_featured']) || filter_var($job['is_featured'], FILTER_VALIDATE_BOOLEAN) !== true) {
-        //     return false;
-        // }
 
         /**
          * job_boards could be:
@@ -1300,27 +1295,15 @@ function ukg_delete_old_careers(array $api_requisitions) {
 /* ----------------------------------------
    CRON SCHEDULING
 ----------------------------------------- */
-
-/* ----------------------------------------
-   ADD CUSTOM CRON INTERVAL (5 MINUTES)
------------------------------------------ */
-add_filter('cron_schedules', function ($schedules) {
-    $schedules['every_five_minutes'] = array(
-        'interval' => 300, // 300 seconds = 5 minutes
-        'display'  => __('Every 5 Minutes'),
-    );
-    return $schedules;
-});
-
-/* ----------------------------------------
-   SCHEDULE CRON JOB
------------------------------------------ */
 add_action('init', function () {
 
     if (!wp_next_scheduled('ukg_fetch_careers_cron_event')) {
+
+        $timestamp = strtotime('tomorrow 00:00:00');
+
         wp_schedule_event(
-            time(),
-            'every_five_minutes',
+            $timestamp,
+            'daily',
             'ukg_fetch_careers_cron_event'
         );
     }
