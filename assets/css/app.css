@@ -1304,8 +1304,8 @@ border-radius: 10px;
     left: 0;
     position: relative;
 }
-.review-slider .icon-prev.slick-arrow , .review-slider .icon-next.slick-arrow {
-    width: 20px;
+.review-slider .icon-prev.slick-arrow, .review-slider .icon-next.slick-arrow {
+    width: 30px;
 }
 .reviews-zone.bg-yellow:before{
   background-image: url(../images/edge_yellow.svg);

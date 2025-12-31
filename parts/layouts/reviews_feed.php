@@ -71,7 +71,7 @@ if ($border == 'angle' && $angle == 'down_left') {
                     <?php endif; ?>
                     <!-- Review Slider -->
                     <?php if ($review_feed): ?>
-                        <div class="review-slider ps-lg-4 pt-4">
+                        <div class="review-slider ps-lg-4 pt-4" data-slick='{"autoplay": <?php echo $section['rotate'] ? "true" : "false" ; ?>}'>
 
                             <?php
                             // --- Query Reviews ---
