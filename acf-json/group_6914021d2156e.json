@@ -80,6 +80,12 @@
                 "id": ""
             },
             "layout": "block",
+            "choices": {
+                "circles": "Circles",
+                "dots": "Dots",
+                "honeycomb": "Honeycomb",
+                "sprinkles": "Sprinkles"
+            },
             "sub_fields": [
                 {
                     "key": "field_69494c0027d6b",
@@ -109,13 +115,7 @@
                         "sprinkles": "Sprinkles"
                     }
                 }
-            ],
-            "choices": {
-                "circles": "Circles",
-                "dots": "Dots",
-                "honeycomb": "Honeycomb",
-                "sprinkles": "Sprinkles"
-            }
+            ]
         },
         {
             "key": "field_6932a67e5808d",
@@ -455,6 +455,13 @@
                 "operator": "!=",
                 "value": "posts_page"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/job-career.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -467,5 +474,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1766411307
+    "modified": 1767175669
 }
