@@ -2547,7 +2547,7 @@ a.facetwp-toggle {
   padding-left:50px;
 }
    .floorplan-slider .slick-next {
-    right: -35px;
+    right: 0;
 }
 
 .allentown-section .floorplan-slider:not(.floorplan-sm-slider).bg-water-color.bg-water-color-right::after {

@@ -61,21 +61,18 @@ responsive: [
       breakpoint: 1600,  // below 1200px
       settings: {
         slidesToShow: 3,
-        centerPadding: '30px' // optional: adjust padding for smaller screens
       }
     },
     {
       breakpoint: 1200,  // below 1200px
       settings: {
         slidesToShow: 2,
-        centerPadding: '0px' // optional: adjust padding for smaller screens
       }
     },
     {
       breakpoint: 768,   // below 768px
       settings: {
         slidesToShow: 1,
-        centerPadding: '20px' // optional: adjust padding for mobile
       }
     }
   ]
