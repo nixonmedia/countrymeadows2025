@@ -1269,6 +1269,9 @@ background-size: 340px;
 .text-column-grid-zone .row {
   --bs-gutter-y: 45px;
 }
+.text-column-grid-zone .site-button:hover {
+    background-color: var(--purple);
+}
 .text-column-grid-zone .bg-water-color::after {
   top: -85px;
   left: -50px;
