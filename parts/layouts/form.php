@@ -130,7 +130,7 @@ if (!empty($bg_svg_pattern)) {
                         <div class="<?php if($form_position == 'right'): ?>col-md-6 <?php else: ?>col-md-6 col-lg-5 offset-lg-1<?php endif; ?> py-md-0 py-4 <?php if($form_position == 'right' || $form_position == 'left'): echo 'pe-lg-5'; endif; ?>">
                             <?php if ($form) { ?>
                                 <div class="wysiwyg-content <?php echo $text_color; ?>">
-                                    <?php echo  do_shortcode('[gravityform id="' . $form . '" title="true" description="false" ajax="true"]'); ?>
+                                    <?php echo  do_shortcode('[gravityform id="' . $form . '" title="false" description="false" ajax="true"]'); ?>
                                 </div>
                             <?php } ?>
                         </div>
