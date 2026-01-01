@@ -76,15 +76,15 @@ if ($embellishment == 'circles') {
 if ($border == 'angle' && $angle == 'down_left') {
     $border_class = 'border-angle';
     $angle_class = 'angle_down_left';
-    $margin_class = 'my-7 position-relative';
+    $margin_class = 'position-relative';
 } elseif ($border == 'angle' && $angle == 'down_right') {
     $border_class = 'border-angle';
     $angle_class = 'angle_down_right';
-    $margin_class = 'my-7 position-relative';
+    $margin_class = 'position-relative';
 }elseif ($border == 'straight') {
     $border_class = 'border-straight';
     $angle_class = '';
-    $margin_class = 'my-7 position-relative';
+    $margin_class = 'position-relative';
 }
  else {
     $border_class = '';
@@ -131,9 +131,16 @@ if (!empty($svg_encoded)): ?>
     </style>
 <?php endif; ?>
 
+<?php $fields = get_fields(get_the_ID());
+$total_sections = isset($fields['flexible_content']) && is_array($fields['flexible_content'])
+    ? count($fields['flexible_content'])
+    : 0;
+$spacing_class = ($key === $total_sections - 1) ? 'mt-7' : 'my-7';
+?>
+
 <?php if (!empty($section['call_to_action'])): ?>
 
-<section id="call-to-action-<?php echo get_the_ID() . '-' . $key; ?>" class="call-to-action py-5 <?php echo $bg_color; ?> <?php echo $border_class ?> <?php echo $angle_class ?> <?php echo $margin_class; ?> <?php echo $bg_pattern_class; ?>">
+<section id="call-to-action-<?php echo get_the_ID() . '-' . $key; ?>" class="call-to-action py-5 <?php echo $bg_color; ?> <?php echo $border_class ?> <?php echo $angle_class ?> <?php echo $margin_class; ?> <?php echo $bg_pattern_class; ?> <?php if($border == 'angle' || $border == 'straight'): echo $spacing_class; endif; ?>">
     <div class="container-fluid py-2">
    
    <div class="row justify-content-center">
@@ -144,18 +151,18 @@ $call_to_action_title = get_field("cta_headline", $cta);
         $call_to_action_button = get_field("cta_link", $cta);
         //  var_dump( $call_to_action_title);
     ?>
-        <div class="col-md-10 col-lg-8 col-xl-6 text-center text-capitalize">
+        <div class="col-md-10 col-lg-8 col-xxl-6 text-center text-capitalize">
             <?php if($call_to_action_title): ?>
-            <h2 class="<?php echo $text_color; ?> fw-bold mb-0"><?php echo $call_to_action_title; ?></h2>
+                <h2 class="<?php echo $text_color; ?> fw-bold mb-2"><?php echo $call_to_action_title; ?></h2>
             <?php endif; ?>
-          <?php if($call_to_action_content): ?>
-    <div class="<?php echo $text_color; ?>">
-        <?php echo $call_to_action_content; ?>
-    </div>
-      <?php endif; ?>
-              <?php if($call_to_action_button): ?>
-            <a href="<?php echo $call_to_action_button['url']; ?>" class="site-button" <?php if($call_to_action_button['target']): ?>target="<?php echo $call_to_action_button['target']; ?>" <?php endif; ?>><?php echo $call_to_action_button['title']; ?></a>
-          <?php endif; ?>
+            <?php if($call_to_action_content): ?>
+                <div class="wysiwyg-content <?php echo $text_color; ?> <?php if($call_to_action_button): ?>mb-3<?php endif; ?>">
+                    <?php echo $call_to_action_content; ?>
+                </div>
+            <?php endif; ?> 
+            <?php if($call_to_action_button): ?>
+                <a href="<?php echo $call_to_action_button['url']; ?>" class="site-button" <?php if($call_to_action_button['target']): ?>target="<?php echo $call_to_action_button['target']; ?>" <?php endif; ?>><?php echo $call_to_action_button['title']; ?></a>
+            <?php endif; ?>
         </div>
     <?php endforeach; ?>
     <?php endif; ?>
