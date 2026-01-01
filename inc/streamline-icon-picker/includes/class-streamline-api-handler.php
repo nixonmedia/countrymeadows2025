@@ -132,7 +132,7 @@ class Streamline_API_Handler {
         // normalize and uniq
         $candidates = array_unique( array_filter( array_map( 'trim', $candidates ) ) );
 
-        // check filesystem for candidates
+        // check filesystem for candidates (EXACT match first)
         foreach ( $candidates as $cand ) {
             $path = $icons_dir . '/' . $cand . '.svg';
             if ( file_exists( $path ) ) {
@@ -140,18 +140,15 @@ class Streamline_API_Handler {
             }
         }
 
-        // fallback: try to match by humanized label against filenames
+        // fallback: try to match by humanized label against filenames (EXACT match only, no partial)
         if ( is_dir( $icons_dir ) ) {
             foreach ( glob( $icons_dir . '/*.svg' ) as $file ) {
                 $basename = basename( $file, '.svg' );
                 // humanize both sides for comparison
                 $labelA = self::humanize_label( $basename );
                 $labelB = self::humanize_label( $value );
+                // EXACT match only (removed partial match logic)
                 if ( strcasecmp( $labelA, $labelB ) === 0 ) {
-                    return $basename;
-                }
-                // also allow partial match if user typed part of label
-                if ( stripos( $labelA, $labelB ) !== false || stripos( $labelB, $labelA ) !== false ) {
                     return $basename;
                 }
             }
