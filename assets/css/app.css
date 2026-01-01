@@ -1057,6 +1057,29 @@ main section.bg-white {
   margin-top: 7rem;
   margin-bottom: 7rem;
 }
+.mt-7 {
+  margin-top: 7rem;
+}
+.border-straight {
+  position: relative;
+}
+
+.border-straight:before {
+position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: -8px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 10px;
+    background-position: right;
+}
+
+
+
+
 .angle_down_left{
   clip-path: polygon(0 -50%, 100% -50%, 100% 99%, 0% 100%);
 }
@@ -1122,6 +1145,34 @@ main section.bg-white {
 }
 .border-straight.bg-light-blue:before{
   background-image: url(../images/straight-light-blue.svg);
+}
+
+.border-straight.bg-light-yellow:before{
+  background-image: url(../images/straight-yellow-border.svg);
+}
+
+.border-straight.bg-purple:before{
+  background-image: url(../images/straight-purple.svg);
+}
+
+.border-straight.bg-blue:before{
+  background-image: url(../images/straight-blue.svg);
+}
+
+.border-straight.bg-teal:before{
+  background-image: url(../images/straight-teal.svg);
+}
+.border-straight.bg-light-blue:before{
+  background-image: url(../images/straight-light-blue.svg);
+}
+
+.border-angle.bg-yellow:before{
+  background-image: url(../images/edge_yellow.svg);
+}
+.call-to-action.bg-pattern{
+background-size: 340px;
+    background-position: -33px 120px;
+    background-repeat: no-repeat;
 }
 
 .bg-pattern {
@@ -1923,6 +1974,9 @@ a.facetwp-toggle {
     margin-top: 4rem;
     margin-bottom: 4rem;
   }
+  .mt-7 {
+    margin-top: 4rem;
+  }
   .accordions-info-col {
       order: 1;
   }
@@ -2621,6 +2675,13 @@ a.facetwp-toggle {
   .meet-team-button {
     font-size: 16px;
   }
+  .push-info .video-wrapper {
+    height: 362px;
+  }
+  .call-to-action.bg-pattern{
+    background-size: 640px;
+    background-position: -34px -12%;  
+  }  
 }
 @media only screen and (min-width: 1620px) {
   .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {

@@ -22,7 +22,8 @@
                 "Light Blue": "Light Blue",
                 "Teal": "Teal",
                 "Purple": "Purple",
-                "Gradient Yellow": "Gradient Yellow"
+                "Gradient Yellow": "Gradient Yellow",
+                "Light Yellow": "Light Yellow"
             },
             "default_value": false,
             "return_format": "value",
