@@ -1750,14 +1750,14 @@ a.facetwp-toggle {
     width: 80%;
   }
   .content-buttons-slider .slick-track {
-    display: block;
+    /* display: block;  */ /* causing slider bottom space issue on < 575px */
   }
   .content-buttons-slider .slick-list {
     margin: 0 30px;
   }
 }
 @media (min-width:576px) and (max-width:767px) {
-  .content-and-button-cards .buttons a {
+  .content-and-button-cards .buttons:not(.slick-slider) a {
     width: 48%;
     display: inline-block;
   }
