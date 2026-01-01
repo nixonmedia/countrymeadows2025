@@ -1283,7 +1283,7 @@ background-size: 340px;
 /* FLOOR PLANS */
 
 /* Background of entire section */
-/* .allentown-section {
+/* .floorplan-zone {
     background: #f7fbff;
 } */
 
@@ -1305,6 +1305,12 @@ background-size: 340px;
   top: 0px;
   z-index: -1;
   pointer-events: none;
+}
+
+.floorplan-zone .flex-row-reverse .full-width-left-col:after{
+        left: 0;
+      border-radius: 15px 0px 0px 15px;
+ 
 }
 
 
@@ -1365,7 +1371,7 @@ background-size: 340px;
 }
 
 
-.allentown-section  .right-floorplan-col {
+.floorplan-zone  .right-floorplan-col {
   padding-left:0px;
 }
 
@@ -1386,7 +1392,7 @@ background-size: 340px;
   background-size: contain;
 }
 
-.allentown-section .bg-water-color.bg-blue-water-color::after {
+.floorplan-zone .bg-water-color.bg-blue-water-color::after {
       background: radial-gradient(
         50% 50% at 35.86% 50.31%,
         rgba(43, 161, 198, 0.45) 0%,
@@ -1852,6 +1858,13 @@ a.facetwp-toggle {
 }
 .author-image img {
   border-radius: 100px;
+}
+
+/* Floor plan */
+
+.floorplan-zone .flex-row-reverse  .full-width-left-col{
+  position: relative;
+    padding: 50px 10px 50px 30px;
 }
 
 /* Media Queries  */
@@ -2543,20 +2556,20 @@ a.facetwp-toggle {
    border-radius: 12px;
 }
 
-.allentown-section  .right-floorplan-col {
+.floorplan-zone  .right-floorplan-col {
   padding-left:50px;
 }
    .floorplan-slider .slick-next {
     right: 0;
 }
 
-.allentown-section .floorplan-slider:not(.floorplan-sm-slider).bg-water-color.bg-water-color-right::after {
+.floorplan-zone .floorplan-slider:not(.floorplan-sm-slider).bg-water-color.bg-water-color-right::after {
     right: 80px;             
     top:20px;
     
 }
 
-.allentown-section .floorplan-sm-slider.bg-water-color.bg-water-color-left::after {
+.floorplan-zone .floorplan-sm-slider.bg-water-color.bg-water-color-left::after {
     left: -40px;        
    
 }
@@ -2612,6 +2625,12 @@ a.facetwp-toggle {
     height: 22px;
     top: 5px;
   }
+  .floorplan-zone .flex-row-reverse .full-width-left-col {
+    padding: 100px 60px 100px 20px;
+          margin-left: 50px !important;
+          margin-right: 0 !important; 
+ 
+}
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .facetwp-facet-job_pagination a {
@@ -2715,10 +2734,14 @@ a.facetwp-toggle {
     margin-right: 70px !important;
     margin-left: 0px;
 }
-.allentown-section .right-floorplan-col {
+.floorplan-zone .right-floorplan-col {
     padding-left: 50px;
 }
-
+ .floorplan-zone .flex-row-reverse .full-width-left-col {
+          padding: 120px 60px 120px 30px;
+        margin-right: 0px !important;
+        margin-left: 70px;
+    }
 
 }
 @media only screen and (min-width: 1250px) {
@@ -2915,7 +2938,7 @@ padding: 120px 60px 120px 50px;
   margin-right: 100px !important;
       margin-left: 0px;
 }
-.allentown-section .right-floorplan-col
+.floorplan-zone .right-floorplan-col
  {
     padding-left: 100px;
 }
@@ -2928,6 +2951,16 @@ padding: 120px 60px 120px 50px;
     font-size: 76px;
     line-height: 76px;
   }
+
+.florplan-zone .flex-row-reverse .right-floorplan-col{
+          padding-left: 20px;
+}
+   .florplan-zone .flex-row-reverse .full-width-left-col {
+    padding: 120px 60px 120px 50px;
+        margin-right: 0px !important;
+        margin-left: 100px;
+    }
+ 
 }
 @media only screen and (min-width: 1900px) {
   .footer-post-col .font-normal {
