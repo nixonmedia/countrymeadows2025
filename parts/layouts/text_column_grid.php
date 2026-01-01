@@ -8,7 +8,7 @@
           $heading = $content_block['heading'] ?? ''; 
           $content = $content_block['content'] ?? ''; 
           $button = $content_block['button'] ?? ''; ?>
-          <div class="col-lg-6 position-relative text-column-grid-block">
+          <div class="col-md-6 position-relative text-column-grid-block">
             <?php if($icon): ?>
               <div class="mb-2 text-center heading-with-icon">
                 <?php echo $icon; ?>

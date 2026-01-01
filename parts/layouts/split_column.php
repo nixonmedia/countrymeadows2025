@@ -21,7 +21,7 @@ $top_accordions = $top_content['accordions'] ?? '';
 $top_accordions_heading = $top_accordions['heading'] ?? '';
 $top_accordion = $top_accordions['accordion'] ?? '';
 $top_cta = $top_content['call_to_action'] ?? '';
-$background_color = $top_content['background_color'] ?? '';
+$background_color = $top_content['background_color']['background_color'] ?? '';
 
 $bottom_content = $split_column['bottom_content'] ?? '';
 $bottom_content_type = $bottom_content['content_type'] ?? '';
@@ -89,9 +89,9 @@ if($embellishment == 'circles' ) {
     <div class="container-fluid">
       <div class="row <?php if($split_column_position == 'left'):?>flex-row-reverse<?php endif; ?>">
         <?php if($heading['headline'] || $content || $button || $image_header): ?>
-          <div class="col-lg-5 mb-4 mb-lg-0 <?php if($split_column_position == 'left'):?>ps-lg-5 <?php else: ?>pe-lg-5<?php endif; ?> <?php if($split_column_position == 'left'):?>offset-lg-1<?php endif; ?>">
+          <div class="col-md-6 col-lg-5 mb-4 mb-md-0 <?php if($split_column_position == 'left'):?>ps-md-5 <?php else: ?>pe-md-5<?php endif; ?> <?php if($split_column_position == 'left'):?>offset-lg-1<?php endif; ?>">
             <?php if($heading['headline']): ?>
-            <<?php echo $heading['heading_type']; ?> class="font-medium mb-3 pb-lg-1"><?php echo $heading['headline']; ?></<?php echo $heading['heading_type']; ?>>
+            <<?php echo $heading['heading_type']; ?> class="font-medium mb-3 pb-md-1"><?php echo $heading['headline']; ?></<?php echo $heading['heading_type']; ?>>
             <?php endif;
             if($image_header && $image_headers == true): ?>
               <div class="image-box mb-3 <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?>">
@@ -99,7 +99,7 @@ if($embellishment == 'circles' ) {
               </div>
             <?php endif; 
             if($content): ?>
-              <div class="wysiwyg-content <?php if($button): ?>mb-3<?php endif; ?>">
+              <div class="wysiwyg-content z-1 position-relative <?php if($button): ?>mb-3<?php endif; ?>">
                 <?php echo $content; ?>
               </div>
             <?php endif; 
@@ -109,9 +109,9 @@ if($embellishment == 'circles' ) {
           </div>
         <?php endif; ?>
         
-        <div class="col-lg-6 <?php if($split_column_position == 'right'):?>offset-lg-1<?php endif; ?>">
+        <div class="col-md-6 <?php if($split_column_position == 'right'):?>offset-lg-1<?php endif; ?>">
           <?php if($top_content_type == 'Standard Content' || $top_content_type == 'Call-to-Action' || $top_content_type == 'Accordions'): ?>
-            <div class="top-content-block mb-4 pb-3 pb-lg-4">
+            <div class="top-content-block mb-4 pb-3 pb-md-4">
               <?php if($top_content_type == 'Standard Content'): ?>
                 <!-- Top Standard Content -->
                 <?php if($top_standard_copy_content || $top_standard_heading['headline'] || $top_standard_button): ?>
@@ -122,10 +122,10 @@ if($embellishment == 'circles' ) {
                       </div>
                     <?php endif;
                     if($top_standard_heading['headline']): ?>
-                      <<?php echo $top_standard_heading['heading_type']; ?> class="font-medium font-lexend text-black-100 mb-3 mb-lg-4"><?php echo $top_standard_heading['headline']; ?></<?php echo $top_standard_heading['heading_type']; ?>>
+                      <<?php echo $top_standard_heading['heading_type']; ?> class="font-medium font-lexend text-black-100 mb-3 mb-md-4"><?php echo $top_standard_heading['headline']; ?></<?php echo $top_standard_heading['heading_type']; ?>>
                     <?php endif; 
                     if($top_standard_copy_content): ?>
-                      <div class="wysiwyg-content text-black-100 font-lexend mb-4">
+                      <div class="wysiwyg-content text-black-100 font-lexend <?php if($top_standard_button): ?>mb-4<?php endif; ?>">
                         <?php echo $top_standard_copy_content; ?>
                       </div>
                     <?php endif; 
@@ -170,7 +170,7 @@ if($embellishment == 'circles' ) {
                   <<?php echo $top_accordions_heading['heading_type']; ?> class="font-medium mb-4"><?php echo $top_accordions_heading['headline']; ?></<?php echo $top_accordions_heading['heading_type']; ?>>
                 <?php endif; ?>
                 <?php if (!empty($top_accordion) && is_array($top_accordion)): ?>
-                  <div class="accordion accordion-block mt-3 mt-lg-0" id="TopAccordionExample-<?php echo $key; ?>">
+                  <div class="accordion accordion-block mt-3 mt-md-0" id="TopAccordionExample-<?php echo $key; ?>">
                     <?php $i = 1;
                     foreach($top_accordion as $top_accordion_post): 
                     $accordion_title = get_field('accordion_header', $top_accordion_post->ID); 
@@ -187,11 +187,11 @@ if($embellishment == 'circles' ) {
                           <div class="accordion-body">
                             <div class="row">
                               <?php if($accordion_image): ?>
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 mb-3 mb-lg-0">
                                   <img src="<?php echo $accordion_image['url']; ?>" alt="<?php echo $accordion_image['alt']; ?>" class="img-fluid">
                                 </div>
                               <?php endif; ?>
-                              <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-lg-12 pe-lg-5<?php endif; ?>">
+                              <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-md-12 pe-lg-5<?php endif; ?>">
                                 <?php if($accordion_content): ?>
                                   <div class="wysiwyg-content accordion-content <?php if($accordion_button): ?>pb-2<?php endif; ?>">
                                     <?php echo wp_trim_words( $accordion_content, 42, '...' ); ?>
@@ -225,7 +225,7 @@ if($embellishment == 'circles' ) {
                       </div>
                     <?php endif;
                     if($bottom_standard_heading['headline']): ?>
-                      <<?php echo $bottom_standard_heading['heading_type']; ?> class="font-medium font-lexend text-black-100 mb-3 mb-lg-4"><?php echo $bottom_standard_heading['headline']; ?></<?php echo $bottom_standard_heading['heading_type']; ?>>
+                      <<?php echo $bottom_standard_heading['heading_type']; ?> class="font-medium font-lexend text-black-100 mb-3 mb-md-4"><?php echo $bottom_standard_heading['headline']; ?></<?php echo $bottom_standard_heading['heading_type']; ?>>
                     <?php endif; 
                     if($bottom_standard_copy_content): ?>
                       <div class="wysiwyg-content text-black-100 font-lexend mb-4">
@@ -245,7 +245,7 @@ if($embellishment == 'circles' ) {
                   <<?php echo $bottom_accordions_heading['heading_type']; ?> class="font-medium mb-4"><?php echo $bottom_accordions_heading['headline']; ?></<?php echo $bottom_accordions_heading['heading_type']; ?>>
                 <?php endif; ?>
                 <?php if (!empty($bottom_accordion) && is_array($bottom_accordion)): ?>
-                  <div class="accordion accordion-block mt-3 mt-lg-0" id="accordionExample-<?php echo $key; ?>">
+                  <div class="accordion accordion-block mt-3 mt-md-0" id="accordionExample-<?php echo $key; ?>">
                     <?php $i = 1;
                     foreach($bottom_accordion as $bottom_accordion_post): 
                     $accordion_title = get_field('accordion_header', $bottom_accordion_post->ID); 
@@ -262,11 +262,11 @@ if($embellishment == 'circles' ) {
                           <div class="accordion-body">
                             <div class="row">
                               <?php if($accordion_image): ?>
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 mb-3 mb-lg-0">
                                   <img src="<?php echo $accordion_image['url']; ?>" alt="<?php echo $accordion_image['alt']; ?>" class="img-fluid">
                                 </div>
                               <?php endif; ?>
-                              <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-lg-12 pe-lg-5<?php endif; ?>">
+                              <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-md-12 pe-lg-5<?php endif; ?>">
                                 <?php if($accordion_content): ?>
                                   <div class="wysiwyg-content accordion-content <?php if($accordion_button): ?>pb-2<?php endif; ?>">
                                     <?php echo wp_trim_words( $accordion_content, 42, '...' ); ?>
@@ -289,10 +289,10 @@ if($embellishment == 'circles' ) {
                 <div class="bottom-gallery-slider text-center">
                   <?php if($bottom_gallery_type == 'Icons' ): ?>
                       <?php if($bottom_icon_heading['headline']): ?>
-                        <<?php echo $bottom_icon_heading['heading_type']; ?> class="font-medium mb-lg-4"><?php echo $bottom_icon_heading['headline']; ?></<?php echo $bottom_icon_heading['heading_type']; ?>>
+                        <<?php echo $bottom_icon_heading['heading_type']; ?> class="font-medium mb-md-4"><?php echo $bottom_icon_heading['headline']; ?></<?php echo $bottom_icon_heading['heading_type']; ?>>
                       <?php endif; ?>
                       <?php if (!empty($bottom_add_icons) && is_array($bottom_add_icons)): ?>
-                        <div class="icons-slider mb-lg-3 pb-lg-4 pt-3">
+                        <div class="icons-slider mb-md-3 pb-md-4 pt-3">
                           <?php foreach($bottom_add_icons as $icons_group_icon): 
                             $icon = $icons_group_icon['icon'] ?? ' ';
                             $text = $icons_group_icon['text'] ?? ' ';
@@ -300,7 +300,7 @@ if($embellishment == 'circles' ) {
                             if($icon || $text ):
                           ?>
                             <div>
-                              <div class="icon-slide-box px-2 px-md-3 text-center">
+                              <div class="icon-slide-box px-2 px-lg-3 text-center">
                                 <?php if($link): ?>
                                   <a href="<?php echo $link['url']; ?>" class="d-block text-decoration-none" <?php if($link['target']): ?> target="<?php echo $link['target']; ?>" <?php endif; ?>>
                                 <?php endif; ?>
@@ -322,17 +322,20 @@ if($embellishment == 'circles' ) {
                         <<?php echo $bottom_image_heading['heading_type']; ?> class="font-medium mb-4"><?php echo $bottom_image_heading['headline']; ?></<?php echo $bottom_image_heading['heading_type']; ?>>
                       <?php endif; ?>
                     <?php if (!empty($bottom_images) && is_array($bottom_images)): ?>
-                      <div class="image-gallery-slider mb-lg-3 pb-lg-4 pt-lg-3">
+                      <div class="image-gallery-slider mb-md-3 pb-md-4 pt-md-3">
                         <?php foreach ($bottom_images as $gallery_post):
                             $images = get_field('community_galleries', $gallery_post->ID);
                             if (!empty($images) && is_array($images)):
                               foreach ($images as $img):
-                                $image_url = $img['sizes']['wysiwyg-gallery-image'] ?? '';
+                                $image_url = $img['sizes']['wysiwyg-gallery-image'] ?? ''; 
+                                $image_url_full = $img['url'] ?? '';
                                 $alt       = $img['alt'] ?? '';
                                 if ($image_url): ?>
                                   <div>
-                                    <div class="icon-slide-box px-2 px-md-3">
-                                      <img src="<?php echo esc_url($image_url); ?>" class="img-fluid" alt="<?php echo esc_attr($alt); ?>">
+                                    <div class="icon-slide-box px-2 px-lg-3">
+                                      <a href="<?php echo $image_url_full; ?>" data-lightbox="community-gallery-<?php echo $key; ?>" data-title="<?php echo esc_attr($alt); ?>">
+                                          <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($alt); ?>" class="img-fluid">
+                                      </a>
                                     </div>
                                   </div>
                         <?php endif; endforeach; endif; endforeach; ?>

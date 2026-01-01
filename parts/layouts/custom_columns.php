@@ -181,48 +181,48 @@ if($special_content_position == 'Left' && $include_special_content == true) {
 }
 
 if($num_columns == '2' && $include_special_content == false || $num_columns == '2' && $include_special_content == false && $include_image_headers_on_custom_content == true) {
-  $heading_column_class = 'col-lg-8';
-  $left_column_class = 'col-lg-5 col-xl-4 mb-4 mb-lg-0';
-  $right_column_class = 'col-lg-5 col-xl-4';
+  $heading_column_class = 'col-md-8';
+  $left_column_class = 'col-md-5 col-xl-4 mb-4 mb-md-0';
+  $right_column_class = 'col-md-5 col-xl-4';
   $row_class = 'justify-content-center';
   $heading_fonts = 'font-lexend';
   $content_fonts = 'font-lexend';
 } elseif($num_columns == '2' && $include_special_content == true) {
-  $heading_column_class = 'col-lg-12';
-  $left_column_class = 'col-lg-7 pt-4 custom-columns-content-col';
+  $heading_column_class = 'col-md-12';
+  $left_column_class = 'col-md-7 pt-4 pt-md-0 pt-lg-4 custom-columns-content-col';
   $row_class = '';
   $heading_fonts = 'font-lexend';
   $content_fonts = 'font-lexend';
   if($special_content_position == 'Left') {
-    $right_column_class = 'col-lg-5 pe-lg-5';
+    $right_column_class = 'col-md-5 pe-lg-5';
   } else {
-    $right_column_class = 'col-lg-5 ps-lg-5';
+    $right_column_class = 'col-md-5 ps-lg-5';
   }
   if($choose_special_content == 'Meet Our Team') {
-    $right_column_class = 'col-lg-7 meet-team-info-col mb-4 pb-2 pb-lg-0 mb-lg-0';
-    $left_column_class = 'col-lg-5 events-info-col';
+    $right_column_class = 'col-md-7 meet-team-info-col mb-4 pb-2 pb-md-0 mb-md-0';
+    $left_column_class = 'col-md-5 events-info-col';
   }
   if($choose_special_content == 'Accordions') {
-    $right_column_class = 'col-lg-6 accordions-info-col';
-    $left_column_class = 'col-lg-6 accordion-content-col';
+    $right_column_class = 'col-md-6 accordions-info-col';
+    $left_column_class = 'col-md-6 accordion-content-col';
   }
   if($choose_special_content == 'Push') {
-    $right_column_class = 'col-lg-4 push-info-col';
-    $left_column_class = 'col-lg-7 push-content-col';
+    $right_column_class = 'col-md-5 col-lg-4 push-info-col';
+    $left_column_class = 'col-md-7 push-content-col';
   }
   if($choose_special_content == 'Call-to-Action') {
-    $right_column_class = 'col-lg-6';
-    $left_column_class = 'col-lg-6 pe-lg-5 mt-4 mt-lg-0';
+    $right_column_class = 'col-md-6';
+    $left_column_class = 'col-md-6 pe-lg-5 mt-4 mt-md-0';
   }
   if($choose_special_content == 'Media' && $media_type == 'Image' && $image_type == 'Portrait') {
-    $right_column_class = 'col-lg-4';
-    $left_column_class = 'col-lg-7 pt-4 custom-columns-content-col';
+    $right_column_class = 'col-md-5 col-lg-4';
+    $left_column_class = 'col-md-7 pt-4 pt-md-0 pt-lg-4 custom-columns-content-col';
   }
 } elseif($num_columns == '3' || $include_special_content == true ) {
-  $right_column_class = 'col-lg-4 mb-4 mb-lg-0';
-  $left_column_class = 'col-lg-4 mb-4 mb-lg-0';
-  $last_column_class = 'col-lg-4';
-  $heading_column_class = 'col-lg-6';
+  $right_column_class = 'col-md-4 mb-4 mb-md-0';
+  $left_column_class = 'col-md-4 mb-4 mb-md-0';
+  $last_column_class = 'col-md-4';
+  $heading_column_class = 'col-md-6';
 } else {
   $heading_column_class = '';
   $left_column_class = '';
@@ -238,9 +238,9 @@ if($num_columns == '2' && $include_special_content == false && $include_image_he
 }
 
 if($num_columns == '2' && $include_special_content == true && $special_content_position == 'Left') {
-  $special_content_row_class = 'flex-column-reverse flex-lg-row-reverse justify-content-lg-center';
+  $special_content_row_class = 'flex-column-reverse flex-md-row-reverse justify-content-md-center';
 } elseif($num_columns == '2' && $include_special_content == true && $special_content_position == 'Right') {
-  $special_content_row_class = 'flex-column-reverse flex-lg-row';
+  $special_content_row_class = 'flex-column-reverse flex-md-row';
 } else {
   $special_content_row_class = '';
 }
@@ -347,7 +347,7 @@ if ($meet_background_color == 'Blue') {
     <?php if($num_columns == '1'): ?>
       <!--- Custom Column 1 Layout --->
       <div class="row justify-content-center">
-        <div class="col-lg-11 col-xl-9">
+        <div class="col-md-11 col-xl-9">
           <?php if($custom_heading['heading']): ?>
             <<?php echo $custom_heading['heading_type']; ?> class="font-medium mb-3 <?php echo $heading_color; ?>"><?php echo $custom_heading['heading']; ?></<?php echo $custom_heading['heading_type']; ?>>
           <?php endif; ?>
@@ -360,13 +360,13 @@ if ($meet_background_color == 'Blue') {
             <<?php echo $column_1_heading['heading_type']; ?> class="font-medium <?php echo $heading_fonts; ?> mb-3 <?php echo $heading_color; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading'): ?>heading-with-icon<?php endif; ?>"><?php echo $column_1_heading['headline']; ?> <?php if($heading_icon && $heading_icon_position == 'After Heading'): echo $heading_icon; endif;?></<?php echo $column_1_heading['heading_type']; ?>>
           <?php endif; 
           if($column_1_content): ?>
-            <div class="wysiwyg-content fw-semibold mb-4 pb-lg-4 <?php echo $text_color; ?>">
+            <div class="wysiwyg-content fw-semibold mb-4 pb-md-4 <?php echo $text_color; ?>">
               <?php echo $column_1_content; ?>
             </div> 
           <?php endif;
           if($column_1_gallery == true && $icons_or_image == 'Icons' ): ?>
               <?php if($icons_group_heading['headline']): ?>
-                <<?php echo $icons_group_heading['heading_type']; ?> class="font-medium mb-lg-4 pb-lg-3 <?php echo $heading_color; ?>"><?php echo $icons_group_heading['headline']; ?></<?php echo $icons_group_heading['heading_type']; ?>>
+                <<?php echo $icons_group_heading['heading_type']; ?> class="font-medium mb-md-4 pb-md-3 <?php echo $heading_color; ?>"><?php echo $icons_group_heading['headline']; ?></<?php echo $icons_group_heading['heading_type']; ?>>
               <?php endif; ?>
               <?php if (!empty($icons_group_icons) && is_array($icons_group_icons)): ?>
                 <div class="icons-slider mb-3 pb-4 pt-3">
@@ -396,7 +396,7 @@ if ($meet_background_color == 'Blue') {
           <?php endif; 
           if($column_1_gallery == true && $icons_or_image == 'Image Gallery' ): ?>
             <?php if($image_group_heading['headline']): ?>
-                <<?php echo $image_group_heading['heading_type']; ?> class="font-medium mb-4 pb-lg-3 <?php echo $heading_color; ?>"><?php echo $image_group_heading['headline']; ?></<?php echo $image_group_heading['heading_type']; ?>>
+                <<?php echo $image_group_heading['heading_type']; ?> class="font-medium mb-4 pb-md-3 <?php echo $heading_color; ?>"><?php echo $image_group_heading['headline']; ?></<?php echo $image_group_heading['heading_type']; ?>>
               <?php endif; ?>
             <?php if (!empty($image_gallery) && is_array($image_gallery)): ?>
               <div class="image-gallery-slider mb-3 pb-4 pt-3">
@@ -532,7 +532,7 @@ if ($meet_background_color == 'Blue') {
                         }
                         $unique_key = uniqid();
                       ?>
-                      <div class="video-box <?php echo $embellishment_class; ?> <?php echo $embellishment_position_class; ?>">
+                      <div class="video-box">
                         <div class="embed-responsive embed-responsive-16by9 video-wrapper position-relative">
                           <span class="play-icon" id="play-<?php echo $unique_key; ?>">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-icon.svg" alt="Play Video">
@@ -560,9 +560,6 @@ if ($meet_background_color == 'Blue') {
                               loading="lazy"
                               allow="autoplay"></iframe>
                           `);
-                            // Adjust height
-                            let videoHeight = jQuery('.push-info .video-image').outerHeight();
-                            jQuery('.push-info .video-player iframe').css('height', videoHeight);
                           });
                         });
                       </script>
@@ -647,9 +644,6 @@ if ($meet_background_color == 'Blue') {
                           loading="lazy"
                           allow="autoplay"></iframe>
                       `);
-                        // Adjust height
-                        let videoHeight = jQuery('.video-image').outerHeight();
-                        jQuery('.video-player iframe').css('height', videoHeight);
                       });
                     });
                   </script>
@@ -685,7 +679,7 @@ if ($meet_background_color == 'Blue') {
                           <div class="col-lg-4 team-img-col">
                             <img src="<?php echo $team_image['url']; ?>" alt="<?php echo $team_image['alt']; ?>" class="img-fluid">
                             <?php if($meet_button): ?>
-                              <a href="<?php echo $meet_button['url']; ?>" class="meet-team-button mb-4 mb-lg-0 d-none d-lg-inline-block" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
+                              <a href="<?php echo $meet_button['url']; ?>" class="meet-team-button mb-4 mb-md-0 d-none d-md-inline-block" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
                             <?php endif; ?>
                           </div>
                           <div class="col-lg-8 team-content-col mt-4 mt-lg-0">
@@ -696,7 +690,7 @@ if ($meet_background_color == 'Blue') {
                               </div>
                             <?php endif; ?>
                             <?php if($meet_button): ?>
-                              <a href="<?php echo $meet_button['url']; ?>" class="meet-team-button mb-4 mb-lg-0 d-lg-none" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
+                              <a href="<?php echo $meet_button['url']; ?>" class="meet-team-button mb-4 mb-md-0 d-md-none" <?php if($meet_button['target']): ?>target="<?php echo $meet_button['target'];?>"<?php endif; ?>><?php echo $meet_button['title']; ?></a>
                             <?php endif; ?>
                           </div>
                         </div>
@@ -714,7 +708,7 @@ if ($meet_background_color == 'Blue') {
                 <<?php echo $accordions_heading['heading_type']; ?> class="font-medium mb-4 <?php echo $heading_color; ?>"><?php echo $accordions_heading['headline']; ?></<?php echo $accordions_heading['heading_type']; ?>>
               <?php endif; ?>
               <?php if (!empty($accordions) && is_array($accordions)): ?>
-                <div class="accordion accordion-block mt-3 mt-lg-0" id="accordionExample-<?php echo $key; ?>">
+                <div class="accordion accordion-block mt-3 mt-md-0" id="accordionExample-<?php echo $key; ?>">
                   <?php $i = 1;
                   foreach($accordions as $accordion): 
                   $accordion_title = get_field('accordion_header', $accordion->ID); 
@@ -731,11 +725,11 @@ if ($meet_background_color == 'Blue') {
                         <div class="accordion-body">
                           <div class="row">
                             <?php if($accordion_image): ?>
-                              <div class="col-lg-4">
+                              <div class="col-lg-4 mb-4 mb-lg-0">
                                 <img src="<?php echo $accordion_image['url']; ?>" alt="<?php echo $accordion_image['alt']; ?>" class="img-fluid">
                               </div>
                             <?php endif; ?>
-                            <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-lg-12 pe-lg-5<?php endif; ?>">
+                            <div class="<?php if($accordion_image): ?>col-lg-8 ps-xxl-4 <?php else: ?>col-md-12 pe-md-5<?php endif; ?>">
                               <?php if($accordion_content): ?>
                                 <div class="wysiwyg-content accordion-content <?php if($accordion_button): ?>pb-2<?php endif; ?> <?php echo $text_color; ?>">
                                   <?php echo wp_trim_words( $accordion_content, 42, '...' ); ?>
