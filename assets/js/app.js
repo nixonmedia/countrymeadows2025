@@ -115,3 +115,25 @@ jQuery(document).ready(function($){
       ]
   });
 });
+
+jQuery(document).ready(function($){
+    $.fn.equalHeights = function(){
+        var selector = this;
+        var heights = [];
+
+        // Save the heights of every element into an array
+        selector.each(function(){
+            var height = $(this).height();
+            heights.push(height);
+        });
+
+        // Get the biggest height
+        var maxHeight = Math.max.apply(null, heights);
+
+        // Set the maxHeight to every selected element
+        selector.each(function(){
+            $(this).height(maxHeight);
+        }); 
+    };                             
+    $('.text-column-grid-content').equalHeights();
+});

@@ -1269,6 +1269,17 @@ background-size: 340px;
 .text-column-grid-zone .row {
   --bs-gutter-y: 45px;
 }
+.text-column-grid-zone .bg-water-color::after {
+  top: -85px;
+  left: -50px;
+  opacity: 0;
+}
+.text-column-grid-zone .bg-water-color:hover::after {
+  opacity: 1;
+}
+.text-column-grid-zone .bg-water-color {
+  z-index: unset;
+}
 
 /***********************
 ********* Blog *********
