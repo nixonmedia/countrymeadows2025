@@ -86,9 +86,7 @@ jQuery(document).ready(function($){
         $('.resources-section .resource-card').equalHeights();
         // $('.helpful-topics .topic-card').equalHeights();
     }
-});
- 
-  $('.review-slider').slick({
+$('.review-slider').slick({
     dots: false,
     arrows: true,
     slidesToShow: 3,
