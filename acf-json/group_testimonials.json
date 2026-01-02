@@ -145,7 +145,7 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "testimonial_category",
+            "taxonomy": "testimonial_categories",
             "add_term": 0,
             "save_terms": 1,
             "load_terms": 0,
@@ -229,5 +229,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763020453
+    "modified": 1764670903
 }

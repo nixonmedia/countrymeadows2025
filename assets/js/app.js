@@ -88,3 +88,54 @@ jQuery(document).ready(function($){
     }
 });
  
+  $('.review-slider').slick({
+    dots: false,
+    arrows: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    prevArrow:
+    `<img src="${themeDir}/assets/images/slide-arrow-left.svg" alt="icon" class="icon-prev">`,
+    nextArrow:
+    `<img src="${themeDir}/assets/images/slide-arrow-right.svg" alt="icon" class="icon-next">`,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false
+        },
+      },
+    ],
+  });
+  $(".content-buttons-slider .buttons").slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      dots: false,
+      infinite: true,
+      responsive: [
+          {
+              breakpoint: 992,
+              settings: { slidesToShow: 3 }
+          },
+          {
+              breakpoint: 768,
+              settings: { slidesToShow: 2 }
+          },
+          {
+              breakpoint: 480,
+              settings: { slidesToShow: 1 }
+          }
+      ]
+  });
+});

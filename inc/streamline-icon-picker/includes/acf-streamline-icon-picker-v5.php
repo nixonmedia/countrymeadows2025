@@ -41,12 +41,16 @@ class ACF_Field_Streamline_Icon_Picker extends acf_field {
         // render select with no options; Select2 AJAX will populate based on input
         $nonce = wp_create_nonce( 'streamline_icon_search' );
         $field_name = esc_attr( $field['name'] );
+        $field_id = 'streamline-icon-' . uniqid();
 
         echo '<div class="streamline-icon-field" style="display:flex;gap:8px;align-items:center;">';
 
-        // icon select (ajax)
+        // icon select wrapper
+        echo '<div style="flex:0 0 80%;position:relative;">';
+        
         printf(
-            '<select name="%1$s[icon]" class="streamline-icon-select" data-ajax-action="streamline_icon_search" data-nonce="%2$s" style="flex:0 0 80%%;">',
+            '<select id="%1$s" name="%2$s[icon]" class="streamline-icon-select" data-ajax-action="streamline_icon_search" data-nonce="%3$s" style="width:100%%;">',
+            esc_attr( $field_id ),
             $field_name,
             esc_attr( $nonce )
         );
@@ -66,6 +70,7 @@ class ACF_Field_Streamline_Icon_Picker extends acf_field {
         }
 
         echo '</select>';
+        echo '</div>';
 
         // size select (per selection)
         $size_choices = array(
