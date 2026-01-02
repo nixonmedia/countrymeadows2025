@@ -1306,6 +1306,21 @@ background-size: 340px;
   z-index: -1;
   pointer-events: none;
 }
+.full-width-left-col.bg-teal::after {
+    background: var(--teal);
+}
+.full-width-left-col.bg-purple::after {
+    background: var(--purple);
+}
+.full-width-left-col.bg-gradient-yellow::after {
+       background: linear-gradient(180deg, rgba(255, 202, 74, 0.10) 0%, #FFF 47.12%); 
+} 
+.full-width-left-col.bg-white::after {
+       background: var(--white); 
+}
+.full-width-left-col.bg-blue::after {
+       background: var(--blue ); 
+}
 
 .floorplan-zone .flex-row-reverse .full-width-left-col:after{
         left: 0;
@@ -2885,7 +2900,7 @@ a.facetwp-toggle {
     background-position: -34px -12%;  
   }  
 }
-@media only screen and (min-width: 1620px) {
+  @media only screen and (min-width: 1620px) {
   .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
     font-size: 24px;
     line-height: 36px;
@@ -2946,16 +2961,15 @@ padding: 120px 60px 120px 50px;
       padding: 45px !important;
 }
 
-
-  .post-stylized-heading {
+.post-stylized-heading {
     font-size: 76px;
     line-height: 76px;
   }
 
-.florplan-zone .flex-row-reverse .right-floorplan-col{
-          padding-left: 20px;
+.floorplan-zone .flex-row-reverse .right-floorplan-col{
+    padding-left: 20px;
 }
-   .florplan-zone .flex-row-reverse .full-width-left-col {
+   .floorplan-zone .flex-row-reverse .full-width-left-col {
     padding: 120px 60px 120px 50px;
         margin-right: 0px !important;
         margin-left: 100px;

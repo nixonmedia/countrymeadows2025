@@ -3539,11 +3539,12 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "return_format": "array"
+                            "return_format": "array",
+                            "allow_in_bindings": 1
                         },
                         {
                             "key": "field_floor_plans_relationship",
@@ -3555,7 +3556,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
@@ -4779,5 +4780,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1767270321
+    "modified": 1767328816
 }
