@@ -158,6 +158,7 @@ if ( have_posts() ) : ?>
     </div>
   </div>
 </section>
+<div class="blog-post-layout-content">
   <?php /*********  Flexible Content Start  ***********/
     $fields = get_fields( get_the_ID() );
     if ( isset( $fields['flexible_content'] ) && is_array( $fields['flexible_content'] ) ):
@@ -169,6 +170,7 @@ if ( have_posts() ) : ?>
       endforeach;
     endif;
  endif; ?>
+ </div>
  
 <div class="related-posts-wrapper position-relative d-md-none">
   <div class="container">
@@ -241,7 +243,7 @@ if ($cta_heading || $cta_content || ($cta_buttons && count($cta_buttons) > 0)): 
             </div>
           <?php endif; ?>
             <?php if($cta_buttons && count($cta_buttons) > 0): ?>
-              <div class="post-cta-buttons d-flex align-items-center justify-content-center gap-4 flex-wrap mt-4">
+              <div class="post-cta-buttons d-flex align-items-center justify-content-center gap-3 gap-lg-4 flex-wrap mt-4">
                 <?php foreach($cta_buttons as $button): ?>
                   <a href="<?php echo esc_url($button['button']['url']); ?>" class="site-button" 
                     <?php if($button['button']['target']): ?> 
