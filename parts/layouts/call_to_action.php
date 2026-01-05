@@ -140,7 +140,7 @@ $spacing_class = ($key === $total_sections - 1) ? 'mt-7' : 'my-7';
 
 <?php if (!empty($section['call_to_action'])): ?>
 
-<section id="call-to-action-<?php echo get_the_ID() . '-' . $key; ?>" class="call-to-action py-5 <?php echo $bg_color; ?> <?php echo $border_class ?> <?php echo $angle_class ?> <?php echo $margin_class; ?> <?php echo $bg_pattern_class; ?> <?php if($border == 'angle' || $border == 'straight'): echo $spacing_class; endif; ?>">
+<section id="call-to-action-<?php echo get_the_ID() . '-' . $key; ?>" class="call-to-action py-5 <?php echo $bg_color; ?> <?php echo $border_class ?> <?php echo $angle_class ?> <?php echo $margin_class; ?> <?php echo $bg_pattern_class; ?> <?php if($border == 'angle'): echo $spacing_class; endif; ?>">
     <div class="container-fluid py-2">
    
    <div class="row justify-content-center">

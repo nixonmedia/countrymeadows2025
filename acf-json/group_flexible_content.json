@@ -2996,8 +2996,8 @@
                                     "parent_repeater": "field_text_grid_content_blocks"
                                 },
                                 {
-                                    "key": "field_695654663105e",
-                                    "label": "Button hover water color",
+                                    "key": "field_695b57e33efd0",
+                                    "label": "button_hover_water_color",
                                     "name": "button_hover_water_color",
                                     "aria-label": "",
                                     "type": "select",
@@ -3524,7 +3524,7 @@
                             "label": "Heading",
                             "name": "heading",
                             "aria-label": "",
-                            "type": "text",
+                            "type": "clone",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -3533,40 +3533,13 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        },
-                        {
-                            "key": "field_floor_plans_heading_type",
-                            "label": "Heading Type",
-                            "name": "heading_type",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "h2": "H2",
-                                "h3": "H3",
-                                "h4": "H4"
-                            },
-                            "default_value": "h2",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "return_format": "value",
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
+                            "clone": [
+                                "group_691d7eaf7eef3"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         },
                         {
                             "key": "field_floor_plans_content",
@@ -3598,11 +3571,12 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "return_format": "array"
+                            "return_format": "array",
+                            "allow_in_bindings": 1
                         },
                         {
                             "key": "field_floor_plans_relationship",
@@ -3614,24 +3588,26 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
                             "post_type": [
                                 "floor_plan"
                             ],
-                            "taxonomy": [
-                                "campus"
-                            ],
+                            "post_status": "",
+                            "taxonomy": "",
                             "filters": [
                                 "search",
+                                "post_type",
                                 "taxonomy"
                             ],
-                            "elements": "",
+                            "return_format": "id",
                             "min": "",
                             "max": "",
-                            "return_format": "id",
+                            "allow_in_bindings": 1,
+                            "elements": "",
+                            "bidirectional": 0,
                             "bidirectional_target": []
                         },
                         {
@@ -3655,11 +3631,11 @@
                             "ui_off_text": "No"
                         },
                         {
-                            "key": "field_floor_plans_side_background_watercolor",
-                            "label": "Side Content Background Watercolor",
-                            "name": "side_background_watercolor",
+                            "key": "field_6956427859458",
+                            "label": "Side Content",
+                            "name": "side_content",
                             "aria-label": "",
-                            "type": "select",
+                            "type": "group",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
@@ -3672,20 +3648,170 @@
                                 ]
                             ],
                             "wrapper": {
-                                "width": "50",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": [],
-                            "default_value": false,
-                            "allow_null": 1,
-                            "multiple": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "return_format": "value",
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_6956612808b47",
+                                    "label": "Side Content Position",
+                                    "name": "side_content_position",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "Left": "Left",
+                                        "Right": "Right"
+                                    },
+                                    "default_value": "Left",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "create_options": 0,
+                                    "save_options": 0
+                                },
+                                {
+                                    "key": "field_6956429d59459",
+                                    "label": "Heading",
+                                    "name": "heading",
+                                    "aria-label": "",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "clone": [
+                                        "group_691d7eaf7eef3"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0
+                                },
+                                {
+                                    "key": "field_695642bb5945a",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "aria-label": "",
+                                    "type": "streamline_icon_picker",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "allow_in_bindings": 0
+                                },
+                                {
+                                    "key": "field_695642c75945b",
+                                    "label": "Content",
+                                    "name": "content",
+                                    "aria-label": "",
+                                    "type": "wysiwyg",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "allow_in_bindings": 0,
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 1,
+                                    "delay": 0
+                                },
+                                {
+                                    "key": "field_695642d35945c",
+                                    "label": "Button",
+                                    "name": "button",
+                                    "aria-label": "",
+                                    "type": "link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "allow_in_bindings": 0
+                                },
+                                {
+                                    "key": "field_floor_plans_side_background_watercolor",
+                                    "label": "Side Content Background Color",
+                                    "name": "side_content_background_color",
+                                    "aria-label": "",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_floor_plans_include_side_content",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "clone": [
+                                        "group_691d6ed5d9932"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_6956444f5945d",
+                            "label": "Background Watercolor",
+                            "name": "background_watercolor",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_691d919a2b6c1"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -4052,7 +4178,7 @@
                             "aria-label": "",
                             "type": "relationship",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -4062,112 +4188,25 @@
                             "post_type": [
                                 "call_to_action"
                             ],
+                            "post_status": "",
                             "taxonomy": "",
                             "filters": [
                                 "search"
                             ],
-                            "elements": "",
-                            "min": 1,
-                            "max": 1,
                             "return_format": "id",
+                            "min": "",
+                            "max": "",
+                            "allow_in_bindings": 1,
+                            "elements": "",
+                            "bidirectional": 0,
                             "bidirectional_target": []
                         },
                         {
-                            "key": "field_cta_layout_background_color",
+                            "key": "field_692d4673d4cad",
                             "label": "Background Color",
                             "name": "background_color",
                             "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "33",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": [],
-                            "default_value": false,
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "return_format": "value",
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
-                        },
-                        {
-                            "key": "field_cta_layout_border",
-                            "label": "Border",
-                            "name": "border",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "33",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "none": "None",
-                                "angle": "Angle",
-                                "straight": "Straight"
-                            },
-                            "default_value": "none",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "return_format": "value",
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
-                        },
-                        {
-                            "key": "field_cta_layout_angle",
-                            "label": "Angle",
-                            "name": "angle",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_cta_layout_border",
-                                        "operator": "==",
-                                        "value": "angle"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "34",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "down_right": "Down to the Right",
-                                "down_left": "Down to the Left"
-                            },
-                            "default_value": false,
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "return_format": "value",
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
-                        },
-                        {
-                            "key": "field_cta_layout_background_embellishment",
-                            "label": "Background Embellishment",
-                            "name": "background_embellishment",
-                            "aria-label": "",
-                            "type": "select",
+                            "type": "clone",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -4176,21 +4215,63 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "clone": [
+                                "group_691d6ed5d9932"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        },
+                        {
+                            "key": "field_692d46b3d4cae",
+                            "label": "Border",
+                            "name": "border",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_691d7a68d536e"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        },
+                        {
+                            "key": "field_692d46e8d4caf",
+                            "label": "Background Embellishment",
+                            "name": "background_embellishment",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_6923d48130047"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
                             "choices": {
                                 "circles": "Circles",
                                 "dots": "Dots",
                                 "honeycomb": "Honeycomb",
                                 "sprinkles": "Sprinkles"
-                            },
-                            "default_value": false,
-                            "allow_null": 1,
-                            "multiple": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "return_format": "value",
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
+                            }
                         }
                     ],
                     "min": "",
@@ -4203,7 +4284,7 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_button_cards_heading",
+                            "key": "field_692d287511a09",
                             "label": "Heading",
                             "name": "heading",
                             "aria-label": "",
@@ -4731,5 +4812,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1767266340
+    "modified": 1767593988
 }
