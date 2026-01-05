@@ -1278,6 +1278,23 @@ background-size: 340px;
 .text-column-grid-zone .row {
   --bs-gutter-y: 45px;
 }
+.text-column-grid-zone .site-button:hover {
+    background-color: var(--purple);
+}
+.text-column-grid-zone .bg-water-color::after {
+  top: -85px;
+  left: -50px;
+  opacity: 0;
+}
+.text-column-grid-zone .bg-water-color:hover::after {
+  opacity: 1;
+}
+.text-column-grid-zone .bg-water-color {
+  z-index: unset;
+}
+.text-column-grid-zone .bg-water-color.bg-blue-water-color:after {
+  background: radial-gradient(50% 50% at 39.86% 56.31%, rgba(43, 161, 198, 0.40) 0%, rgba(43, 161, 198, 0.45) 0.01%, rgba(254, 254, 254, 0.00) 71.63%);
+}
 
 
 /* FLOOR PLANS */
