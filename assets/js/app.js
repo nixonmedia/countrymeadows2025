@@ -67,12 +67,14 @@ responsive: [
       breakpoint: 1200,  // below 1200px
       settings: {
         slidesToShow: 2,
+        centerMode: false,
       }
     },
     {
       breakpoint: 768,   // below 768px
       settings: {
         slidesToShow: 1,
+        centerMode: false,
       }
     }
   ]

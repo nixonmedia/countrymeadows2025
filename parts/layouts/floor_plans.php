@@ -6,11 +6,11 @@ $content = $section['content'] ?? "";
 $link = $section['link'] ?? "";
 $floor_plans = $section['floor_plans'] ?? [];
 $include_side_content = $section['include_side_content'];
-$side_content_gp = $section['side_content'];
+$side_content_gp = $section['side_content'] ?? '';
 $side_heading = $side_content_gp['heading']['headline'] ?? "";
 $side_heading_style = $side_content_gp['heading']['heading_type'] ?? "";
-$icon = $side_content_gp['icon'];
-$gp_content = $side_content_gp['content'];
+$icon = $side_content_gp['icon'] ?? '';
+$gp_content = $side_content_gp['content'] ?? '';
 $button = $side_content_gp['button'] ?? "";
 $side_content_position = $side_content_gp['side_content_position'] ?? '';
 $background_color = $side_content_gp['background_color'] ?? '';
@@ -18,7 +18,7 @@ $background_color = $side_content_gp['background_color'] ?? '';
 $background_water_color = $section['background_watercolor'] ?? '';
 $background_watercolor_position = $section['background_watercolor_position'] ?? '';
 // var_dump($background_watercolor);
-$row_classes = 'row px-3 px-lg-0';
+$row_classes = 'row';
 
 if ($include_side_content && $side_content_position === 'Right') {
     $row_classes .= ' flex-row-reverse';
@@ -73,13 +73,13 @@ if ($background_watercolor_position == 'left') {
 ?>
 <?php if ($heading || $content || !empty($floor_plans) || ! empty($link)) :
 ?>
-    <section id="floor-plans-zone-<?php echo get_the_ID() . '-' . $key; ?>" class="floorplan-zone allentown-section py-5 ">
-        <div class="container-fluid px-3 px-lg-0">
+    <section id="floor-plans-zone-<?php echo get_the_ID() . '-' . $key; ?>" class="floorplan-zone allentown-section py-5  <?php if (! empty($include_side_content)) : ?>with-include-content px-0<?php endif; ?>">
+        <div class="container-fluid">
             <div class="<?php echo $row_classes; ?>">
                 <?php if (! empty($include_side_content)) : ?>
                     <!-- LEFT COLUMN (Side Content) -->
                     <?php if ($side_heading || $gp_content): ?>
-                        <div class="col-lg-4 mb-5 mb-lg-0 full-width-left-col <?php echo $bg_color; ?>">
+                        <div class="col-lg-5 z-2 mb-5 mb-lg-0 full-width-left-col <?php echo $bg_color; ?>">
                             <?php if (! empty($side_heading)) : ?>
                                 <?php echo $icon; ?>
                                 <<?php echo $side_heading_style; ?> class="font-medium fw-bold mb-2 pb-1 font-poppins <?php echo $heading_color;  ?>">
@@ -105,16 +105,16 @@ if ($background_watercolor_position == 'left') {
                     <?php endif; ?>
 
                     <?php if ($heading || $content || !empty($floor_plans) || ! empty($link)): ?>
-                        <div class="col-lg-7 right-floorplan-col">
+                        <div class="col-lg-7 right-floorplan-col z-2">
                             <?php if ($heading || $content): ?>
                                 <div class="row mb-4">
                                     <?php if ($heading): ?>
-                                        <div class="col-lg-5 col-xl-4 left-floorplan-content">
+                                        <div class="col-lg-5 col-xxl-4 left-floorplan-content mb-4 mb-lg-0">
                                             <<?php echo $heading_style; ?> class="fw-bold font-poppins dotted-underline heading"><?php echo $heading; ?> </<?php echo $heading_style; ?>>
                                         </div>
                                     <?php endif;
                                     if ($content): ?>
-                                        <div class="col-lg-7 col-xl-6">
+                                        <div class="col-lg-7 col-xxl-6">
                                             <div class="wysiwyg-content font-xs-medium font-poppins">
                                                 <?php echo $content; ?>
                                             </div>
@@ -129,7 +129,7 @@ if ($background_watercolor_position == 'left') {
                                             <?php foreach ($floor_plans as $post) : setup_postdata($post);
                                                 $floor_plan_image = get_field('floor_plan_image', get_the_ID());
                                             ?>
-                                                <div class="floor-card p-3 p-md-5 text-center">
+                                                <div class="floor-card p-3 p-xxl-5 text-center">
                                                     <div class="floor-card-inner">
 
                                                         <?php if (! empty($floor_plan_image)) : ?>
@@ -138,7 +138,7 @@ if ($background_watercolor_position == 'left') {
                                                                 alt="<?php echo esc_attr($floor_plan_image['alt'] ?? get_the_title()); ?>">
                                                         <?php endif; ?>
 
-                                                        <p class="fw-semibold text-lg-start font-poppins">
+                                                        <p class="fw-semibold text-lg-start font-poppins mb-0 font-xs-medium">
                                                             <?php echo esc_html(get_the_title()); ?>
                                                         </p>
                                                     </div>
@@ -150,7 +150,7 @@ if ($background_watercolor_position == 'left') {
                                 </div>
                             <?php endif; ?>
                             <?php if (! empty($link)) : ?>
-                                <div class="text-center">
+                                <div class="text-center z-2">
                                     <a href="<?php echo esc_url($link['url']); ?>"
                                         class="font-xs-medium text-blue fw-bold"
                                         <?php echo ! empty($link['target']) ? 'target="' . esc_attr($link['target']) . '"' : ''; ?>>
@@ -166,19 +166,19 @@ if ($background_watercolor_position == 'left') {
                         <div class="col-lg-5 my-auto">
                             <div class="row mb-4 px-0 px-lg-3">
                                 <?php if ($heading): ?>
-                                    <div class="col-xl-5 left-floorplan-content">
+                                    <div class="col-xl-5 left-floorplan-content z-2 mb-3 mb-xl-0">
                                         <<?php echo $heading_style; ?> class="fw-bold font-poppins dotted-underline heading">
                                             <?php echo $heading; ?>
                                         </<?php echo $heading_style;  ?>>
                                     </div>
                                 <?php endif;
                                 if ($content || ! empty($link)): ?>
-                                    <div class="col-xl-7">
-                                        <div class="wysiwyg-content font-xs-medium font-poppins my-3 mb-lg-3">
+                                    <div class="col-xl-7 z-2">
+                                        <div class="wysiwyg-content font-xs-medium font-poppins mb-3 mb-lg-3">
                                             <?php echo $content ?>
                                         </div>
                                         <?php if (! empty($link)) : ?>
-                                            <div class="text-center">
+                                            <div class="text-start">
                                                 <a href="<?php echo esc_url($link['url']); ?>"
                                                     class="font-xs-medium text-blue fw-bold"
                                                     <?php echo ! empty($link['target']) ? 'target="' . esc_attr($link['target']) . '"' : ''; ?>>
@@ -193,7 +193,7 @@ if ($background_watercolor_position == 'left') {
                     <?php endif; ?>
                     <?php if (! empty($floor_plans)): ?>
                         <div class="col-lg-7">
-                            <div class="floorplan-slider floorplan-sm-slider my-4 font-poppins <?php echo $bg_water_color; ?>  <?php echo $bg_water_color_position; ?>">
+                            <div class="floorplan-slider floorplan-sm-slider mt-4 my-md-4 font-poppins <?php echo $bg_water_color; ?>  <?php echo $bg_water_color_position; ?>">
                                 <?php if (! empty($floor_plans)) : ?>
                                     <?php foreach ($floor_plans as $post) : setup_postdata($post); ?>
 
@@ -201,7 +201,7 @@ if ($background_watercolor_position == 'left') {
                                         $floor_plan_image = get_field('floor_plan_image', get_the_ID());
                                         ?>
 
-                                        <div class="floor-card p-3 p-md-5 text-center">
+                                        <div class="floor-card p-3 p-xxl-5 text-center">
                                             <div class="floor-card-inner">
 
                                                 <?php if (! empty($floor_plan_image)) : ?>
@@ -210,7 +210,7 @@ if ($background_watercolor_position == 'left') {
                                                         alt="<?php echo esc_attr($floor_plan_image['alt'] ?? get_the_title()); ?>">
                                                 <?php endif; ?>
 
-                                                <p class="fw-semibold text-lg-start font-poppins">
+                                                <p class="fw-semibold text-lg-start font-poppins mb-0 font-xs-medium">
                                                     <?php echo esc_html(get_the_title()); ?>
                                                 </p>
 
