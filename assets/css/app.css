@@ -1893,6 +1893,34 @@ a.facetwp-toggle {
     padding: 50px 10px 50px 30px;
 }
 
+
+/* Facet Search  */
+.facet-search-btn{
+  background-color: var(--yellow);
+    position: relative;
+    border-radius: 10px;
+    color: #010101;
+    padding: 10px 40px 10px 30px;
+    display: block;
+    border: 0;  
+}
+ .facet-search-btn:after{
+  content: "\f002";
+  position: absolute;
+  font-family:"Font Awesome 6 Pro";
+      font-size: 12px;
+    right: 20px;
+    top: 10px;
+}
+.facet-search-btn:hover{
+  background-color: var(--dark-blue); 
+  color: var(--white);
+}
+.facet-search-btn:hover::after {
+  color: var(--white);
+}
+
+
 /* Media Queries  */
 
 @media only screen and (max-width: 429px) {
