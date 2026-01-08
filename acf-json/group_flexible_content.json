@@ -3882,25 +3882,6 @@
                             "allow_in_bindings": 0
                         },
                         {
-                            "key": "field_form_gravity_form",
-                            "label": "Form",
-                            "name": "form",
-                            "aria-label": "",
-                            "type": "forms",
-                            "instructions": "Select from Gravity Forms",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "id",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "allow_in_bindings": 1
-                        },
-                        {
                             "key": "field_form_position",
                             "label": "Form Position",
                             "name": "form_position",
@@ -3929,6 +3910,73 @@
                             "placeholder": "",
                             "create_options": 0,
                             "save_options": 0
+                        },
+                        {
+                            "key": "field_695e0eb068d82",
+                            "label": "Form Heading",
+                            "name": "form_heading",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_form_position",
+                                        "operator": "!=",
+                                        "value": "center"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_695e0ed668d83",
+                                    "label": "Heading",
+                                    "name": "heading",
+                                    "aria-label": "",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "clone": [
+                                        "group_691d7eaf7eef3"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_form_gravity_form",
+                            "label": "Form",
+                            "name": "form",
+                            "aria-label": "",
+                            "type": "forms",
+                            "instructions": "Select from Gravity Forms",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "allow_in_bindings": 1
                         },
                         {
                             "key": "field_form_background_color",
@@ -4812,5 +4860,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1767593988
+    "modified": 1767771963
 }

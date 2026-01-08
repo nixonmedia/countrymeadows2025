@@ -48,7 +48,6 @@ h1, h2, h3, h4, h5, h6 {
 .font-poppins{
    font-family: "Poppins", sans-serif;
 }
-
 /* colors */
 .bg-blue {
   background-color: var(--blue);
@@ -1426,17 +1425,32 @@ background-size: 340px;
     top: -165px !important;
     right: 25px !important;
 }
+.search-box-block .facetwp-facet-blog_search i {
+  display: none;
+}
 .search-box-block .facetwp-facet input, .search-box-block .facetwp-facet select {
   border: 1px solid #B6B6B6;
   color: #000;
   font-size: 16px;
-  padding: 8px 30px 8px 20px;
+  line-height: 45px;
+  padding: 3px 40px 3px 20px;
   border-radius: 0;
   font-family: "poppins", sans-serif;
-  height: 100%;
+}
+.facetwp-facet-browse_by_topic {
+  position: relative;
 }
 .search-box-block .facetwp-facet select {
   font-weight: 500;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.facetwp-facet-browse_by_topic:after {
+  content: '\f107';
+  position: absolute;
+  right: 15px;
+  font-family: "Font Awesome 6 Pro";
+  top: 8px;
 }
 .search-box-block .facetwp-facet input.facetwp-search::placeholder {
   color: rgb(0 0 0 / 30%);
@@ -1446,6 +1460,9 @@ background-size: 340px;
 }
 .search-box-block .facetwp-facet input, .search-box-block .facetwp-facet select, .search-box-block .facetwp-facet .facetwp-input-wrap {
   width: 100%;
+}
+.facetwp-facet input.facetwp-search:focus, .facetwp-facet-browse_by_topic .facetwp-dropdown:focus-visible {
+  outline: none;
 }
 .blog-intro-zone {
   margin-top: -10px;
@@ -1892,6 +1909,32 @@ a.facetwp-toggle {
   position: relative;
     padding: 50px 10px 50px 30px;
 }
+
+
+/* Facet Search  */
+.facet-search-btn{
+  background-color: var(--yellow);
+  position: relative;
+  border-radius: 10px;
+  color: #010101;
+  padding: 10px 50px 10px 50px;
+  display: block;
+  border: 0;  
+}
+.facet-search-btn:after{
+  content: "\f002";
+  font-family:"Font Awesome 6 Pro";
+  font-size: 16px;
+  padding-left: 6px;
+}
+.facet-search-btn:hover{
+  background-color: var(--dark-blue); 
+  color: var(--white);
+}
+.facet-search-btn:hover::after {
+  color: var(--white);
+}
+
 
 /* Media Queries  */
 
