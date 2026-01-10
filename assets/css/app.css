@@ -719,6 +719,96 @@ main section.bg-white {
   top: 20px;
 }
  
+/* Content button Hover */
+.content-buttons-slider .slide-item , .content-buttons-wrapper .single-button  {
+  position: relative;
+  overflow: visible;
+}
+ 
+ 
+.content-buttons-slider .slide-item::before , .content-buttons-wrapper .single-button:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 726px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background: radial-gradient(92% 22%, rgba(249, 211, 221, 0.45) 0%, rgba(255, 202, 74, 0.35) 30%, rgba(254, 254, 254, 0) 70%); */
+/* background: radial-gradient(50% 50% at 35.86% 50.31%, rgba(249, 211, 221, 0.60) 0%, rgba(250, 216, 225, 0.65) 0.01%, #fefefe00 71.63%);   */
+background: radial-gradient(
+  ellipse 92% 22% at 50% 50%,
+  rgba(249, 211, 221, 0.60) 0%,
+  rgba(250, 216, 225, 0.65) 30%,
+  rgba(254, 254, 254, 0) 70%
+);
+opacity: 0;
+
+  opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: -1;
+
+}
+
+.content-and-button-cards.bg-light-blue .slide-item::before,
+.content-and-button-cards.bg-light-blue .content-buttons-wrapper .single-button::before {
+  background: radial-gradient(
+    92% 22%,
+    rgba(0, 190, 222, 0.95) 0%,
+    rgba(0, 190, 222, 0.55) 28%,
+    rgba(0, 190, 222, 0) 68%
+  );
+}
+
+.content-and-button-cards.bg-teal .slide-item::before,
+.content-and-button-cards.bg-teal .content-buttons-wrapper .single-button::before {
+  background: radial-gradient(
+    110% 45%,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.55) 30%,
+    rgba(255, 255, 255, 0.25) 55%,
+    rgba(255, 255, 255, 0.00) 75%
+  );
+}
+
+
+
+.content-and-button-cards.bg-purple .slide-item::before,
+.content-and-button-cards.bg-purple .content-buttons-wrapper .single-button::before {
+  background: radial-gradient(
+    92% 22%,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.35) 28%,
+    rgba(255, 255, 255, 0) 68%
+  );
+}
+
+
+
+.content-and-button-cards.bg-gradient-yellow .slide-item::before,
+.content-and-button-cards.bg-gradient-yellow .content-buttons-wrapper .single-button::before {
+  background: radial-gradient(
+    92% 22%,
+    rgba(198, 142, 0, 0.95) 0%,
+    rgba(198, 142, 0, 0.55) 28%,
+    rgba(198, 142, 0, 0) 68%
+  );
+}
+
+
+ 
+.content-buttons-wrapper,
+.buttons {
+  overflow: visible !important;
+}
+.content-buttons-slider .slide-item:hover, .content-buttons-wrapper .single-button:hover{
+ box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px !important;
+}
+.content-buttons-slider .slide-item:hover::before , .content-buttons-wrapper .single-button:hover::before{
+  opacity: 1;
+
+}
 
 /**********************
 ****** Video Box ******
@@ -1644,6 +1734,16 @@ border-radius: 10px;
 .form_zone .wysiwyg-content img {
     padding-left: 0;
 }
+
+.form_zone.bg-blue .form-heading , .form_zone.bg-purple .form-heading{
+  color:var(--white);
+}
+ 
+.form_zone.bg-teal .form-heading{
+  color: var(--black);
+}
+ 
+ 
 
 .post-content img, .post-featured-image img {
   max-width: 100%;
