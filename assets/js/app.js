@@ -198,3 +198,20 @@ jQuery(document).ready(function($){
     };                             
     $('.text-column-grid-content').equalHeights();
 });
+
+//Help Toolbars
+document.addEventListener('DOMContentLoaded', function () {
+  const floatImg = document.querySelector('.help-tool-float');
+  const toolbarContent = document.querySelector('.help-toolbars-content');
+  const closeBtn = document.querySelector('.close-float');
+  // Open toolbar
+  floatImg.addEventListener('click', function () {
+      toolbarContent.style.display = 'block';
+      floatImg.style.display = 'none';
+  });
+  // Close toolbar
+  closeBtn.addEventListener('click', function () {
+      toolbarContent.style.display = 'none';
+      floatImg.style.display = 'block';
+  });
+});

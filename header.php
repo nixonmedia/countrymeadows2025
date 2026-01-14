@@ -126,3 +126,48 @@
         </header>
         <main>
         <!-- main is here  -->
+        <section class="help-toolbars">
+            <div class="container-fluid px-3">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/CM-float.svg" class="img-fluid help-tool-float">
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="help-toolbars-content">
+                            <div class="row">
+                                <div class="col-lg-1 pe-0">
+                                    <span class="close-float mb-2 pb-1">
+                                        <i class="fa-solid fa-circle-xmark text-white opacity-50"></i>
+                                    </span>
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/float-title.svg" class="img-fluid">
+                                </div>
+                                <div class="col-lg-3 text-center pt-2">
+                                    <h2 class="text-white font-xm">Communities</h2>
+                                    <p class="mb-0"><a href="#">Contact Us</a></p>
+                                </div>
+                                <div class="col-lg-5">
+                                    <ul class="help-float-menu list-unstyled mb-0">
+                                        <li><a href="#">Allentown</a></li>
+                                        <li><a href="#">Bethlehem</a></li>
+                                        <li><a href="#">Forks of Easton</a></li>
+                                        <li><a href="#">Frederick</a></li>
+                                        <li><a href="#">Hershey</a></li>
+                                        <li><a href="#">Mechanicsburg</a></li>
+                                        <li><a href="#">Wyomissing</a></li>
+                                        <li><a href="#">York-South</a></li>
+                                        <li><a href="#">York-West</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-3 ps-xl-4">
+                                    <ul class="help-float-icon-menu list-unstyled mb-0">
+                                        <li><a href="#">Download Brochure</a></li>
+                                        <li><a href="#">Speak to a Local Advisor</a></li>
+                                        <li><a href="#">Schedule a Personalized Visit</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

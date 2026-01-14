@@ -1935,6 +1935,41 @@ a.facetwp-toggle {
   color: var(--white);
 }
 
+/**********************
+**** Help Toolbars ****
+**********************/
+.help-toolbars-content {
+  border-radius: 10px;
+  padding: 22px;
+  background-color: var(--pink);
+  display: none;
+}
+.help-toolbars {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+}
+.help-toolbars a {
+  color: var(--white);
+}
+.help-toolbars a:hover {
+  text-decoration: none;
+}
+.help-tool-float {
+  width: 80px;
+  cursor: pointer;
+}
+.close-float {
+  font-size: 27px;
+  cursor: pointer;
+}
+.help-float-menu {
+  column-count: 3;
+  column-gap: 15px;
+}
+
 
 /* Media Queries  */
 

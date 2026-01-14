@@ -94,10 +94,11 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "",
+            "layout": "row",
+            "pagination": 0,
             "min": 0,
             "max": 3,
-            "layout": "table",
+            "collapsed": "",
             "button_label": "Add Icon Link",
             "rows_per_page": 20,
             "sub_fields": [
@@ -106,8 +107,8 @@
                     "label": "Link Icon",
                     "name": "link_icon",
                     "aria-label": "",
-                    "type": "select",
-                    "instructions": "Search and pick from icon library",
+                    "type": "streamline_icon_picker",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -115,17 +116,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": [],
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "allow_in_bindings": 1,
-                    "ui": 1,
-                    "ajax": 1,
-                    "placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0,
+                    "allow_in_bindings": 0,
                     "parent_repeater": "field_help_toolbar_icon_links"
                 },
                 {
@@ -168,5 +159,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1762243766
+    "modified": 1768294435
 }
