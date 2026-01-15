@@ -71,7 +71,7 @@ if ($border == 'angle' && $angle == 'down_left') {
                     <?php endif; ?>
                     <!-- Review Slider -->
                     <?php if ($review_feed): ?>
-                        <div class="review-slider ps-lg-4 pt-4" data-slick='{"autoplay": <?php echo $section['rotate'] ? "true" : "false" ; ?>}'>
+                        <div class="review-slider ps-lg-4 pt-4" data-slick='{"autoplay": <?php echo $section['rotate'] ? "true" : "false"; ?>}'>
 
                             <?php
                             // --- Query Reviews ---
@@ -131,9 +131,12 @@ if ($border == 'angle' && $angle == 'down_left') {
                                         <?php endif; ?>
 
                                         <?php if ($review_excerpt): ?>
-                                            <div class="font-xs-medium pb-3"><?= esc_html($review_excerpt); ?></div>
-                                        <?php endif; if($review_url): ?>
-                                        <a href="<?= esc_url($review_url); ?>" <?= $review_url ? 'target="_blank"' : ''; ?> class="read-more-text text-pink fw-bold">Read More</a>
+                                            <div class="font-xs-medium pb-3">
+                                                <?= esc_html(wp_trim_words($review_excerpt, 50, '...')); ?>
+                                            </div>
+                                        <?php endif;
+                                        if ($review_url): ?>
+                                            <a href="<?= esc_url($review_url); ?>" <?= $review_url ? 'target="_blank"' : ''; ?> class="read-more-text text-pink fw-bold">Read More</a>
                                         <?php endif; ?>
                                     </div>
 
