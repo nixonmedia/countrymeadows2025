@@ -146,7 +146,7 @@ $review_type = $section['choose__google_and_career_review'] ?? '';
                                     }
                             ?>
 
-                                    <div class="bg-white p-4">
+                                    <div class="bg-white p-4 position-relative">
                                         <div class="text-center d-flex justify-content-center pb-2 gap-1">
                                             <?php for ($i = 0; $i < $review_stars; $i++): ?>
                                                 <img src="<?= get_template_directory_uri(); ?>/assets/images/star.svg"
@@ -165,7 +165,7 @@ $review_type = $section['choose__google_and_career_review'] ?? '';
                                         <?php endif; ?>
 
                                         <?php if ($review_excerpt): ?>
-                                            <div class="font-xs-medium pb-3">
+                                            <div class="font-xs-medium pb-5">
                                                 <?= esc_html(wp_trim_words($review_excerpt, 50, '...')); ?>
                                             </div>
                                         <?php endif;

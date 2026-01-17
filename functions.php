@@ -1524,9 +1524,17 @@ function cm_sync_google_reviews_to_cpt()
     global $wpdb;
 
     // Lock to prevent overlap
+    // if (get_transient('cm_review_sync_lock')) {
+    //     return ['success' => false, 'message' => 'Sync already running'];
+    // }
     if (get_transient('cm_review_sync_lock')) {
-        return ['success' => false, 'message' => 'Sync already running'];
+        return [
+            'success' => true,
+            'notice'  => true,
+            'message' => 'Note: A sync is already running. Please wait a moment and try again.'
+        ];
     }
+
     set_transient('cm_review_sync_lock', true, 10 * MINUTE_IN_SECONDS);
 
     // Existing posts
@@ -1627,171 +1635,6 @@ function cm_sync_google_reviews_to_cpt()
         'total'   => count($reviews),
     ];
 }
-// function cm_sync_google_reviews_to_cpt() {
-//     global $wpdb;
-
-//     $LOCK_KEY  = 'cm_review_sync_lock';
-//     $LOCK_TTL  = 10 * MINUTE_IN_SECONDS;
-
-//     // -----------------------------
-//     // LOCK CHECK (with stale safety)
-//     // -----------------------------
-//     $lock_time = get_transient($LOCK_KEY);
-
-//     if ($lock_time && (time() - (int) $lock_time) < $LOCK_TTL) {
-//         return [
-//             'success' => false,
-//             'message' => 'Sync already running',
-//         ];
-//     }
-
-//     // Set / overwrite lock
-//     set_transient($LOCK_KEY, time(), $LOCK_TTL);
-
-//     // Defaults for return
-//     $created = 0;
-//     $updated = 0;
-//     $deleted = 0;
-
-//     try {
-
-//         // -----------------------------------
-//         // GET EXISTING POSTS
-//         // -----------------------------------
-//         $existing = $wpdb->get_results("
-//             SELECT p.ID, pm.meta_value AS external_id
-//             FROM {$wpdb->posts} p
-//             INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id
-//             WHERE p.post_type = 'google_review'
-//               AND p.post_status = 'publish'
-//               AND pm.meta_key = 'external_review_id'
-//         ");
-
-//         $existing_ids = [];
-//         foreach ($existing as $post) {
-//             $existing_ids[$post->external_id] = (int) $post->ID;
-//         }
-
-//         // -----------------------------------
-//         // FETCH GOOGLE REVIEWS
-//         // -----------------------------------
-//         $reviews = cm_get_google_reviews();
-
-//         if (empty($reviews) || !is_array($reviews)) {
-//             throw new Exception('No reviews returned from API');
-//         }
-
-//         $api_ids = [];
-
-//         // -----------------------------------
-//         // LOOP REVIEWS
-//         // -----------------------------------
-//         foreach ($reviews as $review) {
-
-//             if (empty($review['id'])) {
-//                 continue;
-//             }
-
-//             $external_id = sanitize_text_field($review['id']);
-//             $api_ids[]   = $external_id;
-
-//             // UPDATE or CREATE
-//             if (isset($existing_ids[$external_id])) {
-//                 $post_id = $existing_ids[$external_id];
-//                 $updated++;
-//             } else {
-//                 $post_id = wp_insert_post([
-//                     'post_type'   => 'google_review',
-//                     'post_status' => 'publish',
-//                     'post_title'  => wp_strip_all_tags(
-//                         $review['reviewer']['name'] ?? 'Anonymous'
-//                     ),
-//                 ]);
-
-//                 if (is_wp_error($post_id)) {
-//                     continue;
-//                 }
-
-//                 add_post_meta($post_id, 'external_review_id', $external_id, true);
-//                 $created++;
-//             }
-
-//             // -----------------------------------
-//             // LOCATION TAXONOMY
-//             // -----------------------------------
-//             if (!empty($review['locationName'])) {
-
-//                 $taxonomy  = 'location';
-//                 $term_name = sanitize_text_field($review['locationName']);
-
-//                 $term = term_exists($term_name, $taxonomy);
-
-//                 if (!$term) {
-//                     $term = wp_insert_term($term_name, $taxonomy);
-//                 }
-
-//                 if (!is_wp_error($term)) {
-//                     $term_id = is_array($term) ? (int) $term['term_id'] : (int) $term;
-//                     wp_set_object_terms($post_id, [$term_id], $taxonomy, false);
-
-//                     // ACF taxonomy field (recommended: FIELD KEY)
-//                     update_field('location', $term_id, $post_id);
-//                 }
-//             }
-
-//             // -----------------------------------
-//             // ACF FIELDS
-//             // -----------------------------------
-//             update_field('google_review_name', $review['reviewer']['name'] ?? '', $post_id);
-//             update_field(
-//                 'google_review_date',
-//                 !empty($review['date']) ? date('Y-m-d', strtotime($review['date'])) : '',
-//                 $post_id
-//             );
-//             update_field('google_review_stars', (int) ($review['rating'] ?? 0), $post_id);
-//             update_field('google_review_excerpt', $review['comment'] ?? '', $post_id);
-//             update_field('google_review_url', $review['url'] ?? '', $post_id);
-//             update_field('source_id', $review['sourceID'] ?? '', $post_id);
-//         }
-
-//         // -----------------------------------
-//         // DELETE REMOVED REVIEWS
-//         // (ONLY AFTER SUCCESSFUL FULL FETCH)
-//         // -----------------------------------
-//         foreach ($existing_ids as $external_id => $post_id) {
-//             if (!in_array($external_id, $api_ids, true)) {
-//                 wp_delete_post($post_id, true);
-//                 $deleted++;
-//             }
-//         }
-
-//         update_option('cm_last_review_sync', current_time('mysql'));
-
-//     } catch (Throwable $e) {
-
-//         delete_transient($LOCK_KEY);
-
-//         return [
-//             'success' => false,
-//             'message' => 'Sync failed: ' . $e->getMessage(),
-//         ];
-//     }
-
-//     // -----------------------------------
-//     // RELEASE LOCK
-//     // -----------------------------------
-//     delete_transient($LOCK_KEY);
-
-//     return [
-//         'success' => true,
-//         'created' => $created,
-//         'updated' => $updated,
-//         'deleted' => $deleted,
-//         'total'   => count($reviews),
-//     ];
-// }
-
-
 
 // ============================================
 // 4. ADD ADMIN MENU Google Review PAGE
@@ -1855,23 +1698,29 @@ function cm_render_sync_page()
                         action: 'cm_sync_reviews'
                     },
                     success: function(response) {
+
                         if (response.success) {
-                            $result.removeClass('loading').addClass('success')
-                                .html(' <strong>Sync Complete!</strong><br>' +
+
+                            //  NOTICE (sync already running)
+                            if (response.data.notice) {
+                                $result.removeClass('loading error')
+                                    .addClass('notice')
+                                    .html('ℹ️ <strong>' + response.data.message + '</strong>');
+                                return;
+                            }
+
+                            // NORMAL SUCCESS
+                            $result.removeClass('loading error')
+                                .addClass('success')
+                                .html(
+                                    '<strong>✅ Sync Complete!</strong><br>' +
                                     'Created: ' + response.data.created + ' | ' +
                                     'Updated: ' + response.data.updated + ' | ' +
-                                    'Total: ' + response.data.total);
+                                    'Total: ' + response.data.total
+                                );
 
-                            // DEBUG: Uncomment to see API data in browser console
+                            // DEBUG (optional)
                             console.log('API Review Data:', response.data.debug_data);
-
-                            //  DEBUG: Comment this to prevent auto-reload
-                            // setTimeout(function() {
-                            //     location.reload();
-                            // }, 2000);
-                        } else {
-                            $result.removeClass('loading').addClass('error')
-                                .html(' <strong>Error:</strong> ' + response.data);
                         }
                     },
                     error: function() {
@@ -2422,7 +2271,3 @@ function cm_handle_career_sync_ajax()
         wp_send_json_error($result['message']);
     }
 }
-
-// add_action('init', function () {
-//     delete_transient('cm_review_sync_lock');
-// });

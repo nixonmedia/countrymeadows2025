@@ -2412,7 +2412,7 @@ a.facetwp-toggle {
   }
   h3, .font-xm {
     font-size: 24px;
-    line-height: 24px;
+    line-height: 28px;
   }
   h5, .font-xs-medium {
     font-size: 18px;
@@ -2684,6 +2684,11 @@ a.facetwp-toggle {
   .review-slider .icon-prev.slick-arrow , .review-slider .icon-next.slick-arrow {
     width:auto;
   }
+  .review-slider .slick-list .read-more-text {
+    position: absolute;
+    bottom: 20px;
+  }
+  
   .form_zone:not(.form-center) .gform_wrapper form {
     max-width: 510px;
   }

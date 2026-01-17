@@ -4713,10 +4713,10 @@
                         },
                         {
                             "key": "field_696b137d9476b",
-                            "label": "Choose  Google and Career Review",
+                            "label": "Choose Google or Career Review",
                             "name": "choose__google_and_career_review",
                             "aria-label": "",
-                            "type": "select",
+                            "type": "radio",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -4727,18 +4727,15 @@
                             },
                             "choices": {
                                 "google": "Google Review",
-                                "career": "Career Reviews"
+                                "career": "Career Review"
                             },
-                            "default_value": false,
+                            "default_value": "",
                             "return_format": "value",
-                            "multiple": 0,
                             "allow_null": 0,
+                            "other_choice": 0,
                             "allow_in_bindings": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
+                            "layout": "vertical",
+                            "save_other_choice": 0
                         },
                         {
                             "key": "field_691c0d0fc5c25",
@@ -4931,5 +4928,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768626163
+    "modified": 1768642652
 }
