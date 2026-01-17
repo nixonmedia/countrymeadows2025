@@ -1965,10 +1965,7 @@ a.facetwp-toggle {
   font-size: 27px;
   cursor: pointer;
 }
-.help-float-menu {
-  column-count: 3;
-  column-gap: 15px;
-}
+
 
 
 /* Media Queries  */
@@ -2320,6 +2317,9 @@ a.facetwp-toggle {
     bottom: -50px;
     top: unset;
   }
+  .help-tool-float {
+    display: block !important;
+  }
 }
 @media only screen and (max-width: 429px) {
   .wysiwyg-button, .site-button {
@@ -2423,6 +2423,10 @@ a.facetwp-toggle {
   }
   .floorplan-slider .slick-next {
     right: 0;
+  }
+  .help-float-menu {
+    column-count: 3;
+    column-gap: 15px;
   }
 }
 @media only screen and (min-width: 992px) {
