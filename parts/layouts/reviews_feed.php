@@ -6,6 +6,7 @@ $background_color = $section['background_color'] ?? '';
 $content        = $section['content']  ?? "";
 $button         = $section['button']   ?? "";
 $review_feed    = $section['review_feed'] ?? "";
+$career_review_feed    = $section['career_review_feed'] ?? "";
 $section_border = $section['border'] ?? [];
 $border = $section_border['border'] ?? '';
 $angle = $section_border['angle'] ?? '';
@@ -54,6 +55,8 @@ if ($border == 'angle' && $angle == 'down_left') {
     $angle_class = '';
     $margin_class = 'my-5';
 }
+$review_type = $section['choose__google_and_career_review'] ?? '';
+// var_dump($review_type);
 
 ?>
 <?php if ($headline || $content || $button || $review_feed) : ?>
@@ -70,37 +73,68 @@ if ($border == 'angle' && $angle == 'down_left') {
                         <div class="wysiwyg-content text-center <?= $text_color ?>"><?php echo $content; ?></div>
                     <?php endif; ?>
                     <!-- Review Slider -->
-                    <?php if ($review_feed): ?>
-                        <div class="review-slider ps-lg-4 pt-4" data-slick='{"autoplay": <?php echo $section['rotate'] ? "true" : "false" ; ?>}'>
+                    <?php if ($review_feed || $career_review_feed): ?>
+                        <div class="review-slider ps-lg-4 pt-4" data-slick='{"autoplay": <?php echo $section['rotate'] ? "true" : "false"; ?>}'>
 
                             <?php
                             // --- Query Reviews ---
+                            $post_type = '';
+                            $taxonomy  = '';
+                            $term_id   = '';
+
+                            if ($review_type === 'google') {
+                                $post_type = 'google_review';
+                                $taxonomy  = 'location'; // Google review taxonomy
+                                $term_id   = $section['review_feed']->term_id ?? '';
+                            } elseif ($review_type === 'career') {
+                                $post_type = 'career_review';
+                                $taxonomy  = 'location'; // Career review taxonomy
+                                $term_id   = $section['career_review_feed']->term_id ?? '';
+                            }
+
                             $args = [
-                                'post_type'      => 'google_review',
+                                'post_type'      => $post_type,
                                 'posts_per_page' => -1,
                                 'post_status'    => 'publish',
                                 'orderby'        => 'date',
                                 'order'          => 'DESC',
                             ];
 
-                            if (!empty($review_feed->term_id)) {
+                            if (!empty($term_id)) {
                                 $args['tax_query'] = [[
-                                    'taxonomy' => 'location',
+                                    'taxonomy' => $taxonomy,
                                     'field'    => 'term_id',
-                                    'terms'    => $review_feed->term_id,
+                                    'terms'    => $term_id,
                                 ]];
                             }
 
                             $reviews = new WP_Query($args);
 
+
                             if ($reviews->have_posts()) :
                                 while ($reviews->have_posts()) : $reviews->the_post();
 
-                                    $review_name    = get_field('google_review_name');
-                                    $review_date    = get_field('google_review_date');
-                                    $review_stars   = intval(get_field('google_review_stars') ?: 5);
-                                    $review_excerpt = get_field('google_review_excerpt');
-                                    $review_url     = get_field('google_review_url');
+                                    // $review_name    = get_field('google_review_name');
+                                    // $review_date    = get_field('google_review_date');
+                                    // $review_stars   = intval(get_field('google_review_stars') ?: 5);
+                                    // $review_excerpt = get_field('google_review_excerpt');
+                                    // $review_url     = get_field('google_review_url');
+                                    if ($review_type === 'google') {
+
+                                        $review_name    = get_field('google_review_name');
+                                        $review_date    = get_field('google_review_date');
+                                        $review_stars   = intval(get_field('google_review_stars') ?: 5);
+                                        $review_excerpt = get_field('google_review_excerpt');
+                                        $review_url     = get_field('google_review_url');
+                                    } else {
+
+                                        $review_name    = get_field('career_review_name');
+                                        $review_date    = get_field('career_review_date');
+                                        $review_stars   = intval(get_field('career_review_stars') ?: 5);
+                                        $review_excerpt = get_field('career_review_excerpt');
+                                        $review_url     = get_field('career_review_url');
+                                    }
+
 
                                     // --- Time Ago ---
                                     $date_posted = "";
@@ -112,7 +146,7 @@ if ($border == 'angle' && $angle == 'down_left') {
                                     }
                             ?>
 
-                                    <div class="bg-white p-4">
+                                    <div class="bg-white p-4 position-relative">
                                         <div class="text-center d-flex justify-content-center pb-2 gap-1">
                                             <?php for ($i = 0; $i < $review_stars; $i++): ?>
                                                 <img src="<?= get_template_directory_uri(); ?>/assets/images/star.svg"
@@ -131,9 +165,12 @@ if ($border == 'angle' && $angle == 'down_left') {
                                         <?php endif; ?>
 
                                         <?php if ($review_excerpt): ?>
-                                            <div class="font-xs-medium pb-3"><?= esc_html($review_excerpt); ?></div>
-                                        <?php endif; if($review_url): ?>
-                                        <a href="<?= esc_url($review_url); ?>" <?= $review_url ? 'target="_blank"' : ''; ?> class="read-more-text text-pink fw-bold">Read More</a>
+                                            <div class="font-xs-medium pb-5">
+                                                <?= esc_html(wp_trim_words($review_excerpt, 50, '...')); ?>
+                                            </div>
+                                        <?php endif;
+                                        if ($review_url): ?>
+                                            <a href="<?= esc_url($review_url); ?>" <?= $review_url ? 'target="_blank"' : ''; ?> class="read-more-text text-pink fw-bold">Read More</a>
                                         <?php endif; ?>
                                     </div>
 
