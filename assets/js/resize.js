@@ -1,60 +1,93 @@
 (function ($) {
- 
+
   $(document).ready(function () {
- 
+
     $("#small").on("click", function (e) {
       e.preventDefault();
 
-        // ACTIVE STATE
       $("#small").addClass("active");
       $("#large").removeClass("active");
- 
-      $(".wysiwyg-content p , .wysiwyg-content").animate({
+
+      $(".wysiwyg-content p, .wysiwyg-content").animate({
         "font-size": "17px",
         "line-height": "27px"
       });
- 
+
       $(".wysiwyg-content p.wp-caption-text, .wysiwyg-content .wp-caption-text").animate({
         "font-size": "14px",
         "line-height": "22px"
       });
- 
-      // $(".small").css("color", "#CEB367");
-      // $(".large").css("color", "white");
     });
- 
+
     $("#large").on("click", function (e) {
       e.preventDefault();
 
-        // ACTIVE STATE
       $("#large").addClass("active");
       $("#small").removeClass("active");
- 
-      $(".wysiwyg-content p , .wysiwyg-content").animate({
+
+      $(".wysiwyg-content p, .wysiwyg-content").animate({
         "font-size": "22px",
         "line-height": "32px"
       });
- 
-      $(".wysiwyg-content p.wp-caption-text , .wysiwyg-content .wp-caption-text").animate({
+
+      $(".wysiwyg-content p.wp-caption-text, .wysiwyg-content .wp-caption-text").animate({
         "font-size": "14px",
         "line-height": "22px"
       });
- 
-      // $(".small").css("color", "white");
-      // $(".large").css("color", "#CEB367");
     });
- 
-    // Sticky resizer
-    var el = $('#resizer');
-    if (el.length) {
-      var elpos = el.offset().top;
- 
-      $(window).on("scroll", function () {
-        var y = $(this).scrollTop();
-        el.stop().animate({ 'top': y < elpos ? 0 : y - elpos }, 300);
-      });
+
+var $resizer = $('#resizer');
+var $header  = $('header');
+var $footer  = $('footer');
+var $adminBar = $('#wpadminbar');
+
+if ($resizer.length && $header.length && $footer.length) {
+
+  var gap = 20;
+  var footerStopPercent = 0.2;
+
+  function updateResizer() {
+    var scrollTop = $(window).scrollTop();
+
+    var adminBarHeight = $adminBar.length ? $adminBar.outerHeight() : 0;
+    var resizerHeight = $resizer.outerHeight();
+
+    var headerBottom =
+      $header.offset().top +
+      $header.outerHeight() +
+      gap -
+      adminBarHeight;
+
+    var footerTop    = $footer.offset().top;
+    var footerHeight = $footer.outerHeight();
+
+    var footerStopPoint =
+      footerTop + (footerHeight * footerStopPercent) - resizerHeight;
+
+    var top;
+
+    if (scrollTop <= headerBottom) {
+      top = Math.max(headerBottom - scrollTop, adminBarHeight + gap);
     }
- 
+    else if (scrollTop >= footerStopPoint) {
+      top = footerStopPoint - scrollTop;
+    }
+    else {
+      top = adminBarHeight + gap;
+    }
+
+    $resizer.css('top', top + 'px');
+  }
+
+  $(window).on('scroll resize', function () {
+    requestAnimationFrame(updateResizer);
   });
- 
+
+  updateResizer();
+}
+
+
+
+  });
+
 })(jQuery);

@@ -1945,7 +1945,6 @@ a.facetwp-toggle {
     background: var(--yellow);
     position: Fixed;
     right: 20px;
-    top: 100px;
     text-align: center;
     border-radius: 40px;
      z-index: 99;
