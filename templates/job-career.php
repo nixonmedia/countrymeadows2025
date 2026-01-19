@@ -4,6 +4,8 @@ Template Name: Careers
 */
 
 get_header();
+get_template_part('parts/font-resize');
+
 $hide_breadcrumb = get_field('hide_breadcrumb'); 
 if($hide_breadcrumb == false): ?>
 <section class="breadcrumb pt-4 d-none d-lg-block mb-0 z-2 position-relative">

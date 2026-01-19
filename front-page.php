@@ -1,6 +1,12 @@
 <?php get_header(); 
 
 /**************************************
+***** Font Size  *****
+****************************************/
+
+get_template_part('parts/font-resize');
+
+/**************************************
 ***** Stylized Heading Intro Zone *****
 ****************************************/
 get_template_part('parts/layouts/stylized_heading_intro_zone'); 

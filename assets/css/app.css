@@ -1935,7 +1935,19 @@ a.facetwp-toggle {
   color: var(--white);
 }
 
-
+/* Font Resize  */
+#resizer {
+    padding: 15px 0;
+    width: 45px;
+    background: #FFCA49;
+    position: absolute;
+    right: -32px;
+    text-align: center;
+    color: #000;
+    font-size: 17px;
+    font-weight: 400;
+    z-index: 9999999;
+}
 /* Media Queries  */
 
 @media only screen and (max-width: 429px) {
