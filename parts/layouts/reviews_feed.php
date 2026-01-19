@@ -157,7 +157,7 @@ $review_type = $section['choose__google_and_career_review'] ?? '';
                                         </div>
 
                                         <?php if ($review_name): ?>
-                                            <<?php echo $heading_type; ?> class="text-black font-xm text-center mb-0"><?= esc_html($review_name) ?></<?php echo $heading_type; ?>>
+                                            <<?php echo $heading_type; ?> class="text-black font-xm text-center mb-0 review-slider-heading"><?= esc_html($review_name) ?></<?php echo $heading_type; ?>>
                                         <?php endif; ?>
 
                                         <?php if ($date_posted): ?>
@@ -179,7 +179,7 @@ $review_type = $section['choose__google_and_career_review'] ?? '';
                                 wp_reset_postdata();
                             else: ?>
 
-                                <div class="bg-white p-4 text-center">
+                                <div class="bg-white p-4 text-center if-no-review">
                                     No reviews found for this location.
                                 </div>
 

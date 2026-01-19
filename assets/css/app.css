@@ -1967,6 +1967,16 @@ a.facetwp-toggle {
   .content-buttons-slider .slick-list {
     margin: 0 30px;
   }
+   .if-no-review .review-slider .slick-slide{
+    font-size: 13px;
+}
+.if-no-review{
+padding: 15px !important;
+ }
+.review-slider:has(.if-no-review){
+padding-right: 15px !important;
+padding-left: 15px !important;
+ }
 }
 @media (min-width:576px) and (max-width:767px) {
   .content-and-button-cards .buttons a {
@@ -2389,6 +2399,10 @@ a.facetwp-toggle {
   .floorplan-slider .slick-next {
     right: 0;
   }
+  .review-slider-heading{
+  font-size: 18px;
+  line-height: 24px;
+}
 }
 @media only screen and (min-width: 992px) {
   body {
@@ -2729,6 +2743,10 @@ a.facetwp-toggle {
     padding: 100px 60px 100px 20px;
  
 }
+.review-slider-heading{
+  font-size: 20px;
+  line-height: 24px;
+}
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .facetwp-facet-job_pagination a {
@@ -3064,6 +3082,10 @@ padding: 120px 60px 120px 50px;
     .floorplan-slider .slick-slide {
       margin: 0 15px;
     }
+    .review-slider-heading{
+  font-size: 24px;
+  line-height: 28px;
+}
 }
 @media only screen and (min-width: 1900px) {
   .footer-post-col .font-normal {
