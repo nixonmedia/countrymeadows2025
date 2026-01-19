@@ -424,6 +424,9 @@ img.alignleft {
   background-color: var(--pink);
   color: var(--white);
 }
+.top-header-button svg, .top-header-button svg * {
+  fill: var(--white);
+}
 .search-button a, .facetwp-facet-career_search i {
   border-radius: 0 11.466px 11.466px 11.466px;
   background-color: var(--pink);
@@ -1943,13 +1946,24 @@ a.facetwp-toggle {
   padding: 22px;
   background-color: var(--pink);
   display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.help-toolbars-content.is-open {
+  opacity: 1;
+  visibility: visible;
+  display: block;
 }
 .help-toolbars {
   position: fixed;
-  top: 100px;
+  top: 70%;
   left: 0;
   z-index: 9999;
   width: 100%;
+}
+.help-toolbars .container-fluid {
+  max-width: 100%;
 }
 .help-toolbars a {
   color: var(--white);
@@ -1964,6 +1978,9 @@ a.facetwp-toggle {
 .close-float {
   font-size: 27px;
   cursor: pointer;
+}
+.help-float-icon-menu svg, .help-float-icon-menu svg * {
+  fill: var(--white);
 }
 
 
@@ -1998,6 +2015,11 @@ a.facetwp-toggle {
   }
   .content-buttons-slider .slick-list {
     margin: 0 30px;
+  }
+  .help-toolbars-content {
+    overflow-y: scroll;
+    /* height: 720px; */
+    height: calc(100vh - 145px);
   }
 }
 @media (min-width:576px) and (max-width:767px) {
@@ -2156,7 +2178,13 @@ a.facetwp-toggle {
   .searchwp-modal-form .searchwp-modal-form-default .searchwp-form-input-container:after {
     display: none;
   }
-  
+  .help-tool-float {
+    transition: all 0.5s ease-in-out;
+  }
+  #main-content.show .help-tool-float {
+    opacity: 0;
+    visibility: hidden;
+  }
   .site-footer {
     padding: 65px 18px 120px;
   }
@@ -2317,8 +2345,43 @@ a.facetwp-toggle {
     bottom: -50px;
     top: unset;
   }
+  body.no-scroll {
+    overflow: hidden;
+    touch-action: none;
+  }
   .help-tool-float {
-    display: block !important;
+    width: 78px;
+    height: 68px;
+  }
+  .help-toolbars {
+    top: unset;
+    bottom: 45px;
+    font-size: 18px;
+    line-height: 35px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .help-toolbars-content {
+    margin-bottom: 20px;
+    padding: 37px 20px 45px;
+    /* position: relative;
+    top: 35px; */
+  }
+  .help-float-icon-menu li {
+    justify-content: center;
+  }
+  .close-float {
+    position: fixed;
+  }
+  /* .help-logo {
+    margin-top: -23px;
+  } */
+  .help-float-menu li:nth-child(3), .help-float-menu li:nth-child(6) {
+    margin-bottom: 32px;
+  }
+  .float-img-col {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 @media only screen and (max-width: 429px) {
@@ -2425,8 +2488,29 @@ a.facetwp-toggle {
     right: 0;
   }
   .help-float-menu {
-    column-count: 3;
+    column-count: 2;
     column-gap: 15px;
+  }
+  .help-toolbars {
+    top: 55%;
+  }
+  .help-tool-float {
+    width: 65px;
+  }
+  .help-toolbars-content {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 26px;
+  }
+  .help-toolbars-content .font-xm {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .close-float {
+    font-size: 20px;
+  }
+  .help-float-icon-menu li:not(:last-child) {
+    margin-bottom: 10px;
   }
 }
 @media only screen and (min-width: 992px) {
@@ -2684,29 +2768,29 @@ a.facetwp-toggle {
        .full-width-left-col {
     padding: 100px 60px 100px 20px;
  
-}
+  }
 
-.floorplan-zone .row:not(.flex-row-reverse) .right-floorplan-col {
-  padding-left:50px;
-}
-.floorplan-zone .row.flex-row-reverse .right-floorplan-col {
-  padding-right:50px;
-}
+  .floorplan-zone .row:not(.flex-row-reverse) .right-floorplan-col {
+    padding-left:50px;
+  }
+  .floorplan-zone .row.flex-row-reverse .right-floorplan-col {
+    padding-right:50px;
+  }
 
-   .floorplan-slider .slick-next {
-    right: 0;
-}
+    .floorplan-slider .slick-next {
+      right: 0;
+  }
 
-.floorplan-zone .floorplan-slider:not(.floorplan-sm-slider).bg-water-color.bg-water-color-right::after {
-    right: 80px;             
-    top:20px;
+  .floorplan-zone .floorplan-slider:not(.floorplan-sm-slider).bg-water-color.bg-water-color-right::after {
+      right: 80px;             
+      top:20px;
+      
+  }
+
+  .floorplan-zone .floorplan-sm-slider.bg-water-color.bg-water-color-left::after {
+      left: -40px;        
     
-}
-
-.floorplan-zone .floorplan-sm-slider.bg-water-color.bg-water-color-left::after {
-    left: -40px;        
-   
-}
+  }
 
   
   .review-slider .slick-slide {
@@ -2770,6 +2854,14 @@ a.facetwp-toggle {
   }
   .related-posts-wrapper {
     padding: 30px 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .help-float-menu {
+    column-count: 3;
+  }
+  .help-toolbars-content {
+    padding: 22px 22px 30px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -2881,6 +2973,10 @@ a.facetwp-toggle {
   .blog-post-layout-content .custom-columns-zone {
     padding-bottom: 50px;
   }
+  
+  .help-toolbars {
+    top: 68%;
+  }
 }
 @media only screen and (min-width: 1250px) {
   .main-menu {
@@ -2917,6 +3013,20 @@ a.facetwp-toggle {
   .meet-team-slider .team-content-col {
     padding-right: 30px;
     padding-left: 30px;
+  }
+  .help-tool-float {
+    width: 80px;
+  }
+  .help-toolbars-content {
+    font-size: 18px;
+    line-height: 35px;
+  }
+  .help-toolbars-content .font-xm {
+    font-size: 24px;
+    line-height: 26px;
+  }
+  .close-float {
+    font-size: 27px;
   }
 }
 @media only screen and (max-width: 1299px) {
@@ -3010,6 +3120,10 @@ a.facetwp-toggle {
     font-size: 50px;
     line-height: 60px;
   }
+  
+  .help-toolbars {
+    top: 70%;
+  }
 }
 @media only screen and (min-width: 1400px) {
   .meet-team-button {
@@ -3022,6 +3136,9 @@ a.facetwp-toggle {
     background-size: 640px;
     background-position: -34px -12%;  
   }  
+  .help-toolbars {
+    padding-right: 30px;
+  }
 }
   @media only screen and (min-width: 1620px) {
   .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {

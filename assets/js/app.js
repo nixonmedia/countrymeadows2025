@@ -199,19 +199,32 @@ jQuery(document).ready(function($){
     $('.text-column-grid-content').equalHeights();
 });
 
-//Help Toolbars
+// Help Toolbars
 document.addEventListener('DOMContentLoaded', function () {
   const floatImg = document.querySelector('.help-tool-float');
   const toolbarContent = document.querySelector('.help-toolbars-content');
   const closeBtn = document.querySelector('.close-float');
-  // Open toolbar
+
+  // Ensure all elements exist
+  if (!floatImg || !toolbarContent || !closeBtn) return;
+
+  const isMobile = () => window.innerWidth < 768; // Bootstrap md breakpoint
+
   floatImg.addEventListener('click', function () {
-      toolbarContent.style.display = 'block';
-      floatImg.style.display = 'none';
+    toolbarContent.classList.add('is-open');
+    floatImg.classList.add('d-md-none');
+
+    if (isMobile()) {
+      document.body.classList.add('no-scroll');
+    }
   });
+
   // Close toolbar
   closeBtn.addEventListener('click', function () {
-      toolbarContent.style.display = 'none';
-      floatImg.style.display = 'block';
+    toolbarContent.classList.remove('is-open');
+    floatImg.classList.remove('d-md-none');
+
+    document.body.classList.remove('no-scroll');
   });
 });
+
