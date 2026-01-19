@@ -141,7 +141,7 @@
         <?php if($disable_help_tool == false):
         if ($heading || $main_content || $standard_links || $icon_links) : ?>
             <section class="help-toolbars">
-                <div class="container-fluid px-md-2 px-xl-3">
+                <div class="container-fluid px-md-2 px-xxl-3">
                     <div class="row flex-column-reverse flex-md-row">
                         <div class="col-md-2 float-img-col">
                             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/CM-float.svg" class="img-fluid help-tool-float">
@@ -172,9 +172,9 @@
                                         <?php endif; ?>
                                     </div>
                                     <!-- Standard Links -->
-                                    <div class="col-md-5 col-lg-6 ps-xl-5 pb-5 pb-md-0">
+                                    <div class="col-md-8 col-lg-9 pb-5 pb-md-0 d-md-flex justify-content-around">
                                         <?php if ($standard_links) : ?>
-                                            <ul class="help-float-menu list-unstyled mb-0 text-center text-md-start">
+                                            <ul class="help-float-menu list-unstyled mb-0 text-center text-md-start px-md-3">
                                                 <?php foreach ($standard_links as $row) :
                                                     $link = $row['link'] ?? null;
                                                     if (!$link) continue;
@@ -188,11 +188,9 @@
                                                 <?php endforeach; ?>
                                             </ul>
                                         <?php endif; ?>
-                                    </div>
-                                    <!-- Icon Links -->
-                                    <div class="col-md-3 ps-md-0 px-lg-0">
+                                        <!-- Icon Links -->
                                         <?php if ($icon_links) : ?>
-                                            <ul class="help-float-icon-menu list-unstyled mb-0">
+                                            <ul class="help-float-icon-menu list-unstyled mb-0 mt-5 mt-md-0">
                                                 <?php foreach($icon_links as $row) :
                                                     $link = $row['link'] ?? null;
                                                     $icon = $row['link_icon'] ?? null;
@@ -211,7 +209,6 @@
                                             </ul>
                                         <?php endif; ?>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

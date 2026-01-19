@@ -2499,7 +2499,7 @@ a.facetwp-toggle {
   }
   .help-float-menu {
     column-count: 2;
-    column-gap: 15px;
+    column-gap: 45px;
   }
   .help-toolbars {
     top: 45%;
@@ -2519,8 +2519,12 @@ a.facetwp-toggle {
   .close-float {
     font-size: 20px;
   }
-  .help-float-icon-menu li:not(:last-child) {
-    margin-bottom: 10px;
+  .help-float-icon-menu li:not(:last-child), .help-float-menu li:not(:last-child) {
+    margin-bottom: 5px;
+  }
+  .help-float-icon-menu li svg {
+    width: 18px;
+    height: 18px;
   }
   .review-slider-heading{
     font-size: 18px;
@@ -2882,9 +2886,6 @@ a.facetwp-toggle {
   }
 }
 @media only screen and (min-width: 1024px) {
-  .help-float-menu {
-    column-count: 3;
-  }
   .help-toolbars-content {
     padding: 22px 22px 30px;
   }
@@ -2983,14 +2984,14 @@ a.facetwp-toggle {
   }
   .full-width-left-col {
     padding: 120px 60px 120px 30px;
-}
-.floorplan-zone .row:not(.flex-row-reverse) .right-floorplan-col {
-    padding-left: 50px;
-}
-.floorplan-zone .row.flex-row-reverse .right-floorplan-col {
-    padding-right: 50px;
-}
- .floorplan-zone .flex-row-reverse .full-width-left-col {
+  }
+  .floorplan-zone .row:not(.flex-row-reverse) .right-floorplan-col {
+      padding-left: 50px;
+  }
+  .floorplan-zone .row.flex-row-reverse .right-floorplan-col {
+      padding-right: 50px;
+  }
+  .floorplan-zone .flex-row-reverse .full-width-left-col {
           padding: 120px 60px 120px 30px;
     }
 
@@ -3003,7 +3004,7 @@ a.facetwp-toggle {
   }
   
   .help-toolbars {
-    top: 68%;
+    top: 65%;
   }
 }
 @media only screen and (min-width: 1250px) {
@@ -3045,16 +3046,8 @@ a.facetwp-toggle {
   .help-tool-float {
     width: 80px;
   }
-  .help-toolbars-content {
-    font-size: 18px;
-    line-height: 35px;
-  }
-  .help-toolbars-content .font-xm {
-    font-size: 24px;
-    line-height: 26px;
-  }
-  .close-float {
-    font-size: 27px;
+  .help-float-menu {
+    column-count: 3;
   }
 }
 @media only screen and (max-width: 1299px) {
@@ -3164,8 +3157,9 @@ a.facetwp-toggle {
     background-size: 640px;
     background-position: -34px -12%;  
   }  
-  .help-toolbars {
-    padding-right: 30px;
+  .help-float-icon-menu li svg {
+    width: 24px;
+    height: 24px;
   }
 }
   @media only screen and (min-width: 1620px) {
@@ -3244,9 +3238,12 @@ padding: 120px 60px 120px 50px;
       margin: 0 15px;
     }
     .review-slider-heading{
-  font-size: 24px;
-  line-height: 28px;
-}
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .help-toolbars {
+    padding-right: 15px;
+  }
 }
 @media only screen and (min-width: 1900px) {
   .footer-post-col .font-normal {
@@ -3316,6 +3313,17 @@ padding: 120px 60px 120px 50px;
   .related-posts-wrapper .related-post-title {
     line-height: 25px;
     font-size: 18px;
+  }
+  .help-toolbars-content {
+    font-size: 18px;
+    line-height: 35px;
+  }
+  .help-toolbars-content .font-xm {
+    font-size: 24px;
+    line-height: 26px;
+  }
+  .close-float {
+    font-size: 27px;
   }
 }
 @media only screen and (min-width: 1920px) {
