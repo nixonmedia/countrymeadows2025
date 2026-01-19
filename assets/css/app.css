@@ -2021,6 +2021,16 @@ a.facetwp-toggle {
     /* height: 720px; */
     height: calc(100vh - 145px);
   }
+  .if-no-review .review-slider .slick-slide{
+    font-size: 13px;
+  }
+  .if-no-review{
+    padding: 15px !important;
+  }
+  .review-slider:has(.if-no-review){
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+  }
 }
 @media (min-width:576px) and (max-width:767px) {
   .content-and-button-cards .buttons a {
@@ -2512,6 +2522,10 @@ a.facetwp-toggle {
   .help-float-icon-menu li:not(:last-child) {
     margin-bottom: 10px;
   }
+  .review-slider-heading{
+    font-size: 18px;
+    line-height: 24px;
+  }
 }
 @media only screen and (min-width: 992px) {
   body {
@@ -2535,7 +2549,7 @@ a.facetwp-toggle {
   }
   h3, .font-xm {
     font-size: 24px;
-    line-height: 24px;
+    line-height: 28px;
   }
   h5, .font-xs-medium {
     font-size: 18px;
@@ -2807,6 +2821,11 @@ a.facetwp-toggle {
   .review-slider .icon-prev.slick-arrow , .review-slider .icon-next.slick-arrow {
     width:auto;
   }
+  .review-slider .slick-list .read-more-text {
+    position: absolute;
+    bottom: 20px;
+  }
+  
   .form_zone:not(.form-center) .gform_wrapper form {
     max-width: 510px;
   }
@@ -2845,11 +2864,13 @@ a.facetwp-toggle {
   }
   .floorplan-zone .flex-row-reverse .full-width-left-col {
     padding: 100px 60px 100px 20px;
- 
   }
-  
   .help-toolbars {
     top: 70%;
+  }
+  .review-slider-heading{
+    font-size: 20px;
+    line-height: 24px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -3222,6 +3243,10 @@ padding: 120px 60px 120px 50px;
     .floorplan-slider .slick-slide {
       margin: 0 15px;
     }
+    .review-slider-heading{
+  font-size: 24px;
+  line-height: 28px;
+}
 }
 @media only screen and (min-width: 1900px) {
   .footer-post-col .font-normal {
@@ -3328,3 +3353,40 @@ padding: 120px 60px 120px 50px;
     margin: 0 auto;
   }
 }
+
+
+ #sync-result {
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        #sync-result.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+        #sync-result.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+        #sync-result.loading {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            display: block;
+        }
+        .spinner-sync {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,0,0,.1);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
