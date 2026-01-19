@@ -2492,7 +2492,7 @@ a.facetwp-toggle {
     column-gap: 15px;
   }
   .help-toolbars {
-    top: 55%;
+    top: 45%;
   }
   .help-tool-float {
     width: 65px;
@@ -2846,7 +2846,11 @@ a.facetwp-toggle {
   .floorplan-zone .flex-row-reverse .full-width-left-col {
     padding: 100px 60px 100px 20px;
  
-}
+  }
+  
+  .help-toolbars {
+    top: 70%;
+  }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .facetwp-facet-job_pagination a {
@@ -2862,6 +2866,9 @@ a.facetwp-toggle {
   }
   .help-toolbars-content {
     padding: 22px 22px 30px;
+  }
+  .help-toolbars {
+    top: 55%;
   }
 }
 @media only screen and (min-width: 1200px) {
