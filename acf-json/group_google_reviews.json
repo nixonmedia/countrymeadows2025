@@ -3,6 +3,27 @@
     "title": "Google Reviews",
     "fields": [
         {
+            "key": "field_696729df3dba4",
+            "label": "Review ID",
+            "name": "external_review_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_google_review_name",
             "label": "Name",
             "name": "google_review_name",
@@ -37,10 +58,10 @@
                 "id": ""
             },
             "taxonomy": "location",
-            "add_term": 1,
-            "save_terms": 0,
+            "add_term": 0,
+            "save_terms": 1,
             "load_terms": 0,
-            "return_format": "id",
+            "return_format": "object",
             "field_type": "select",
             "allow_null": 0,
             "allow_in_bindings": 0,
@@ -146,5 +167,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1762247193
+    "modified": 1768391546
 }

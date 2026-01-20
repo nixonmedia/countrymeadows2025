@@ -5,6 +5,13 @@ $heading_type = $heading['heading_type'] ?? '';
 $background_color  = $section['background_color'] ?? '';
 $content        = $section['content'] ?? "";
 $form_position = $section['form_position'] ?? '';
+$form_heading_gp = $section['form_heading'] ?? [];
+// Go one level deeper
+$heading_group   = $form_heading_gp['heading'] ?? [];
+$form_headline       = $heading_group['headline'] ?? '';
+$form_heading_type   = $heading_group['heading_type'];
+
+
 $form = $section['form'] ?? '';
 $icon = $section['icon'] ?? '';
 $background_embellishment = $section['background_embellishment'] ?? '';
@@ -128,6 +135,9 @@ if (!empty($bg_svg_pattern)) {
                     <?php endif; ?>
                     <?php if ($form_position != "center") { ?>
                         <div class="<?php if($form_position == 'right'): ?>col-md-6 <?php else: ?>col-md-6 col-lg-5 offset-lg-1<?php endif; ?> py-md-0 py-4 <?php if($form_position == 'right' || $form_position == 'left'): echo 'pe-lg-5'; endif; ?>">
+                            <?php if($form_headline): ?>
+                            <<?php echo $form_heading_type ; ?> class=" font-lexend font-medium mb-3 text-pink pe-xxl-5"><?php echo $form_headline;?> </<?php echo $form_heading_type ; ?>>
+                            <?php endif; ?>
                             <?php if ($form) { ?>
                                 <div class="wysiwyg-content <?php echo $text_color; ?>">
                                     <?php echo  do_shortcode('[gravityform id="' . $form . '" title="false" description="false" ajax="true"]'); ?>
