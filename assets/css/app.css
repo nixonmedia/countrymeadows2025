@@ -794,6 +794,9 @@ opacity: 0;
   );
 }
 
+.content-and-button-cards.bg-blue .content-buttons-wrapper .single-button::before {
+background: radial-gradient(64% 24% at 50% 50%, rgba(249, 211, 221, 0.60) 0%, rgba(250, 216, 225, 0.65) 30%, rgba(254, 254, 254, 0) 70%);
+}
 
 
 .content-and-button-cards.bg-purple .content-buttons-wrapper .slide-item .single-button::before{
@@ -821,8 +824,8 @@ background: radial-gradient(63% 29% at 50% 50%, rgba(255, 255, 255, 0.6) 0%, rgb
 .content-and-button-cards.bg-gradient-yellow .content-buttons-wrapper .single-button::before {
   background: radial-gradient(
     76% 28%,
-    rgba(198, 142, 0, 0.95) 0%,
-    rgba(198, 142, 0, 0.55) 28%,
+    rgba(198, 142, 0, 0.6) 0%,
+    rgba(198, 142, 0, 0.35) 28%,
     rgba(198, 142, 0, 0) 68%
   );
 }
@@ -3220,7 +3223,7 @@ padding: 120px 60px 120px 50px;
 
 
      .content-buttons-wrapper .slide-item .single-button::before {
-             width: 383px;
+        width: 383px;
         height: 343px;
     }
     .content-buttons-wrapper .slide-item .single-button:has(svg)::before {
