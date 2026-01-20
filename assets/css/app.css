@@ -3161,7 +3161,7 @@ a.facetwp-toggle {
 width:85%;
 }
   .content-and-button-cards  .single-button{
-           padding: 35px 70px !important;
+   padding: 35px 70px !important;
 }
   .content-and-button-cards  .bottom-content {
     width:45%;
@@ -3220,8 +3220,8 @@ padding: 120px 60px 120px 50px;
 
 
      .content-buttons-wrapper .slide-item .single-button::before {
-      width: 383px;
-      height: 413px;
+             width: 383px;
+        height: 343px;
     }
     .content-buttons-wrapper .slide-item .single-button:has(svg)::before {
     width: 385px;
