@@ -724,24 +724,28 @@ main section.bg-white {
   position: relative;
   overflow: visible;
 }
-
- 
- .content-buttons-wrapper .slide-item .single-button::before{
-  content: "";
-    width: 246px;
+.content-buttons-wrapper .slide-item .single-button:has(svg)::before{
+width: 246px;
     height: 487px;
+}
+ .content-buttons-wrapper .slide-item .single-button::before{
+    width: 226px;
+    height: 367px;
+ }
+ 
+ .content-buttons-wrapper .slide-item .single-button::before , .content-buttons-wrapper .slide-item .single-button:has(svg)::before{
+  content: "";
+   
     background: radial-gradient(65% 29% at 50% 50%, rgba(249, 211, 221, 0.60) 50%, rgba(250, 216, 225, 0.65) 60%, rgba(254, 254, 254, 0) 70%);
  }
- .content-buttons-wrapper .single-button:before {
+ .content-buttons-wrapper .single-button:has(svg)::before , .content-buttons-wrapper .single-button::before {
     content: "";
     position: absolute;
-    width: 450px;
-    height: 726px;
-    top: 50%;
+     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-background: radial-gradient(
-  70% 28% at 50% 50%,
+    background: radial-gradient(
+   70% 28% at 50% 50%,
   rgba(249, 211, 221, 0.60) 0%,
   rgba(250, 216, 225, 0.65) 30%,
   rgba(254, 254, 254, 0) 70%
@@ -752,6 +756,15 @@ opacity: 0;
     z-index: -1;
 
 }
+
+.content-buttons-wrapper .single-button::before{
+   width: 330px;
+    height: 386px;
+}
+ .content-buttons-wrapper .single-button:has(svg)::before{
+      width: 480px;
+    height: 496px;
+ }
 
 .content-and-button-cards.bg-light-blue  .content-buttons-wrapper .slide-item .single-button::before{
     background: radial-gradient(65% 29% at 50% 50%, rgba(0, 190, 222, 0.95) 0%, rgba(0, 190, 222, 0.55) 46%, rgba(0, 190, 222, 0) 68%);
@@ -2960,10 +2973,14 @@ a.facetwp-toggle {
   .blog-post-layout-content .custom-columns-zone {
     padding-bottom: 50px;
   }
-  .content-buttons-wrapper .slide-item .single-button::before {
+  .content-buttons-wrapper .slide-item .single-button:has(svg)::before {
     width: 270px;
     height: 397px;
   }
+    .content-buttons-wrapper .slide-item .single-button::before {
+        width: 263px;
+        height: 354px;
+    }
 }
 @media only screen and (min-width: 1250px) {
   .main-menu {
@@ -3105,10 +3122,14 @@ a.facetwp-toggle {
     background-size: 640px;
     background-position: -34px -12%;  
   }  
-   .content-buttons-wrapper .slide-item .single-button::before{
+   .content-buttons-wrapper .slide-item .single-button:has(svg)::before{
     width: 322px;
     height: 420px;
  }
+    .content-buttons-wrapper .slide-item .single-button::before {
+        width: 280px;
+        height: 350px;
+    }
 }
   @media only screen and (min-width: 1620px) {
   .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
@@ -3185,10 +3206,24 @@ padding: 120px 60px 120px 50px;
     .floorplan-slider .slick-slide {
       margin: 0 15px;
     }
-    .content-buttons-wrapper .single-button:before{
-      width: 590px;
+    .content-buttons-wrapper .single-button:has(svg):before{
+        width: 560px;
+        height: 510px;
     }
-    .content-buttons-wrapper .slide-item .single-button::before {
+    /* .content-buttons-wrapper .single-button:before{
+      width: 590px;
+    } */
+ .content-buttons-wrapper .single-button:before{
+      width: 380px;
+        height: 490px;
+    }
+
+
+     .content-buttons-wrapper .slide-item .single-button::before {
+      width: 383px;
+      height: 413px;
+    }
+    .content-buttons-wrapper .slide-item .single-button:has(svg)::before {
     width: 385px;
     height: 482px;
     }
