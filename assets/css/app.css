@@ -1935,6 +1935,31 @@ a.facetwp-toggle {
   color: var(--white);
 }
 
+  .notice-alert{
+      padding: 15px;
+      margin-bottom: 0;
+      border: none;
+      border-radius: 0;
+      background-color: #D62F7480;
+      color: var(--white);
+  }
+ 
+  .notice-alert-close {
+      float: right;
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 1;
+      color: #000;
+      text-shadow: 0 1px 0 #fff;
+      filter: alpha(opacity=20);
+      opacity: 1;
+  }
+  .alert-dismissable .notice-alert-close, .alert-dismissible .notice-alert-close {
+      position: relative;
+      top: -2px;
+      right: -21px;
+      color: inherit;
+      }
 
 /* Media Queries  */
 
@@ -1977,6 +2002,10 @@ padding: 15px !important;
 padding-right: 15px !important;
 padding-left: 15px !important;
  }
+  .notice-alert
+ {
+    padding: 20px;
+}
 }
 @media (min-width:576px) and (max-width:767px) {
   .content-and-button-cards .buttons a {
@@ -2295,6 +2324,10 @@ padding-left: 15px !important;
     bottom: -50px;
     top: unset;
   }
+   .alert-dismissable .notice-alert-close, .alert-dismissible .notice-alert-close {
+   right: -10px;
+   }
+ 
 }
 @media only screen and (max-width: 429px) {
   .wysiwyg-button, .site-button {
@@ -2747,6 +2780,9 @@ padding-left: 15px !important;
   font-size: 20px;
   line-height: 24px;
 }
+.notice-alert{
+    margin-top: 20px;
+  }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .facetwp-facet-job_pagination a {
