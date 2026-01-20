@@ -10,7 +10,7 @@ $content = get_field("content");
 $button = get_field("button");
 
 ?>
-<section class="stylized-heading-intro-zone resources-intro-zone bg-light-blue py-5">
+<section class="stylized-heading-intro-zone resources-intro-zone pt-5">
     <div class="container-fluid">
         <div class="breadcrumb d-none d-lg-block">
             <div class="row">
