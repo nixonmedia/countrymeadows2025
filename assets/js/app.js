@@ -201,18 +201,20 @@ jQuery(document).ready(function($){
 
 // Help Toolbars
 document.addEventListener('DOMContentLoaded', function () {
+  const helpToolbars = document.querySelector('.help-toolbars');
   const floatImg = document.querySelector('.help-tool-float');
   const toolbarContent = document.querySelector('.help-toolbars-content');
   const closeBtn = document.querySelector('.close-float');
 
   // Ensure all elements exist
-  if (!floatImg || !toolbarContent || !closeBtn) return;
+  if (!helpToolbars || !floatImg || !toolbarContent || !closeBtn) return;
 
   const isMobile = () => window.innerWidth < 768; // Bootstrap md breakpoint
 
   floatImg.addEventListener('click', function () {
     toolbarContent.classList.add('is-open');
     floatImg.classList.add('d-md-none');
+    helpToolbars.classList.add('is-expanded');
 
     if (isMobile()) {
       document.body.classList.add('no-scroll');
@@ -223,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
   closeBtn.addEventListener('click', function () {
     toolbarContent.classList.remove('is-open');
     floatImg.classList.remove('d-md-none');
+    helpToolbars.classList.remove('is-expanded');
 
     document.body.classList.remove('no-scroll');
   });

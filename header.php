@@ -143,7 +143,7 @@
             <section class="help-toolbars">
                 <div class="container-fluid px-md-2 px-xxl-3">
                     <div class="row flex-column-reverse flex-md-row">
-                        <div class="col-md-2 float-img-col">
+                        <div class="col-md-12 float-img-col">
                             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/CM-float.svg" class="img-fluid help-tool-float">
                         </div>
                         <div class="col-md-12">
@@ -172,7 +172,7 @@
                                         <?php endif; ?>
                                     </div>
                                     <!-- Standard Links -->
-                                    <div class="col-md-8 col-lg-9 pb-5 pb-md-0 d-md-flex justify-content-around">
+                                    <div class="col-md-8 col-lg-9 pb-5 pb-md-0 d-md-flex justify-content-evenly">
                                         <?php if ($standard_links) : ?>
                                             <ul class="help-float-menu list-unstyled mb-0 text-center text-md-start px-md-3">
                                                 <?php foreach ($standard_links as $row) :
