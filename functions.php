@@ -2271,3 +2271,199 @@ function cm_handle_career_sync_ajax()
         wp_send_json_error($result['message']);
     }
 }
+
+
+/**
+ * Populate ACF Select field with child pages of Communities page
+ */
+// function acf_load_community_choices( $field ) {
+//     // Reset choices
+//     $field['choices'] = array();
+    
+//     // Get all child pages of the Communities page (ID: 513)
+//     $args = array(
+//         'post_type'      => 'page',
+//         'post_parent'    => 513,
+//         'posts_per_page' => -1,
+//         'orderby'        => 'title',
+//         'order'          => 'ASC',
+//         'post_status'    => 'publish'
+//     );
+    
+//     $child_pages = get_posts( $args );
+    
+//     // Add an empty option (optional)
+//     $field['choices'][''] = '-- Select Community --';
+    
+//     // Loop through child pages and add them as choices
+//     if ( $child_pages ) {
+//         foreach ( $child_pages as $page ) {
+//             $field['choices'][ $page->ID ] = $page->post_title;
+//         }
+//     }
+    
+//     return $field;
+// }
+
+// // Apply filter to your specific field using its key
+// add_filter('acf/load_field/key=field_690d7cb4a279c', 'acf_load_community_choices');
+
+
+/**
+ * Complete Communities Phone Number System
+ * Add this code to your theme's functions.php
+ */
+
+// 1. Populate the communities_list select field with child pages of Communities (ID: 513)
+function acf_load_community_choices_in_repeater( $field ) {
+    // Reset choices
+    $field['choices'] = array();
+    
+    // Get all child pages of the Communities page (ID: 513)
+    $args = array(
+        'post_type'      => 'page',
+        'post_parent'    => 513,
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC',
+        'post_status'    => 'publish'
+    );
+    
+    $child_pages = get_posts( $args );
+    
+    // Add an empty option
+    $field['choices'][''] = '-- Select Community --';
+    
+    // Loop through child pages and add them as choices
+    if ( $child_pages ) {
+        foreach ( $child_pages as $page ) {
+            $field['choices'][ $page->ID ] = $page->post_title;
+        }
+    }
+    
+    return $field;
+}
+
+// Apply filter to the communities_list field inside repeater
+add_filter('acf/load_field/name=communities_list', 'acf_load_community_choices_in_repeater');
+
+
+// 2. Function to get phone number for a specific community page
+function get_community_phone_by_page_id( $page_id = null ) {
+    // If no page ID provided, use current page
+    if ( !$page_id ) {
+        $page_id = get_the_ID();
+    }
+    
+    // Get the repeater field from options page
+    if ( have_rows('field_communities_repeater', 'option') ) {
+        while ( have_rows('field_communities_repeater', 'option') ) {
+            the_row();
+            
+            $community_page_id = get_sub_field('communities_list');
+            $phone = get_sub_field('comm_phone');
+            
+            // Check if this is the matching community
+            if ( $community_page_id == $page_id && !empty($phone) ) {
+                return $phone;
+            }
+        }
+    }
+    
+    return false;
+}
+
+
+// 3. Shortcode to display community phone header
+function community_phone_header_shortcode( $atts ) {
+    // Check if we're on a child page of Communities (parent ID: 513)
+    if ( !is_page() || wp_get_post_parent_id( get_the_ID() ) != 513 ) {
+        return '';
+    }
+    
+    $community_name = get_the_title();
+    $community_phone = get_community_phone_by_page_id( get_the_ID() );
+    
+    // If no phone number found, return empty
+    if ( !$community_phone ) {
+        return '';
+    }
+    
+    // Format phone number for tel: link (remove non-numeric characters)
+    $phone_link = preg_replace('/[^0-9]/', '', $community_phone);
+    
+    // Build the HTML output
+    ob_start();
+    ?>
+    <div class="community-phone-header">
+        <h2 class="community-title">
+            Call Our <?php echo esc_html( $community_name ); ?> Community At
+        </h2>
+        <a href="tel:<?php echo esc_attr( $phone_link ); ?>" class="community-phone-link">
+            <?php echo esc_html( $community_phone ); ?>
+        </a>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'community_phone_header', 'community_phone_header_shortcode' );
+
+
+// 4. Auto-display function (optional - if you want it to show automatically)
+function auto_display_community_header() {
+    // Only on community child pages
+    if ( is_page() && wp_get_post_parent_id( get_the_ID() ) == 513 ) {
+        echo do_shortcode('[community_phone_header]');
+    }
+}
+// Uncomment the line below if you want it to display automatically after opening body tag
+// add_action('wp_body_open', 'auto_display_community_header');
+
+
+// 5. Add CSS for the community header
+function community_phone_header_styles() {
+    if ( is_page() && wp_get_post_parent_id( get_the_ID() ) == 513 ) {
+        ?>
+        <style>
+            .community-phone-header {
+                background-color: #1b8ac4;
+                padding: 30px 20px;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            .community-phone-header .community-title {
+                color: #f4b942;
+                font-size: 22px;
+                margin: 0 0 10px 0;
+                font-weight: 600;
+                line-height: 1.4;
+            }
+            
+            .community-phone-header .community-phone-link {
+                color: #f4b942;
+                font-size: 32px;
+                font-weight: bold;
+                text-decoration: none;
+                display: inline-block;
+                transition: color 0.3s ease;
+            }
+            
+            .community-phone-header .community-phone-link:hover {
+                color: #ffffff;
+            }
+            
+            @media (max-width: 768px) {
+                .community-phone-header .community-title {
+                    font-size: 18px;
+                }
+                
+                .community-phone-header .community-phone-link {
+                    font-size: 24px;
+                }
+            }
+        </style>
+        <?php
+    }
+}
+add_action('wp_head', 'community_phone_header_styles');

@@ -3,6 +3,85 @@
     "title": "Communities",
     "fields": [
         {
+            "key": "field_696e07bc9a6ac",
+            "label": "communities repeater",
+            "name": "field_communities_repeater",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_696e083d10cb7",
+                    "label": "communities_list",
+                    "name": "communities_list",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "": "-- Select Community --",
+                        "35970": "Allentown Pa",
+                        "35972": "bath",
+                        "35974": "ck",
+                        "35976": "sk"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_696e07bc9a6ac"
+                },
+                {
+                    "key": "field_696e07e49a6ad",
+                    "label": "Phone",
+                    "name": "comm_phone",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_696e07bc9a6ac"
+                }
+            ]
+        },
+        {
             "key": "field_690d7cb4a279c",
             "label": "Community",
             "name": "community",
@@ -440,5 +519,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1762494340
+    "modified": 1768892154
 }
