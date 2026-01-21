@@ -139,7 +139,7 @@
             $icon_links     = get_field('help_toolbar_icon_links', $help_tool_post->ID);
         ?>
         <?php if($disable_help_tool == false):
-        if ($heading || $main_content || $standard_links || $icon_links) : ?>
+        if ($heading || $main_content || (!empty($standard_links) && is_array($standard_links)) || (!empty($icon_links) && is_array($icon_links))) : ?>
             <section class="help-toolbars">
                 <div class="container-fluid px-md-2 px-xxl-3">
                     <div class="row flex-column-reverse flex-md-row">
@@ -158,57 +158,73 @@
                                             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/float-title.svg" class="img-fluid" alt="">
                                         </div>
                                     </div>
+                                    <?php if($heading || $main_content): ?>
                                     <!-- Heading + Main -->
-                                    <div class="col-md-3 col-lg-2 text-center pt-2 pb-5 mb-2 pb-md-0 mb-md-0">
-                                        <?php if ($heading) : ?>
-                                            <h2 class="text-white font-xm mb-0 mb-md-1 mb-xl-2">
-                                                <?php echo esc_html($heading); ?>
-                                            </h2>
-                                        <?php endif; ?>
-                                        <?php if ($main_content) : ?>
-                                            <div class="mb-0">
-                                                <a href="<?php echo $main_content['url']; ?>" <?php if($main_content['target']): ?>target="<?php echo $main_content['target']; ?>"<?php endif; ?>><?php echo $main_content['title']; ?></a>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
+                                        <div class="col-md-3 col-lg-2 text-center pt-2 pb-5 mb-2 pb-md-0 mb-md-0">
+                                            <?php if ($heading) : ?>
+                                                <h2 class="text-white font-xm mb-0 mb-md-1 mb-xl-2">
+                                                    <?php echo esc_html($heading); ?>
+                                                </h2>
+                                            <?php endif; ?>
+                                            <?php if ($main_content) : ?>
+                                                <div class="mb-0">
+                                                    <a href="<?php echo $main_content['url']; ?>" <?php if($main_content['target']): ?>target="<?php echo $main_content['target']; ?>"<?php endif; ?>><?php echo $main_content['title']; ?></a>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; 
+                                    if (!empty($standard_links) && is_array($standard_links)) : ?>
                                     <!-- Standard Links -->
-                                    <div class="col-md-8 col-lg-9 pb-5 pb-md-0 d-md-flex justify-content-evenly">
-                                        <?php if ($standard_links) : ?>
-                                            <ul class="help-float-menu list-unstyled mb-0 text-center text-md-start px-md-3">
-                                                <?php foreach ($standard_links as $row) :
-                                                    $link = $row['link'] ?? null;
-                                                    if (!$link) continue;
-                                                ?>
-                                                    <li>
-                                                        <a href="<?php echo esc_url($link['url']); ?>"
-                                                        target="<?php echo esc_attr($link['target'] ?: '_self'); ?>">
-                                                            <?php echo esc_html($link['title']); ?>
-                                                        </a>
-                                                    </li>
-                                                <?php endforeach; ?>
-                                            </ul>
-                                        <?php endif; ?>
-                                        <!-- Icon Links -->
-                                        <?php if ($icon_links) : ?>
-                                            <ul class="help-float-icon-menu list-unstyled mb-0 mt-5 mt-md-0">
-                                                <?php foreach($icon_links as $row) :
-                                                    $link = $row['link'] ?? null;
-                                                    $icon = $row['link_icon'] ?? null;
-                                                    if ($link):
-                                                ?>
-                                                    <li class="d-flex gap-2 align-items-center">
-                                                        <?php if ($icon) : ?>
-                                                            <span><?php echo $icon; ?></span>
+                                        <div class="col-md-8 col-lg-9 pb-5 pb-md-0 d-md-flex help-menus-wrapper">
+                                            <?php $count = 0;
+                                                $total = count($standard_links);
+                                            ?>
+                                            <div class="help-float-menu-wrapper">
+                                                <ul class="help-float-menu list-unstyled mb-0 text-center text-md-start px-md-2 px-lg-3">
+                                                    <?php foreach ($standard_links as $index => $row) :
+                                                        $link = $row['link'] ?? null;
+                                                        if (!$link) continue;
+
+                                                        $count++;
+                                                    ?>
+                                                        <li>
+                                                            <a href="<?php echo esc_url($link['url']); ?>"
+                                                            target="<?php echo esc_attr($link['target'] ?: '_self'); ?>">
+                                                                <?php echo esc_html($link['title']); ?>
+                                                            </a>
+                                                        </li>
+                                                        <?php
+                                                        // Close and reopen UL after every 3 items (except last)
+                                                        if ($count % 3 === 0 && $count < $total) :
+                                                        ?>
+                                                            </ul>
+                                                            <ul class="help-float-menu list-unstyled mb-0 text-center text-md-start px-md-2 px-lg-3">
                                                         <?php endif; ?>
-                                                        <a href="<?php echo esc_url($link['url']); ?>"
-                                                        target="<?php echo esc_attr($link['target'] ?: '_self'); ?>">
-                                                            <?php echo esc_html($link['title']); ?>
-                                                        </a>
-                                                    </li>
-                                                <?php endif; endforeach; ?>
-                                            </ul>
-                                        <?php endif; ?>
-                                    </div>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                            </div>
+                                            <!-- Icon Links -->
+                                            <?php if (!empty($icon_links) && is_array($icon_links)) : ?>
+                                                <ul class="help-float-icon-menu list-unstyled mb-0 mt-5 mt-md-0">
+                                                    <?php foreach($icon_links as $row) :
+                                                        $link = $row['link'] ?? null;
+                                                        $icon = $row['link_icon'] ?? null;
+                                                        if ($link):
+                                                    ?>
+                                                        <li class="d-flex gap-2">
+                                                            <?php if ($icon) : ?>
+                                                                <span><?php echo $icon; ?></span>
+                                                            <?php endif; ?>
+                                                            <a href="<?php echo esc_url($link['url']); ?>"
+                                                            target="<?php echo esc_attr($link['target'] ?: '_self'); ?>">
+                                                                <?php echo esc_html($link['title']); ?>
+                                                            </a>
+                                                        </li>
+                                                    <?php endif; endforeach; ?>
+                                                </ul>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

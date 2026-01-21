@@ -2462,6 +2462,9 @@ a.facetwp-toggle {
   .help-toolbars {
     width: 20%;
   }
+  .help-logo {
+    padding-top: 22px;
+  }
 }
 @media only screen and (max-width: 429px) {
   .wysiwyg-button, .site-button {
@@ -2566,12 +2569,9 @@ a.facetwp-toggle {
   .floorplan-slider .slick-next {
     right: 0;
   }
-  .help-float-menu {
-    column-count: 2;
-    column-gap: 45px;
-  }
   .help-toolbars {
     top: 45%;
+    width: 13%;
   }
   .help-tool-float {
     width: 65px;
@@ -2598,6 +2598,13 @@ a.facetwp-toggle {
   .review-slider-heading{
     font-size: 18px;
     line-height: 24px;
+  }
+  .help-float-menu-wrapper {
+    column-count: 2;
+    column-gap: 10px;
+  }
+  .help-menus-wrapper {
+    column-gap: 20px;
   }
 }
 @media only screen and (min-width: 992px) {
@@ -3003,12 +3010,12 @@ a.facetwp-toggle {
   .footer-menu {
     padding: 0 30px;
   }
-    .content-and-button-card  .single-button{
-    padding: 25px 40px !important
+  .content-and-button-card  .single-button{
+      padding: 25px 40px !important
   }
- .content-and-button-card  .wyswing-content.top-content {
-    width:90%;
-  }
+  .content-and-button-card  .wyswing-content.top-content {
+      width:90%;
+    }
   .content-and-button-cards  .bottom-content {
     width:70%;
   }
@@ -3070,6 +3077,15 @@ a.facetwp-toggle {
   
   .help-toolbars {
     top: 65%;
+    width: 9%;
+  }
+  .help-float-menu-wrapper {
+    column-count: unset;
+    display: flex;
+    column-gap: 10px;
+  }
+  .help-menus-wrapper {
+    column-gap: 30px;
   }
 }
 @media only screen and (min-width: 1250px) {
@@ -3110,10 +3126,6 @@ a.facetwp-toggle {
   }
   .help-tool-float {
     width: 80px;
-  }
-  .help-float-menu {
-    column-count: 3;
-    column-gap: 30px;
   }
 }
 @media only screen and (max-width: 1299px) {
@@ -3227,8 +3239,11 @@ a.facetwp-toggle {
     width: 24px;
     height: 24px;
   }
+  .help-menus-wrapper {
+    column-gap: 50px;
+  }
 }
-  @media only screen and (min-width: 1620px) {
+@media only screen and (min-width: 1620px) {
   .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
     font-size: 24px;
     line-height: 36px;
@@ -3255,11 +3270,11 @@ a.facetwp-toggle {
 
   }
  .content-and-button-cards  .wyswing-content.top-content{
-width:85%;
-}
-  .content-and-button-cards  .single-button{
-           padding: 35px 70px !important;
-}
+  width:85%;
+  }
+    .content-and-button-cards  .single-button{
+            padding: 35px 70px !important;
+  }
   .content-and-button-cards  .bottom-content {
     width:45%;
 
@@ -3272,31 +3287,31 @@ width:85%;
     padding-right: 50px;
   }
   .left-floorplan-content .heading{
-  font-size:40px;
-  line-height:45px;
-}
-
-.full-width-left-col {
-padding: 120px 60px 120px 50px;
-}
-.floorplan-zone .row:not(.flex-row-reverse) .right-floorplan-col {
-    padding-left: 100px;
-}
-.floorplan-zone .row.flex-row-reverse .right-floorplan-col {
-    padding-right: 100px;
-}
-.floor-card{
-      padding: 45px !important;
-}
-
-.post-stylized-heading {
-    font-size: 76px;
-    line-height: 76px;
+    font-size:40px;
+    line-height:45px;
   }
 
-.floorplan-zone .flex-row-reverse .right-floorplan-col{
-    padding-left: 20px;
-}
+  .full-width-left-col {
+  padding: 120px 60px 120px 50px;
+  }
+  .floorplan-zone .row:not(.flex-row-reverse) .right-floorplan-col {
+      padding-left: 100px;
+  }
+  .floorplan-zone .row.flex-row-reverse .right-floorplan-col {
+      padding-right: 100px;
+  }
+  .floor-card{
+        padding: 45px !important;
+  }
+
+  .post-stylized-heading {
+      font-size: 76px;
+      line-height: 76px;
+    }
+
+  .floorplan-zone .flex-row-reverse .right-floorplan-col{
+      padding-left: 20px;
+  }
    .floorplan-zone .flex-row-reverse .full-width-left-col {
     padding: 120px 60px 120px 50px;
     }
@@ -3310,8 +3325,12 @@ padding: 120px 60px 120px 50px;
   .help-toolbars {
     padding-right: 15px;
   }
-  .help-float-menu {
-    column-gap: 45px;
+  .help-menus-wrapper {
+    column-gap: 65px;
+  }
+  .help-float-menu-wrapper {
+    column-gap: 80px;
+    padding-left: 20px;
   }
 }
 @media only screen and (min-width: 1900px) {
