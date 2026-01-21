@@ -54,9 +54,9 @@ if (! function_exists('country_meadows_support')) :
         add_image_size('two_col_top', 444, 263, true);
         add_image_size('blog_post_thumb', 930, 616, true);
         add_image_size('single_post_thumb', 1136, 744, true);
-    
+
         add_image_size('split-col-image', 1110, 734, true);
-	}
+    }
 endif;
 
 add_action('after_setup_theme', 'country_meadows_support');
@@ -108,6 +108,8 @@ if (! function_exists('country_meadows_styles')) :
         wp_enqueue_script('lightbox2-js', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js', array('jquery'), null, true);
         // Enqueue Custom JS
         wp_enqueue_script('country_meadows-custom-js', get_template_directory_uri() . '/assets/js/app.js', array('jquery'), $theme_version, true);
+
+        wp_enqueue_script('country_meadows-resize-js', get_template_directory_uri() . '/assets/js/resize.js', array('jquery'), '', true);
 
         // Localize script for AJAX
         wp_localize_script('country_meadows-custom-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
@@ -923,7 +925,8 @@ define('UKG_ACCESS_TOKEN_TRANSIENT', 'ukg_access_token');
 /* ----------------------------------------
    GET ACCESS TOKEN
 ----------------------------------------- */
-function ukg_get_access_token() {
+function ukg_get_access_token()
+{
 
     // Check cached token
     $token = get_transient(UKG_ACCESS_TOKEN_TRANSIENT);
@@ -969,7 +972,8 @@ function ukg_get_access_token() {
    FETCH JOBS
 ----------------------------------------- */
 
-function ukg_fetch_jobs() {
+function ukg_fetch_jobs()
+{
     error_log('UKG Cron ran at: ' . current_time('mysql'));
     $token = ukg_get_access_token();
     if (!$token) return;
@@ -979,8 +983,8 @@ function ukg_fetch_jobs() {
     $start_of_month = new DateTime('first day of this month 00:00:00', new DateTimeZone('UTC'));
     $iso_utc = $start_of_month->format('Y-m-d\TH:i:s\Z');
     $updated_after = (new DateTime('now', new DateTimeZone('UTC')))
-    ->modify('-16 days')
-    ->format('Y-m-d\TH:i:s\Z');
+        ->modify('-16 days')
+        ->format('Y-m-d\TH:i:s\Z');
     $all_jobs = [];
     $today = new DateTime('today', new DateTimeZone('UTC'));
     $target_board_ids = [
@@ -1114,15 +1118,13 @@ function ukg_fetch_jobs() {
     // }
     foreach ($filtered_jobs as $job) {
 
-    if (!empty($job['requisition_number'])) {
-        $api_requisitions[] = $job['requisition_number'];
+        if (!empty($job['requisition_number'])) {
+            $api_requisitions[] = $job['requisition_number'];
+        }
+
+        ukg_create_or_update_job($job);
     }
-
-    ukg_create_or_update_job($job);
-}
-ukg_delete_old_careers($api_requisitions);
-
-
+    ukg_delete_old_careers($api_requisitions);
 }
 
 
@@ -1130,7 +1132,8 @@ ukg_delete_old_careers($api_requisitions);
 /* ----------------------------------------
    CREATE OR UPDATE JOB
 ----------------------------------------- */
-function ukg_create_or_update_job($job) {
+function ukg_create_or_update_job($job)
+{
 
     $req = $job['requisition_number'] ?? null;
     if (!$req) return;
@@ -1258,7 +1261,8 @@ function ukg_create_or_update_job($job) {
 /* ----------------------------------------
    DELETE OLD CAREERS NOT IN API
 ----------------------------------------- */
-function ukg_delete_old_careers(array $api_requisitions) {
+function ukg_delete_old_careers(array $api_requisitions)
+{
 
     if (empty($api_requisitions)) {
         return;
@@ -1307,7 +1311,6 @@ add_action('init', function () {
             'ukg_fetch_careers_cron_event'
         );
     }
-
 });
 
 /* ----------------------------------------
@@ -1315,7 +1318,8 @@ add_action('init', function () {
 ----------------------------------------- */
 add_action('ukg_fetch_careers_cron_event', 'ukg_fetch_careers_cron_callback');
 
-function ukg_fetch_careers_cron_callback() {
+function ukg_fetch_careers_cron_callback()
+{
 
     // Debug log start
     error_log('UKG Careers Cron: Started at ' . current_time('mysql'));
@@ -1346,14 +1350,14 @@ add_action('admin_menu', function () {
         'render_fetch_careers_page',     // Callback
         99                               // Position (after Schedule)
     );
-
 });
 
 
 /* ----------------------------------------
    FETCH CAREERS PAGE CALLBACK
 ----------------------------------------- */
-function render_fetch_careers_page() {
+function render_fetch_careers_page()
+{
 
     if (!current_user_can('manage_options')) {
         return;
@@ -1369,7 +1373,7 @@ function render_fetch_careers_page() {
                 <p><strong>Careers fetched successfully!</strong></p>
               </div>';
     }
-    ?>
+?>
 
     <div class="wrap">
         <h1>Fetch Careers</h1>
@@ -1380,36 +1384,36 @@ function render_fetch_careers_page() {
         </form>
     </div>
 
-    <?php
+<?php
 }
 
 /**
  * FacetWP Integration: Prevent filtering on home page main query
  */
-add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
-  if ( $query->is_home() && $query->is_main_query() ) {
-    $is_main_query = false;
-  }
-  return $is_main_query;
-}, 10, 2 );
+add_filter('facetwp_is_main_query', function ($is_main_query, $query) {
+    if ($query->is_home() && $query->is_main_query()) {
+        $is_main_query = false;
+    }
+    return $is_main_query;
+}, 10, 2);
 
 /**
  * FacetWP Integration: Scroll to top on filter change
  */
-add_action( 'wp_head', function() {
-  ?>
-  <script>
-    (function($) {
-      $(document).on('facetwp-loaded', function() {
-        if ( FWP.loaded ) { // Run only after the initial page load
-          $('html, body').animate({
-            scrollTop: $('.facetwp-template').offset().top - 100 // Scroll to the top of the element with class "facetp-template"
-          }, 500);
-        }
-      });
-    })(jQuery);
-  </script>
-<?php } );
+add_action('wp_head', function () {
+?>
+    <script>
+        (function($) {
+            $(document).on('facetwp-loaded', function() {
+                if (FWP.loaded) { // Run only after the initial page load
+                    $('html, body').animate({
+                        scrollTop: $('.facetwp-template').offset().top - 100 // Scroll to the top of the element with class "facetp-template"
+                    }, 500);
+                }
+            });
+        })(jQuery);
+    </script>
+<?php });
 //Remove 'View' option from Blog Authors CPT
 add_filter('post_row_actions', function ($actions, $post) {
     if ($post->post_type === 'blog-author') {
@@ -1422,3 +1426,848 @@ add_action('admin_bar_menu', function ($wp_admin_bar) {
         $wp_admin_bar->remove_node('view');
     }
 }, 999);
+
+
+// ============================================
+// 1. FETCH Google REVIEWS WITH PAGINATION
+// ============================================
+function cm_fetch_all_reputation_reviews()
+{
+    $api_key = '4b3526fd912_2f66114edde6c5ca36dc86c58f623259';
+
+    // Resume support
+    $url = get_option('cm_fetch_next_url');
+    if (!$url) {
+        $url = 'https://api.reputation.com/v3/reviews3';
+    }
+
+    $all_reviews = get_option('cm_fetch_reviews', []);
+    $page_count  = 0;
+    $max_pages   = 1000;
+    $max_retries = 3;
+
+    while ($url && $page_count < $max_pages) {
+
+        $attempt = 0;
+        $body    = null;
+
+        while ($attempt < $max_retries) {
+
+            $response = wp_remote_get($url, [
+                'headers' => [
+                    'X-API-Key' => $api_key,
+                    'Accept'    => 'application/json',
+                ],
+                'timeout' => 120,
+            ]);
+
+            if (!is_wp_error($response)) {
+                $body = json_decode(wp_remote_retrieve_body($response), true);
+
+                if (!empty($body['reviews'])) {
+                    break; // success
+                }
+            }
+
+            $attempt++;
+            sleep(2 * $attempt); // backoff
+        }
+
+        // ❌ If still empty → stop safely
+        if (empty($body['reviews'])) {
+            error_log('API failed after retries – stopping fetch safely');
+            break;
+        }
+
+        // Merge reviews
+        $all_reviews = array_merge($all_reviews, $body['reviews']);
+
+        // Save progress (CRASH SAFE)
+        $url = $body['paging']['next'] ?? null;
+        update_option('cm_fetch_next_url', $url);
+        update_option('cm_fetch_reviews', $all_reviews);
+
+        $page_count++;
+        error_log("Fetched page {$page_count}, total: " . count($all_reviews));
+    }
+
+    // ✅ Fetch completed → cleanup progress
+    delete_option('cm_fetch_next_url');
+    delete_option('cm_fetch_reviews');
+
+    return $all_reviews;
+}
+
+
+// ============================================
+// 2. FILTER GOOGLE REVIEWS
+// ============================================
+function cm_get_google_reviews()
+{
+    $reviews = cm_fetch_all_reputation_reviews();
+
+    $google_reviews = array_filter($reviews, function ($review) {
+        return isset($review['sourceID']) && $review['sourceID'] === 'GOOGLE_PLACES';
+    });
+
+    error_log("Filtered Google reviews: " . count($google_reviews) . " out of " . count($reviews) . " total reviews");
+
+    return $google_reviews;
+}
+
+
+// ============================================
+// 3. SYNC Google REVIEWS (OPTIMIZED)
+// ============================================
+function cm_sync_google_reviews_to_cpt()
+{
+    global $wpdb;
+
+    // Lock to prevent overlap
+    // if (get_transient('cm_review_sync_lock')) {
+    //     return ['success' => false, 'message' => 'Sync already running'];
+    // }
+    if (get_transient('cm_review_sync_lock')) {
+        return [
+            'success' => true,
+            'notice'  => true,
+            'message' => 'Note: A sync is already running. Please wait a moment and try again.'
+        ];
+    }
+
+    set_transient('cm_review_sync_lock', true, 10 * MINUTE_IN_SECONDS);
+
+    // Existing posts
+    $existing = $wpdb->get_results("
+        SELECT p.ID, pm.meta_value AS external_id
+        FROM {$wpdb->posts} p
+        INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id
+        WHERE p.post_type = 'google_review'
+        AND p.post_status = 'publish'
+        AND pm.meta_key = 'external_review_id'
+    ");
+
+    $existing_ids = [];
+    foreach ($existing as $post) {
+        $existing_ids[$post->external_id] = (int) $post->ID;
+    }
+
+    // Fetch API
+    $reviews = cm_get_google_reviews();
+
+    if (empty($reviews)) {
+        delete_transient('cm_review_sync_lock');
+        return ['success' => false, 'message' => 'No API data'];
+    }
+
+    $created = 0;
+    $updated = 0;
+    $api_ids = [];
+
+    foreach ($reviews as $review) {
+
+        if (empty($review['id'])) continue;
+
+        $external_id = sanitize_text_field($review['id']);
+        $api_ids[]   = $external_id;
+
+        if (isset($existing_ids[$external_id])) {
+            $post_id = $existing_ids[$external_id];
+            $updated++;
+        } else {
+            $post_id = wp_insert_post([
+                'post_type'   => 'google_review',
+                'post_status' => 'publish',
+                'post_title'  => wp_strip_all_tags($review['reviewer']['name'] ?? 'Anonymous'),
+            ]);
+
+            if (is_wp_error($post_id)) continue;
+
+            add_post_meta($post_id, 'external_review_id', $external_id, true);
+            $created++;
+        }
+        // ================================
+        // LOCATION TAXONOMY SYNC
+        // ================================
+        if (!empty($review['locationName'])) {
+
+            $taxonomy  = 'location';
+            $term_name = sanitize_text_field($review['locationName']);
+
+            $term = term_exists($term_name, $taxonomy);
+
+            if (!$term) {
+                $term = wp_insert_term($term_name, $taxonomy);
+            }
+
+            if (!is_wp_error($term)) {
+                $term_id = is_array($term) ? (int) $term['term_id'] : (int) $term;
+                wp_set_object_terms($post_id, [$term_id], $taxonomy, false);
+                //  Assign taxonomy to ACF field
+                // IMPORTANT: use FIELD KEY if possible
+                update_field('location', $term_id, $post_id);
+            }
+        }
+        // ACF
+        update_field('google_review_name', $review['reviewer']['name'] ?? '', $post_id);
+        update_field('google_review_date', date('Y-m-d', strtotime($review['date'])), $post_id);
+        update_field('google_review_stars', (int) $review['rating'], $post_id);
+        update_field('google_review_excerpt', $review['comment'] ?? '', $post_id);
+        update_field('google_review_url', $review['url'] ?? '', $post_id);
+        update_field('source_id', $review['sourceID'] ?? '', $post_id);
+    }
+
+    // ✅ DELETE ONLY IF FULL FETCH SUCCESS
+    foreach ($existing_ids as $external_id => $post_id) {
+        if (!in_array($external_id, $api_ids, true)) {
+            wp_delete_post($post_id, true);
+        }
+    }
+
+    update_option('cm_last_review_sync', current_time('mysql'));
+    delete_transient('cm_review_sync_lock');
+
+    return [
+        'success' => true,
+        'created' => $created,
+        'updated' => $updated,
+        'deleted' => count($existing_ids) - count(array_intersect(array_keys($existing_ids), $api_ids)),
+        'total'   => count($reviews),
+    ];
+}
+
+// ============================================
+// 4. ADD ADMIN MENU Google Review PAGE
+// ============================================
+add_action('admin_menu', 'cm_add_review_sync_page');
+
+function cm_add_review_sync_page()
+{
+    add_submenu_page(
+        'edit.php?post_type=google_review',
+        'Sync Reviews',
+        'Sync Reviews',
+        'manage_options',
+        'sync-reviews',
+        'cm_render_sync_page'
+    );
+}
+
+
+// ============================================
+// 5. RENDER SYNC Google Page PAGE
+// ============================================
+function cm_render_sync_page()
+{
+    $last_sync = get_option('cm_last_review_sync', 'Never');
+?>
+    <div class="wrap">
+        <h1> Sync Google Reviews</h1>
+
+        <div class="card" style="max-width: 600px; margin-top: 20px;">
+            <h2>Manual Sync</h2>
+            <p>Click the button below to fetch the latest reviews from Google.</p>
+            <p><strong>Last Sync:</strong> <?php echo esc_html($last_sync); ?></p>
+
+            <button id="sync-reviews-btn" class="button button-primary button-hero">
+                Fetch Latest Reviews
+            </button>
+
+            <div id="sync-result" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+    <script>
+        jQuery(document).ready(function($) {
+            // Sync Reviews Handler
+            $('#sync-reviews-btn').on('click', function() {
+                var $btn = $(this);
+                var $result = $('#sync-result');
+
+                // Disable button
+                $btn.prop('disabled', true).text('⏳ Syncing...');
+
+                // Show loading
+                $result.removeClass('success error').addClass('loading')
+                    .html('<span class="spinner-sync"></span> Fetching reviews from API...');
+
+                // AJAX request
+                $.ajax({
+                    url: ajaxurl,
+                    type: 'POST',
+                    data: {
+                        action: 'cm_sync_reviews'
+                    },
+                    success: function(response) {
+
+                        if (response.success) {
+
+                            //  NOTICE (sync already running)
+                            if (response.data.notice) {
+                                $result.removeClass('loading error')
+                                    .addClass('notice')
+                                    .html('ℹ️ <strong>' + response.data.message + '</strong>');
+                                return;
+                            }
+
+                            // NORMAL SUCCESS
+                            $result.removeClass('loading error')
+                                .addClass('success')
+                                .html(
+                                    '<strong>✅ Sync Complete!</strong><br>' +
+                                    'Created: ' + response.data.created + ' | ' +
+                                    'Updated: ' + response.data.updated + ' | ' +
+                                    'Total: ' + response.data.total
+                                );
+
+                            // DEBUG (optional)
+                            console.log('API Review Data:', response.data.debug_data);
+                        }
+                    },
+                    error: function() {
+                        $result.removeClass('loading').addClass('error')
+                            .html(' <strong>Error:</strong> Failed to sync reviews');
+                    },
+                    complete: function() {
+                        $btn.prop('disabled', false).text(' Fetch Latest Reviews');
+                    }
+                });
+            });
+
+            // Debug API Handler
+            $('#debug-api-btn').on('click', function() {
+                var $btn = $(this);
+                var $debug = $('#debug-output');
+
+                // Disable button
+                $btn.prop('disabled', true).text(' Loading API Data...');
+
+                // Show loading
+                $debug.removeClass('success error').addClass('loading')
+                    .html('<span class="spinner-sync"></span> Fetching data from API...');
+
+                // AJAX request
+                $.ajax({
+                    url: ajaxurl,
+                    type: 'POST',
+                    data: {
+                        action: 'cm_debug_api_data'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            $debug.removeClass('loading').addClass('success')
+                                .html(response.data.html);
+
+                            // Add click handlers for toggle buttons
+                            $('.toggle-json').on('click', function() {
+                                $(this).next('.raw-json').slideToggle();
+                            });
+                        } else {
+                            $debug.removeClass('loading').addClass('error')
+                                .html(' <strong>Error:</strong> ' + response.data);
+                        }
+                    },
+                    error: function() {
+                        $debug.removeClass('loading').addClass('error')
+                            .html(' <strong>Error:</strong> Failed to fetch API data');
+                    },
+                    complete: function() {
+                        $btn.prop('disabled', false).text(' Debug API Data');
+                    }
+                });
+            });
+        });
+    </script>
+<?php
+}
+
+// ============================================
+// 6. AJAX HANDLER Google review
+// ============================================
+add_action('wp_ajax_cm_sync_reviews', 'cm_handle_sync_ajax');
+function cm_handle_sync_ajax()
+{
+    set_time_limit(0);
+    wp_raise_memory_limit('admin');
+
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error('Permission denied');
+    }
+
+    $result = cm_sync_google_reviews_to_cpt();
+
+    if (!empty($result['success'])) {
+        wp_send_json_success($result);
+    } else {
+        wp_send_json_error($result['message']);
+    }
+}
+
+
+
+// ============================================
+// ADD 10 MINUTE CRON INTERVAL
+// ============================================
+add_filter('cron_schedules', 'cm_add_ten_minute_cron');
+
+function cm_add_ten_minute_cron($schedules)
+{
+    $schedules['ten_minutes'] = [
+        'interval' => 600, // 10 minutes in seconds
+        'display'  => __('Every 10 Minutes')
+    ];
+    return $schedules;
+}
+
+// // ============================================
+// // SCHEDULE CRON EVENT
+// // ============================================
+add_action('init', 'cm_schedule_review_cron');
+
+function cm_schedule_review_cron()
+{
+    if (!wp_next_scheduled('cm_cron_sync_reviews')) {
+        wp_schedule_event(time(), 'ten_minutes', 'cm_cron_sync_reviews');
+    }
+}
+
+// // ============================================
+// // CRON HANDLER
+// // ============================================
+add_action('cm_cron_sync_reviews', 'cm_run_review_cron_sync');
+
+function cm_run_review_cron_sync()
+{
+    // Optional: prevent running during admin manual sync
+    if (defined('DOING_AJAX') && DOING_AJAX) {
+        return;
+    }
+
+    $result = cm_sync_google_reviews_to_cpt();
+
+    // Optional logging
+    if (!empty($result['success'])) {
+        error_log('CRON Review Sync Success: ' . print_r($result, true));
+    } else {
+        error_log('CRON Review Sync Failed');
+    }
+}
+
+
+// Career Review Sync - 15 JAN 2026
+// Optimized for handling large datasets with pagination
+// ============================================
+// 1. FETCH CAREER REVIEWS WITH PARALLEL REQUESTS
+// ============================================
+
+function cm_fetch_all_reputation_career_reviews()
+{
+    $api_key = '4b3526fd912_2f66114edde6c5ca36dc86c58f623259';
+    $url     = 'https://api.reputation.com/v3/reviews3';
+
+    $all_reviews = [];
+    $page_count  = 0;
+
+    //  Rolling 2-year cutoff (UTC-safe)
+    $cutoff_timestamp = strtotime('-2 years');
+
+    while ($url && $page_count < 1000) {
+
+        $response = wp_remote_get($url, [
+            'headers' => [
+                'X-API-Key' => $api_key,
+                'Accept'    => 'application/json',
+            ],
+            'timeout' => 60,
+        ]);
+
+        if (is_wp_error($response)) {
+            error_log('Career Review API Error: ' . $response->get_error_message());
+            break;
+        }
+
+        $body = json_decode(wp_remote_retrieve_body($response), true);
+
+        if (empty($body['reviews'])) {
+            break;
+        }
+
+        foreach ($body['reviews'] as $review) {
+
+            // SOURCE FILTER
+            if (
+                empty($review['sourceID']) ||
+                !in_array($review['sourceID'], ['GLASSDOOR', 'INDEED'], true)
+            ) {
+                continue;
+            }
+
+            // DATE FILTER (last 2 years only)
+            if (empty($review['date'])) {
+                continue;
+            }
+
+            $review_timestamp = strtotime($review['date']);
+            if ($review_timestamp < $cutoff_timestamp) {
+                continue;
+            }
+
+            $all_reviews[] = $review;
+        }
+
+        $url = $body['paging']['next'] ?? null;
+        $page_count++;
+    }
+
+    error_log('Total Career Reviews (last 2 years): ' . count($all_reviews));
+    return $all_reviews;
+}
+
+// ============================================
+// OPTIMIZED SYNC WITH BATCH OPERATIONS
+// ============================================
+
+function cm_sync_career_reviews_to_cpt()
+{
+    global $wpdb;
+
+    error_log('===== START CAREER REVIEW SYNC =====');
+
+    // ================================
+    // EXISTING POSTS (PUBLISH + TRASH)
+    // ================================
+    $existing_posts = $wpdb->get_results("
+        SELECT p.ID, p.post_status, pm.meta_value AS external_id
+        FROM {$wpdb->posts} p
+        INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id
+        WHERE p.post_type = 'career_review'
+        AND p.post_status IN ('publish', 'trash')
+        AND pm.meta_key = 'external_career_review_id'
+    ");
+
+    $existing_ids = [];
+    $trashed_ids  = [];
+
+    foreach ($existing_posts as $post) {
+        $existing_ids[$post->external_id] = (int) $post->ID;
+
+        if ($post->post_status === 'trash') {
+            $trashed_ids[$post->external_id] = (int) $post->ID;
+        }
+    }
+
+    error_log('Existing posts found: ' . count($existing_ids));
+
+    // ================================
+    // API DATA
+    // ================================
+    $reviews = cm_fetch_all_reputation_career_reviews();
+
+    if (empty($reviews)) {
+        error_log('No career reviews returned from API');
+        return [
+            'success' => false,
+            'message' => 'No career reviews found'
+        ];
+    }
+
+    // ================================
+    // DEBUG COUNTERS
+    // ================================
+    $total_api_reviews  = count($reviews);
+    $skipped_no_id      = 0;
+    $skipped_source     = 0;
+    $skipped_date       = 0;
+    $passed_date_filter = 0;
+
+    $created  = 0;
+    $updated  = 0;
+    $restored = 0;
+    $deleted  = 0;
+
+    $api_ids = [];
+
+    error_log('Total API reviews received: ' . $total_api_reviews);
+
+    // ================================
+    // PROCESS REVIEWS
+    // ================================
+    foreach ($reviews as $review) {
+
+        // ----------------
+        // ID CHECK
+        // ----------------
+        if (empty($review['id'])) {
+            $skipped_no_id++;
+            error_log('SKIPPED (NO ID)');
+            continue;
+        }
+
+        // ----------------
+        // SOURCE CHECK
+        // ----------------
+        if (
+            empty($review['sourceID']) ||
+            !in_array($review['sourceID'], ['GLASSDOOR', 'INDEED'], true)
+        ) {
+            $skipped_source++;
+            error_log(
+                'SKIPPED (SOURCE): ' . $review['id'] .
+                    ' | Source: ' . ($review['sourceID'] ?? 'NULL')
+            );
+            continue;
+        }
+
+        // ----------------
+        // DATE CHECK (LAST 2 YEARS)
+        // ----------------
+        $cutoff_timestamp = strtotime('-2 years');
+        $review_timestamp = !empty($review['date']) ? strtotime($review['date']) : false;
+
+        if (!$review_timestamp || $review_timestamp < $cutoff_timestamp) {
+            $skipped_date++;
+            error_log(
+                'SKIPPED (DATE): ' . $review['id'] .
+                    ' | Review Date: ' . ($review['date'] ?? 'NULL') .
+                    ' | Cutoff Date: ' . date('Y-m-d', $cutoff_timestamp)
+            );
+            continue;
+        }
+
+        $passed_date_filter++;
+
+        $external_id = sanitize_text_field($review['id']);
+        $api_ids[]   = $external_id;
+
+        // ================================
+        // CREATE / UPDATE / RESTORE
+        // ================================
+        if (isset($existing_ids[$external_id])) {
+
+            $post_id = $existing_ids[$external_id];
+
+            // Restore from trash
+            if (isset($trashed_ids[$external_id])) {
+                wp_update_post([
+                    'ID'          => $post_id,
+                    'post_status' => 'publish'
+                ]);
+
+                $restored++;
+                error_log('RESTORED: ' . $external_id);
+            } else {
+                $updated++;
+                error_log('UPDATED: ' . $external_id);
+            }
+        } else {
+
+            $post_id = wp_insert_post([
+                'post_type'   => 'career_review',
+                'post_status' => 'publish',
+                'post_title'  => wp_strip_all_tags($review['reviewer']['name'] ?? 'Anonymous'),
+            ]);
+
+            if (is_wp_error($post_id)) {
+                error_log('FAILED TO CREATE POST: ' . $external_id);
+                continue;
+            }
+
+            add_post_meta($post_id, 'external_career_review_id', $external_id, true);
+
+            $created++;
+            error_log('CREATED: ' . $external_id);
+        }
+
+        // ================================
+        // ACF / META FIELDS
+        // ================================
+        update_field('career_review_name', $review['reviewer']['name'] ?? '', $post_id);
+        update_field('career_review_date', date('Y-m-d', strtotime($review['date'])), $post_id);
+        update_field('career_review_stars', (int) $review['rating'], $post_id);
+        update_field('career_review_excerpt', $review['comment'] ?? '', $post_id);
+        update_field('career_review_url', $review['url'] ?? '', $post_id);
+        update_field('source_id', $review['sourceID'], $post_id);
+
+        // ================================
+        // LOCATION TAXONOMY
+        // ================================
+        if (!empty($review['locationName'])) {
+
+            $term = term_exists($review['locationName'], 'location');
+
+            if (!$term) {
+                $term = wp_insert_term($review['locationName'], 'location');
+            }
+
+            if (!is_wp_error($term)) {
+                $term_id = is_array($term) ? (int) $term['term_id'] : (int) $term;
+                wp_set_object_terms($post_id, [$term_id], 'location', false);
+                update_field('location', $term_id, $post_id);
+            }
+        }
+    }
+
+    // ================================
+    // DELETE MISSING POSTS (PERMANENT)
+    // ================================
+    foreach ($existing_ids as $external_id => $post_id) {
+        if (!in_array($external_id, $api_ids, true)) {
+            wp_delete_post($post_id, true);
+            $deleted++;
+            error_log('DELETED: ' . $external_id);
+        }
+    }
+
+    // ================================
+    // FINAL SUMMARY LOG
+    // ================================
+    error_log('===== CAREER REVIEW SYNC SUMMARY =====');
+    error_log('Total API Reviews: ' . $total_api_reviews);
+    error_log('Skipped (No ID): ' . $skipped_no_id);
+    error_log('Skipped (Source): ' . $skipped_source);
+    error_log('Skipped (Date < 2 Years): ' . $skipped_date);
+    error_log('Passed Date Filter: ' . $passed_date_filter);
+    error_log('Created: ' . $created);
+    error_log('Updated: ' . $updated);
+    error_log('Restored: ' . $restored);
+    error_log('Deleted: ' . $deleted);
+    error_log('=====================================');
+
+    update_option('cm_last_career_review_sync', current_time('mysql'));
+
+    return [
+        'success'  => true,
+        'created'  => $created,
+        'updated'  => $updated,
+        'restored' => $restored,
+        'deleted'  => $deleted,
+        'total'    => $total_api_reviews,
+    ];
+}
+
+// ============================================
+// BACKGROUND PROCESSING (RECOMMENDED)
+// ============================================
+// For very large datasets, consider WP-Cron
+function cm_schedule_career_review_sync()
+{
+    if (!wp_next_scheduled('cm_career_review_sync_cron')) {
+        wp_schedule_event(time(), 'hourly', 'cm_career_review_sync_cron');
+    }
+}
+add_action('wp', 'cm_schedule_career_review_sync');
+
+add_action('cm_career_review_sync_cron', 'cm_sync_career_reviews_to_cpt');
+
+// ============================================
+// ADMIN PAGES (SAME AS BEFORE)
+// ============================================
+add_action('admin_menu', 'cm_add_career_review_sync_page');
+function cm_add_career_review_sync_page()
+{
+    add_submenu_page(
+        'edit.php?post_type=career_review',
+        'Sync Career Reviews',
+        'Sync Career Reviews',
+        'manage_options',
+        'sync-career-reviews',
+        'cm_render_career_sync_page'
+    );
+}
+
+function cm_render_career_sync_page()
+{
+    $last_sync = get_option('cm_last_career_review_sync', 'Never');
+?>
+    <div class="wrap">
+        <h1>Sync Career Reviews</h1>
+
+        <div class="card" style="max-width: 600px; margin-top: 20px;">
+            <h2>Manual Sync</h2>
+            <p>Click the button below to fetch the latest reviews from Glassdoor & Indeed.</p>
+            <p><strong>Last Sync:</strong> <?php echo esc_html($last_sync); ?></p>
+            <p><em> Optimized for faster processing!</em></p>
+
+            <button id="sync-career-reviews-btn" class="button button-primary button-hero">
+                Fetch Latest Career Reviews
+            </button>
+
+            <div id="sync-result" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#sync-career-reviews-btn').on('click', function() {
+                var $btn = $(this);
+                var $result = $('#sync-result');
+
+                $btn.prop('disabled', true).text('⏳ Syncing...');
+                $result
+                    .removeClass('success error')
+                    .addClass('loading')
+                    .html('<span class="spinner-sync"></span> Fetching career reviews from API... Please wait.');
+
+                $.ajax({
+                    url: ajaxurl,
+                    type: 'POST',
+                    data: {
+                        action: 'cm_sync_career_reviews'
+                    },
+                    timeout: 600000,
+                    success: function(response) {
+                        if (response.success) {
+                            $result
+                                .removeClass('loading')
+                                .addClass('success')
+                                .html(
+                                    ' <strong>Sync Complete!</strong><br>' +
+                                    'Created: ' + response.data.created + ' | ' +
+                                    'Updated: ' + response.data.updated + ' | ' +
+                                    'Deleted: ' + response.data.deleted + ' | ' +
+                                    (response.data.skipped ? 'Skipped: ' + response.data.skipped + ' | ' : '') +
+                                    'Total: ' + response.data.total
+                                );
+                        } else {
+                            $result
+                                .removeClass('loading')
+                                .addClass('error')
+                                .html(' <strong>Error:</strong> ' + response.data);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMsg = 'Failed to sync career reviews';
+                        if (status === 'timeout') {
+                            errorMsg = 'Request timed out. Please check error logs.';
+                        }
+                        $result
+                            .removeClass('loading')
+                            .addClass('error')
+                            .html(' <strong>Error:</strong> ' + errorMsg);
+                    },
+                    complete: function() {
+                        $btn.prop('disabled', false).text(' Fetch Latest Career Reviews');
+                    }
+                });
+            });
+        });
+    </script>
+<?php
+}
+
+add_action('wp_ajax_cm_sync_career_reviews', 'cm_handle_career_sync_ajax');
+function cm_handle_career_sync_ajax()
+{
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error('Permission denied');
+    }
+
+    // Increase time limit for large syncs
+    set_time_limit(600); // 10 minutes
+
+    $result = cm_sync_career_reviews_to_cpt();
+
+    if ($result['success']) {
+        wp_send_json_success($result);
+    } else {
+        wp_send_json_error($result['message']);
+    }
+}

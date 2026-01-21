@@ -6,7 +6,9 @@
     "taxonomy": "location",
     "object_type": [
         "career_review",
-        "google_review"
+        "google_review",
+        "team_member",
+        "testimonials"
     ],
     "advanced_configuration": 0,
     "import_source": "",
@@ -72,5 +74,5 @@
     "meta_box": "default",
     "meta_box_cb": "",
     "meta_box_sanitize_cb": "",
-    "modified": 1762772027
+    "modified": 1768391869
 }
