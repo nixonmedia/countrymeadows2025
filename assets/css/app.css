@@ -58,6 +58,9 @@ h1, h2, h3, h4, h5, h6 {
 .bg-teal {
   background-color: var(--teal);
 }
+.bg-yellow {
+  background-color: var(--yellow);
+}
 .bg-purple {
   background-color: var(--purple);
 }
@@ -1939,6 +1942,68 @@ a.facetwp-toggle {
   color: var(--white);
 }
 
+/* Font Resize  */
+#resizer {
+       width: 80px;
+    padding: 20px 2px;
+    background: var(--yellow);
+    position: Fixed;
+    right: 20px;
+    text-align: center;
+    border-radius: 40px;
+     z-index: 99;
+}
+
+#resizer .text-div {
+    font-size: 16px;
+    line-height: 17px;;
+    padding-bottom: 6px;
+}
+
+#resizer #small,
+#resizer #large {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px auto;
+    cursor: pointer;
+     border-radius: 50%; 
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+   
+}
+
+
+#resizer .small{
+  font-size:20px;
+  line-height: 22px;;
+}
+
+#resizer .large{
+  font-size:30px;
+  line-height: 32px;;
+}
+/* 
+#resizer #small {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #000;
+} */
+
+/* #resizer #large {
+    font-size: 28px;
+    color: #000;
+} */
+
+#resizer #small.active,
+#resizer #large.active {
+    background: #000;
+    color: #fff;
+    border-radius: 50%; /* already 50%, safe */
+    /* Do NOT change width/height or font-size here */
+}
 /**********************
 **** Help Toolbars ****
 **********************/

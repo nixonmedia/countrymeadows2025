@@ -1,5 +1,6 @@
 <?php
 get_header();
+get_template_part('parts/font-resize');
 
 if ( have_posts() ) : ?>
   <section class="resource-post-content py-5">
