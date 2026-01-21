@@ -40,7 +40,10 @@
                                 <?php $header_button = get_field("header_button", "option");
                                 $button = $header_button['button'] ?? '';
                                 $button_icon = $header_button['button_icon'] ?? '';
-                                if ($button): ?>
+                                $is_community_child = is_page() && wp_get_post_parent_id(get_the_ID()) == 28;
+
+                                if ($button && !$is_community_child):
+                                ?>
                                     <a href="<?php echo $button['url']; ?>" class="top-header-button" target="<?php echo $button['target']; ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                             <g clip-path="url(#clip0_29_1348)">
@@ -56,6 +59,9 @@
                                         <?php echo $button['title']; ?>
                                     </a>
                                 <?php endif; ?>
+                                <div class="community-address my-auto">
+                                    <?php echo do_shortcode('[community_phone_header]'); ?>
+                                </div>
                                 <div class="search-button header-search-form">
                                     <?php echo do_shortcode('[searchwp_modal_search_form template="My Custom Template"]') ?>
                                 </div>
@@ -78,7 +84,7 @@
                                     <?php $header_button = get_field("header_button", "option");
                                     $button = $header_button['button'];
                                     $button_icon = $header_button['button_icon'];
-                                    if ($button): ?>
+                                       if ($button && !$is_community_child): ?>
                                         <a href="<?php echo $button['url']; ?>" class="top-header-button" target="<?php echo $button['target']; ?>">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                 <g clip-path="url(#clip0_29_1348)">
@@ -94,6 +100,9 @@
                                             <?php echo $button['title']; ?>
                                         </a>
                                     <?php endif; ?>
+                                       <div class="community-Address-mobile">
+                                    <?php echo do_shortcode('[community_phone_header]'); ?>
+                                </div>
                                     <div class="search-button header-search-form">
                                         <?php echo do_shortcode('[searchwp_modal_search_form template="My Custom Template"]') ?>
                                     </div>
@@ -124,9 +133,7 @@
                         </nav>
                     </div>
                 </div>
-                <div class="comm-te">
-                <?php echo do_shortcode('[community_phone_header]'); ?>
-                </div>
+
 
             </div>
         </header>

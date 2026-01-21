@@ -128,6 +128,10 @@ h6, .font-normal , .wysiwyg-content form .gfield_label{
   font-size: 14px;
   line-height: 24px;
 }
+ .community-phone-header .community-title{
+    font-size:16px;
+    line-height: 20px;
+  }
 
 /*Global*/
 .aligncenter {
@@ -2418,6 +2422,10 @@ a.facetwp-toggle {
     font-size: 18px;
     line-height: 26px;
   }
+   .community-phone-header .community-title{
+    font-size:18px;
+    line-height: 22px;
+  }
   .bg-pattern {
     background-size: 250px;
   }
@@ -2910,6 +2918,10 @@ a.facetwp-toggle {
   h4, .font-regular {
     font-size: 20px;
     line-height: 35px;
+  }
+    .community-phone-header .community-title{
+    font-size:20px;
+    line-height: 24px;
   }
   .main-menu .navbar-nav {
     gap: 42px;
