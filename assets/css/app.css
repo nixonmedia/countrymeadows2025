@@ -724,15 +724,16 @@ main section.bg-white {
   position: relative;
   overflow: visible;
 }
+
 .content-buttons-wrapper .slide-item .single-button:has(svg)::before{
 width: 246px;
-    height: 487px;
+  height: 487px;
 }
  .content-buttons-wrapper .slide-item .single-button::before{
     width: 226px;
     height: 367px;
  }
- .content-buttons-wrapper .single-button:has(svg)::before , .content-buttons-wrapper .single-button::before {
+ .content-buttons-wrapper .single-button:has(svg)::before , .content-buttons-wrapper .single-button::before , .content-buttons-wrapper .slide-item .single-button:has(svg)::before ,  .content-buttons-wrapper .slide-item .single-button::before {
     content: "";
     position: absolute;
      top: 50%;
