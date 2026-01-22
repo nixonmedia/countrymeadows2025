@@ -2346,35 +2346,32 @@ function acf_load_community_choices_in_repeater( $field ) {
 
 // Apply filter to the communities_list field inside repeater
 add_filter('acf/load_field/name=communities_list', 'acf_load_community_choices_in_repeater');
-
-
 function get_community_phone_by_page_id( $page_id = null ) {
 
     if ( ! $page_id ) {
         $page_id = get_queried_object_id();
     }
 
-    if ( have_rows( 'field_communities_repeater', 'option' ) ) {
-        while ( have_rows( 'field_communities_repeater', 'option' ) ) {
-            the_row();
+    $rows = get_field( 'field_communities_repeater', 'option' );
 
-            $community_page = get_sub_field( 'communities_list' );
-            $community_page_id = is_object( $community_page )
-                ? (int) $community_page->ID
-                : (int) $community_page;
+    if ( empty( $rows ) ) {
+        return '';
+    }
 
-            if ( $community_page_id === (int) $page_id ) {
-                return (string) get_sub_field( 'comm_phone' );
-            }
+    foreach ( $rows as $row ) {
+
+        $community_page = $row['communities_list'] ?? null;
+        $community_page_id = is_object( $community_page )
+            ? (int) $community_page->ID
+            : (int) $community_page;
+
+        if ( $community_page_id === (int) $page_id ) {
+            return (string) ( $row['comm_phone'] ?? '' );
         }
     }
 
     return '';
 }
-
-
-
-
 // 3. Shortcode to display community phone header
 function community_phone_header_shortcode() {
 
