@@ -2011,7 +2011,7 @@ a.facetwp-toggle {
       top: -2px;
       right: -21px;
       color: inherit;
-      }
+  }
 
 /* Media Queries  */
 
@@ -2907,9 +2907,6 @@ right: -10px;
     font-size: 20px;
     line-height: 24px;
   }
-  .notice-alert{
-    margin-top: 20px;
-  }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .facetwp-facet-job_pagination a {
@@ -3179,6 +3176,9 @@ right: -10px;
   
   .help-toolbars {
     top: 70%;
+  }
+  .alert-dismissable .notice-alert-close, .alert-dismissible .notice-alert-close {
+    right: -45px;
   }
 }
 @media only screen and (min-width: 1400px) {

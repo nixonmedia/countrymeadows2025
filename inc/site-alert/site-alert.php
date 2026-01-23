@@ -197,7 +197,7 @@ function cookie_display_notice()
             ?>
 
                 <div data-cname="<?php echo 'n-' . $nID; ?>" class="alert notice-alert <?php echo get_field('priority'); ?> alert-dismissable">
-                    <div class="container">
+                    <div class="container-fluid">
 
                         <div class="col-md-12">
 
