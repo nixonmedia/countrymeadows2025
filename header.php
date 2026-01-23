@@ -11,15 +11,18 @@
 <body <?php body_class(); ?>> <?php wp_body_open(); ?>
     <div id="main-content" class="position-relative overflow-hidden">
         <?php
-        
         $notice = do_shortcode('[display_notice]');
         $sa =  array('post_type' => 'site_alerts');
         $site_alerts = new WP_Query($sa);
         if ($site_alerts->have_posts()) { ?>
 
             <div id="notice">
+
+
                 <?php
+
                 global $post;
+
                 $community = get_the_title(); //page title
                 $subcommunity = get_the_title($post->post_parent); //get the parent of the page
                 $parentID = "";
@@ -27,15 +30,17 @@
                 $parent = "";
                 $parent = $post->post_parent;
                 $grandparent = get_ancestors($parent, 'page');
-
-                $isHome = is_page('7');
+                $grandparent_title = "";
+                // $isHome = is_page('7');
                 if ($grandparent) {
                     $grandparentID = $grandparent[0];
                     $grandparent_title = get_the_title($grandparentID); //get the ancester
                 }
                 $parent_title = get_the_title($parentID);
                 $front_page_id = get_option('page_on_front');
-                if (is_page($front_page_id)) {
+                if (is_page($front_page_id )) {
+
+
                     $args = array(
                         'post_type' => 'site_alerts',
                         'orderby' => 'date',
@@ -72,9 +77,19 @@
                 foreach ($custom_posts as $post) : setup_postdata($post);
                     // if this specific notification has been closed before...
                     $nID = get_the_id();
+
+
                 ?>
+
+
                 <?php endforeach; ?>
+
                 <?php wp_reset_postdata(); ?>
+
+
+
+
+
                 <!-- TODO: This JavaScript should be in a seperate file. -->
                 <script type="text/javascript">
                     var ajax_url = "<?= admin_url('admin-ajax.php'); ?>";
@@ -86,29 +101,38 @@
                         console.log('cookie response: ' + response);
                     });
                 </script>
+
+
                 <script>
-                    jQuery(document).on('click', '.notice-alert-close', function(e) {
+                    jQuery('body').on('click', '.close', function(e) {
                         e.preventDefault();
 
-                        var $alert = jQuery(this).closest('.notice-alert');
-                        var alertID = $alert.data('alert-id');
+                        const $alert = jQuery(this).closest('.alert');
+                        const cname = $alert.data('cname');
 
-                        // Set cookie for THIS alert only
-                        Cookies.set('n-' + alertID, '1', {
+                        // set cookie
+                        Cookies.set(cname, cname, {
                             expires: 7,
                             path: '/'
                         });
 
-                        // Remove ONLY this alert
-                        // $alert.slideUp(200, function() {
-                        //     jQuery(this).remove();
-                        // });
-                        $alert.hide();
-                        console.log('closed alert n-' + alertID);
+                        // close alert visually
+                        $alert.fadeOut(300, function() {
+                            jQuery(this).remove();
+                        });
+
+                        // optional: remove notice container state
+                        jQuery('#notice').removeClass('active-notice');
+
+                        console.log('cookie set and alert closed:', cname);
                     });
                 </script>
+
+
             </div>
+
         <?php } ?>
+
         <header class="site-header position-relative">
             <div class="container-fluid">
                 <div class="primary-bar">
