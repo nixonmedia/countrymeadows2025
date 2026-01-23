@@ -233,7 +233,7 @@
             <!-- main is here  -->
             <!-- Help ToolBars -->
             <?php
-            $disable_this_floating_cta_sitewide = get_field('disable_this_floating_cta_sitewide', 'option');
+           $disable_this_floating_cta_sitewide = get_field('disable_this_floating_cta_sitewide', 'option');
             if (!$disable_this_floating_cta_sitewide):
                 $help_toolbars     = get_field('help_toolbars');
                 $help_tool_post    = $help_toolbars['help_tool'] ?? null;
@@ -241,6 +241,17 @@
                 // If relationship returns array → take first post
                 if (is_array($help_tool_post)) {
                     $help_tool_post = $help_tool_post[0] ?? null;
+                }
+                // If nothing selected, fall back to "General Help" post by title
+                if (!$help_tool_post) {
+                    $general_posts = get_posts([
+                        'post_type'      => 'help_toolbar',
+                        'title'          => 'General Help', // fetch post with this exact title
+                        'posts_per_page' => 1,
+                    ]);
+                    if (!empty($general_posts)) {
+                        $help_tool_post = $general_posts[0];
+                    }
                 }
             // Stop if disabled or still nothing found
             if ($disable_help_tool || !$help_tool_post) {
