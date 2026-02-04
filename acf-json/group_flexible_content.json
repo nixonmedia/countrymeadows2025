@@ -4914,6 +4914,13 @@
                 "operator": "==",
                 "value": "post"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/resources-template.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -4928,5 +4935,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768642652
+    "modified": 1770189470
 }
