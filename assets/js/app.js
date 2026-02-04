@@ -108,7 +108,6 @@ jQuery(document).ready(function($){
         $.fn.equalHeights = function(){
             var selector = this;
             var heights = [];
-
             // Save the heights of every element into an array
             selector.each(function(){
                 var height = $(this).height();
@@ -123,6 +122,8 @@ jQuery(document).ready(function($){
                 $(this).height(maxHeight);
             }); 
         };                             
+        $('.resources-section .resource-card').equalHeights();
+        // $('.helpful-topics .topic-card').equalHeights();
         $('.floorplan-slider.floor-card-inner').equalHeights();
     }
   $('.review-slider').slick({
