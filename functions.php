@@ -110,6 +110,8 @@ if (! function_exists('country_meadows_styles')) :
         wp_enqueue_script('country_meadows-custom-js', get_template_directory_uri() . '/assets/js/app.js', array('jquery'), $theme_version, true);
 
         wp_enqueue_script('country_meadows-resize-js', get_template_directory_uri() . '/assets/js/resize.js', array('jquery'), '', true);
+        wp_enqueue_script('cookie', 'https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js',array( 'jquery'),'',true);
+
 
         // Localize script for AJAX
         wp_localize_script('country_meadows-custom-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
@@ -2271,3 +2273,7 @@ function cm_handle_career_sync_ajax()
         wp_send_json_error($result['message']);
     }
 }
+
+
+
+require_once get_template_directory() . '/inc/site-alert/site-alert.php';

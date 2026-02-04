@@ -4,7 +4,9 @@ $stylized_heading = get_field("stylized_heading_text", $blog_page_id);
 $headline = get_field("headline", $blog_page_id);
 $content = get_field('content', $blog_page_id);
 $button = get_field('button', $blog_page_id);
-$hide_breadcrumb = get_field('hide_breadcrumb', $blog_page_id);  ?>
+$hide_breadcrumb = get_field('hide_breadcrumb', $blog_page_id); 
+get_template_part('parts/font-resize');
+?>
 <section class="stylized-heading-intro-zone blog-intro-zone bg-light-blue pt-5">
   <div class="container-fluid">
     <?php if ($hide_breadcrumb == false): ?>
