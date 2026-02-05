@@ -4914,6 +4914,20 @@
                 "operator": "==",
                 "value": "post"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/resources-template.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/job-career.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -4928,5 +4942,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768642652
+    "modified": 1770208164
 }

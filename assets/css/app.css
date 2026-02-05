@@ -24,6 +24,7 @@
   --indigo-blue: #4D57E6;
   --gray: #444444;
   --cyan-blue: #00B2D0;
+  --light-blue: #D6F0FF;
 }
 body {
   font-size: 18px;
@@ -80,7 +81,9 @@ h1, h2, h3, h4, h5, h6 {
 .bg-light-yellow {
   background-color: var(--light-yellow);
 }
-
+.bg-light-blue {
+  background-color: var(--light-blue);
+}
 .text-white {
   color: var(--white);
 }
@@ -1548,18 +1551,17 @@ background-size: 340px;
 .facetwp-facet input.facetwp-search:focus, .facetwp-facet-browse_by_topic .facetwp-dropdown:focus-visible {
   outline: none;
 }
-.blog-intro-zone {
+.blog-intro-zone, .resources-intro-zone {
   margin-top: -10px;
   position: relative;
   clip-path: polygon(0 -50%, 100% -50%, 100% 100%, 0% 95%);
   padding-bottom: 60px;
   margin-bottom: 40px;
 }
-.blog-intro-zone:after {
+.blog-intro-zone:after, .resources-intro-zone:after {
   content: "";
   background-image: url(../images/bottom-down_right_border.svg);
 }
-
 /*** Reviews Feed ***/
 
 .reviews-zone.border-angle.angle_down_right {
@@ -1998,8 +2000,133 @@ a.facetwp-toggle {
   max-width: 100%;
 }
 
-/* Floor plan */
+/* Resources */
+.resources-intro-zone {
+  background-color: #EAF5FB;
+}
+.underline {
+    width: 100px;
+    height: 5px;
+    background: var(--pink);
+    border-radius: 6px;
+}
 
+/* Resource card box */
+.resource-card {
+    background: #ffffff;
+    min-height: 120px;
+    position: relative;
+    box-shadow: 0px 4px 60px 10px rgba(0, 0, 0, 0.25);
+}
+
+.resource-card img{
+  width:115px;
+  height:98px;
+}
+
+/* Blue top-right corner triangle with icon */
+.corner-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+       width: 80px;
+    height: 80px;
+
+    background: var(--blue); 
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.corner-badge img {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.categories-box li {
+    padding: 15px 0;
+}
+
+.categories-box li:last-child {
+    border-bottom: none;
+}
+
+.categories-box a {
+    color: var(--blue);
+
+}
+.resources-category-list li{
+  line-height:45px;
+}
+
+/* Resources ends */
+
+/* topics starts */
+.topic-card{
+  box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.25);
+}
+.topic-card .below-content{
+  display: grid;
+ grid-template-columns: 80px auto;
+  }
+.upper-content{
+    padding: 60px 10px 90px 10px;
+
+}
+.upper-content  img{
+  width:53px;
+  height:59px;
+}
+.below-content img{
+  width:65px;
+  height:56px;
+}
+.below-content p{
+  font-size:13px;
+  line-height:18px;
+}
+.topic-card .has-arrow:after{
+  content:"";
+  position:absolute;
+  background-image: url("../../assets/images/pink-arrow.png");
+  background-size:contain;
+  background-repeat: no-repeat;
+ width: 10px;
+    height: 16px;
+    top: 10px;
+    right: -18px;
+}
+
+.topic-card {
+    display: flex;
+    flex-direction: column; 
+    height: 100%;            
+}
+
+
+.topic-card .upper-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.topic-card .below-content {
+    margin-top: auto;
+background-color: #D6F0FF80;
+     
+}
+.no-grid{
+  display: block !important;
+}
+/* Floor plan */
 .floorplan-zone .flex-row-reverse  .full-width-left-col{
   position: relative;
     padding: 50px 10px 50px 30px;
@@ -2009,18 +2136,20 @@ a.facetwp-toggle {
 /* Facet Search  */
 .facet-search-btn{
   background-color: var(--yellow);
-  position: relative;
-  border-radius: 10px;
-  color: #010101;
-  padding: 10px 50px 10px 50px;
-  display: block;
-  border: 0;  
+    position: relative;
+    border-radius: 10px;
+    color: #010101;
+    padding: 10px 40px 10px 30px;
+    display: block;
+    border: 0;  
 }
-.facet-search-btn:after{
+ .facet-search-btn:after{
   content: "\f002";
+  position: absolute;
   font-family:"Font Awesome 6 Pro";
-  font-size: 16px;
-  padding-left: 6px;
+      font-size: 12px;
+    right: 20px;
+    top: 10px;
 }
 .facet-search-btn:hover{
   background-color: var(--dark-blue); 
@@ -2030,6 +2159,20 @@ a.facetwp-toggle {
   color: var(--white);
 }
 
+
+.resources-intro-zone .facetwp-input-wrap .facetwp-icon {
+  display: none;  
+}
+.resources-intro-zone .facet-search-box .facetwp-facet-resources_search {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.resources-intro-zone .facet-search-box {
+    padding: 40px;
+}
+.resources-intro-zone .facet-search-box  .input:focus-visible{
+  outline:none  !important;
+}
 /* Font Resize  */
 #resizer {
        width: 80px;
@@ -2389,9 +2532,12 @@ a.facetwp-toggle {
   .footer-menu li:not(:last-child), .footer-copyright-menu li:not(:last-child) {
     margin-bottom: 10px;
   }
-  main section {
+  main section, .resources-section , .helpful-topics {
     padding-right: 8px;
     padding-left: 8px;
+  }
+  .resource-card .content-col{
+    width:70%;
   }
   .wysiwyg-button,  .gform_button {
     font-size: 17px;
@@ -2499,6 +2645,12 @@ a.facetwp-toggle {
   }
   .related-posts-wrapper {
     padding: 30px 20px;
+  }
+  .topic-card .has-arrow:after {
+    top: 5px;
+  }
+  .resources-intro-zone .facet-search-box{
+        padding: 30px;
   }
   .with-include-content .right-floorplan-col {
     padding: 0 20px;
@@ -2675,6 +2827,9 @@ right: -10px;
   .search-box-block .facetwp-facet {
     width: 47%;
   }
+  .topic-card .below-content{
+    min-height: 100px;
+  }
   .floorplan-slider .slick-slide {
     height: inherit;
   }
@@ -2717,6 +2872,16 @@ right: -10px;
   .review-slider-heading{
     font-size: 18px;
     line-height: 24px;
+  }
+  .blog-posts-zone .post-card {
+    position: relative;
+  }
+  .blog-posts-zone .post-card .post-description {
+    padding-bottom: 70px;
+  }
+  .blog-posts-zone .post-card .post-link {
+    position: absolute;
+    bottom: 48px;
   }
   .help-float-menu-wrapper {
     column-count: 2;
@@ -2789,7 +2954,7 @@ right: -10px;
     height: 52px;
     width: 62px;
   }
-  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
+  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link, .resource-card p {
     font-size: 16px;
     line-height: 24px;
   }
@@ -2942,7 +3107,7 @@ right: -10px;
   .search-box-block {
     padding: 52px 45px;
   }
-  .blog-intro-zone {
+  .blog-intro-zone, .resources-intro-zone {
     padding-bottom: 115px;
     margin-bottom: 70px;
   }
@@ -3054,6 +3219,13 @@ right: -10px;
     width: 22px;
     height: 22px;
     top: 5px;
+  }
+  .categories-box {
+    margin-top: 30px;
+  }
+  .topic-card .below-content {
+    min-height: 120px;
+    grid-template-columns: 35% 55%;
   }
   .floorplan-zone .flex-row-reverse .full-width-left-col {
     padding: 100px 60px 100px 20px;
@@ -3191,6 +3363,18 @@ right: -10px;
   .blog-post-layout-content .custom-columns-zone {
     padding-bottom: 50px;
   }
+  .resource-card {
+    min-height: 160px;
+  }
+  .topic-card .below-content {
+    grid-template-columns: 30% 70%;
+  }
+  .resources-category-col{
+    padding-left: 30px;
+  }
+  .resource-card-main{
+    width: 45%;
+  }
   .content-buttons-wrapper .buttons:not(.slick-slider) {
     padding-right: 40px;
     padding-left: 40px;
@@ -3257,7 +3441,7 @@ right: -10px;
     line-height: 50px !important;
   }
   .search-box-block {
-    padding: 52px 72px;
+    padding: 52px 45px;
   }
 }
 @media only screen and (min-width: 1300px) {
@@ -3372,7 +3556,7 @@ right: -10px;
   }
 }
 @media only screen and (min-width: 1620px) {
-  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
+  .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link, .resource-card p {
     font-size: 24px;
     line-height: 36px;
   }
@@ -3397,11 +3581,11 @@ right: -10px;
     font-size: 103px;
 
   }
- .content-and-button-cards  .wyswing-content.top-content{
+  .content-and-button-cards  .wyswing-content.top-content{
     width:85%;
   }
-  .content-and-button-cards .single-button {
-    padding: 35px 30px !important;
+  .content-and-button-cards  .single-button{
+    padding: 35px 70px !important;
   }
   .content-and-button-cards  .bottom-content {
     width:45%;
@@ -3456,6 +3640,19 @@ right: -10px;
   .help-float-menu-wrapper {
     column-gap: 80px;
     padding-left: 20px;
+  }
+  .topic-card .below-content{
+    grid-template-columns: 20% 80%;
+    
+  }
+  .resources-category-col{
+    padding-left: 60px;
+  }
+  .topic-card .below-content {
+    min-height: 80px;
+  }
+  .resources-intro-zone .facet-search-box {
+    padding: 50px;
   }
 }
 @media only screen and (min-width: 1900px) {
