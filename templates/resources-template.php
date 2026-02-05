@@ -4,6 +4,7 @@ Template Name: Resources
 */
 ?>
 <?php get_header();
+get_template_part('parts/font-resize'); 
 $stylized_heading_text = get_field("stylized_heading_text");
 $headline = get_field("headline");
 $content = get_field("content");
