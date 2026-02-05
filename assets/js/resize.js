@@ -2,39 +2,40 @@
 
   $(document).ready(function () {
 
-    $("#small").on("click", function (e) {
-      e.preventDefault();
+  $("#small").on("click", function (e) {
+  e.preventDefault();
 
-      $("#small").addClass("active");
-      $("#large").removeClass("active");
+  $("#small").addClass("active");
+  $("#large").removeClass("active");
 
-      $(".wysiwyg-content p, .wysiwyg-content").animate({
-        "font-size": "17px",
-        "line-height": "27px"
-      });
+  $(".wysiwyg-content p, .wysiwyg-content, .elementor-text-editor p, .entry-content p, .post-description, .job-card-description").animate({
+    "font-size": "17px",
+    "line-height": "27px"
+  });
 
-      $(".wysiwyg-content p.wp-caption-text, .wysiwyg-content .wp-caption-text").animate({
-        "font-size": "14px",
-        "line-height": "22px"
-      });
-    });
+  $(".wysiwyg-content p.wp-caption-text, .wysiwyg-content .wp-caption-text").animate({
+    "font-size": "14px",
+    "line-height": "22px"
+  });
+});
 
-    $("#large").on("click", function (e) {
-      e.preventDefault();
+$("#large").on("click", function (e) {
+  e.preventDefault();
 
-      $("#large").addClass("active");
-      $("#small").removeClass("active");
+  $("#large").addClass("active");
+  $("#small").removeClass("active");
 
-      $(".wysiwyg-content p, .wysiwyg-content").animate({
-        "font-size": "22px",
-        "line-height": "32px"
-      });
+  $(".wysiwyg-content p, .wysiwyg-content, .elementor-text-editor p, .entry-content p, .post-description, .job-card-description").animate({
+    "font-size": "22px",
+    "line-height": "32px"
+  });
 
-      $(".wysiwyg-content p.wp-caption-text, .wysiwyg-content .wp-caption-text").animate({
-        "font-size": "14px",
-        "line-height": "22px"
-      });
-    });
+  $(".wysiwyg-content p.wp-caption-text, .wysiwyg-content .wp-caption-text").animate({
+    "font-size": "14px",
+    "line-height": "22px"
+  });
+});
+
 
 var $resizer = $('#resizer');
 var $header  = $('header');
