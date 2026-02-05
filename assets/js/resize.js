@@ -20,7 +20,8 @@ $("#small").on("click", function (e) {
       .job-description p, \
       .job-content p, \
       .job-card-description, \
-      .below-content p")
+       .below-content p, \
+      .search-content")
       .animate({
         "font-size": "17px",
         "line-height": "27px"
@@ -52,7 +53,8 @@ $("#small").on("click", function (e) {
       .job-description p, \
       .job-content p, \
       .job-body p, \
-      .below-content p")
+      .below-content p, \
+      .search-content")
       .animate({
         "font-size": "22px",
         "line-height": "32px"
