@@ -1189,7 +1189,7 @@ function ukg_create_or_update_job($job)
     if (function_exists('update_field')) {
         update_field('career_description', $content, $post_id);
         update_field('career_requisition_number', $req, $post_id);
-        update_field('career_job_listing_url', $job['links'][0]['href'] ?? '', $post_id);
+        update_field('career_job_listing_url', $job['job_boards'][0]['recruiting_apply_url'] ?? '', $post_id);
         update_field('career_job_date', $post_date, $post_id);
     }
 
@@ -1475,7 +1475,7 @@ function cm_fetch_all_reputation_reviews()
             sleep(2 * $attempt); // backoff
         }
 
-        // ❌ If still empty → stop safely
+        //If still empty → stop safely
         if (empty($body['reviews'])) {
             error_log('API failed after retries – stopping fetch safely');
             break;
