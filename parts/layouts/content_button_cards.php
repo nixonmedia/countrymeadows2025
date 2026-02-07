@@ -134,7 +134,7 @@ if ($heading || $content || !empty($button_cards) || $bottom_zone_content): ?>
                     <div class="slide-item">
                   <?php endif; ?>
                       <a href="<?php echo esc_url($button_link_url); ?>"
-                        class="p-4 bg-white <?php if($button_count > 4): ?>d-flex align-items-center justify-content-center gap-2<?php else: ?>d-inline-block<?php endif; ?> shadow single-button text-black text-decoration-none font-lexend"><?php echo $button_icon; ?> <strong><?php echo esc_html($button_text); ?></strong>
+                        class="p-4 bg-white <?php if($button_count > 4): ?>d-flex align-items-center justify-content-center gap-2<?php else: ?>d-inline-block<?php endif; ?> shadow single-button text-black text-decoration-none font-lexend font-xs-medium"><?php echo $button_icon; ?> <strong><?php echo esc_html($button_text); ?></strong>
                       </a>
                   <?php if($button_count > 4): ?>
                     </div>

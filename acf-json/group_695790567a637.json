@@ -1,14 +1,14 @@
 {
-    "key": "group_resources",
-    "title": "Resources",
+    "key": "group_695790567a637",
+    "title": "Resources Intro Zone",
     "fields": [
         {
-            "key": "field_resource_headline",
-            "label": "Headline",
-            "name": "resource_headline",
+            "key": "field_69579056c9c0a",
+            "label": "Stylized Heading Text",
+            "name": "stylized_heading_text",
             "aria-label": "",
             "type": "text",
-            "instructions": "This is used for display. The Post Name can be shorter for the page name and breadcrumb.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -18,13 +18,34 @@
             },
             "default_value": "",
             "maxlength": "",
-            "allow_in_bindings": 1,
+            "allow_in_bindings": 0,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_69579b1f905b6",
+            "key": "field_69579056cd817",
+            "label": "Headline",
+            "name": "headline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69579056d137f",
             "label": "Content",
             "name": "content",
             "aria-label": "",
@@ -45,28 +66,11 @@
             "delay": 0
         },
         {
-            "key": "field_resource_youtube_link",
-            "label": "YouTube Link",
-            "name": "resource_youtube_link",
+            "key": "field_69579056d4f48",
+            "label": "Button",
+            "name": "button",
             "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
-            "key": "field_69579b3a905b7",
-            "label": "Featured Image",
-            "name": "featured_image",
-            "aria-label": "",
-            "type": "image",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -76,24 +80,15 @@
                 "id": ""
             },
             "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "allow_in_bindings": 0,
-            "preview_size": "medium"
+            "allow_in_bindings": 0
         }
     ],
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "page_template",
                 "operator": "==",
-                "value": "resource_center"
+                "value": "templates\/resources-template.php"
             }
         ]
     ],
@@ -107,5 +102,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1767349059
+    "modified": 1767346394
 }

@@ -110,6 +110,8 @@ if (! function_exists('country_meadows_styles')) :
         wp_enqueue_script('country_meadows-custom-js', get_template_directory_uri() . '/assets/js/app.js', array('jquery'), $theme_version, true);
 
         wp_enqueue_script('country_meadows-resize-js', get_template_directory_uri() . '/assets/js/resize.js', array('jquery'), '', true);
+        wp_enqueue_script('cookie', 'https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js',array( 'jquery'),'',true);
+
 
         // Localize script for AJAX
         wp_localize_script('country_meadows-custom-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
@@ -1187,7 +1189,7 @@ function ukg_create_or_update_job($job)
     if (function_exists('update_field')) {
         update_field('career_description', $content, $post_id);
         update_field('career_requisition_number', $req, $post_id);
-        update_field('career_job_listing_url', $job['links'][0]['href'] ?? '', $post_id);
+        update_field('career_job_listing_url', $job['job_boards'][0]['recruiting_apply_url'] ?? '', $post_id);
         update_field('career_job_date', $post_date, $post_id);
     }
 
@@ -1473,7 +1475,7 @@ function cm_fetch_all_reputation_reviews()
             sleep(2 * $attempt); // backoff
         }
 
-        // ❌ If still empty → stop safely
+        //If still empty → stop safely
         if (empty($body['reviews'])) {
             error_log('API failed after retries – stopping fetch safely');
             break;
@@ -2273,9 +2275,6 @@ function cm_handle_career_sync_ajax()
 }
 
 
-/**
- * Populate ACF Select field with child pages of Communities page
- */
 // function acf_load_community_choices( $field ) {
 //     // Reset choices
 //     $field['choices'] = array();
@@ -2415,3 +2414,5 @@ add_shortcode( 'community_phone_header', 'community_phone_header_shortcode' );
 
 
 
+
+require_once get_template_directory() . '/inc/site-alert/site-alert.php';

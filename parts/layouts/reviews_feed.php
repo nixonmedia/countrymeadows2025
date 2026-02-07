@@ -73,119 +73,109 @@ $review_type = $section['choose__google_and_career_review'] ?? '';
                         <div class="wysiwyg-content text-center <?= $text_color ?>"><?php echo $content; ?></div>
                     <?php endif; ?>
                     <!-- Review Slider -->
-                    <?php if ($review_feed || $career_review_feed): ?>
+                    <?php if ($review_feed || $career_review_feed): 
+                        // --- Query Reviews ---
+                        $post_type = '';
+                        $taxonomy  = '';
+                        $term_id   = '';
+
+                        if ($review_type === 'google') {
+                            $post_type = 'google_review';
+                            $taxonomy  = 'location'; // Google review taxonomy
+                            $term_id   = $section['review_feed']->term_id ?? '';
+                        } elseif ($review_type === 'career') {
+                            $post_type = 'career_review';
+                            $taxonomy  = 'location'; // Career review taxonomy
+                            $term_id   = $section['career_review_feed']->term_id ?? '';
+                        }
+
+                        $args = [
+                            'post_type'      => $post_type,
+                            'posts_per_page' => -1,
+                            'post_status'    => 'publish',
+                            'orderby'        => 'date',
+                            'order'          => 'DESC',
+                        ];
+
+                        if (!empty($term_id)) {
+                            $args['tax_query'] = [[
+                                'taxonomy' => $taxonomy,
+                                'field'    => 'term_id',
+                                'terms'    => $term_id,
+                            ]];
+                        }
+
+                        $reviews = new WP_Query($args);
+                        if ($reviews->have_posts()) : ?>
                         <div class="review-slider ps-lg-4 pt-4" data-slick='{"autoplay": <?php echo $section['rotate'] ? "true" : "false"; ?>}'>
+                            <?php while ($reviews->have_posts()) : $reviews->the_post();
+                                // $review_name    = get_field('google_review_name');
+                                // $review_date    = get_field('google_review_date');
+                                // $review_stars   = intval(get_field('google_review_stars') ?: 5);
+                                // $review_excerpt = get_field('google_review_excerpt');
+                                // $review_url     = get_field('google_review_url');
+                                if ($review_type === 'google') {
 
-                            <?php
-                            // --- Query Reviews ---
-                            $post_type = '';
-                            $taxonomy  = '';
-                            $term_id   = '';
+                                    $review_name    = get_field('google_review_name');
+                                    $review_date    = get_field('google_review_date');
+                                    $review_stars   = intval(get_field('google_review_stars') ?: 5);
+                                    $review_excerpt = get_field('google_review_excerpt');
+                                    $review_url     = get_field('google_review_url');
+                                } else {
 
-                            if ($review_type === 'google') {
-                                $post_type = 'google_review';
-                                $taxonomy  = 'location'; // Google review taxonomy
-                                $term_id   = $section['review_feed']->term_id ?? '';
-                            } elseif ($review_type === 'career') {
-                                $post_type = 'career_review';
-                                $taxonomy  = 'location'; // Career review taxonomy
-                                $term_id   = $section['career_review_feed']->term_id ?? '';
-                            }
-
-                            $args = [
-                                'post_type'      => $post_type,
-                                'posts_per_page' => -1,
-                                'post_status'    => 'publish',
-                                'orderby'        => 'date',
-                                'order'          => 'DESC',
-                            ];
-
-                            if (!empty($term_id)) {
-                                $args['tax_query'] = [[
-                                    'taxonomy' => $taxonomy,
-                                    'field'    => 'term_id',
-                                    'terms'    => $term_id,
-                                ]];
-                            }
-
-                            $reviews = new WP_Query($args);
+                                    $review_name    = get_field('career_review_name');
+                                    $review_date    = get_field('career_review_date');
+                                    $review_stars   = intval(get_field('career_review_stars') ?: 5);
+                                    $review_excerpt = get_field('career_review_excerpt');
+                                    $review_url     = get_field('career_review_url');
+                                }
 
 
-                            if ($reviews->have_posts()) :
-                                while ($reviews->have_posts()) : $reviews->the_post();
-
-                                    // $review_name    = get_field('google_review_name');
-                                    // $review_date    = get_field('google_review_date');
-                                    // $review_stars   = intval(get_field('google_review_stars') ?: 5);
-                                    // $review_excerpt = get_field('google_review_excerpt');
-                                    // $review_url     = get_field('google_review_url');
-                                    if ($review_type === 'google') {
-
-                                        $review_name    = get_field('google_review_name');
-                                        $review_date    = get_field('google_review_date');
-                                        $review_stars   = intval(get_field('google_review_stars') ?: 5);
-                                        $review_excerpt = get_field('google_review_excerpt');
-                                        $review_url     = get_field('google_review_url');
-                                    } else {
-
-                                        $review_name    = get_field('career_review_name');
-                                        $review_date    = get_field('career_review_date');
-                                        $review_stars   = intval(get_field('career_review_stars') ?: 5);
-                                        $review_excerpt = get_field('career_review_excerpt');
-                                        $review_url     = get_field('career_review_url');
-                                    }
-
-
-                                    // --- Time Ago ---
-                                    $date_posted = "";
-                                    if ($review_date && $date_obj = DateTime::createFromFormat('Y-m-d', $review_date)) {
-                                        $diff = (new DateTime())->diff($date_obj);
-                                        $date_posted =
-                                            $diff->y ? "Posted {$diff->y} year" . ($diff->y > 1 ? "s" : "") . " ago" : ($diff->m ? "Posted {$diff->m} month" . ($diff->m > 1 ? "s" : "") . " ago" : ($diff->d ? "Posted {$diff->d} day" . ($diff->d > 1 ? "s" : "") . " ago" :
-                                                "Posted today"));
-                                    }
+                                // --- Time Ago ---
+                                $date_posted = "";
+                                if ($review_date && $date_obj = DateTime::createFromFormat('Y-m-d', $review_date)) {
+                                    $diff = (new DateTime())->diff($date_obj);
+                                    $date_posted =
+                                        $diff->y ? "Posted {$diff->y} year" . ($diff->y > 1 ? "s" : "") . " ago" : ($diff->m ? "Posted {$diff->m} month" . ($diff->m > 1 ? "s" : "") . " ago" : ($diff->d ? "Posted {$diff->d} day" . ($diff->d > 1 ? "s" : "") . " ago" :
+                                            "Posted today"));
+                                }
                             ?>
-
-                                    <div class="bg-white p-4 position-relative">
-                                        <div class="text-center d-flex justify-content-center pb-2 gap-1">
-                                            <?php for ($i = 0; $i < $review_stars; $i++): ?>
-                                                <img src="<?= get_template_directory_uri(); ?>/assets/images/star.svg"
-                                                    alt="Star Icon"
-                                                    class="img-fluid"
-                                                    style="width:20px;height:20px;">
-                                            <?php endfor; ?>
-                                        </div>
-
-                                        <?php if ($review_name): ?>
-                                            <<?php echo $heading_type; ?> class="text-black font-xm text-center mb-0"><?= esc_html($review_name) ?></<?php echo $heading_type; ?>>
-                                        <?php endif; ?>
-
-                                        <?php if ($date_posted): ?>
-                                            <<?php echo $heading_type; ?> class="font-xsm fw-light text-center mb-0 post-date"><?= esc_html($date_posted) ?></<?php echo $heading_type; ?>>
-                                        <?php endif; ?>
-
-                                        <?php if ($review_excerpt): ?>
-                                            <div class="font-xs-medium pb-5">
-                                                <?= esc_html(wp_trim_words($review_excerpt, 50, '...')); ?>
-                                            </div>
-                                        <?php endif;
-                                        if ($review_url): ?>
-                                            <a href="<?= esc_url($review_url); ?>" <?= $review_url ? 'target="_blank"' : ''; ?> class="read-more-text text-pink fw-bold">Read More</a>
-                                        <?php endif; ?>
+                                <div class="bg-white p-4 position-relative">
+                                    <div class="text-center d-flex justify-content-center pb-2 gap-1">
+                                        <?php for ($i = 0; $i < $review_stars; $i++): ?>
+                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/star.svg"
+                                                alt="Star Icon"
+                                                class="img-fluid"
+                                                style="width:20px;height:20px;">
+                                        <?php endfor; ?>
                                     </div>
 
-                                <?php
-                                endwhile;
-                                wp_reset_postdata();
-                            else: ?>
+                                    <?php if ($review_name): ?>
+                                        <<?php echo $heading_type; ?> class="text-black font-xm text-center mb-0 review-slider-heading"><?= esc_html($review_name) ?></<?php echo $heading_type; ?>>
+                                    <?php endif; ?>
 
-                                <div class="bg-white p-4 text-center">
-                                    No reviews found for this location.
+                                    <?php if ($date_posted): ?>
+                                        <<?php echo $heading_type; ?> class="font-xsm fw-light text-center mb-0 post-date"><?= esc_html($date_posted) ?></<?php echo $heading_type; ?>>
+                                    <?php endif; ?>
+
+                                    <?php if ($review_excerpt): ?>
+                                        <div class="font-xs-medium pb-5">
+                                            <?= esc_html(wp_trim_words($review_excerpt, 50, '...')); ?>
+                                        </div>
+                                    <?php endif;
+                                    if ($review_url): ?>
+                                        <a href="<?= esc_url($review_url); ?>" <?= $review_url ? 'target="_blank"' : ''; ?> class="read-more-text text-pink fw-bold">Read More</a>
+                                    <?php endif; ?>
                                 </div>
-
-                            <?php endif; ?>
-
+                            <?php
+                            endwhile;
+                            wp_reset_postdata(); ?>
                         </div>
+                        <?php else: ?>
+                            <div class="col-sm-11 col-md-7 col-lg-6 bg-white p-4 text-center if-no-review mx-auto mt-4">
+                                No reviews found for this location.
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
                     <?php if ($button): ?>
                         <div class="text-center mt-4">

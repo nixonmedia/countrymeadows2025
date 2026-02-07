@@ -4,6 +4,8 @@ Template Name: Careers
 */
 
 get_header();
+get_template_part('parts/font-resize');
+
 $hide_breadcrumb = get_field('hide_breadcrumb'); 
 if($hide_breadcrumb == false): ?>
 <section class="breadcrumb pt-4 d-none d-lg-block mb-0 z-2 position-relative">
@@ -58,4 +60,15 @@ get_template_part('parts/layouts/stylized_heading_intro_zone'); ?>
         </div>
     </div>
 </section>
-<?php get_footer(); ?>
+<?php /*********  Flexible Content Start  ***********/
+$fields = get_fields( get_the_ID() );
+if ( isset( $fields['flexible_content'] ) && is_array( $fields['flexible_content'] ) ):
+	foreach ( $fields['flexible_content'] as $key => $section ) :
+		$template = 'parts/layouts/' . $section['acf_fc_layout'] . '.php';
+		if ( $loc_template = locate_template( $template ) ) {
+			include( $loc_template );
+		}
+	endforeach;
+endif;
+
+ get_footer(); ?>
