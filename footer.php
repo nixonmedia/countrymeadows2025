@@ -157,27 +157,61 @@ $column_2_link = $content_column_2['link'] ?? '';
 </footer>
 </div>
 <!-- Global JS variable used in app.js (for slider arrow image paths) -->
-  <script>
-    const themeDir = "<?php echo get_template_directory_uri(); ?>";
-  </script>
+<script>
+  const themeDir = "<?php echo get_template_directory_uri(); ?>";
+</script>
 <!-- /Global JS variable -->
 <?php wp_footer(); ?>
 <script>
-document.addEventListener('facetwp-loaded', function() {
+  document.addEventListener('facetwp-loaded', function() {
 
     // Find "See more" toggle inside the job_family facet
     const el = document.querySelector('.facetwp-facet-job_family .facetwp-toggle:not(.facetwp-hidden)');
 
     if (el && el.textContent.includes('See')) {
-        el.textContent = 'Load All Job Categories';
+      el.textContent = 'Load All Job Categories';
     }
 
-});
+  });
 </script>
 
 
+<div class="modal fade" id="communityModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Contact us today!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <?php if (have_rows('field_communities_repeater', 'option')) : ?>
+          <ul class="list-group">
+            <?php while (have_rows('field_communities_repeater', 'option')) : the_row(); ?>
+              <li class="list-group-item">
+                <span>
+                  <?php
+                  $community_id = get_sub_field('communities_list');
+
+                  if ($community_id) {
+                    echo esc_html(get_the_title($community_id)).":";
+                  }
+                  ?></span>
+
+                <a href="tel:<?php the_sub_field('comm_phone'); ?>">
+                  <?php the_sub_field('comm_phone'); ?>
+                </a>
+              </li>
+            <?php endwhile; ?>
+          </ul>
+        <?php endif; ?>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 </body>
 
 </html>
-
