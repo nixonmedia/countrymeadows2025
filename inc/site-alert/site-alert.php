@@ -14,7 +14,7 @@ function display_notice()
     $parent = $post->post_parent;
     $grandparent = get_ancestors($parent, 'page');
     // $isHome = is_page('7');
-    $grandparent_title ="";
+    $grandparent_title = "";
     if ($grandparent) {
         $grandparentID = $grandparent[0];
         $grandparent_title = get_the_title($grandparentID); //get the ancester
@@ -187,8 +187,7 @@ function cookie_display_notice()
 
             $priority = get_field('priority');
             $alert_link = get_field('alert_button_link');
-            $alert_link_internal = get_field('alert_button_link_internal');
-
+            $alert_link_internal = get_field('alert_button_link_internal');            
             ?>
 
 
@@ -196,7 +195,7 @@ function cookie_display_notice()
                 // var_dump($post); 
             ?>
 
-                <div data-cname="<?php echo 'n-' . $nID; ?>" class="alert notice-alert <?php echo get_field('priority'); ?> alert-dismissable">
+                <div data-cname="<?php echo 'n-' . $nID; ?>" class="alert  notice-alert <?php echo get_field('priority'); ?> alert-dismissable">
                     <div class="container-fluid">
 
                         <div class="col-md-12">
@@ -204,24 +203,28 @@ function cookie_display_notice()
 
                             <a href="#" class="close notice-alert-close" data-dismiss="alert" aria-label="close">&times;</a>
 
-                            <strong><?php echo $post->post_title; ?></strong><span><?php echo $post->post_content; ?></span>
+                            <strong><?php echo $post->post_title; ?></strong> <span><?php echo $post->post_content; ?></span>
 
                             <?php
-                            $alert_link = get_field('alert_button_link');
-                            $alert_link_internal = get_field('alert_button_link_internal');
-                            //echo 'alert id = ' . $post->ID;
+                            $nID = $post->ID;
+                            //   var_dump($nID);
+                            $alert_link = get_field('alert_button_link', $nID);
+                            // var_dump($alert_link);
+                            $alert_link_internal = get_field('alert_button_link_internal', $nID);
+                            // var_dump($alert_link_internal)
                             ?>
-
-
-
                             <?php if ($alert_link) { ?>
-
-                                <a target="_blank" href="<?php echo $alert_link; ?>"><?php echo get_field('alert_button_label'); ?></a>
-                            <?php } elseif ($alert_link_internal) { ?>
-
-                                <a href="<?php echo $alert_link_internal; ?>"><?php echo get_field('alert_button_label'); ?></a>
-
+                                <a target="_blank" class="px-1" href="<?php echo esc_url($alert_link); ?>">
+                                    <?php echo esc_html(get_field('alert_button_label', $nID)); ?>
+                                </a>
                             <?php } ?>
+
+                            <?php if ($alert_link_internal) { ?>
+                                <a href="<?php echo esc_url($alert_link_internal); ?>">
+                                    <?php echo esc_html(get_field('alert_button_label', $nID)); ?>
+                                </a>
+                            <?php } ?>
+
 
 
                         </div><!--col-md-12-->
