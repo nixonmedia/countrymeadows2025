@@ -1327,13 +1327,13 @@ background-size: 340px;
 .split-column-zone .bottom-gallery-slider .slick-slide::before , .split-column-zone .bottom-gallery-slider .icon-slide-box:before{
   content: "";
   position: absolute;
-     background: radial-gradient(48.48% 48.48% at 50% 50%, rgba(255, 202, 74, 0.55) 12%, rgba(255, 202, 74, 0.35) 30%, rgba(255, 202, 58, 0.15) 60%, rgba(255, 255, 255, 0) 100%);  
-    transition: opacity 0.3s ease;
-    z-index: -1;
-    width: 65px;
-    left: 47px;
-    height: 70px;
-    opacity: 0;
+  background: radial-gradient(48.48% 48.48% at 50% 50%, rgba(255, 202, 74, 0.55) 12%, rgba(255, 202, 74, 0.35) 30%, rgba(255, 202, 58, 0.15) 60%, rgba(255, 255, 255, 0) 100%);  
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  width: 65px;
+  left: 47px;
+  height: 70px;
+  opacity: 0;
 }
 
 .split-column-zone .bottom-gallery-slider .slick-slide:hover::before , .split-column-zone .bottom-gallery-slider .icon-slide-box:hover::before{
