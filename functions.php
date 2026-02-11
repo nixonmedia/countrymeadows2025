@@ -2275,5 +2275,144 @@ function cm_handle_career_sync_ajax()
 }
 
 
+// function acf_load_community_choices( $field ) {
+//     // Reset choices
+//     $field['choices'] = array();
+    
+//     // Get all child pages of the Communities page (ID: 513)
+//     $args = array(
+//         'post_type'      => 'page',
+//         'post_parent'    => 513,
+//         'posts_per_page' => -1,
+//         'orderby'        => 'title',
+//         'order'          => 'ASC',
+//         'post_status'    => 'publish'
+//     );
+    
+//     $child_pages = get_posts( $args );
+    
+//     // Add an empty option (optional)
+//     $field['choices'][''] = '-- Select Community --';
+    
+//     // Loop through child pages and add them as choices
+//     if ( $child_pages ) {
+//         foreach ( $child_pages as $page ) {
+//             $field['choices'][ $page->ID ] = $page->post_title;
+//         }
+//     }
+    
+//     return $field;
+// }
+
+// // Apply filter to your specific field using its key
+// add_filter('acf/load_field/key=field_690d7cb4a279c', 'acf_load_community_choices');
+
+
+/**
+ * Complete Communities Phone Number System
+ * Add this code to your theme's functions.php
+ */
+
+// 1. Populate the communities_list select field with child pages of Communities (ID: 513)
+function acf_load_community_choices_in_repeater( $field ) {
+    // Reset choices
+    $field['choices'] = array();
+    
+    // Get all child pages of the Communities page (ID: 513)
+    $args = array(
+        'post_type'      => 'page',
+        'post_parent'    => 28, // Update this to the correct ID of your "Communities" page
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC',
+        'post_status'    => 'publish'
+    );
+    
+    $child_pages = get_posts( $args );
+    
+    // Add an empty option
+    $field['choices'][''] = '-- Select Community --';
+    
+    // Loop through child pages and add them as choices
+    if ( $child_pages ) {
+        foreach ( $child_pages as $page ) {
+            $field['choices'][ $page->ID ] = $page->post_title;
+        }
+    }
+    
+    return $field;
+}
+
+// Apply filter to the communities_list field inside repeater
+add_filter('acf/load_field/name=communities_name', 'acf_load_community_choices_in_repeater');
+function get_community_phone_by_page_id( $page_id = null ) {
+
+    if ( ! $page_id ) {
+        $page_id = get_queried_object_id();
+    }
+
+    $rows = get_field( 'communities_contact_info', 'option' );
+
+    if ( empty( $rows ) ) {
+        return '';
+    }
+
+    foreach ( $rows as $row ) {
+
+        $community_page = $row['communities_name'] ?? null;
+        $community_page_id = is_object( $community_page )
+            ? (int) $community_page->ID
+            : (int) $community_page;
+
+        if ( $community_page_id === (int) $page_id ) {
+            return (string) ( $row['comm_phone'] ?? '' );
+        }
+    }
+
+    return '';
+}
+// 3. Shortcode to display community phone header
+function community_phone_header_shortcode() {
+
+    if ( ! is_page() ) {
+        return '';
+    }
+
+    $page_id        = get_queried_object_id();
+    $community_name = get_the_title( $page_id );
+    $community_phone = get_community_phone_by_page_id( $page_id );
+
+    if ( empty( $community_phone ) ) {
+        return '';
+    }
+
+    $phone_link = preg_replace( '/[^0-9]/', '', $community_phone );
+
+    ob_start();
+    ?>
+    <div class="community-phone-header my-auto pe-lg-3 pe-xl-5">
+        <h2 class="community-title text-blue fw-bold text-center my-auto mb-0">
+            Call Our <?php echo esc_html( $community_name ); ?> Community <br>
+            at <a href="tel:<?php echo esc_attr( $phone_link ); ?>"
+                  class="community-phone-link text-blue text-decoration-none">
+                <?php echo esc_html( $community_phone ); ?>
+            </a>
+        </h2>
+    </div>
+    <?php
+
+    return ob_get_clean();
+}
+add_shortcode( 'community_phone_header', 'community_phone_header_shortcode' );
+
+
+
+
+
+// Uncomment the line below if you want it to display automatically after opening body tag
+// add_action('wp_body_open', 'auto_display_community_header');
+
+
+
 
 require_once get_template_directory() . '/inc/site-alert/site-alert.php';

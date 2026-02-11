@@ -90,7 +90,7 @@ h1, h2, h3, h4, h5, h6 {
 .text-blue {
   color: var(--blue);
 }
-.text-pink {
+.text-pink, .community-address a:hover {
   color: var(--pink);
 }
 .text-black-100 {
@@ -133,6 +133,36 @@ h6, .font-normal , .wysiwyg-content form .gfield_label{
 .font-xsm, .disclaimer-fonts {
   font-size: 14px;
   line-height: 24px;
+}
+ .community-phone-header .community-title{
+    font-size:16px;
+    line-height: 20px;
+  }
+#communityModal   .btn-close{
+  background: var(--blue);
+    opacity: 1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-shadow: none;
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    height: 25px;
+}
+#communityModal  .list-group-item{
+  padding:0px !important;
+}
+
+#communityModal .list-group , #communityModal .list-group-item {
+  border: 0 !important;
+}
+#communityModal .modal-content{
+  padding: 20px;
+}
+#communityModal .modal-content{
+width: 80%;
+margin: auto;
 }
 
 /*Global*/
@@ -2728,6 +2758,7 @@ background-color: #D6F0FF80;
   .full-width-left-col, .row.flex-row-reverse .full-width-left-col {
     border-radius: 0;
   }
+ 
 } 
 @media only screen and (max-width: 767px) {
   body {
@@ -2805,6 +2836,10 @@ right: -10px;
 }
   .help-logo {
     padding-top: 22px;
+  }
+   #communityModal .modal-content{
+        width: 95%;
+        padding: 0px;
   }
 }
 @media only screen and (max-width: 429px) {
@@ -2988,6 +3023,10 @@ right: -10px;
   h5, .font-xs-medium {
     font-size: 18px;
     line-height: 26px;
+  }
+   .community-phone-header .community-title{
+    font-size:18px;
+    line-height: 22px;
   }
   .bg-pattern {
     background-size: 250px;
@@ -3533,6 +3572,10 @@ right: -10px;
   h4, .font-regular {
     font-size: 20px;
     line-height: 35px;
+  }
+    .community-phone-header .community-title{
+    font-size:20px;
+    line-height: 24px;
   }
   .main-menu .navbar-nav {
     gap: 42px;
