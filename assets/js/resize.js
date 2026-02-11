@@ -1,11 +1,12 @@
 (function ($) {
 
   $(document).ready(function () {
+    //  $("#default").addClass("active");
 
-$("#small").on("click", function (e) {
+$("#default").on("click", function (e) {
     e.preventDefault();
 
-    $("#small").addClass("active");
+    $("#default").addClass("active");
     $("#large").removeClass("active");
 
     $(".wysiwyg-content p, \
@@ -23,23 +24,23 @@ $("#small").on("click", function (e) {
        .below-content p, \
       .search-content")
       .animate({
-        "font-size": "17px",
+        "font-size": "18px",
         "line-height": "27px"
       });
 
-    $(".wysiwyg-content p.wp-caption-text, \
-      .wysiwyg-content .wp-caption-text")
-      .animate({
-        "font-size": "14px",
-        "line-height": "22px"
-      });
+    // $(".wysiwyg-content p.wp-caption-text, \
+    //   .wysiwyg-content .wp-caption-text")
+    //   .animate({
+    //     "font-size": "14px",
+    //     "line-height": "22px"
+    //   });
   });
 
   $("#large").on("click", function (e) {
     e.preventDefault();
 
     $("#large").addClass("active");
-    $("#small").removeClass("active");
+    $("#default").removeClass("active");
 
     $(".wysiwyg-content p, \
       .wysiwyg-content, \
