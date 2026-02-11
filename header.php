@@ -163,7 +163,7 @@
                                 <?php $header_button = get_field("header_button", "option");
                                 $button = $header_button['button'] ?? '';
                                 $button_icon = $header_button['button_icon'] ?? '';
-                                $is_community_child = is_page() && wp_get_post_parent_id(get_the_ID()) == 513;
+                                $is_community_child = is_page() && wp_get_post_parent_id(get_the_ID()) == 28; // Check if it's a child of "Communities" page (ID: 28)
 
                                 if ($button && !$is_community_child):
                                 ?>
@@ -181,10 +181,20 @@
                                         </svg>
                                         <?php echo $button['title']; ?>
                                     </a>
-                                <?php endif; ?>
-                                <div class="community-address my-auto">
-                                    <?php echo do_shortcode('[community_phone_header]'); ?>
-                                </div>
+                                <?php endif; 
+                                $community_info = get_field('communities_contact_info', 'options');
+                                foreach($community_info as $info) {
+                                    if($info['communities_name'] == get_the_ID()){
+                                        $name = get_the_title($info['communities_name']);
+                                        $phone = $info['community_phone'];
+                                        ?><div class="community-address my-auto">
+                                            <a class="font-regular fw-bold text-blue text-center d-inline-block text-decoration-none" href="tel:<?php echo $phone; ?>">Call Our <?php echo $name.' Community<br>at '.$phone; ?></a>
+                                        </div><?php
+                                    }
+                                }?>
+                                <!-- <div class="community-address my-auto">
+                                    <?php //echo do_shortcode('[community_phone_header]'); ?>
+                                </div> -->
                                 <div class="search-button header-search-form">
                                     <?php echo do_shortcode('[searchwp_modal_search_form template="My Custom Template"]') ?>
                                 </div>

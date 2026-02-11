@@ -2321,7 +2321,7 @@ function acf_load_community_choices_in_repeater( $field ) {
     // Get all child pages of the Communities page (ID: 513)
     $args = array(
         'post_type'      => 'page',
-        'post_parent'    => 513,
+        'post_parent'    => 28, // Update this to the correct ID of your "Communities" page
         'posts_per_page' => -1,
         'orderby'        => 'title',
         'order'          => 'ASC',

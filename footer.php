@@ -191,16 +191,15 @@ $column_2_link = $content_column_2['link'] ?? '';
             <?php while (have_rows('communities_contact_info', 'option')) : the_row(); ?>
               <li class="list-group-item">
                 <span class="text-blue">  
-                  <?php
-                  $community_id = get_sub_field('communities_name');
-
+                  <?php $community_id = get_sub_field('communities_name'); 
+                  $phone = get_sub_field('community_phone');
                   if ($community_id) {
                     echo esc_html(get_the_title($community_id)).":";
                   }
                   ?></span>
 
-                <a href="tel:<?php the_sub_field('comm_phone'); ?>" class="text-decoration-none">
-                  <?php the_sub_field('comm_phone'); ?>
+                <a href="tel:<?php echo esc_attr($phone); ?>" class="text-decoration-none">
+                  <?php echo esc_html($phone); ?>
                 </a>
               </li>
             <?php endwhile; ?>
