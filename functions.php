@@ -2321,7 +2321,7 @@ function acf_load_community_choices_in_repeater( $field ) {
     // Get all child pages of the Communities page (ID: 513)
     $args = array(
         'post_type'      => 'page',
-        'post_parent'    => 78822,
+        'post_parent'    => 513,
         'posts_per_page' => -1,
         'orderby'        => 'title',
         'order'          => 'ASC',
@@ -2344,14 +2344,14 @@ function acf_load_community_choices_in_repeater( $field ) {
 }
 
 // Apply filter to the communities_list field inside repeater
-add_filter('acf/load_field/name=communities_list', 'acf_load_community_choices_in_repeater');
+add_filter('acf/load_field/name=communities_name', 'acf_load_community_choices_in_repeater');
 function get_community_phone_by_page_id( $page_id = null ) {
 
     if ( ! $page_id ) {
         $page_id = get_queried_object_id();
     }
 
-    $rows = get_field( 'field_communities_repeater', 'option' );
+    $rows = get_field( 'communities_contact_info', 'option' );
 
     if ( empty( $rows ) ) {
         return '';
@@ -2359,7 +2359,7 @@ function get_community_phone_by_page_id( $page_id = null ) {
 
     foreach ( $rows as $row ) {
 
-        $community_page = $row['communities_list'] ?? null;
+        $community_page = $row['communities_name'] ?? null;
         $community_page_id = is_object( $community_page )
             ? (int) $community_page->ID
             : (int) $community_page;

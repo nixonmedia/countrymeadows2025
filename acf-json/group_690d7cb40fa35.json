@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_696e07bc9a6ac",
-            "label": "communities repeater",
-            "name": "field_communities_repeater",
+            "label": "Communities Contact Info",
+            "name": "communities_contact_info",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -26,8 +26,8 @@
             "sub_fields": [
                 {
                     "key": "field_696e083d10cb7",
-                    "label": "communities_list",
-                    "name": "communities_list",
+                    "label": "Communities Name",
+                    "name": "communities_name",
                     "aria-label": "",
                     "type": "select",
                     "instructions": "",
@@ -40,10 +40,7 @@
                     },
                     "choices": {
                         "": "-- Select Community --",
-                        "35970": "Allentown Pa",
-                        "35972": "bath",
-                        "35974": "ck",
-                        "35976": "sk"
+                        "518": "Allentown"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -519,5 +516,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768892154
+    "modified": 1770633394
 }

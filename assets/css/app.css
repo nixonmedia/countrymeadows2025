@@ -138,6 +138,32 @@ h6, .font-normal , .wysiwyg-content form .gfield_label{
     font-size:16px;
     line-height: 20px;
   }
+#communityModal   .btn-close{
+  background: var(--blue);
+    opacity: 1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-shadow: none;
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    height: 25px;
+}
+#communityModal  .list-group-item{
+  padding:0px !important;
+}
+
+#communityModal .list-group , #communityModal .list-group-item {
+  border: 0 !important;
+}
+#communityModal .modal-content{
+  padding: 20px;
+}
+#communityModal .modal-content{
+width: 80%;
+margin: auto;
+}
 
 /*Global*/
 .aligncenter {
@@ -2662,6 +2688,7 @@ background-color: #D6F0FF80;
   .full-width-left-col, .row.flex-row-reverse .full-width-left-col {
     border-radius: 0;
   }
+ 
 } 
 @media only screen and (max-width: 767px) {
   body {
@@ -2739,6 +2766,10 @@ right: -10px;
 }
   .help-logo {
     padding-top: 22px;
+  }
+   #communityModal .modal-content{
+        width: 95%;
+        padding: 0px;
   }
 }
 @media only screen and (max-width: 429px) {

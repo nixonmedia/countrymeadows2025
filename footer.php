@@ -181,25 +181,25 @@ $column_2_link = $content_column_2['link'] ?? '';
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title">Contact us today!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <h5 class="modal-title text-capitalize fw-bold text-pink font-medium">Contact us today!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"><i class="fa-sharp fa-light fa-xmark"></i></button>
       </div>
 
       <div class="modal-body">
-        <?php if (have_rows('field_communities_repeater', 'option')) : ?>
+        <?php if (have_rows('communities_contact_info', 'option')) : ?>
           <ul class="list-group">
-            <?php while (have_rows('field_communities_repeater', 'option')) : the_row(); ?>
+            <?php while (have_rows('communities_contact_info', 'option')) : the_row(); ?>
               <li class="list-group-item">
-                <span>
+                <span class="text-blue">  
                   <?php
-                  $community_id = get_sub_field('communities_list');
+                  $community_id = get_sub_field('communities_name');
 
                   if ($community_id) {
                     echo esc_html(get_the_title($community_id)).":";
                   }
                   ?></span>
 
-                <a href="tel:<?php the_sub_field('comm_phone'); ?>">
+                <a href="tel:<?php the_sub_field('comm_phone'); ?>" class="text-decoration-none">
                   <?php the_sub_field('comm_phone'); ?>
                 </a>
               </li>

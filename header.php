@@ -163,7 +163,7 @@
                                 <?php $header_button = get_field("header_button", "option");
                                 $button = $header_button['button'] ?? '';
                                 $button_icon = $header_button['button_icon'] ?? '';
-                                $is_community_child = is_page() && wp_get_post_parent_id(get_the_ID()) == 78822;
+                                $is_community_child = is_page() && wp_get_post_parent_id(get_the_ID()) == 513;
 
                                 if ($button && !$is_community_child):
                                 ?>
