@@ -1,6 +1,5 @@
 <?php
 get_header();
-get_template_part('parts/font-resize');
 
 if (have_posts()) : ?>
   <section class="breadcrumb pt-4 d-none d-md-block mb-0 z-2 position-relative">

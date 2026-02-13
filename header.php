@@ -181,19 +181,20 @@
                                         </svg>
                                         <?php echo $button['title']; ?>
                                     </a>
-                                <?php endif; 
+                                    <?php endif;
                                 $community_info = get_field('communities_contact_info', 'options');
-                                foreach($community_info as $info) {
-                                    if($info['communities_name'] == get_the_ID()){
+                                foreach ($community_info as $info) {
+                                    if ($info['communities_name'] == get_the_ID()) {
                                         $name = get_the_title($info['communities_name']);
                                         $phone = $info['community_phone'];
-                                        ?><div class="community-address my-auto">
-                                            <a class="font-regular fw-bold text-blue text-center d-inline-block text-decoration-none" href="tel:<?php echo $phone; ?>">Call Our <?php echo $name.' Community<br>at '.$phone; ?></a>
+                                    ?><div class="community-address my-auto">
+                                            <a class="font-regular fw-bold text-blue text-center d-inline-block text-decoration-none" href="tel:<?php echo $phone; ?>">Call Our <?php echo $name . ' Community<br>at ' . $phone; ?></a>
                                         </div><?php
-                                    }
-                                }?>
+                                            }
+                                        } ?>
                                 <!-- <div class="community-address my-auto">
-                                    <?php //echo do_shortcode('[community_phone_header]'); ?>
+                                    <?php //echo do_shortcode('[community_phone_header]'); 
+                                    ?>
                                 </div> -->
                                 <div class="search-button header-search-form">
                                     <?php echo do_shortcode('[searchwp_modal_search_form template="My Custom Template"]') ?>
@@ -272,7 +273,13 @@
         </header>
         <main>
             <!-- main is here  -->
-            <!-- main is here  -->
+             <!-- Font Resizer Starts here -->
+            <div id="resizer" class="bg-yellow">
+                <div class="text-uppercase text-div fw-medium text-black">FONT SIZE</div>
+                <div id="default" class="default active">A</div>
+                <div id="large" class="large">A</div>
+            </div>
+            <!-- Font Resizer Ends here -->
             <!-- Help ToolBars -->
             <?php
             $disable_this_floating_cta_sitewide = get_field('disable_this_floating_cta_sitewide', 'option');
@@ -400,3 +407,4 @@
                 endif; ?>
             <?php endif; ?>
             <!-- End Here Help Toolbars -->
+            
