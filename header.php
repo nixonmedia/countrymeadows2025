@@ -182,16 +182,49 @@
                                         <?php echo $button['title']; ?>
                                     </a>
                                     <?php endif;
-                                $community_info = get_field('communities_contact_info', 'options');
-                                foreach ($community_info as $info) {
-                                    if ($info['communities_name'] == get_the_ID()) {
-                                        $name = get_the_title($info['communities_name']);
-                                        $phone = $info['community_phone'];
-                                    ?><div class="community-address my-auto">
-                                            <a class="font-regular fw-bold text-blue text-center d-inline-block text-decoration-none" href="tel:<?php echo $phone; ?>">Call Our <?php echo $name . ' Community<br>at ' . $phone; ?></a>
-                                        </div><?php
-                                            }
-                                        } ?>
+                                // var_dump($community_info);
+
+                                // Map post IDs to their corresponding ACF option field names
+                                $communities = [
+                                    30  => 'allentown_contact_info',
+                                    32  => 'bethlehem_contact_info',
+                                    34  => 'forks_of_easton_contact_info',
+                                    36  => 'frederick_contact_info',
+                                    38  => 'hershey_contact_info',
+                                    40  => 'wyomissing_contact_info',
+                                    448 => 'mechanicsburg_contact_info',
+                                    43  => 'york_south_contacts_info',
+                                    45  => 'york_west_contact_info',
+                                ];
+
+                                $current_id = get_the_ID();
+                               
+
+                                if (isset($communities[$current_id])) {
+                                    
+                                    $community_info = get_field($communities[$current_id], 'options');
+
+                                    if (!empty($community_info['community_phone'])) {
+
+                                        $phone = $community_info['community_phone'];
+                                        $name  = get_the_title($current_id);
+                                    ?>
+
+                                        <div class="community-address my-auto">
+                                            <a class="font-regular fw-bold text-blue text-center d-inline-block text-decoration-none"
+                                                href="tel:<?php echo esc_attr($phone); ?>">
+                                                Call Our <?php echo esc_html($name); ?> Community<br>
+                                                at <?php echo esc_html($phone); ?>
+                                            </a>
+                                        </div>
+
+                                <?php
+                                    }
+                                }
+                                ?>
+
+
+
                                 <!-- <div class="community-address my-auto">
                                     <?php //echo do_shortcode('[community_phone_header]'); 
                                     ?>
@@ -273,7 +306,7 @@
         </header>
         <main>
             <!-- main is here  -->
-             <!-- Font Resizer Starts here -->
+            <!-- Font Resizer Starts here -->
             <div id="resizer" class="bg-yellow">
                 <div class="text-uppercase text-div fw-medium text-black">FONT SIZE</div>
                 <div id="default" class="default active">A</div>
@@ -407,4 +440,3 @@
                 endif; ?>
             <?php endif; ?>
             <!-- End Here Help Toolbars -->
-            
