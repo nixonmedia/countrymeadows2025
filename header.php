@@ -193,8 +193,8 @@
                                     38  => 'hershey_contact_info',
                                     40  => 'wyomissing_contact_info',
                                     448 => 'mechanicsburg_contact_info',
-                                    43  => 'york_south_contacts_info',
-                                    45  => 'york_west_contact_info',
+                                    43  => 'york-south_contacts',
+                                    45  => 'york-west_contact',
                                 ];
 
                                 $current_id = get_the_ID();
