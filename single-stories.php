@@ -1,6 +1,5 @@
 <?php
 get_header();
-get_template_part('parts/font-resize');
 
 if ( have_posts() ) : ?>
   <section class="stories-post-content py-5">

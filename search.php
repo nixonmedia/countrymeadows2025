@@ -11,7 +11,6 @@
  */
 
 get_header();
-get_template_part('parts/font-resize');
 if (have_posts()) { ?>
 	<section class="search-section pt-5 pb-3">
 		<div class="container">

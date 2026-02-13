@@ -1,5 +1,4 @@
-<?php get_header();
-get_template_part('parts/font-resize');  ?>
+<?php get_header();  ?>
 <section class="error-404 not-found pb-5 pt-lg-3 mb-lg-5">
 		<div class="container">
 			<div class="row">

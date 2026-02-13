@@ -25,7 +25,6 @@ if($hide_breadcrumb == false): ?>
 	</div>
 </section><!-- /.breadcrumb -->
 <?php endif;
-get_template_part('parts/font-resize');
 get_template_part('parts/layouts/stylized_heading_intro_zone'); ?>
 
 <?php /*********  Flexible Content Start  ***********/
