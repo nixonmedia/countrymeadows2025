@@ -195,6 +195,7 @@
                                     40  => 'wyomissing_contact_info',
                                     43  => 'york_south_contact_info',
                                     45  => 'york-west_contact_info',
+                                    76  => 'nursing_&_rehab_center_contact_info',
                                 ];
 
                                 $current_id = get_the_ID();
