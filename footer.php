@@ -199,6 +199,7 @@ $column_2_link = $content_column_2['link'] ?? '';
             'wyomissing_contact_info' => 'Wyomissing',
             'york_south_contact_info' => 'York South',
             'york-west_contact_info' => 'York West',
+            'nursing_&_rehab_center_contact_info' => 'Nursing & Rehab Center',
           ];
 
           foreach ($communities as $field_name => $label) :
