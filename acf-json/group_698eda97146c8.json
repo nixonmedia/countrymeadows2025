@@ -3,7 +3,25 @@
     "title": "Communities",
     "fields": [
         {
-            "key": "field_698ed6f403a5e",
+            "key": "field_6992abdfe39a6",
+            "label": "Allentown",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6992aed98d056",
             "label": "Allentown Contact Info",
             "name": "allentown_contact_info",
             "aria-label": "",
@@ -19,41 +37,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_698ed74403a5f",
-                    "label": "Communities Name",
-                    "name": "communities_name",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "choices": {
-                        "": "-- Select Community --",
-                        "30": "Allentown",
-                        "32": "Bethlehem",
-                        "34": "Forks of Easton",
-                        "36": "Frederick",
-                        "38": "Hershey",
-                        "448": "Mechanicsburg",
-                        "73972": "sk",
-                        "40": "Wyomissing",
-                        "43": "York-South",
-                        "45": "York-West"
-                    }
-                },
-                {
-                    "key": "field_698ed7a503a60",
+                    "key": "field_6992ad8eeb583",
                     "label": "Phone & Email Address",
                     "name": "",
                     "aria-label": "",
@@ -71,7 +55,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed7b303a61",
+                    "key": "field_6992ad9deb584",
                     "label": "Community Phone",
                     "name": "community_phone",
                     "aria-label": "",
@@ -92,7 +76,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed7bf03a62",
+                    "key": "field_6992ada9eb585",
                     "label": "Community Email Address",
                     "name": "community_email_address",
                     "aria-label": "",
@@ -113,7 +97,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed7c903a63",
+                    "key": "field_6992adb4eb586",
                     "label": "Address",
                     "name": "",
                     "aria-label": "",
@@ -131,7 +115,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed7d803a64",
+                    "key": "field_6992adbeeb587",
                     "label": "City",
                     "name": "city",
                     "aria-label": "",
@@ -152,7 +136,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed7de03a65",
+                    "key": "field_6992adc7eb588",
                     "label": "State",
                     "name": "state",
                     "aria-label": "",
@@ -173,7 +157,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed7e503a66",
+                    "key": "field_6992adceeb589",
                     "label": "ZIP",
                     "name": "zip",
                     "aria-label": "",
@@ -194,7 +178,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed7f103a67",
+                    "key": "field_6992addaeb58a",
                     "label": "Longitude",
                     "name": "longitude",
                     "aria-label": "",
@@ -215,7 +199,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed7fb03a68",
+                    "key": "field_6992ade4eb58b",
                     "label": "Latitude",
                     "name": "latitude",
                     "aria-label": "",
@@ -236,7 +220,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed80903a69",
+                    "key": "field_6992adeeeb58c",
                     "label": "Reviews",
                     "name": "",
                     "aria-label": "",
@@ -254,7 +238,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed81b03a6a",
+                    "key": "field_6992adfdeb58d",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -275,7 +259,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed82803a6b",
+                    "key": "field_6992ae09eb58e",
                     "label": "Review Intro",
                     "name": "review_intro",
                     "aria-label": "",
@@ -296,7 +280,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698ed84003a6c",
+                    "key": "field_6992ae19eb58f",
                     "label": "Review",
                     "name": "review",
                     "aria-label": "",
@@ -318,7 +302,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_698ed85403a6d",
+                            "key": "field_6992ae27eb590",
                             "label": "Site Name",
                             "name": "site_name",
                             "aria-label": "",
@@ -337,10 +321,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_698ed84003a6c"
+                            "parent_repeater": "field_6992ae19eb58f"
                         },
                         {
-                            "key": "field_698ed86203a6e",
+                            "key": "field_6992ae31eb591",
                             "label": "Site Link",
                             "name": "site_link",
                             "aria-label": "",
@@ -356,12 +340,12 @@
                             "default_value": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
-                            "parent_repeater": "field_698ed84003a6c"
+                            "parent_repeater": "field_6992ae19eb58f"
                         }
                     ]
                 },
                 {
-                    "key": "field_698ed87503a6f",
+                    "key": "field_6992ae44eb592",
                     "label": "Reviews",
                     "name": "reviews",
                     "aria-label": "",
@@ -378,7 +362,7 @@
                     "sub_fields": []
                 },
                 {
-                    "key": "field_698ed88603a70",
+                    "key": "field_6992ae50eb593",
                     "label": "Pricing",
                     "name": "",
                     "aria-label": "",
@@ -396,7 +380,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed89803a71",
+                    "key": "field_6992ae63eb594",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -417,7 +401,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed8a203a72",
+                    "key": "field_6992ae6eeb595",
                     "label": "Pricing Info",
                     "name": "pricing_info",
                     "aria-label": "",
@@ -438,11 +422,11 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698ed8b803a73",
+                    "key": "field_6992ae7aeb596",
                     "label": "Pricing",
                     "name": "pricing",
                     "aria-label": "",
-                    "type": "group",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -451,13 +435,35 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "block",
-                    "sub_fields": []
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
         {
-            "key": "field_698ed97bb41e2",
+            "key": "field_6992b17312b1c",
+            "label": "Bethlehem",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6992b17f12b1d",
             "label": "Bethlehem Contact Info",
             "name": "bethlehem_contact_info",
             "aria-label": "",
@@ -473,41 +479,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_698ed97bb41e3",
-                    "label": "Communities Name",
-                    "name": "communities_name",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "choices": {
-                        "": "-- Select Community --",
-                        "30": "Allentown",
-                        "32": "Bethlehem",
-                        "34": "Forks of Easton",
-                        "36": "Frederick",
-                        "38": "Hershey",
-                        "448": "Mechanicsburg",
-                        "73972": "sk",
-                        "40": "Wyomissing",
-                        "43": "York-South",
-                        "45": "York-West"
-                    }
-                },
-                {
-                    "key": "field_698ed97bb41e4",
+                    "key": "field_6992b17f12b1e",
                     "label": "Phone & Email Address",
                     "name": "",
                     "aria-label": "",
@@ -525,7 +497,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed97bb41e5",
+                    "key": "field_6992b17f12b1f",
                     "label": "Community Phone",
                     "name": "community_phone",
                     "aria-label": "",
@@ -546,7 +518,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed97bb41e6",
+                    "key": "field_6992b17f12b20",
                     "label": "Community Email Address",
                     "name": "community_email_address",
                     "aria-label": "",
@@ -567,7 +539,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed97bb41e7",
+                    "key": "field_6992b17f12b21",
                     "label": "Address",
                     "name": "",
                     "aria-label": "",
@@ -585,7 +557,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed97bb41e8",
+                    "key": "field_6992b17f12b22",
                     "label": "City",
                     "name": "city",
                     "aria-label": "",
@@ -606,7 +578,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed97bb41e9",
+                    "key": "field_6992b17f12b23",
                     "label": "State",
                     "name": "state",
                     "aria-label": "",
@@ -627,7 +599,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed97bb41ea",
+                    "key": "field_6992b17f12b24",
                     "label": "ZIP",
                     "name": "zip",
                     "aria-label": "",
@@ -648,7 +620,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed97bb41eb",
+                    "key": "field_6992b17f12b25",
                     "label": "Longitude",
                     "name": "longitude",
                     "aria-label": "",
@@ -669,7 +641,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed97bb41ec",
+                    "key": "field_6992b17f12b26",
                     "label": "Latitude",
                     "name": "latitude",
                     "aria-label": "",
@@ -690,7 +662,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed97bb41ed",
+                    "key": "field_6992b17f12b27",
                     "label": "Reviews",
                     "name": "",
                     "aria-label": "",
@@ -708,7 +680,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed97bb41ee",
+                    "key": "field_6992b17f12b28",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -729,7 +701,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed97bb41ef",
+                    "key": "field_6992b17f12b29",
                     "label": "Review Intro",
                     "name": "review_intro",
                     "aria-label": "",
@@ -750,7 +722,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698ed97bb41f0",
+                    "key": "field_6992b17f12b2a",
                     "label": "Review",
                     "name": "review",
                     "aria-label": "",
@@ -763,7 +735,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "",
+                    "layout": "table",
                     "pagination": 0,
                     "min": 0,
                     "max": 0,
@@ -772,7 +744,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_698ed97bb41f1",
+                            "key": "field_6992b17f12b2b",
                             "label": "Site Name",
                             "name": "site_name",
                             "aria-label": "",
@@ -791,10 +763,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_698ed97bb41f0"
+                            "parent_repeater": "field_6992b17f12b2a"
                         },
                         {
-                            "key": "field_698ed97bb41f2",
+                            "key": "field_6992b17f12b2c",
                             "label": "Site Link",
                             "name": "site_link",
                             "aria-label": "",
@@ -810,12 +782,12 @@
                             "default_value": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
-                            "parent_repeater": "field_698ed97bb41f0"
+                            "parent_repeater": "field_6992b17f12b2a"
                         }
                     ]
                 },
                 {
-                    "key": "field_698ed97bb41f3",
+                    "key": "field_6992b17f12b2d",
                     "label": "Reviews",
                     "name": "reviews",
                     "aria-label": "",
@@ -828,11 +800,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "",
+                    "layout": "block",
                     "sub_fields": []
                 },
                 {
-                    "key": "field_698ed97bb41f4",
+                    "key": "field_6992b17f12b2e",
                     "label": "Pricing",
                     "name": "",
                     "aria-label": "",
@@ -850,7 +822,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed97bb41f5",
+                    "key": "field_6992b17f12b2f",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -871,7 +843,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed97bb41f6",
+                    "key": "field_6992b17f12b30",
                     "label": "Pricing Info",
                     "name": "pricing_info",
                     "aria-label": "",
@@ -892,11 +864,11 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698ed97bb41f7",
+                    "key": "field_6992b17f12b31",
                     "label": "Pricing",
                     "name": "pricing",
                     "aria-label": "",
-                    "type": "group",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -905,13 +877,35 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "",
-                    "sub_fields": []
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
         {
-            "key": "field_698ed9c9b41f8",
+            "key": "field_6992b2a64de40",
+            "label": "Forks of Easton",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6992b2b34de41",
             "label": "Forks of Easton Contact Info",
             "name": "forks_of_easton_contact_info",
             "aria-label": "",
@@ -927,41 +921,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_698ed9c9b41f9",
-                    "label": "Communities Name",
-                    "name": "communities_name",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "choices": {
-                        "": "-- Select Community --",
-                        "30": "Allentown",
-                        "32": "Bethlehem",
-                        "34": "Forks of Easton",
-                        "36": "Frederick",
-                        "38": "Hershey",
-                        "448": "Mechanicsburg",
-                        "73972": "sk",
-                        "40": "Wyomissing",
-                        "43": "York-South",
-                        "45": "York-West"
-                    }
-                },
-                {
-                    "key": "field_698ed9c9b41fa",
+                    "key": "field_6992b2b44de42",
                     "label": "Phone & Email Address",
                     "name": "",
                     "aria-label": "",
@@ -979,7 +939,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed9c9b41fb",
+                    "key": "field_6992b2b44de43",
                     "label": "Community Phone",
                     "name": "community_phone",
                     "aria-label": "",
@@ -1000,7 +960,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed9c9b41fc",
+                    "key": "field_6992b2b44de44",
                     "label": "Community Email Address",
                     "name": "community_email_address",
                     "aria-label": "",
@@ -1021,7 +981,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed9c9b41fd",
+                    "key": "field_6992b2b44de45",
                     "label": "Address",
                     "name": "",
                     "aria-label": "",
@@ -1039,7 +999,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed9c9b41fe",
+                    "key": "field_6992b2b44de46",
                     "label": "City",
                     "name": "city",
                     "aria-label": "",
@@ -1060,7 +1020,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed9c9b41ff",
+                    "key": "field_6992b2b44de47",
                     "label": "State",
                     "name": "state",
                     "aria-label": "",
@@ -1081,7 +1041,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed9c9b4200",
+                    "key": "field_6992b2b44de48",
                     "label": "ZIP",
                     "name": "zip",
                     "aria-label": "",
@@ -1102,7 +1062,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed9c9b4201",
+                    "key": "field_6992b2b44de49",
                     "label": "Longitude",
                     "name": "longitude",
                     "aria-label": "",
@@ -1123,7 +1083,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed9c9b4202",
+                    "key": "field_6992b2b44de4a",
                     "label": "Latitude",
                     "name": "latitude",
                     "aria-label": "",
@@ -1144,7 +1104,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed9c9b4203",
+                    "key": "field_6992b2b44de4b",
                     "label": "Reviews",
                     "name": "",
                     "aria-label": "",
@@ -1162,7 +1122,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed9c9b4204",
+                    "key": "field_6992b2b44de4c",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -1183,7 +1143,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed9c9b4205",
+                    "key": "field_6992b2b44de4d",
                     "label": "Review Intro",
                     "name": "review_intro",
                     "aria-label": "",
@@ -1204,7 +1164,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698ed9c9b4206",
+                    "key": "field_6992b2b44de4e",
                     "label": "Review",
                     "name": "review",
                     "aria-label": "",
@@ -1217,7 +1177,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "",
+                    "layout": "table",
                     "pagination": 0,
                     "min": 0,
                     "max": 0,
@@ -1226,7 +1186,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_698ed9c9b4207",
+                            "key": "field_6992b2b44de4f",
                             "label": "Site Name",
                             "name": "site_name",
                             "aria-label": "",
@@ -1245,10 +1205,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_698ed9c9b4206"
+                            "parent_repeater": "field_6992b2b44de4e"
                         },
                         {
-                            "key": "field_698ed9c9b4208",
+                            "key": "field_6992b2b44de50",
                             "label": "Site Link",
                             "name": "site_link",
                             "aria-label": "",
@@ -1264,12 +1224,12 @@
                             "default_value": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
-                            "parent_repeater": "field_698ed9c9b4206"
+                            "parent_repeater": "field_6992b2b44de4e"
                         }
                     ]
                 },
                 {
-                    "key": "field_698ed9c9b4209",
+                    "key": "field_6992b2b44de51",
                     "label": "Reviews",
                     "name": "reviews",
                     "aria-label": "",
@@ -1282,11 +1242,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "",
+                    "layout": "block",
                     "sub_fields": []
                 },
                 {
-                    "key": "field_698ed9c9b420a",
+                    "key": "field_6992b2b44de52",
                     "label": "Pricing",
                     "name": "",
                     "aria-label": "",
@@ -1304,7 +1264,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698ed9c9b420b",
+                    "key": "field_6992b2b44de53",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -1325,7 +1285,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698ed9c9b420c",
+                    "key": "field_6992b2b44de54",
                     "label": "Pricing Info",
                     "name": "pricing_info",
                     "aria-label": "",
@@ -1346,11 +1306,11 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698ed9c9b420d",
+                    "key": "field_6992b2b44de55",
                     "label": "Pricing",
                     "name": "pricing",
                     "aria-label": "",
-                    "type": "group",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -1359,13 +1319,35 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "",
-                    "sub_fields": []
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
         {
-            "key": "field_698f0d50dbbb0",
+            "key": "field_6992b3155dc13",
+            "label": "Frederick",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6992b32c5dc14",
             "label": "Frederick Contact Info",
             "name": "frederick_contact_info",
             "aria-label": "",
@@ -1381,41 +1363,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_698f0d51dbbb1",
-                    "label": "Communities Name",
-                    "name": "communities_name",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "choices": {
-                        "": "-- Select Community --",
-                        "30": "Allentown",
-                        "32": "Bethlehem",
-                        "34": "Forks of Easton",
-                        "36": "Frederick",
-                        "38": "Hershey",
-                        "448": "Mechanicsburg",
-                        "73972": "sk",
-                        "40": "Wyomissing",
-                        "43": "York-South",
-                        "45": "York-West"
-                    }
-                },
-                {
-                    "key": "field_698f0d51dbbb2",
+                    "key": "field_6992b32c5dc15",
                     "label": "Phone & Email Address",
                     "name": "",
                     "aria-label": "",
@@ -1433,7 +1381,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0d51dbbb3",
+                    "key": "field_6992b32c5dc16",
                     "label": "Community Phone",
                     "name": "community_phone",
                     "aria-label": "",
@@ -1454,7 +1402,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d51dbbb4",
+                    "key": "field_6992b32c5dc17",
                     "label": "Community Email Address",
                     "name": "community_email_address",
                     "aria-label": "",
@@ -1475,7 +1423,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d51dbbb5",
+                    "key": "field_6992b32c5dc18",
                     "label": "Address",
                     "name": "",
                     "aria-label": "",
@@ -1493,7 +1441,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0d51dbbb6",
+                    "key": "field_6992b32c5dc19",
                     "label": "City",
                     "name": "city",
                     "aria-label": "",
@@ -1514,7 +1462,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d51dbbb7",
+                    "key": "field_6992b32c5dc1a",
                     "label": "State",
                     "name": "state",
                     "aria-label": "",
@@ -1535,7 +1483,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d51dbbb8",
+                    "key": "field_6992b32c5dc1b",
                     "label": "ZIP",
                     "name": "zip",
                     "aria-label": "",
@@ -1556,7 +1504,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d51dbbb9",
+                    "key": "field_6992b32c5dc1c",
                     "label": "Longitude",
                     "name": "longitude",
                     "aria-label": "",
@@ -1577,7 +1525,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d51dbbba",
+                    "key": "field_6992b32c5dc1d",
                     "label": "Latitude",
                     "name": "latitude",
                     "aria-label": "",
@@ -1598,7 +1546,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d51dbbbb",
+                    "key": "field_6992b32c5dc1e",
                     "label": "Reviews",
                     "name": "",
                     "aria-label": "",
@@ -1616,7 +1564,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0d51dbbbc",
+                    "key": "field_6992b32c5dc1f",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -1637,7 +1585,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d51dbbbd",
+                    "key": "field_6992b32c5dc20",
                     "label": "Review Intro",
                     "name": "review_intro",
                     "aria-label": "",
@@ -1658,7 +1606,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0d51dbbbe",
+                    "key": "field_6992b32c5dc21",
                     "label": "Review",
                     "name": "review",
                     "aria-label": "",
@@ -1680,7 +1628,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_698f0d51dbbbf",
+                            "key": "field_6992b32c5dc22",
                             "label": "Site Name",
                             "name": "site_name",
                             "aria-label": "",
@@ -1699,10 +1647,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_698f0d51dbbbe"
+                            "parent_repeater": "field_6992b32c5dc21"
                         },
                         {
-                            "key": "field_698f0d51dbbc0",
+                            "key": "field_6992b32c5dc23",
                             "label": "Site Link",
                             "name": "site_link",
                             "aria-label": "",
@@ -1718,12 +1666,12 @@
                             "default_value": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
-                            "parent_repeater": "field_698f0d51dbbbe"
+                            "parent_repeater": "field_6992b32c5dc21"
                         }
                     ]
                 },
                 {
-                    "key": "field_698f0d51dbbc1",
+                    "key": "field_6992b32c5dc24",
                     "label": "Reviews",
                     "name": "reviews",
                     "aria-label": "",
@@ -1740,7 +1688,7 @@
                     "sub_fields": []
                 },
                 {
-                    "key": "field_698f0d51dbbc2",
+                    "key": "field_6992b32c5dc25",
                     "label": "Pricing",
                     "name": "",
                     "aria-label": "",
@@ -1758,7 +1706,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0d51dbbc3",
+                    "key": "field_6992b32c5dc26",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -1779,7 +1727,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d51dbbc4",
+                    "key": "field_6992b32c5dc27",
                     "label": "Pricing Info",
                     "name": "pricing_info",
                     "aria-label": "",
@@ -1800,11 +1748,11 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0d51dbbc5",
+                    "key": "field_6992b32c5dc28",
                     "label": "Pricing",
                     "name": "pricing",
                     "aria-label": "",
-                    "type": "group",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -1813,13 +1761,35 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "block",
-                    "sub_fields": []
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
         {
-            "key": "field_698f0d9a65f6f",
+            "key": "field_6992b380ba496",
+            "label": "Hershey",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6992b388ba497",
             "label": "Hershey Contact Info",
             "name": "hershey_contact_info",
             "aria-label": "",
@@ -1835,41 +1805,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_698f0d9a65f70",
-                    "label": "Communities Name",
-                    "name": "communities_name",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "choices": {
-                        "": "-- Select Community --",
-                        "30": "Allentown",
-                        "32": "Bethlehem",
-                        "34": "Forks of Easton",
-                        "36": "Frederick",
-                        "38": "Hershey",
-                        "448": "Mechanicsburg",
-                        "73972": "sk",
-                        "40": "Wyomissing",
-                        "43": "York-South",
-                        "45": "York-West"
-                    }
-                },
-                {
-                    "key": "field_698f0d9a65f71",
+                    "key": "field_6992b388ba498",
                     "label": "Phone & Email Address",
                     "name": "",
                     "aria-label": "",
@@ -1887,7 +1823,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0d9a65f72",
+                    "key": "field_6992b388ba499",
                     "label": "Community Phone",
                     "name": "community_phone",
                     "aria-label": "",
@@ -1908,7 +1844,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d9a65f73",
+                    "key": "field_6992b388ba49a",
                     "label": "Community Email Address",
                     "name": "community_email_address",
                     "aria-label": "",
@@ -1929,7 +1865,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d9a65f74",
+                    "key": "field_6992b388ba49b",
                     "label": "Address",
                     "name": "",
                     "aria-label": "",
@@ -1947,7 +1883,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0d9a65f75",
+                    "key": "field_6992b388ba49c",
                     "label": "City",
                     "name": "city",
                     "aria-label": "",
@@ -1968,7 +1904,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d9a65f76",
+                    "key": "field_6992b388ba49d",
                     "label": "State",
                     "name": "state",
                     "aria-label": "",
@@ -1989,7 +1925,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d9a65f77",
+                    "key": "field_6992b388ba49e",
                     "label": "ZIP",
                     "name": "zip",
                     "aria-label": "",
@@ -2010,7 +1946,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d9a65f78",
+                    "key": "field_6992b388ba49f",
                     "label": "Longitude",
                     "name": "longitude",
                     "aria-label": "",
@@ -2031,7 +1967,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d9a65f79",
+                    "key": "field_6992b388ba4a0",
                     "label": "Latitude",
                     "name": "latitude",
                     "aria-label": "",
@@ -2052,7 +1988,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d9a65f7a",
+                    "key": "field_6992b388ba4a1",
                     "label": "Reviews",
                     "name": "",
                     "aria-label": "",
@@ -2070,7 +2006,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0d9a65f7b",
+                    "key": "field_6992b388ba4a2",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -2091,7 +2027,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d9a65f7c",
+                    "key": "field_6992b388ba4a3",
                     "label": "Review Intro",
                     "name": "review_intro",
                     "aria-label": "",
@@ -2112,7 +2048,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0d9a65f7d",
+                    "key": "field_6992b388ba4a4",
                     "label": "Review",
                     "name": "review",
                     "aria-label": "",
@@ -2134,7 +2070,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_698f0d9a65f7e",
+                            "key": "field_6992b388ba4a5",
                             "label": "Site Name",
                             "name": "site_name",
                             "aria-label": "",
@@ -2153,10 +2089,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_698f0d9a65f7d"
+                            "parent_repeater": "field_6992b388ba4a4"
                         },
                         {
-                            "key": "field_698f0d9a65f7f",
+                            "key": "field_6992b388ba4a6",
                             "label": "Site Link",
                             "name": "site_link",
                             "aria-label": "",
@@ -2172,12 +2108,12 @@
                             "default_value": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
-                            "parent_repeater": "field_698f0d9a65f7d"
+                            "parent_repeater": "field_6992b388ba4a4"
                         }
                     ]
                 },
                 {
-                    "key": "field_698f0d9a65f80",
+                    "key": "field_6992b388ba4a7",
                     "label": "Reviews",
                     "name": "reviews",
                     "aria-label": "",
@@ -2194,7 +2130,7 @@
                     "sub_fields": []
                 },
                 {
-                    "key": "field_698f0d9a65f81",
+                    "key": "field_6992b388ba4a8",
                     "label": "Pricing",
                     "name": "",
                     "aria-label": "",
@@ -2212,7 +2148,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0d9a65f82",
+                    "key": "field_6992b388ba4a9",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -2233,7 +2169,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0d9a65f83",
+                    "key": "field_6992b388ba4aa",
                     "label": "Pricing Info",
                     "name": "pricing_info",
                     "aria-label": "",
@@ -2254,11 +2190,11 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0d9a65f84",
+                    "key": "field_6992b388ba4ab",
                     "label": "Pricing",
                     "name": "pricing",
                     "aria-label": "",
-                    "type": "group",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -2267,13 +2203,35 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "block",
-                    "sub_fields": []
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
         {
-            "key": "field_698f0db81a982",
+            "key": "field_6992b4418a4af",
+            "label": "Mechanicsburg",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6992b44d8a4b0",
             "label": "Mechanicsburg Contact Info",
             "name": "mechanicsburg_contact_info",
             "aria-label": "",
@@ -2289,41 +2247,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_698f0db81a983",
-                    "label": "Communities Name",
-                    "name": "communities_name",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "choices": {
-                        "": "-- Select Community --",
-                        "30": "Allentown",
-                        "32": "Bethlehem",
-                        "34": "Forks of Easton",
-                        "36": "Frederick",
-                        "38": "Hershey",
-                        "448": "Mechanicsburg",
-                        "73972": "sk",
-                        "40": "Wyomissing",
-                        "43": "York-South",
-                        "45": "York-West"
-                    }
-                },
-                {
-                    "key": "field_698f0db81a984",
+                    "key": "field_6992b44e8a4b1",
                     "label": "Phone & Email Address",
                     "name": "",
                     "aria-label": "",
@@ -2341,7 +2265,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0db81a985",
+                    "key": "field_6992b44e8a4b2",
                     "label": "Community Phone",
                     "name": "community_phone",
                     "aria-label": "",
@@ -2362,7 +2286,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0db81a986",
+                    "key": "field_6992b44e8a4b3",
                     "label": "Community Email Address",
                     "name": "community_email_address",
                     "aria-label": "",
@@ -2383,7 +2307,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0db81a987",
+                    "key": "field_6992b44e8a4b4",
                     "label": "Address",
                     "name": "",
                     "aria-label": "",
@@ -2401,7 +2325,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0db81a988",
+                    "key": "field_6992b44e8a4b5",
                     "label": "City",
                     "name": "city",
                     "aria-label": "",
@@ -2422,7 +2346,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0db81a989",
+                    "key": "field_6992b44e8a4b6",
                     "label": "State",
                     "name": "state",
                     "aria-label": "",
@@ -2443,7 +2367,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0db81a98a",
+                    "key": "field_6992b44e8a4b7",
                     "label": "ZIP",
                     "name": "zip",
                     "aria-label": "",
@@ -2464,7 +2388,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0db81a98b",
+                    "key": "field_6992b44e8a4b8",
                     "label": "Longitude",
                     "name": "longitude",
                     "aria-label": "",
@@ -2485,7 +2409,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0db81a98c",
+                    "key": "field_6992b44e8a4b9",
                     "label": "Latitude",
                     "name": "latitude",
                     "aria-label": "",
@@ -2506,7 +2430,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0db81a98d",
+                    "key": "field_6992b44e8a4ba",
                     "label": "Reviews",
                     "name": "",
                     "aria-label": "",
@@ -2524,7 +2448,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0db81a98e",
+                    "key": "field_6992b44e8a4bb",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -2545,7 +2469,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0db81a98f",
+                    "key": "field_6992b44e8a4bc",
                     "label": "Review Intro",
                     "name": "review_intro",
                     "aria-label": "",
@@ -2566,7 +2490,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0db81a990",
+                    "key": "field_6992b44e8a4bd",
                     "label": "Review",
                     "name": "review",
                     "aria-label": "",
@@ -2588,7 +2512,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_698f0db81a991",
+                            "key": "field_6992b44e8a4be",
                             "label": "Site Name",
                             "name": "site_name",
                             "aria-label": "",
@@ -2607,10 +2531,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_698f0db81a990"
+                            "parent_repeater": "field_6992b44e8a4bd"
                         },
                         {
-                            "key": "field_698f0db81a992",
+                            "key": "field_6992b44e8a4bf",
                             "label": "Site Link",
                             "name": "site_link",
                             "aria-label": "",
@@ -2626,12 +2550,12 @@
                             "default_value": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
-                            "parent_repeater": "field_698f0db81a990"
+                            "parent_repeater": "field_6992b44e8a4bd"
                         }
                     ]
                 },
                 {
-                    "key": "field_698f0db81a993",
+                    "key": "field_6992b44e8a4c0",
                     "label": "Reviews",
                     "name": "reviews",
                     "aria-label": "",
@@ -2648,7 +2572,7 @@
                     "sub_fields": []
                 },
                 {
-                    "key": "field_698f0db81a994",
+                    "key": "field_6992b44e8a4c1",
                     "label": "Pricing",
                     "name": "",
                     "aria-label": "",
@@ -2666,7 +2590,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0db81a995",
+                    "key": "field_6992b44e8a4c2",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -2687,7 +2611,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0db81a996",
+                    "key": "field_6992b44e8a4c3",
                     "label": "Pricing Info",
                     "name": "pricing_info",
                     "aria-label": "",
@@ -2708,11 +2632,11 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0db81a997",
+                    "key": "field_6992b44e8a4c4",
                     "label": "Pricing",
                     "name": "pricing",
                     "aria-label": "",
-                    "type": "group",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -2721,13 +2645,35 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "block",
-                    "sub_fields": []
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
         {
-            "key": "field_698f0de04357e",
+            "key": "field_6992b4c7e019b",
+            "label": "Wyomissing",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6992b4d1e019c",
             "label": "Wyomissing Contact Info",
             "name": "wyomissing_contact_info",
             "aria-label": "",
@@ -2743,41 +2689,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_698f0de14357f",
-                    "label": "Communities Name",
-                    "name": "communities_name",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "choices": {
-                        "": "-- Select Community --",
-                        "30": "Allentown",
-                        "32": "Bethlehem",
-                        "34": "Forks of Easton",
-                        "36": "Frederick",
-                        "38": "Hershey",
-                        "448": "Mechanicsburg",
-                        "73972": "sk",
-                        "40": "Wyomissing",
-                        "43": "York-South",
-                        "45": "York-West"
-                    }
-                },
-                {
-                    "key": "field_698f0de143580",
+                    "key": "field_6992b4d2e019d",
                     "label": "Phone & Email Address",
                     "name": "",
                     "aria-label": "",
@@ -2795,7 +2707,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0de143581",
+                    "key": "field_6992b4d2e019e",
                     "label": "Community Phone",
                     "name": "community_phone",
                     "aria-label": "",
@@ -2816,7 +2728,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0de143582",
+                    "key": "field_6992b4d2e019f",
                     "label": "Community Email Address",
                     "name": "community_email_address",
                     "aria-label": "",
@@ -2837,7 +2749,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0de143583",
+                    "key": "field_6992b4d2e01a0",
                     "label": "Address",
                     "name": "",
                     "aria-label": "",
@@ -2855,7 +2767,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0de143584",
+                    "key": "field_6992b4d2e01a1",
                     "label": "City",
                     "name": "city",
                     "aria-label": "",
@@ -2876,7 +2788,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0de143585",
+                    "key": "field_6992b4d2e01a2",
                     "label": "State",
                     "name": "state",
                     "aria-label": "",
@@ -2897,7 +2809,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0de143586",
+                    "key": "field_6992b4d2e01a3",
                     "label": "ZIP",
                     "name": "zip",
                     "aria-label": "",
@@ -2918,7 +2830,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0de143587",
+                    "key": "field_6992b4d2e01a4",
                     "label": "Longitude",
                     "name": "longitude",
                     "aria-label": "",
@@ -2939,7 +2851,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0de143588",
+                    "key": "field_6992b4d2e01a5",
                     "label": "Latitude",
                     "name": "latitude",
                     "aria-label": "",
@@ -2960,7 +2872,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0de143589",
+                    "key": "field_6992b4d2e01a6",
                     "label": "Reviews",
                     "name": "",
                     "aria-label": "",
@@ -2978,7 +2890,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0de14358a",
+                    "key": "field_6992b4d2e01a7",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -2999,7 +2911,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0de14358b",
+                    "key": "field_6992b4d2e01a8",
                     "label": "Review Intro",
                     "name": "review_intro",
                     "aria-label": "",
@@ -3020,7 +2932,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0de14358c",
+                    "key": "field_6992b4d2e01a9",
                     "label": "Review",
                     "name": "review",
                     "aria-label": "",
@@ -3042,7 +2954,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_698f0de14358d",
+                            "key": "field_6992b4d2e01aa",
                             "label": "Site Name",
                             "name": "site_name",
                             "aria-label": "",
@@ -3061,10 +2973,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_698f0de14358c"
+                            "parent_repeater": "field_6992b4d2e01a9"
                         },
                         {
-                            "key": "field_698f0de14358e",
+                            "key": "field_6992b4d2e01ab",
                             "label": "Site Link",
                             "name": "site_link",
                             "aria-label": "",
@@ -3080,12 +2992,12 @@
                             "default_value": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
-                            "parent_repeater": "field_698f0de14358c"
+                            "parent_repeater": "field_6992b4d2e01a9"
                         }
                     ]
                 },
                 {
-                    "key": "field_698f0de14358f",
+                    "key": "field_6992b4d2e01ac",
                     "label": "Reviews",
                     "name": "reviews",
                     "aria-label": "",
@@ -3102,7 +3014,7 @@
                     "sub_fields": []
                 },
                 {
-                    "key": "field_698f0de143590",
+                    "key": "field_6992b4d2e01ad",
                     "label": "Pricing",
                     "name": "",
                     "aria-label": "",
@@ -3120,7 +3032,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0de143591",
+                    "key": "field_6992b4d2e01ae",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -3141,7 +3053,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0de143592",
+                    "key": "field_6992b4d2e01af",
                     "label": "Pricing Info",
                     "name": "pricing_info",
                     "aria-label": "",
@@ -3162,11 +3074,11 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0de143593",
+                    "key": "field_6992b4d2e01b0",
                     "label": "Pricing",
                     "name": "pricing",
                     "aria-label": "",
-                    "type": "group",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -3175,15 +3087,37 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "block",
-                    "sub_fields": []
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
         {
-            "key": "field_698f0e0cfbf1b",
-            "label": "York-South Contact Info",
-            "name": "york-south_contacts",
+            "key": "field_6992b56353456",
+            "label": "York South",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6992b57453457",
+            "label": "York South Contact Info",
+            "name": "york_south_contact_info",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -3197,41 +3131,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_698f0e0cfbf1c",
-                    "label": "Communities Name",
-                    "name": "communities_name",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "choices": {
-                        "": "-- Select Community --",
-                        "30": "Allentown",
-                        "32": "Bethlehem",
-                        "34": "Forks of Easton",
-                        "36": "Frederick",
-                        "38": "Hershey",
-                        "448": "Mechanicsburg",
-                        "73972": "sk",
-                        "40": "Wyomissing",
-                        "43": "York-South",
-                        "45": "York-West"
-                    }
-                },
-                {
-                    "key": "field_698f0e0cfbf1d",
+                    "key": "field_6992b57553458",
                     "label": "Phone & Email Address",
                     "name": "",
                     "aria-label": "",
@@ -3249,7 +3149,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0e0cfbf1e",
+                    "key": "field_6992b57553459",
                     "label": "Community Phone",
                     "name": "community_phone",
                     "aria-label": "",
@@ -3270,7 +3170,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e0cfbf1f",
+                    "key": "field_6992b5755345a",
                     "label": "Community Email Address",
                     "name": "community_email_address",
                     "aria-label": "",
@@ -3291,7 +3191,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e0cfbf20",
+                    "key": "field_6992b5755345b",
                     "label": "Address",
                     "name": "",
                     "aria-label": "",
@@ -3309,7 +3209,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0e0cfbf21",
+                    "key": "field_6992b5755345c",
                     "label": "City",
                     "name": "city",
                     "aria-label": "",
@@ -3330,7 +3230,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e0cfbf22",
+                    "key": "field_6992b5755345d",
                     "label": "State",
                     "name": "state",
                     "aria-label": "",
@@ -3351,7 +3251,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e0cfbf23",
+                    "key": "field_6992b5755345e",
                     "label": "ZIP",
                     "name": "zip",
                     "aria-label": "",
@@ -3372,7 +3272,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e0cfbf24",
+                    "key": "field_6992b5755345f",
                     "label": "Longitude",
                     "name": "longitude",
                     "aria-label": "",
@@ -3393,7 +3293,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e0cfbf25",
+                    "key": "field_6992b57553460",
                     "label": "Latitude",
                     "name": "latitude",
                     "aria-label": "",
@@ -3414,7 +3314,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e0cfbf26",
+                    "key": "field_6992b57553461",
                     "label": "Reviews",
                     "name": "",
                     "aria-label": "",
@@ -3432,7 +3332,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0e0cfbf27",
+                    "key": "field_6992b57553462",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -3453,7 +3353,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e0cfbf28",
+                    "key": "field_6992b57553463",
                     "label": "Review Intro",
                     "name": "review_intro",
                     "aria-label": "",
@@ -3474,7 +3374,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0e0cfbf29",
+                    "key": "field_6992b57553464",
                     "label": "Review",
                     "name": "review",
                     "aria-label": "",
@@ -3487,7 +3387,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "table",
+                    "layout": "",
                     "pagination": 0,
                     "min": 0,
                     "max": 0,
@@ -3496,7 +3396,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_698f0e0cfbf2a",
+                            "key": "field_6992b57553465",
                             "label": "Site Name",
                             "name": "site_name",
                             "aria-label": "",
@@ -3515,10 +3415,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_698f0e0cfbf29"
+                            "parent_repeater": "field_6992b57553464"
                         },
                         {
-                            "key": "field_698f0e0cfbf2b",
+                            "key": "field_6992b57553466",
                             "label": "Site Link",
                             "name": "site_link",
                             "aria-label": "",
@@ -3534,12 +3434,12 @@
                             "default_value": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
-                            "parent_repeater": "field_698f0e0cfbf29"
+                            "parent_repeater": "field_6992b57553464"
                         }
                     ]
                 },
                 {
-                    "key": "field_698f0e0cfbf2c",
+                    "key": "field_6992b57553467",
                     "label": "Reviews",
                     "name": "reviews",
                     "aria-label": "",
@@ -3552,11 +3452,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "block",
+                    "layout": "",
                     "sub_fields": []
                 },
                 {
-                    "key": "field_698f0e0cfbf2d",
+                    "key": "field_6992b57553468",
                     "label": "Pricing",
                     "name": "",
                     "aria-label": "",
@@ -3574,7 +3474,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0e0cfbf2e",
+                    "key": "field_6992b57553469",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -3595,7 +3495,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e0cfbf2f",
+                    "key": "field_6992b5755346a",
                     "label": "Pricing Info",
                     "name": "pricing_info",
                     "aria-label": "",
@@ -3616,11 +3516,11 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0e0cfbf30",
+                    "key": "field_6992b5755346b",
                     "label": "Pricing",
                     "name": "pricing",
                     "aria-label": "",
-                    "type": "group",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -3629,15 +3529,37 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "block",
-                    "sub_fields": []
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
         {
-            "key": "field_698f0e2ae6110",
+            "key": "field_6992b5975346c",
+            "label": "York West",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6992b5a45346d",
             "label": "York-West Contact Info",
-            "name": "york-west_contact",
+            "name": "york-west_contact_info",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -3651,41 +3573,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_698f0e2ae6111",
-                    "label": "Communities Name",
-                    "name": "communities_name",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "choices": {
-                        "": "-- Select Community --",
-                        "30": "Allentown",
-                        "32": "Bethlehem",
-                        "34": "Forks of Easton",
-                        "36": "Frederick",
-                        "38": "Hershey",
-                        "448": "Mechanicsburg",
-                        "73972": "sk",
-                        "40": "Wyomissing",
-                        "43": "York-South",
-                        "45": "York-West"
-                    }
-                },
-                {
-                    "key": "field_698f0e2ae6112",
+                    "key": "field_6992b5a55346e",
                     "label": "Phone & Email Address",
                     "name": "",
                     "aria-label": "",
@@ -3703,7 +3591,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0e2ae6113",
+                    "key": "field_6992b5a55346f",
                     "label": "Community Phone",
                     "name": "community_phone",
                     "aria-label": "",
@@ -3724,7 +3612,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e2ae6114",
+                    "key": "field_6992b5a553470",
                     "label": "Community Email Address",
                     "name": "community_email_address",
                     "aria-label": "",
@@ -3745,7 +3633,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e2ae6115",
+                    "key": "field_6992b5a553471",
                     "label": "Address",
                     "name": "",
                     "aria-label": "",
@@ -3763,7 +3651,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0e2ae6116",
+                    "key": "field_6992b5a553472",
                     "label": "City",
                     "name": "city",
                     "aria-label": "",
@@ -3784,7 +3672,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e2ae6117",
+                    "key": "field_6992b5a553473",
                     "label": "State",
                     "name": "state",
                     "aria-label": "",
@@ -3805,7 +3693,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e2ae6118",
+                    "key": "field_6992b5a553474",
                     "label": "ZIP",
                     "name": "zip",
                     "aria-label": "",
@@ -3826,7 +3714,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e2ae6119",
+                    "key": "field_6992b5a553475",
                     "label": "Longitude",
                     "name": "longitude",
                     "aria-label": "",
@@ -3847,7 +3735,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e2ae611a",
+                    "key": "field_6992b5a553476",
                     "label": "Latitude",
                     "name": "latitude",
                     "aria-label": "",
@@ -3868,7 +3756,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e2ae611b",
+                    "key": "field_6992b5a553477",
                     "label": "Reviews",
                     "name": "",
                     "aria-label": "",
@@ -3886,7 +3774,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0e2ae611c",
+                    "key": "field_6992b5a553478",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -3907,7 +3795,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e2ae611d",
+                    "key": "field_6992b5a553479",
                     "label": "Review Intro",
                     "name": "review_intro",
                     "aria-label": "",
@@ -3928,7 +3816,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0e2ae611e",
+                    "key": "field_6992b5a55347a",
                     "label": "Review",
                     "name": "review",
                     "aria-label": "",
@@ -3950,7 +3838,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_698f0e2ae611f",
+                            "key": "field_6992b5a55347b",
                             "label": "Site Name",
                             "name": "site_name",
                             "aria-label": "",
@@ -3969,10 +3857,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_698f0e2ae611e"
+                            "parent_repeater": "field_6992b5a55347a"
                         },
                         {
-                            "key": "field_698f0e2ae6120",
+                            "key": "field_6992b5a55347c",
                             "label": "Site Link",
                             "name": "site_link",
                             "aria-label": "",
@@ -3988,12 +3876,12 @@
                             "default_value": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
-                            "parent_repeater": "field_698f0e2ae611e"
+                            "parent_repeater": "field_6992b5a55347a"
                         }
                     ]
                 },
                 {
-                    "key": "field_698f0e2ae6121",
+                    "key": "field_6992b5a55347d",
                     "label": "Reviews",
                     "name": "reviews",
                     "aria-label": "",
@@ -4010,7 +3898,7 @@
                     "sub_fields": []
                 },
                 {
-                    "key": "field_698f0e2ae6122",
+                    "key": "field_6992b5a55347e",
                     "label": "Pricing",
                     "name": "",
                     "aria-label": "",
@@ -4028,7 +3916,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_698f0e2ae6123",
+                    "key": "field_6992b5a55347f",
                     "label": "Button Title",
                     "name": "button_title",
                     "aria-label": "",
@@ -4049,7 +3937,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_698f0e2ae6124",
+                    "key": "field_6992b5a553480",
                     "label": "Pricing Info",
                     "name": "pricing_info",
                     "aria-label": "",
@@ -4070,11 +3958,11 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_698f0e2be6125",
+                    "key": "field_6992b5a553481",
                     "label": "Pricing",
                     "name": "pricing",
                     "aria-label": "",
-                    "type": "group",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -4083,8 +3971,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "block",
-                    "sub_fields": []
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         }
@@ -4108,5 +4000,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1771219243
+    "modified": 1771223826
 }
