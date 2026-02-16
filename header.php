@@ -163,7 +163,7 @@
                                 <?php $header_button = get_field("header_button", "option");
                                 $button = $header_button['button'] ?? '';
                                 $button_icon = $header_button['button_icon'] ?? '';
-                                $is_community_child = is_page() && wp_get_post_parent_id(get_the_ID()) == 78822; // Check if it's a child of "Communities" page (ID: 28)
+                                $is_community_child = is_page() && wp_get_post_parent_id(get_the_ID()) == 28; // Check if it's a child of "Communities" page (ID: 28)
 
                                 if ($button && !$is_community_child):
                                 ?>
@@ -186,15 +186,15 @@
 
                                 // Map post IDs to their corresponding ACF option field names
                                 $communities = [
-                                    78823  => 'allentown_contact_info',
-                                    79455  => 'bethlehem_contact_info',
-                                    80746  => 'forks_of_easton_contact_info',
-                                    80748  => 'frederick_contact_info',
-                                    80749  => 'hershey_contact_info',
-                                    80750 => 'mechanicsburg_contact_info',
-                                    80751  => 'wyomissing_contact_info',
-                                    80752  => 'york_south_contact_info',
-                                    80758  => 'york-west_contact_info',
+                                    30  => 'allentown_contact_info',
+                                    32  => 'bethlehem_contact_info',
+                                    34  => 'forks_of_easton_contact_info',
+                                    36  => 'frederick_contact_info',
+                                    38  => 'hershey_contact_info',
+                                    448 => 'mechanicsburg_contact_info',
+                                    40  => 'wyomissing_contact_info',
+                                    43  => 'york_south_contact_info',
+                                    45  => 'york-west_contact_info',
                                 ];
 
                                 $current_id = get_the_ID();
