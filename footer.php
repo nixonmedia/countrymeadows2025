@@ -186,26 +186,46 @@ $column_2_link = $content_column_2['link'] ?? '';
       </div>
 
       <div class="modal-body">
-        <?php if (have_rows('communities_contact_info', 'option')) : ?>
-          <ul class="list-group">
-            <?php while (have_rows('communities_contact_info', 'option')) : the_row(); ?>
+        <ul class="list-group">
+
+          <?php
+          $communities = [
+            'allentown_contact_info' => 'Allentown',
+            'bethlehem_contact_info' => 'Bethlehem',
+            'forks_of_easton_contact_info' => 'Forks of Easton',
+            'frederick_contact_info' => 'Frederick',
+            'hershey_contact_info' => 'Hershey',
+            'mechanicsburg_contact_info' => 'Mechanicsburg',
+            'wyomissing_contact_info' => 'Wyomissing',
+            'york_south_contact_info' => 'York South',
+            'york-west_contact_info' => 'York West',
+          ];
+
+          foreach ($communities as $field_name => $label) :
+
+            $group = get_field($field_name, 'option');
+
+            if ($group && !empty($group['community_phone'])) :
+              $phone = $group['community_phone'];
+          ?>
               <li class="list-group-item">
-                <span class="text-blue">  
-                  <?php $community_id = get_sub_field('communities_name'); 
-                  $phone = get_sub_field('community_phone');
-                  if ($community_id) {
-                    echo esc_html(get_the_title($community_id)).":";
-                  }
-                  ?></span>
+                <span class="text-blue">
+                  <?php echo esc_html($label); ?>:
+                </span>
 
                 <a href="tel:<?php echo esc_attr($phone); ?>" class="text-decoration-none">
                   <?php echo esc_html($phone); ?>
                 </a>
               </li>
-            <?php endwhile; ?>
-          </ul>
-        <?php endif; ?>
+          <?php
+            endif;
+
+          endforeach;
+          ?>
+
+        </ul>
       </div>
+
 
     </div>
   </div>
