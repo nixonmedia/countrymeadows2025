@@ -199,9 +199,7 @@
                                 ];
 
                                 $current_id = get_the_ID();
-                               
-
-                                if (isset($communities[$current_id])) {
+                                 if(isset($communities[$current_id]) && $current_id != 76) {
                                     
                                     $community_info = get_field($communities[$current_id], 'options');
 
