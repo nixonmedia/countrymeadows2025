@@ -2415,7 +2415,13 @@ background-color: #D6F0FF80;
     color: var(--pink) !important;
     text-decoration: underline !important;
  }
+ .mega-sub-menu:has(> .contact-dropdown-menu){
+right: -10px !important;
 
+}
+ .mega-sub-menu:has(> .nursing-dropdown-menu) ,  .mega-sub-menu:has(> .about-dropdown-menu) ,  .mega-sub-menu:has(> .contact-dropdown-menu){
+  padding: 36px 38px !important;
+ }
 /* Media Queries  */
 
 @media only screen and (max-width: 429px) {
@@ -3513,6 +3519,23 @@ right: -10px;
   .help-menus-wrapper {
     column-gap: 30px;
   }
+.mega-sub-menu:has(> .mega-nursing-dropdown-menu) {
+  width: 940px !important;
+  min-width: 940px !important;
+  left: 14% !important;
+}
+.mega-sub-menu:has(> .about-dropdown-menu){
+width: 1100px !important;
+min-width: 990px !important;
+left: 5% !important;
+}
+
+.mega-sub-menu:has(> .contact-dropdown-menu){
+  width: 1100px !important;
+  right: -10px !important;
+
+}
+
 }
 @media only screen and (min-width: 1250px) {
   .main-menu {
@@ -3665,6 +3688,7 @@ right: -10px;
   .contact-cta .mega-submenu-cta a{
    padding: 10px 25px;
    max-width: max-content;
+
 }
 }
 @media only screen and (min-width: 1400px) {
