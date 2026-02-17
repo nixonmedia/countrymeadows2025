@@ -165,7 +165,7 @@
                                 $button_icon = $header_button['button_icon'] ?? '';
                                 $is_community_child = is_page() && wp_get_post_parent_id(get_the_ID()) == 28; // Check if it's a child of "Communities" page (ID: 28)
 
-                                if ($button && !$is_community_child):
+                                if ($button && !$is_community_child && get_the_ID() != 76):
                                 ?>
                                     <a href="#" class="top-header-button" class="top-header-button" data-bs-toggle="modal" data-bs-target="#communityModal">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -199,7 +199,7 @@
                                 ];
 
                                 $current_id = get_the_ID();
-                                 if(isset($communities[$current_id]) && $current_id != 76) {
+                                 if(isset($communities[$current_id])) {
                                     
                                     $community_info = get_field($communities[$current_id], 'options');
 
