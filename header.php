@@ -212,7 +212,7 @@
                                         <div class="community-address my-auto">
                                             <a class="font-regular fw-bold text-blue text-center d-inline-block text-decoration-none"
                                                 href="tel:<?php echo esc_attr($phone); ?>">
-                                                Call Our <?php echo esc_html($name); ?> Community<br>
+                                                Call Our <?php echo esc_html($name); ?><?php if ($current_id != 76) : ?> Community<?php endif; ?> <br>
                                                 at <?php echo esc_html($phone); ?>
                                             </a>
                                         </div>
