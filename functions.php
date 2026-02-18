@@ -2416,3 +2416,82 @@ add_shortcode( 'community_phone_header', 'community_phone_header_shortcode' );
 
 
 require_once get_template_directory() . '/inc/site-alert/site-alert.php';
+
+
+//calculate the total and deductible
+
+
+function sendTotalBack($value)
+{
+	//echo 'total scrore = '. $value;
+	return $value;
+}
+
+function checkTotal($entry, $form)
+{
+
+
+	$total = 0;
+	$grand_total = 0;
+
+
+	$total  += (int) $_POST["input_2"];
+	$total  += (int) $_POST["input_3"];
+	$total  += (int) $_POST["input_4"];
+	$total  += (int) $_POST["input_5"];
+	$total  += (int) $_POST["input_6"];
+	$total  += (int) $_POST["input_7"];
+	$total  += (int) $_POST["input_8"];
+	$total  += (int) $_POST["input_9"];
+	$total  += (int) $_POST["input_10"];
+	$total  += (int) $_POST["input_11"];
+	$total  += (int) $_POST["input_12"];
+	$total  += (int) $_POST["input_13"];
+	$total  += (int) $_POST["input_14"];
+	$total  += (int) $_POST["input_15"];
+	$total  += (int) $_POST["input_16"];
+	$total  += (int) $_POST["input_17"];
+	$total  += (int) $_POST["input_18"];
+	$total  += (int) $_POST["input_19"];
+	$total  += (int) $_POST["input_20"];
+	//subtract deductions
+	$total  = $total - (int) $_POST["input_21"]; //define deducations (Tax deductible living expenses)
+	$_POST["input_23"] = $total;
+
+	//define deducations (Tax deductible living expenses)
+	$deduction = $_POST["input_21"];
+	$_POST["input_22"] = $deduction;
+
+
+	/*
+//define deducations (Tax deductible living expenses)
+$deduction = $_POST["input_22"] ;
+
+//subtract deductions
+$grand_total = $total - $deduction;
+
+$_POST["input_23"] = $grand_total; // this is the ID of the hidden total field */
+
+
+	return $form;
+}
+
+add_filter('gform_pre_submission_6', 'checkTotal', 10, 2);
+
+
+
+# Was this form submitted?
+// if (isset($_POST['is_submit_3'])) :
+
+// 	# Print our javascript in the footer.
+// 	add_action('wp_footer', function () { ?>
+ 		<script>
+// 			jQuery(document).ready(function() {
+// 				$('.financial-content').hide();
+// 				//$('html, body').animate({scrollTop:$(document).height()}, 0);
+// 				console.log('form submitted');
+// 			});
+// 		</script>
+ 		<?php //}, 99999);
+
+// endif;
