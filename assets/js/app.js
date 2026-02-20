@@ -103,7 +103,7 @@ responsive: [
   });
 
   //prepend $ to financial form
-   $('#gform_3 .ginput_container_text').prepend('<span class="money">$</span>');
+   $('.financial-calculator-form .ginput_container_text').prepend('<span class="money">$</span>');
 });
 
 jQuery(document).ready(function($){
