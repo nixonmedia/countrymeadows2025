@@ -998,6 +998,30 @@ main section.bg-white {
   height: auto;
 }
 
+/* 20 feb 2026 */
+.ginput_container_text {
+    position: relative;
+}
+
+.ginput_container_text .money {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.ginput_container_text input {
+    padding-left: 25px !important;
+}
+
+.gform_hidden .money {
+    display: none !important;
+}
+
+.ginput_container_text .money input {
+ width: 80%;
+}
 
 
 /*********************
