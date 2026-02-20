@@ -1023,6 +1023,7 @@ main section.bg-white {
   font-size: 18px;
   font-weight: 500;
   display: none;
+  width: unset !important;
 }
 .financial-calculator-form .hello span.Atwo {
     padding-left: 23px;
@@ -2935,6 +2936,8 @@ right: -10px;
   .financial-calculator-form .gfield:not(.gfield--type-hidden) {
     display: flex;
     align-items: center;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
   }
   .financial-calculator-form input:not([type ="submit"]) {
     padding-left: 25px !important;
