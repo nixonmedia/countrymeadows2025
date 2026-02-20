@@ -101,6 +101,9 @@ responsive: [
       },
     ],
   });
+
+  //prepend $ to financial form
+   $('.financial-calculator-form .ginput_container_text').prepend('<span class="money">$</span>');
 });
 
 jQuery(document).ready(function($){
@@ -231,4 +234,5 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.classList.remove('no-scroll');
   });
 });
+
 

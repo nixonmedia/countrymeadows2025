@@ -998,7 +998,57 @@ main section.bg-white {
   height: auto;
 }
 
-
+/* Financial Calculator Form */
+.financial-calculator-form .ginput_container_text {
+    position: relative;
+}
+.financial-calculator-form .ginput_container_text .money {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+.financial-calculator-form .gform_hidden .money {
+    display: none !important;
+}
+.financial-calculator-form .ginput_container_text .money input {
+ width: 80%;
+}
+.financial-calculator-form input:not([type ="submit"]) {
+  width: 100% !important;
+}
+.financial-calculator-form .hello {
+  padding-left: 13%;
+  font-size: 18px;
+  font-weight: 500;
+  display: none;
+  width: unset !important;
+}
+.financial-calculator-form .hello span.Atwo {
+    padding-left: 23px;
+}
+.financial-calculator-form .calculator-sub-title {
+  text-align: center;
+}
+.financial-calculator-form .gfield .gfield_description {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: var(--black);
+}
+.gform_wrapper  form.financial-calculator-form .gfield_label {
+  padding-right: 0;
+}
+.financial-calculator-form thead th, .financial-calculator-form tbody tr:last-child td {
+  background-color: transparent;
+}
+.financial-calculator-form .table {
+  margin-top: 40px;
+}
+.financial-calculator-form .site-button {
+  color: var(--white);
+}
 
 /*********************
 *** Custom Columns ***
@@ -2875,6 +2925,44 @@ right: -10px;
   }
 }
 
+@media only screen and (min-width: 580px) {
+  .financial-calculator-form .hello {
+    display: block;
+    padding-left: 10%;
+  }
+}
+
+@media only screen and (min-width: 641px) {
+  .financial-calculator-form .gfield:not(.gfield--type-hidden) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+  }
+  .financial-calculator-form input:not([type ="submit"]) {
+    padding-left: 25px !important;
+  }
+  .financial-calculator-form .gfield .gfield_description {
+    padding-left: 48px;
+    padding-top: 0 !important;
+  }
+  .gform_wrapper  form.financial-calculator-form .gfield_label {
+    align-items: flex-end;
+    width: 35%;
+    text-align: right;
+  }
+  .financial-calculator-form .ginput_container_text {
+    margin-left: 16px;
+  }
+  .financial-calculator-form .hello span.Atwo {
+    padding-left: 75px;
+  }
+  .financial-calculator-form .calculator-sub-title {
+    margin-left: 28% !important;
+    /* width: 70%; */
+  }
+}
+
 @media only screen and (min-width: 768px) {
   h2, .font-medium {
     font-size: 22px;
@@ -3007,6 +3095,12 @@ right: -10px;
   }
   .help-menus-wrapper {
     column-gap: 20px;
+  }
+  .financial-calculator-form .calculator-sub-title {
+    margin-left: 35% !important;
+  }
+  .financial-calculator-form .gfield .gfield_description {
+    padding-left: 75px;
   }
 }
 @media only screen and (min-width: 992px) {
@@ -3359,6 +3453,9 @@ right: -10px;
     font-size: 20px;
     line-height: 24px;
   }
+  .financial-calculator-form .calculator-sub-title {
+    margin-left: 37% !important;
+  }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .facetwp-facet-job_pagination a {
@@ -3374,6 +3471,9 @@ right: -10px;
   }
   .help-toolbars {
     top: 55%;
+  }
+  .financial-calculator-form .calculator-sub-title {
+    margin-left: 37% !important;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -3446,7 +3546,7 @@ right: -10px;
   }
   ul.mega-sub-menu:has(> li.communities-sub-menu) {
     padding: 55px 40px 50px 50px !important;
-}
+  }
   .angle_down_right{
     clip-path: polygon(0 -50%, 100% -50%, 100% 100%, 0% 95%);
   }
@@ -3519,22 +3619,24 @@ right: -10px;
   .help-menus-wrapper {
     column-gap: 30px;
   }
-.mega-sub-menu:has(> .mega-nursing-dropdown-menu) {
-  width: 940px !important;
-  min-width: 940px !important;
-  left: 14% !important;
-}
-.mega-sub-menu:has(> .about-dropdown-menu){
-width: 1100px !important;
-min-width: 990px !important;
-left: 5% !important;
-}
-
-.mega-sub-menu:has(> .contact-dropdown-menu){
+  .mega-sub-menu:has(> .mega-nursing-dropdown-menu) {
+    width: 940px !important;
+    min-width: 940px !important;
+    left: 14% !important;
+  }
+  .mega-sub-menu:has(> .about-dropdown-menu){
   width: 1100px !important;
-  right: -10px !important;
+  min-width: 990px !important;
+  left: 5% !important;
+  }
 
-}
+  .mega-sub-menu:has(> .contact-dropdown-menu){
+    width: 1100px !important;
+    right: -10px !important;
+  }
+  .financial-calculator-form .calculator-sub-title {
+    margin-left: 40% !important;
+  }
 
 }
 @media only screen and (min-width: 1250px) {
@@ -3637,12 +3739,12 @@ left: 5% !important;
     line-height: 17px;
     padding: 11px 40px;
   }
- .communities-cta .mega-submenu-cta a{
-    padding: 11px 20px;
- }
+  .communities-cta .mega-submenu-cta a{
+      padding: 11px 20px;
+  }
 
-.mega-submenu-cta {
-    padding: 28px 22px 40px;
+  .mega-submenu-cta {
+      padding: 28px 22px 40px;
   }
   .submenu-main-heading a {
     font-size: 30px;
@@ -3686,10 +3788,12 @@ left: 5% !important;
     right: -45px;
   }
   .contact-cta .mega-submenu-cta a{
-   padding: 10px 25px;
-   max-width: max-content;
-
-}
+    padding: 10px 25px;
+    max-width: max-content;
+  }
+  .financial-calculator-form .calculator-sub-title {
+    margin-left: 41% !important;
+  }
 }
 @media only screen and (min-width: 1400px) {
   .meet-team-button {
@@ -3709,7 +3813,9 @@ left: 5% !important;
   .help-menus-wrapper {
     column-gap: 50px;
   }
-
+  .financial-calculator-form .calculator-sub-title {
+    margin-left: 42% !important;
+  }
 }
 @media only screen and (min-width: 1620px) {
   .main-menu .navbar-nav a, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link, .resource-card p {
@@ -3810,6 +3916,9 @@ left: 5% !important;
   .resources-intro-zone .facet-search-box {
     padding: 50px;
   }
+  .financial-calculator-form .calculator-sub-title {
+    margin-left: 44% !important;
+  }
 }
 @media only screen and (min-width: 1900px) {
   .footer-post-col .font-normal {
@@ -3894,6 +4003,9 @@ left: 5% !important;
   .close-float {
     font-size: 27px;
   }
+  .financial-calculator-form .calculator-sub-title {
+    margin-left: 45% !important;
+  }
 }
 @media only screen and (min-width: 1920px) {
   .container-fluid {
@@ -3928,6 +4040,9 @@ left: 5% !important;
   .container-fluid {
     max-width: 2400px;
     margin: 0 auto;
+  }
+  .financial-calculator-form .calculator-sub-title {
+    margin-left: 47% !important;
   }
 }
 
