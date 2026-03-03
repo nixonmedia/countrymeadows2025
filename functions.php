@@ -2478,6 +2478,20 @@ $_POST["input_23"] = $grand_total; // this is the ID of the hidden total field *
 
 add_filter('gform_pre_submission_6', 'checkTotal', 10, 2);
 
+/*
+# Was this form submitted?
+if (isset($_POST['is_submit_3'])) :
+	# Print our javascript in the footer.
+	add_action('wp_footer', function () { ?>
+		<script>
+			jQuery(document).ready(function() {
+				$('.financial-content').hide();
+				console.log('form submitted');
+			});
+		</script>
+	<?php }, 99999);
+endif;
+*/
 
 /* -----------------------------------
  * Custom Blog Permalink & Rewrite Rules
@@ -2542,11 +2556,3 @@ function custom_category_permalink( $termlink, $term, $taxonomy ) {
 add_filter( 'term_link', 'custom_category_permalink', 10, 3 );
 
 
-/* -----------------------------------
- * Flush Rewrite Rules Once
- * ADD THIS TEMPORARILY - remove after visiting site once
- * ----------------------------------- */
-
-// add_action( 'init', function() {
-//     flush_rewrite_rules( true );
-// }, 999 );
