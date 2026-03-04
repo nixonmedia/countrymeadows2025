@@ -2555,4 +2555,23 @@ function custom_category_permalink( $termlink, $term, $taxonomy ) {
 }
 add_filter( 'term_link', 'custom_category_permalink', 10, 3 );
 
+/* -----------------------------------
+ * Redirect default /category/ to /blog/category/
+ * ----------------------------------- */
+
+function redirect_default_category_to_blog() {
+    if ( is_category() ) {
+        $current_url = $_SERVER['REQUEST_URI'];
+        // Only redirect if URL contains /category/ but NOT /blog/category/
+        if ( strpos($current_url, '/blog/category/') === false ) {
+            $term = get_queried_object();
+            if ( isset($term->slug) ) {
+                $new_url = home_url( '/blog/category/' . $term->slug . '/' );
+                wp_redirect( $new_url, 301 );
+                exit;
+            }
+        }
+    }
+}
+add_action( 'template_redirect', 'redirect_default_category_to_blog' );
 

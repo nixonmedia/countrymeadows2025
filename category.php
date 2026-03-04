@@ -48,23 +48,26 @@
                     <?php endwhile; ?>
                 </div>
             </div>
-            <div class="blog-pagination text-center default-pagination-wrapper">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <?php
-                            the_posts_pagination(array(
-                                'mid_size'  => 2,
-                                'prev_text' => __('<'),
-                                'next_text' => __('>'),
-                                'base'      => trailingslashit(get_term_link(get_queried_object())) . '%_%',
-                                'format'    => 'page/%#%/',
-                            ));
-                            ?>
+            <?php global $wp_query; ?>
+            <?php if ( $wp_query->max_num_pages > 1 ) : ?>
+                <div class="blog-pagination text-center default-pagination-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <?php
+                                the_posts_pagination(array(
+                                    'mid_size'  => 2,
+                                    'prev_text' => __('<'),
+                                    'next_text' => __('>'),
+                                    'base'      => trailingslashit(get_term_link(get_queried_object())) . '%_%',
+                                    'format'    => 'page/%#%/',
+                                ));
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
         <?php else : ?>
             <div class="container">
                 <div class="row">
