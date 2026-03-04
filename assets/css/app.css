@@ -1872,6 +1872,14 @@ border-radius: 10px;
 
 .form-center .wysiwyg-content form .gform_footer {
   justify-content: center;
+  padding: 0;
+}
+.form-center .wysiwyg-content form .disclaimer-text {
+  display: block;
+  margin: 0 auto;
+  width: 600px;
+  max-width: 100%;
+  text-align: center;
 }
 .form_zone.bg-pattern {
   background-position: 100% 90%;
@@ -2821,7 +2829,10 @@ right: -10px !important;
   .full-width-left-col, .row.flex-row-reverse .full-width-left-col {
     border-radius: 0;
   }
- 
+  .form-center .wysiwyg-content form .disclaimer-text {
+    width: 100%;
+    max-width: 600px;
+  }
 } 
 @media only screen and (max-width: 767px) {
   body {
