@@ -54,7 +54,7 @@ $hide_breadcrumb = get_field('hide_breadcrumb', $blog_page_id);
   </div>
 </section>
 <section class="blog-posts-zone py-5">
-  <div class="container">
+  <div class="container-fluid">
     <?php echo do_shortcode('[facetwp template="blog_posts"]'); ?>
   </div>
 </section>
