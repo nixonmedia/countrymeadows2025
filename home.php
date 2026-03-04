@@ -59,7 +59,7 @@ $hide_breadcrumb = get_field('hide_breadcrumb', $blog_page_id);
   </div>
 </section>
 <section class="blog-pagination text-center">
-  <div class="container">
+  <div class="container-fluid">
     <?php echo do_shortcode('[facetwp facet="blog_pagination"]'); ?>
   </div>
 </section>
