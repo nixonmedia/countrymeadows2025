@@ -2478,20 +2478,81 @@ $_POST["input_23"] = $grand_total; // this is the ID of the hidden total field *
 
 add_filter('gform_pre_submission_6', 'checkTotal', 10, 2);
 
-
-
+/*
 # Was this form submitted?
-// if (isset($_POST['is_submit_3'])) :
+if (isset($_POST['is_submit_3'])) :
+	# Print our javascript in the footer.
+	add_action('wp_footer', function () { ?>
+		<script>
+			jQuery(document).ready(function() {
+				$('.financial-content').hide();
+				console.log('form submitted');
+			});
+		</script>
+	<?php }, 99999);
+endif;
+*/
 
-// 	# Print our javascript in the footer.
-// 	add_action('wp_footer', function () { ?>
- 		<script>
-// 			jQuery(document).ready(function() {
-// 				$('.financial-content').hide();
-// 				//$('html, body').animate({scrollTop:$(document).height()}, 0);
-// 				console.log('form submitted');
-// 			});
-// 		</script>
- 		<?php //}, 99999);
+/* -----------------------------------
+ * Custom Blog Permalink & Rewrite Rules
+ * ----------------------------------- */
 
-// endif;
+// Add /blog/ before default post URLs
+function custom_post_permalink_structure( $permalink, $post ) {
+    // Don't modify if permalink is still a ?p=123 format (draft/no slug yet)
+    if ( strpos( $permalink, '?p=' ) !== false ) {
+        return $permalink;
+    }
+
+    if ( $post->post_type === 'post' ) {
+        $permalink = home_url( '/blog/' . $post->post_name . '/' );
+    }
+
+    return $permalink;
+}
+add_filter( 'post_link', 'custom_post_permalink_structure', 10, 2 );
+
+
+/* -----------------------------------
+ * All Rewrite Rules (single function)
+ * ----------------------------------- */
+
+function custom_blog_rewrite_rules() {
+
+    // Category WITH pagination: /blog/category/cat-name/page/2/
+    add_rewrite_rule(
+        '^blog/category/([^/]+)/page/([0-9]+)/?$',
+        'index.php?category_name=$matches[1]&paged=$matches[2]',
+        'top'
+    );
+
+    // Category base: /blog/category/cat-name/
+    add_rewrite_rule(
+        '^blog/category/([^/]+)/?$',
+        'index.php?category_name=$matches[1]',
+        'top'
+    );
+
+    // Single post: /blog/post-name/
+    add_rewrite_rule(
+        '^blog/([^/]+)/?$',
+        'index.php?name=$matches[1]&post_type=post',
+        'top'
+    );
+}
+add_action( 'init', 'custom_blog_rewrite_rules' );
+
+
+/* -----------------------------------
+ * Move category base to /blog/category/
+ * ----------------------------------- */
+
+function custom_category_permalink( $termlink, $term, $taxonomy ) {
+    if ( $taxonomy === 'category' ) {
+        return home_url( '/blog/category/' . $term->slug . '/' );
+    }
+    return $termlink;
+}
+add_filter( 'term_link', 'custom_category_permalink', 10, 3 );
+
+

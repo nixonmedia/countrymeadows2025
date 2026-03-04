@@ -2480,6 +2480,42 @@ right: -10px !important;
  .mega-sub-menu:has(> .nursing-dropdown-menu) ,  .mega-sub-menu:has(> .about-dropdown-menu) ,  .mega-sub-menu:has(> .contact-dropdown-menu){
   padding: 36px 38px !important;
  }
+ 
+ /************************************
+ **** Default Pagination Wrapper *****
+ ************************************/
+.default-pagination-wrapper .navigation.pagination {
+    justify-content: center;
+}
+.default-pagination-wrapper .navigation.pagination .nav-links {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+}
+.default-pagination-wrapper .navigation.pagination .page-numbers {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 47px;
+    height: 49px;
+    padding: 8px 5px;
+    background-color: var(--purple);
+    color: var(--white);
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.default-pagination-wrapper .navigation.pagination .page-numbers.current, 
+.default-pagination-wrapper .navigation.pagination .page-numbers:hover {
+    background-color: var(--yellow);
+    color: var(--white);
+}
+.default-pagination-wrapper .navigation.pagination .prev,
+.default-pagination-wrapper .navigation.pagination .next {
+    font-weight: bold;
+}
+ 
 /* Media Queries  */
 
 @media only screen and (max-width: 429px) {
@@ -2829,6 +2865,9 @@ right: -10px !important;
   .full-width-left-col, .row.flex-row-reverse .full-width-left-col {
     border-radius: 0;
   }
+  .default-pagination-wrapper {
+    margin: 0 -8px;
+  }
   .form-center .wysiwyg-content form .disclaimer-text {
     width: 100%;
     max-width: 600px;
@@ -2855,7 +2894,7 @@ right: -10px !important;
   .meet-team-slider .team-img-col img, .custom-columns-zone .wysiwyg-event-list img {
     max-width: 100%;
   }
-  .blog-pagination a {
+  .blog-pagination a, .blog-pagination.default-pagination-wrapper span {
     margin-bottom: 10px;
   }
   .floorplan-slider .slick-next {
